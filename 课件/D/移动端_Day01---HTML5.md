@@ -99,6 +99,46 @@
 
 # 三、HTML5新增语义标签
 
+> 在以前的html中，我们通常会用很多的div来给网页布局，然后给div定义有一个意义的类。这种情况一般情况下程序员是能读的的懂的，但是搜索引擎很难理解每个div到底代表什么意思。
+>
+> 看下面的代码：
+
+```html
+<body>
+<div id="wrapper">
+  
+    <!--the header -->
+    <div id="header">
+        
+        <div id="logo"></div>
+        <div id="navigation">
+            <ul>
+                <li><a href="#">Why?</a></li>
+            </ul>
+        </div>
+    </div> 
+  
+    <!-- the content -->
+    <div id="content">
+    </div> 
+  
+    <!-- the sidebar -->
+    <div id="sidebar">
+    </div> 
+  
+    <!-- the footer -->
+    <div id="footer">
+    </div>
+</div>
+</body>
+```
+
+> HTML5 旨在使用新增的全新语义化元素来解决这 个问题。
+
+## 3.1	\<section\>
+
+
+
 
 
 # 四、增强的表单元素
