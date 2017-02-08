@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 80px;
+				height: 30px;
+				background-color: darkgrey;
+				line-height: 30px;
+				text-align: center;
+				color: black;
+				font-size: 15px;
+				float: left;
+				margin-right: 10px;
+			}
+			
+			a{
+				float: left;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<a href="">看不清，换一张</a>
+		
+		<script type="text/javascript">
+			//生成一个 [m,n]的随机整数或者大小写字母
+			function generateNumber(m, n) {
+				return parseInt(Math.random() * (n - m + 1) + m);
+			}
+			
+			function generateChars(index){
+				var numStr = [0,1,2,3,4,5,6,7,8,9];
+				var charStr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',
+				'p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H',
+				'I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+				
+				if(index >= 0 &&index <= 9)
+					return numStr[index];
+				else if(index >= 10 &&index <= 61){
+					return charStr[index - 10];
+				}
+			}
+
+			function randomNumbersAndChars() {
+				var arrStr = [];
+				for(var i = 0; i < 6; i++) {
+					arrStr[i] = generateChars(generateNumber(0, 61));
+				}
+				return arrStr;
+			}
+			
+			//刚开始运行的时候就默认生成了一串验证码并连接成字符串
+			var arr1 = randomNumbersAndChars();
+			document.getElementsByTagName("div")[0].innerHTML = arr1.join("");
+			
+			//点击【看不清，换一张】进行刷新
+			document.getElementsByTagName("a")[0].onclick = function  () {
+				var arr2 = randomNumbersAndChars();
+				document.getElementsByTagName("div")[0].innerHTML = arr2.join("");
+				//屏蔽a标签的默认动作
+				return false;  
+			}
+		</script>
+	</body>
+	
+</html>

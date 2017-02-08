@@ -1,0 +1,154 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.D
+03.C
+04.A
+05.D
+06.B
+07.B
+08.D
+09.C
+10.A
+11.C
+12.C
+13.A
+14.A
+15.D
+16.C
+17.D
+18.D
+19.A
+20.D
+21.B
+
+22.D
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.B
+30.C
+
+
+二、简答题
+
+1.简单数据类型有：Number,String,Boolean,Underfine,Null
+  复杂数据类型有：Object，Array，Function
+  判断类型操作符是typeOf();
+
+2.
+document.getElementById("myDiv")
+document.getElementsByTagName("div")[0]
+document.getElementsByClass("myDiv")
+documnet.getElementsByName("test")
+   
+         
+
+3.
+创建元素节点：document.createElement(element);
+创建文本节点: document.createTextNode(text);
+找到div和a然后div.appendChild(a); 
+
+4.
+prompt(xx,默认值)可以弹出一个输入框给用户
+	prompt("输入点什么呢");
+
+alert();警告框
+	alert("这是一个警告框");
+
+confirm();确认框，返回布尔值，“是”返回true，否返回false
+	confirm("是or否");	
+
+5.
+innerHTML可以给元素节点赋入内容；
+innerText不可以
+
+
+三、编程题：要求只需要js代码
+
+1.
+
+<script type=text/javascript>  
+	var inputs = document.getElementsByTagName("input");
+	var btn = document.getElementsByTagName("button");
+	var outPut = document.getElementById("output");
+
+	btn.onclick = function(){
+		for(var i = 0;i < inputs.length;i++){
+			if(inputs[i].checkbox){
+				outPut.value += inputs[i].value + "<br>";
+			}
+		}
+	}
+</script>       
+
+
+
+
+2.
+
+<script type=text/javascript>
+	var now = new Date();
+	now.setFullYear(2016);
+	now.setMonth(12);
+	now.setDate(16);
+	document.write("今天是"+now.getFullYear+"年"+now.getMonth+"月"+now.getDate+"日，加油考试吧!");
+
+</script>  
+
+
+
+
+3.
+ var s = "34,6,-23,43,34,342,0,3"
+
+function cun(){
+     var arr = s.split(",");
+     return arr;
+ }
+
+
+cun();
+-----------------------------------------------
+var arr = [34,6,-23,43,34,342,0,3];
+function mp(){
+  for(var j = 0;j < arr.length - 1;j++){
+	for(var i = 0;i < arr.length - 1 - j;i++){
+		if(arr[i] < arr[i + 1]){
+			var temp = arr[i];
+			arr[i] = arr{i + 1];
+			arr[i + 1] = temp;
+		}
+	}
+	return arr;
+   }
+}
+mp();
+-----------------------------------------------
+var arr = [34,6,-23,43,34,342,0,3];
+
+function sums(){
+	var sum = 0;
+	for(var i = 0;i < arr.length;i++;){
+		sum += arr[i];
+	}
+	return sum;
+}
+sums();
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+

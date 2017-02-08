@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p{
+				float: left;
+				background-color: darkcyan;
+				width: 100px;
+				height: 25px;	
+				line-height: 25px;
+				text-align: center;			
+			}
+			a{
+				float: left;
+				margin-top: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<p></p>
+		<a href="javascript:void(0);">看不清,换一张</a>
+		<script type="text/javascript">
+			var arr1 = [];
+			for(var i = 0; i<10; i++){
+				arr1.push(i);
+			}
+			var s = "a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
+			var arr2 = s.split(" ");
+			var arr = arr1.concat(arr2);
+			var p = document.getElementsByTagName("p")[0];
+			function fun(){
+				var str = "";
+				for(var i = 0; i < 6; i++){
+					var h = parseInt(Math.random()*62);					
+						str += arr[h];
+				}
+				p.innerHTML = str;
+			}
+			fun();
+			document.getElementsByTagName("a")[0].onclick=function(){
+				fun();
+			}
+		</script>
+	</body>
+</html>

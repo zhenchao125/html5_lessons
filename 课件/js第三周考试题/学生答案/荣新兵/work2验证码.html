@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>随机生成六位验证码</title>
+		<style type="text/css">
+	
+			div{
+				width: 100px;
+				height: 30px;
+				background-color: yellowgreen;
+				border: 1px solid black;
+				display: inline-block;
+				text-align: center;
+				line-height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<span id="span1">
+				<span id="span1_1"></span>
+				<span id="span1_2"></span>
+				<span id="span1_3"></span>
+				<span id="span1_4"></span>
+				<span id="span1_5"></span>
+				<span id="span1_6"></span>
+			</span>		
+		</div>
+			<a href="" id="a">看不清?换一张</a>
+		<script type="text/javascript">
+				function getRandomNumber(max, min) {
+				return parseInt(Math.random()*((max-min+1)+min));
+				}
+				//创建验证码
+				function createCode(){
+					for(var i=0;i<codeLength;i++){
+						var textIndex=getRandomNumber(61,0); //取得0-61之间的随机下标
+						var spanText=arr[textIndex];
+						var CodeId=myId+(i+1);//取得每一个span中的id
+						var mySpan=document.getElementById(CodeId);//获取每一个span的id
+						mySpan.innerText=spanText;
+					}
+				}
+				var a=document.getElementById("a");
+				a.onclick=function(){
+					createCode();
+				}
+				var arr=[0,1,2,3,4,5,6,7,8,9,
+			'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+			'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+			var codeLength=6;//表示验证码的长度
+			var myId="span1_";//表示公共的id,代表span1_1...span1_6
+			createCode();
+		</script>
+	</body>
+</html>

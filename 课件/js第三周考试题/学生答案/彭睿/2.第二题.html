@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			width: 80px;
+			height: 30px;
+			background: #D5E2BB;
+			text-align: center;
+		}
+		span{
+			line-height: 30px;
+			color: black;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		a{
+			font-size: 12px;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<span></span>
+	</div>
+	<a href="javascript:;">换一张,看不清楚</a>
+	<script type="text/javascript">
+		function randomNumber(m,n){
+			return parseInt(Math.random()*(n - m + 1) + m);
+		}
+		function validateCode(){
+			var str = "qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
+			var arr = [];
+			for(var i = 0; i < 6; i++){
+				var num = randomNumber(0,62);
+				arr[i] = str[num];
+			}
+			return arr;
+		}
+		//初始化验证码
+		var validateCodes = validateCode();
+		document.getElementsByTagName("span")[0].innerHTML = validateCodes.join(""); 
+		
+		//生成验证码
+		document.getElementsByTagName("a")[0].onclick = function(){
+			var validateCodes = validateCode();
+			document.getElementsByTagName("span")[0].innerHTML = validateCodes.join("");
+		}
+validateCode()
+	</script>
+</body>
+
+</html>

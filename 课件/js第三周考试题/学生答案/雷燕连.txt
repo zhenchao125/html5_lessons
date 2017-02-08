@@ -1,0 +1,137 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.C
+03.B
+04.A
+05.D
+06.C
+07.D
+08.C
+09.C
+10.B
+11.C
+12.C
+13.A
+14.A
+15.C
+16.D
+17.C
+18.D
+19.A
+20.D
+21.B
+22.A
+23.C
+24.A
+25.A
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+
+有五种：数值型，字符串，布尔值，NaN,underfined
+判断数据类型的操作符是：typeof
+2.
+document.getElementById("myDiv");
+document.getElementByName("test");
+document.getElementByClass("myDiv");
+document.getElementsByTagName("div")[0];
+3.
+创建元素 document.createElement("nodename");
+创建文本 document.createTextNode("文本内容")；
+将 a 标签追加到一个 div元：div.appendChild(a);
+4.
+prompt（）：输入框，弹出输入框，有确认按钮。让客户输入内容。 var a = prompt("请输入你的电话号码")；
+alert（):警报框。有确认按钮。alert("输入的内容有误！")，用户点击确认则往下执行。
+confirm（）：提示确认框 。弹出确认框，有确认和取消两个按钮，返回布尔值true或者false。点击确认则返回true继续执行。var b = confirm("请确认")；
+5.
+innerHTML，innerText的区别：
+innerHTML:返回的是从开始到结束的所有内容，包含HTML标签的。
+innerText:返回的是从开始到结束的所有内容，不包含HTML标签的。
+
+innerText：一般在IE上使用，innerHTML则符合W3C的要求，一般推荐用innerHTML。
+
+innerText:不会解析子元素的。innerHTML会解析子元素。
+
+三、编程题：要求只需要js代码
+
+1.
+
+
+var output = document.getElementById("output");
+var btn1 = document.getElementsByTagName("button")[0];
+var inputs = document.querySelectorAll("input");
+
+btn1.onclick = function (){
+for(i =0;i<inputs.length; i++){
+	
+   if(checked = inputs[i].checked){
+	output.appendChild(inputs[i]);
+}
+}
+}
+分割线
+
+2.
+
+var div1 = document.getElementById("div1");
+
+var date1 = new Date();
+var year1 = date1.getFullYear;
+var month1 = date1.getMonth;
+var dat1 = date1.getDate;
+var str = "今天是" +year1 + "年" + (month1+1) +"月" + dat1 +"日" +","+ "加油考试吧！"
+
+div1.innerHTML = str;
+
+ 
+3.
+
+
+定义一个函数1：把字符串中的数字存入到一个数组中，并返回这个数组。
+
+var str =  "34,6,-23,43,34,342,0,3";
+
+function getArr(){
+
+var arr = str.split(",");
+
+return arr;
+
+var a = getArr();
+console.log(a);
+
+
+定义一个函数2：使用冒泡排序的方式实现上面数组的降序排列。
+
+var arr1 = str.split(",");
+   for(j =0; j<arr1.length-1; j++){
+      for(i = 0; i<arr1.length-1-j; i++){
+	if( arr1[i]< arr1[i+1]){
+	var temp = arr1[i];
+	arr1[i]= arr1[i+1];
+	arr1[i+1] =var temp;
+	}
+      }
+   }
+console.log(arr1);
+
+定义一个函数3：计算数组中所有数字的和。
+var arr2 = str.split(",");
+var sum = 0;
+function getSum(){
+ for (i = 0;i< arr2.length; i++){
+   sum+= arr[i];
+ }
+   return sum;
+}
+
+var b = getSum();
+console.log(b);
+
+
+

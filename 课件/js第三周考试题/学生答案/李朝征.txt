@@ -1,0 +1,125 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.D
+05.D
+06.D
+07.C
+08.D
+09.C
+10.D
+11.C
+12.C
+13.C
+14.B
+15.C
+16.B
+17.D
+18.D
+19.A
+20.A
+21.A
+
+22.A
+23.C
+24.B
+25.A
+26.B
+27.D
+28.D
+29.A
+30.C
+二、简答题
+
+1.【答】js的数据类型有整型、浮点型、字符串、数组、Object等；
+判断一个数据的类型的操作符是：typeof。
+2.【答】1）document.getElementById("myDiv");
+	2) document.getElementByTagName("div")[0];
+	3) document.getElementByName("test");
+	4) document.getElementByClass("myDiv")[0];
+3.【答】DOM操作中创建新元素使用：document.creatElement("newElement")方法；
+	创建文本节点使用：document.creatTextNode("textNode")方法；
+	将a标签追加到一个div元素中使用：div.appendElement("a")方法。
+4.【答】prompt()方法弹出一个用于接收用户输入的对话框，如：用户需要从键盘输入信息与js代码交互的时候使用prompt()方法；alert()方法弹出一个用于提示用户信息的弹出框，如：用户需要查看某个var变量的具体值的时候使用alert()方法；confirm()方法弹出一个用于提示用户进行“确定”或“取消”的选择框，如：需要用户根据实际的情况进行“确定”或“取消”操作的时候使用confirm()方法。
+5.【答】innerHTML表示某个元素中包含的HTML代码；
+innerText表示某个元素中的文本内容。
+三、编程题：要求只需要js代码
+
+1.
+<script type="text/javaScript">
+	var inputs = document.getElementByTagName("input");
+	var button = document.getElementByTagName("button")[0];
+	var textarea = document.getElementById("output");
+	var strArr = [];
+	var str = "";
+
+	for(var i = 0,len = inputs.length;i < len;i ++){
+		if(inputs[i].checked){
+			strArr.push(inputs[i].value);
+		}
+	}
+
+	button.onclick = function (){
+		for(var i = 0,len = inputs.length;i < len;i ++){
+			str += inputs[i] + " ";
+		}
+		textarea.value = str;
+	};
+</script>
+
+2.
+<script type="text/javaScript">
+	var date = new Date();
+	date.setFullYear(2016);
+	date.setMonth(11);
+	date.setDate(16);
+	alert("今天是" + date.getFullYear() + "年" + 
+	date.getMonth() + "月" + date.getDate() + "日，加油考试吧!");
+</script>
+
+3.
+<script type="text/javaScript">
+//1.把字符串中的数字存入到一个数组中，并返回这个数组
+function foo(){
+	var str = "34,6,-23,43,34,342,0,3";
+	var arrStr = str.split(",");
+	var numArr = [];
+	for(var i = 0,len = arrStr.length;i < len;i ++){
+		numArr[i] = parseInt(arrStr[i]);
+	}
+	return numArr;
+}
+
+//2.实现上面数组的降序排列
+function bubbleWithDownSort(arr){
+	for(var i = 0,len = arr.length;i < len - 1;i ++){
+		for(var j = 0;j < len - 1 - i;j ++){
+			if(arr[j] > arr[j + 1]){
+				var temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+}
+
+//3.计算数组中所有数字的和
+function sumOfNumberFromArray(arr){
+	var sum = 0;
+	for(var i = 0,len = arr.length;i < len;i ++){
+		sum += arr[i];
+	}
+	return sum;
+}
+</script>
+
+
+
+
+
+
+
+
+
+

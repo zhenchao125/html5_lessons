@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>新用户注册页面</title>
+		<link type="text/css" rel="stylesheet" href="css/register.css" />
+		<script src="js/myTool.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#userNameId,
+			#pwdId,
+			#repwdId,
+			#nickNameId,
+			#telId,
+			#emailId {
+				border: 1px solid red;
+				background-color: #ffe9f6;
+				display: none;
+				padding: 5px;
+				padding-left: 20px;
+				background-image: url(img/li_err.gif);
+				background-repeat: no-repeat;
+				background-position: 2px 4px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="header"><img src="img/register_logo.gif" alt="logo" /></div>
+		<div id="main">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="bg bg_top_left"></td>
+					<td class="bg_top"></td>
+					<td class="bg bg_top_right"></td>
+				</tr>
+				<tr>
+					<td class="bg_left"></td>
+					<td class="content">
+						<form id="registerForm" action="" method="get" name="myform">
+							<dl>
+								<dt>通行证用户名：</dt>
+								<dd><input type="text" id="userName" class="inputs userWidth" /> @163.com</dd>
+								<div id="userNameId"></div>
+							</dl>
+							<dl>
+								<dt>登录密码：</dt>
+								<dd><input type="password" id="pwd" class="inputs" /></dd>
+								<div id="pwdId"></div>
+							</dl>
+							<dl>
+								<dt>重复登录密码：</dt>
+								<dd><input type="password" id="repwd" class="inputs" /></dd>
+								<div id="repwdId"></div>
+							</dl>
+							<dl>
+								<dt>性别：</dt>
+								<dd><input name="sex" type="radio" value="" checked="checked" />男 <input name="sex" type="radio" value="" />女 </dd>
+							</dl>
+							<dl>
+								<dt>真实姓名：</dt>
+								<dd><input type="text" id="realName" class="inputs" /></dd>
+							</dl>
+							<dl>
+								<dt>昵称：</dt>
+								<dd><input type="text" id="nickName" class="inputs" /></dd>
+								<div id="nickNameId"></div>
+							</dl>
+							<dl>
+								<dt>关联手机号：</dt>
+								<dd><input type="text" id="tel" class="inputs" /></dd>
+								<div id="telId"></div>
+							</dl>
+							<dl>
+								<dt>保密邮箱：</dt>
+								<dd><input type="text" id="email" class="inputs" /></dd>
+								<div id="emailId"></div>
+							</dl>
+							<dl>
+								<dt></dt>
+								<dd><input name="" type="submit" id="submits" value=""/></dd>
+							</dl>
+						</form>
+					</td>
+					<td class="bg_right"></td>
+				</tr>
+				<tr>
+					<td class="bg bg_end_left"></td>
+					<td class="bg_end"></td>
+					<td class="bg bg_end_right"></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var userName = $id("userName");
+		var userNameId = $id("userNameId");
+		userName.onblur = function() {
+			//验证
+			if(userName.value == "") {
+				userName.focus();
+				userNameId.style.display = "block";
+				userNameId.style.border = "1px solid red";
+				userNameId.style.backgroundColor = "#ffe9f6";
+				userNameId.style.backgroundImage = "url(img/li_err.gif)";
+				userNameId.innerHTML = "通行证用户名不能为空，请输入通行证用户名";
+			} else if(userName.value.match(/^[a-zA-Z0-9][\w\.\-]{2,16}[a-zA-Z0-9]$/g) == null) {
+				userName.focus();
+				userNameId.style.display = "block";
+				userNameId.style.border = "1px solid red";
+				userNameId.style.backgroundColor = "#ffe9f6";
+				userNameId.style.backgroundImage = "url(img/li_err.gif)";
+				userNameId.innerHTML = "1、由字母、数字、下划线、点、减号组成<br/>2、只能以数字、字母开头或结尾，且长度为4-18";
+			} else {
+				userNameId.innerHTML = "&nbsp";
+				userNameId.style.display = "block";
+				userNameId.style.backgroundImage = "url(img/li_ok.gif)";
+				userNameId.style.backgroundColor = "#fff";
+				userNameId.style.border = "none";
+				userNameId.style.lineHeight = "16px";
+				userNameId.style.backgroundSize = "16px 16px";
+			}
+		}
+
+		var pwdId = $id("pwdId");
+		var pwd = $id("pwd");
+		var passwd;
+		pwd.onblur = function() {
+			//验证
+			if(pwd.value == "") {
+				pwd.focus();
+				pwdId.style.display = "block";
+				pwdId.style.border = "1px solid red";
+				pwdId.style.backgroundColor = "#ffe9f6";
+				pwdId.innerHTML = "密码不能为空，请输入密码";
+				pwdId.style.backgroundImage = "url(img/li_err.gif)";
+			} else if((passwd = pwd.value.match(/.{6,16}/g)) == null) {
+				pwd.focus();
+				pwdId.style.border = "1px solid red";
+				pwdId.style.backgroundColor = "#ffe9f6";
+				pwdId.style.display = "block";
+				pwdId.innerHTML = "密码长度为6-16";
+				pwdId.style.backgroundImage = "url(img/li_err.gif)";
+			} else {
+				pwdId.innerHTML = "&nbsp;";
+				pwdId.style.display = "block";
+				pwdId.style.backgroundImage = "url(img/li_ok.gif)";
+				pwdId.style.backgroundColor = "#fff";
+				pwdId.style.border = "none";
+				pwdId.style.lineHeight = "16px";
+				pwdId.style.backgroundSize = "16px 16px";
+			}
+		}
+
+		var repwdId = $id("repwdId");
+		var repwd = $id("repwd");
+		repwd.onblur = function() {
+			//验证
+			if(repwd.value == "") {
+				repwd.focus();
+				repwdId.style.display = "block";
+				repwdId.style.border = "1px solid red";
+				repwdId.style.backgroundColor = "#ffe9f6";
+				repwdId.innerHTML = "重复密码不能为空，请重复输入密码";
+				repwdId.style.backgroundImage = "url(img/li_err.gif)";
+			} else if(repwd.value != passwd) {
+				repwd.focus();
+				repwdId.style.border = "1px solid red";
+				repwdId.style.backgroundColor = "#ffe9f6";
+				repwdId.style.display = "block";
+				repwdId.innerHTML = "两次输入的密码不一致，请重新输入";
+				repwdId.style.backgroundImage = "url(img/li_err.gif)";
+			} else {
+				repwdId.innerHTML = "&nbsp;";
+				repwdId.style.display = "block";
+				repwdId.style.backgroundImage = "url(img/li_ok.gif)";
+				repwdId.style.backgroundColor = "#fff";
+				repwdId.style.border = "none";
+				repwdId.style.lineHeight = "16px";
+				repwdId.style.backgroundSize = "16px 16px";
+			}
+		}
+
+		var nickNameId = $id("nickNameId");
+		var nickName = $id("nickName");
+		nickName.onblur = function() {
+			//验证
+			if(nickName.value == "") {
+				nickName.focus();
+				nickNameId.style.display = "block";
+				nickNameId.style.border = "1px solid red";
+				nickNameId.style.backgroundColor = "#ffe9f6";
+				nickNameId.innerHTML = "昵称不能为空，请输入昵称";
+				nickNameId.style.backgroundImage = "url(img/li_err.gif)";
+			} else if(nickName.value.match(/.{4,20}/g) == null) {
+				nickName.focus();
+				nickNameId.style.border = "1px solid red";
+				nickNameId.style.backgroundColor = "#ffe9f6";
+				nickNameId.style.display = "block";
+				nickNameId.innerHTML = "1、长度为4-20个字符";
+				nickNameId.style.backgroundImage = "url(img/li_err.gif)";
+			} else {
+				nickNameId.innerHTML = "&nbsp;";
+				nickNameId.style.display = "block";
+				nickNameId.style.backgroundImage = "url(img/li_ok.gif)";
+				nickNameId.style.backgroundColor = "#fff";
+				nickNameId.style.border = "none";
+				nickNameId.style.lineHeight = "16px";
+				nickNameId.style.backgroundSize = "16px 16px";
+			}
+		}
+
+		var telId = $id("telId");
+		var tel = $id("tel");
+		tel.onblur = function() {
+			//验证
+			if(tel.value == "") {
+				tel.focus();
+				telId.style.display = "block";
+				telId.style.border = "1px solid red";
+				telId.style.backgroundColor = "#ffe9f6";
+				telId.innerHTML = "关联手机号码不能为空，请输入关联手机号码";
+				telId.style.backgroundImage = "url(img/li_err.gif)";
+			} else if(tel.value.match(/[\d]{11}/g) == null) {
+				tel.focus();
+				telId.style.border = "1px solid red";
+				telId.style.backgroundColor = "#ffe9f6";
+				telId.style.display = "block";
+				telId.innerHTML = "关联手机号码输入不正确，请重新输入";
+				telId.style.backgroundImage = "url(img/li_err.gif)";
+			} else {
+				telId.innerHTML = "&nbsp;";
+				telId.style.display = "block";
+				telId.style.backgroundImage = "url(img/li_ok.gif)";
+				telId.style.backgroundColor = "#fff";
+				telId.style.border = "none";
+				telId.style.lineHeight = "16px";
+				telId.style.backgroundSize = "16px 16px";
+			}
+		}
+
+		var emailId = $id("emailId");
+		var email = $id("email");
+		email.onblur = function() {
+			//验证
+			if(email.value == "") {
+				email.focus();
+				emailId.style.display = "block";
+				emailId.style.border = "1px solid red";
+				emailId.style.backgroundColor = "#ffe9f6";
+				emailId.innerHTML = "保密邮箱不能为空，请输入保密邮箱";
+				emailId.style.backgroundImage = "url(img/li_err.gif)";
+			} else if(email.value.match(/.+@.+\.cn|com|(com\.cn)/g) == null) {
+				email.focus();
+				emailId.style.border = "1px solid red";
+				emailId.style.backgroundColor = "#ffe9f6";
+				emailId.style.display = "block";
+				emailId.innerHTML = "保密邮箱格式不正确，请重新输入";
+				emailId.style.backgroundImage = "url(img/li_err.gif)";
+			} else {
+				emailId.innerHTML = "&nbsp;";
+				emailId.style.display = "block";
+				emailId.style.backgroundImage = "url(img/li_ok.gif)";
+				emailId.style.backgroundColor = "#fff";
+				emailId.style.border = "none";
+				emailId.style.lineHeight = "16px";
+				emailId.style.backgroundSize = "16px 16px";
+			}
+		}
+
+		var submits = $id("submits");
+		submits.onclick = function() {
+			if(!(email.value && tel.value && nickName.value && repwd.value && pwd.value && userName.value)) {
+				alert("表单填写不正确，请重新填写！");
+				return false;
+			}
+		}
+	</script>
+
+</html>

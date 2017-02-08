@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p {
+				background-color: #ccc;
+				width: 120px;
+				height: 40px;
+				display: inline-block;
+				vertical-align: middle;
+				border: 1px solid black;
+				font-size: 24px;
+				font-weight: bold;
+				text-align: center;
+				line-height: 40px;
+			}
+			
+			a {
+				vertical-align: middle;
+			}
+		</style>
+		<script src="js/myTool.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<!--
+			2、实现点击“看不清，换一张”随机生成六位验证码（可包含数字和大小写字母）（10 分）
+		-->
+		<p></p>
+		<a href="JavaScript:;">看不清，换一张</a>
+
+		<script type="text/javascript">
+			var maths = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+			var lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+			var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+			//保存一个总数组，存放所有的大小写字母和数字
+			var all = maths.concat(lower, upper);
+			var p = $tagName("p")[0];
+			//声明数组，存放抽到的数，方便验证验证码。
+			var arr = [];
+			output();
+			$tagName("a")[0].onclick = function() {
+				//先清空 p 标签里的内容
+				p.innerHTML = ""
+				output();
+			}
+
+			function output() {
+				//每次存放先清空数组
+				arr = [];
+				for(var i = 0; i < 6; i++) {
+					var randoms = random(0, all.length - 1);
+					p.innerHTML += all[randoms];
+					arr.push(all[randoms]);
+				}
+				console.log(arr);
+			}
+		</script>
+	</body>
+
+</html>

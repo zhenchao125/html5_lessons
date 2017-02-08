@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+	//打印出 1500-2016 年中所有的闰年，并以每行 5 个数的形式输出
+	seachYear(1500 , 2016);
+	function seachYear(a, b){
+			var flag = 0;
+		for (var i = a; i <= b; i++) {
+			var days = 0;
+			for(var mon = 1 ; mon <= 12 ;mon++){
+				days += daysOfMonth(i , mon);
+			}
+			if(days === 366){
+				document.write(i + " ");
+				flag++;
+			}
+			if(flag % 5 === 0 && flag !== 0){
+				document.write("<br/>");
+			}
+		}
+	}
+	function daysOfMonth(y , m){
+		var year = new Date();
+		year.setFullYear(y);
+		year.setMonth(m);
+		year.setDate(0);
+		return year.getDate();
+	}
+	
+</script>
+</html>

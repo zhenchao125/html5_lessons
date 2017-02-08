@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title> 打印出 1500-2016 年中所有的闰年，并以每行 5 个数的形式输出</title>
+	</head>
+
+	<body>
+		<script>
+			function allYear(fy, ly) {
+				var arr = [];
+				var j = 0;
+				for(i = fy; i <= ly; i++) {
+					arr[j] = i;
+					j++;
+				}
+				return arr;
+			}
+
+			function isyear(arr) {
+				var x = 0;
+				for(i = 0; i < arr.length; i++) {
+					var arr1 = [];
+					if(arr[i] % 4 == 0  && arr[i] % 100 != 0 || arr[i] % 400 == 0) {
+							arr1[x] = arr[i];
+						if(x+1 % 5 == 0) {
+							document.write(arr1[x]);
+							x++;
+						}
+						else{
+							document.write(arr1[x] + "<br/>");
+							x++;
+						}
+					}
+				}
+			}
+				isyear(allYear(1500, 2016));
+		</script>
+	</body>
+
+</html>

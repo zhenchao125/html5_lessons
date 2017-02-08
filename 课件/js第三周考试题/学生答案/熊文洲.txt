@@ -1,0 +1,159 @@
+
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.D
+03.C
+04.A
+05.D
+06.C
+07.C
+08.D
+09.C
+10.B
+11.B
+12.B
+13.B
+14.A
+15.C
+16.C
+17.C
+18.D
+19.A
+20.D
+21.C
+22.A
+
+23.C
+
+24.B
+25.B
+
+26.B
+
+27.B
+28.D
+
+29.C
+30.C
+二、简答题
+1.
+
+2.
+
+3.
+
+4.
+
+5.
+
+1.js的数据类型有Null,Undefined,Number,String,Object;
+判断一个数据的类型的操作符是typeof；
+
+2.document.getElementById("myDiv");
+  document.getElementsByTagName("div")[0];
+  document.getElementsByName("test")[0];
+  document.querySelector("#myDiv");
+
+3.创建元素： document.creatElement
+   创建文本节点：document.creatTextNode
+    将a标签追加到一个div中 ：div.appendChild(a);
+
+4.三者的区别是：prompt()是输入框，可以往里面输入内容
+                var p=prompt();执行的时候，弹出一个输入框，可以输                               入内容，内容传给p；
+
+                alert（）是弹出输出框，可以弹出运行后的结果
+                 alert("1212"）;弹出1212这个内容；
+
+                confirm（）是确认框，一般有个两个选择项，一个是确定                         ，另外一个是取消，可以根据情况来选择
+                   confirm（）；js中输入这个，页面会弹出一个框，让                 你进行选择，是确定还是取消。
+    
+5.innerHTML和innerText的区别是：innerHTML是某个东西放在HTML标签中，而innerText是把某个东西放在一个文本内部
+
+
+
+
+
+
+
+三、编程题：要求只需要js代码
+1.
+
+2.
+
+3.
+
+
+1.<srcipt type="text/javasrcipt">
+var x=document.getElementByTagName("ul")[0].Children;
+document.getElementByTagName("button")[0].onclick=function(){
+ for(i=0;i<x.length;i++){
+	if(x[i].checked==true){
+	document.getElementById("output").innerHTML=
+x[i]+",";
+
+        }
+
+	}
+
+
+}
+
+
+</srcipt>
+
+
+
+2.<srcipt type="text/javasrcipt">
+  var d=new Date();
+  
+  document.write("今天是"+d+","+"加油考试吧！")；
+  		
+
+</srcipt>
+
+
+3.
+3.(1)
+<srcipt type="text/javasrcipt">
+var s="34,6,-23,43,34,342,0,3";
+var arr=s.split;
+alert(arr);
+</srcipt>
+
+3.(2)
+<srcipt type="text/javasrcipt">
+var s="34,6,-23,43,34,342,0,3";
+var arr=s.split;
+for(j=0;j<arr.length-1;j++){
+	for(i=0;i<arr.length-1-j;i++){
+		if(arr[i]<arr[i+1]){
+                   var temp=arr[i];
+			arr[i]=arr[i+1];
+			arr[i+1]=temp;
+}
+}
+
+}
+
+</srcipt>
+
+
+3.(3)
+<srcipt type="text/javasrcipt">
+var s="34,6,-23,43,34,342,0,3";
+var arr=s.split;
+var sum=0;
+for(i=0;i<arr.length;i++){
+	sum=sum+arr[i];
+
+
+}
+alert(sum);
+</srcipt>
+
+
+
+
+
+
+

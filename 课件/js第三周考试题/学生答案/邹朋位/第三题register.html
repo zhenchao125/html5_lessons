@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>新用户注册页面</title>
+	<link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+	<div id="header"><img src="images/register_logo.gif" alt="logo" /></div>
+	<div id="main">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="bg bg_top_left"></td>
+				<td class="bg_top"></td>
+				<td class="bg bg_top_right"></td>
+			</tr>
+			<tr>
+				<td class="bg_left"></td>
+				<td class="content">
+					<form id="registerForm" action="" method="post" name="myform">
+						<dl>
+							<dt>通行证用户名：</dt>
+							<dd><input type="text" id="userName" class="inputs userWidth" /> @163.com</dd>
+							<div id="userNameId">
+								<p class="import_prompt">1、由字母、数字、下划线、点、减号组成<br /> 2、只能以数字、字母开头或结尾，且长度为4-18</p>
+								<p class="error_prompt">1、由字母、数字、下划线、点、减号组成<br /> 2、只能以数字、字母开头或结尾，且长度为4-18</p>
+								<p class="error_prompt">通行证用户名不能为空，请输入通行证用户名</p>
+								<p class="ok_prompt">ok</p>
+							</div>
+						</dl>
+						<dl>
+							<dt>登录密码：</dt>
+							<dd><input type="password" id="pwd" class="inputs" /></dd>
+							<div id="pwdId">
+								<p class="import_prompt">密码长度为6-16</p>
+								<p class="error_prompt">密码不能为空，请输入密码</p>
+								<p class="error_prompt">密码长度为6-16</p>
+								<p class="ok_prompt">ok</p>
+							</div>
+						</dl>
+						<dl>
+							<dt>重复登录密码：</dt>
+							<dd><input type="password" id="repwd" class="inputs" /></dd>
+							<div id="repwdId">
+								<p class="error_prompt">重复密码不能为空，请重复输入密码</p>
+								<p class="error_prompt">两次输入的密码不一致，请重新输入</p>
+								<p class="ok_prompt">ok</p>
+							</div>
+						</dl>
+						<dl>
+							<dt>性别：</dt>
+							<dd><input name="sex" type="radio" value="" checked="checked" />男 <input name="sex" type="radio" value="" />女 </dd>
+						</dl>
+						<dl>
+							<dt>真实姓名：</dt>
+							<dd><input type="text" id="realName" class="inputs" /></dd>
+						</dl>
+						<dl>
+							<dt>昵称：</dt>
+							<dd><input type="text" id="nickName" class="inputs" /></dd>
+							<div id="nickNameId">
+								<p class="error_prompt">昵称不能为空，请输入昵称</p>
+								<p class="error_prompt">1、长度为4 - 20个字符</p>
+								<p class="import_prompt">1、包含字母、数字、下划线以及@!#$%&*特殊字符<br />2、长度为4-20个字符</p>
+								<p class="ok_prompt">ok</p>
+							</div>
+						</dl>
+						<dl>
+							<dt>关联手机号：</dt>
+							<dd><input type="text" id="tel" class="inputs" /></dd>
+							<div id="telId">
+								<p class="error_prompt">关联手机号码不能为空，请输入关联手机号码</p>
+								<p class="error_prompt">关联手机号码输入不正确，请重新输入</p>
+								<p class="import_prompt">1、手机号码以13,15,18开头<br /> 2、手机号码由11位数字组成</p>
+								<p class="ok_prompt">ok</p>
+							</div>
+						</dl>
+						<dl>
+							<dt>保密邮箱：</dt>
+							<dd><input type="text" id="email" class="inputs" /></dd>
+							<div id="emailId">
+								<p class="error_prompt">保密邮箱不能为空，请输入保密邮箱</p>
+								<p class="error_prompt">保密邮箱格式不正确，请重新输入</p>
+								<p class="import_prompt">请输入您常用的电子邮箱</p>
+								<p class="ok_prompt">ok</p>
+							</div>
+						</dl>
+						<dl>
+							<dt></dt>
+							<dd><input id="sumbitBtn" type="image" src="images/button.gif" /></dd>
+						</dl>
+					</form>
+				</td>
+				<td class="bg_right"></td>
+			</tr>
+			<tr>
+				<td class="bg bg_end_left"></td>
+				<td class="bg_end"></td>
+				<td class="bg bg_end_right"></td>
+			</tr>
+		</table>
+	</div>
+
+	<script type="text/javascript">
+		//用户名输入框获取焦点
+		userName.onfocus = function() {
+			userNameId.lastElementChild.style.display = "none";
+			userNameId.lastElementChild.previousElementSibling.style.display = "none";
+			userNameId.firstElementChild.nextElementSibling.style.display = "none";
+			userNameId.firstElementChild.style.display = "block";
+		}
+
+		//用户名输入框失去焦点
+		userName.onblur = function() {
+			if(userName.value.match(/^[a-z0-9](\w|-|.){4,18}/gi)) {
+				userNameId.lastElementChild.style.display = "block";
+				userNameId.lastElementChild.previousElementSibling.style.display = "none";
+				userNameId.firstElementChild.nextElementSibling.style.display = "none";
+				userNameId.firstElementChild.style.display = "none";
+			} else if(userName.value === "") {
+				userNameId.lastElementChild.style.display = "none";
+				userNameId.lastElementChild.previousElementSibling.style.display = "block";
+				userNameId.firstElementChild.nextElementSibling.style.display = "none";
+				userNameId.firstElementChild.style.display = "none";
+			} else {
+				userNameId.lastElementChild.style.display = "none";
+				userNameId.lastElementChild.previousElementSibling.style.display = "none";
+				userNameId.firstElementChild.nextElementSibling.style.display = "block";
+				userNameId.firstElementChild.style.display = "none";
+			}
+		}
+
+		//登录密码的获取焦点
+		pwd.onfocus = function() {
+			pwdId.lastElementChild.style.display = "none";
+			pwdId.firstElementChild.nextElementSibling.style.display = "none";
+			pwdId.firstElementChild.style.display = "block";
+		}
+
+		//登录密码的失去焦点
+		pwd.onblur = function() {
+			if(pwd.value === "") {
+				pwdId.firstElementChild.style.display = "none";
+				pwdId.firstElementChild.nextElementSibling.style.display = "block";
+			} else if(pwd.value.length > 16 || pwd.value.length < 6) {
+				pwdId.firstElementChild.style.display = "none";
+				pwdId.firstElementChild.nextElementSibling.style.display = "none";
+				pwdId.lastElementChild.previousElementSibling.style.display = "block";
+			} else {
+				pwdId.firstElementChild.style.display = "none";
+				pwdId.firstElementChild.nextElementSibling.style.display = "none";
+				pwdId.lastElementChild.previousElementSibling.style.display = "none";
+				pwdId.lastElementChild.style.display = "block";
+			}
+		}
+
+		//重复密码获取焦点
+		repwd.onfocus = function() {
+			repwdId.lastElementChild.previousElementSibling.style.display = "none";
+			repwdId.firstElementChild.style.display = "none";
+		}
+
+		//重复密码失去焦点
+		repwd.onblur = function() {
+			if(repwd.value !== pwd.value) {
+				repwdId.lastElementChild.previousElementSibling.style.display = "block";
+			} else if(repwd.value === "") {
+				repwdId.lastElementChild.style.display = "none";
+				repwdId.firstElementChild.style.display = "block";
+			} else {
+				repwdId.firstElementChild.style.display = "none";
+				repwdId.lastElementChild.previousElementSibling.style.display = "none";
+				repwdId.lastElementChild.style.display = "block";
+			}
+		}
+
+		//昵称获取焦点
+		nickName.onfocus = function() {
+				nickNameId.firstElementChild.style.display = "none";
+				nickNameId.firstElementChild.nextElementSibling.style.display = "none";
+				nickNameId.lastElementChild.style.display = "none";
+				nickNameId.lastElementChild.previousElementSibling.style.display = "block";
+			}
+			//昵称失去焦点
+		nickName.onblur = function() {
+			if(nickName.value === "") {
+				nickNameId.lastElementChild.style.display = "none";
+				nickNameId.lastElementChild.previousElementSibling.style.display = "none";
+				nickNameId.firstElementChild.style.display = "block";
+			} else if(nickName.value.match(/\w{4,20}/gi)) {
+				nickNameId.firstElementChild.style.display = "none";
+				nickNameId.lastElementChild.previousElementSibling.style.display = "none";
+				nickNameId.lastElementChild.style.display = "block";
+			} else {
+				nickNameId.lastElementChild.previousElementSibling.style.display = "none";
+				nickNameId.lastElementChild.style.display = "none";
+				nickNameId.lastElementChild.previousElementSibling.style.display = "none";
+				nickNameId.firstElementChild.nextElementSibling.style.display = "block";
+			}
+		}
+
+		//关联手机号获取焦点
+		tel.onfocus = function() {
+			telId.firstElementChild.style.display = "none";
+			telId.firstElementChild.nextElementSibling.style.display = "none";
+			telId.lastElementChild.style.display = "none";
+			telId.lastElementChild.previousElementSibling.style.display = "block";
+		}
+
+		//关联手机号失去焦点
+		tel.onblur = function() {
+			if(tel.value.match(/^(13|15|18)\d{9}/gi)) {
+				telId.firstElementChild.style.display = "none";
+				telId.firstElementChild.nextElementSibling.style.display = "none";
+				telId.lastElementChild.style.display = "block";
+				telId.lastElementChild.previousElementSibling.style.display = "none";
+			} else if(tel.value === "") {
+				telId.firstElementChild.style.display = "block";
+				telId.firstElementChild.nextElementSibling.style.display = "none";
+				telId.lastElementChild.style.display = "none";
+				telId.lastElementChild.previousElementSibling.style.display = "none";
+			} else {
+				telId.firstElementChild.style.display = "none";
+				telId.firstElementChild.nextElementSibling.style.display = "block";
+				telId.lastElementChild.style.display = "none";
+				telId.lastElementChild.previousElementSibling.style.display = "none";
+			}
+		}
+
+		//邮箱获取焦点
+		email.onfocus = function() {
+			emailId.firstElementChild.style.display = "none";
+			emailId.firstElementChild.nextElementSibling.style.display = "none";
+			emailId.lastElementChild.style.display = "none";
+			emailId.lastElementChild.previousElementSibling.style.display = "block";
+		}
+
+		//邮箱失去焦点
+		email.onblur = function() {
+			if(email.value.match(/\w+@\w+(\.com)$/gi)) {
+				emailId.firstElementChild.style.display = "none";
+				emailId.firstElementChild.nextElementSibling.style.display = "none";
+				emailId.lastElementChild.style.display = "block";
+				emailId.lastElementChild.previousElementSibling.style.display = "none";
+			} else if(email.value === "") {
+				emailId.firstElementChild.style.display = "block";
+				emailId.firstElementChild.nextElementSibling.style.display = "none";
+				emailId.lastElementChild.style.display = "none";
+				emailId.lastElementChild.previousElementSibling.style.display = "none";
+			} else {
+				emailId.firstElementChild.style.display = "none";
+				emailId.firstElementChild.nextElementSibling.style.display = "block";
+				emailId.lastElementChild.style.display = "none";
+				emailId.lastElementChild.previousElementSibling.style.display = "none";
+			}
+		}
+
+		var ps = document.getElementsByClassName("ok_prompt");
+		var count = 0;
+		for(var i = 0; i < ps.length; i++) {
+			if(ps[i].style.display === "none") {
+				count++;
+			}
+		}
+		if(count === 0) {
+			sumbitBtn.setAttribute("type", "submit");
+		}
+	</script>
+</body>
+
+</html>

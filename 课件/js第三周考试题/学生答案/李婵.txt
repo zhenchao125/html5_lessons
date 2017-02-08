@@ -1,0 +1,138 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.B
+04.A
+05.D
+06.C
+07.D
+08.D
+09.A
+10.C
+11.C
+12.C
+13.C
+14.A
+15.C
+16.B
+17.D
+18.D
+19.A
+20.D
+21.B
+22.A
+23.C
+24.B
+25.A
+
+26.B
+27.B
+28.D
+29.A
+30.C
+
+
+
+二、简答题
+
+
+1.数据类型:null 、undefined、boolean、number、string   
+ 类型操作符：typeof
+
+2.document.getElementById("myDiv"); 
+  document.getElementsByName("test")[0];
+  document.getElementsByTagName("div")[0];
+  document.querySelector(.myDiv);
+
+3.document.createElement("ele");
+  document.createTextNode("文本内容")；
+
+  var a = document.createElement("a");
+  div.appendChid(a);
+
+4.prompt（"提示语","默认值"）：提示框   它有确认和取消两个按钮，点击确认返回的是输入值，点击取消返回的是undefined
+  prompt("请输入用户名"，"username");
+
+  alert():警告框，仅一个确认按钮
+  alert("aaa");
+
+  confirm（）；确认框，他有确认和取消两个按钮，返回值为boolean型，点击确定返回true，点击取消返回false
+  confirm("是否删除");
+
+   
+    
+5.innerHTML：可以获取和修改指定元素里的内容，内容可以是元素、文本
+  
+  innerText:同innerHTML一样可以获取和修改指定元素里的内容，但它仅能获取文本内容，就算给它一个元素内容，它只能以文本的形式展示
+  例如div.innerText = "<a href = "javascript:;">文本内容</a>
+  显示结果为文本：<a href = "javascript:;">文本内容</a>,而不是超链接： 文本内容
+
+
+三、编程题：要求只需要js代码
+
+1.<script type="text/javaScript">
+    var btn = document.getElementsByTagName("button")[0];   
+    var ul = document.getElementsByTagName("ul")[0];
+    var lis = ul.children;
+    var textA = doxument.getElementsByTagName("textarea")[0];
+
+    btn.onclick = function(){
+      for(var i = 0; i<lis.length; i++){
+         if(lis[i].firstElementChild.checked = true){
+           var txt= lis[i].innerText;
+           var txtNode = createTextNode(txt);
+           textA.apppendChild(txtNode + " ");
+        }
+      }
+    }
+  </script>
+
+
+2.<script type="text/javaScript">
+    var date = new Date();
+    var y = date.getFullYear();
+    var m = date.getMonth()+1;
+    var d = date.getDate()+1;
+    
+    document.write("今天是"+ y +"年"+ m + "月" + d + "日，加油考试吧！");
+  </script>
+
+
+3.
+  1.<script type="text/javaScript">
+
+   
+
+        //返回一个数组
+        function returnArray(){
+     	     var s = "34,6,-23,43,34,342,0,3";
+             var arr = s.split(/","/g);
+             return  arr;
+        }
+ 
+        //使用冒泡排序的方式实现上面数组的降序排列。        
+        function bubbleSort(){
+             var arr1 = returnArray();
+             for(var i = 0,len = arr1.length; i<len; i++){
+                 for(var j = 0; j < arr1.length - i - 1; j++){
+                       if(arr1[i]< arr1[i+1])
+			var temp = arr1[i];
+                        arr1[i] = arr1[i+1];
+			arr1[i+1] = temp; 
+		}
+            }
+            return arr1;
+        }
+        
+        //计算数组中所有数字的和
+        function calArray(){
+           var arr2 = returnArray();
+           var sum = 0;
+           for(var i = 0; i < arr2.length ; i++){
+           sum += arr[i];
+           }
+           return sum;
+        }
+        alert("数组中所有数字的和为："+sum);
+    </script>
+

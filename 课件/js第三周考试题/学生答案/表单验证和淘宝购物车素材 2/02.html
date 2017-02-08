@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			span{
+				display: inline-block;
+				width: 100px;
+				height: 25px;
+				background: blue;
+				color: #000000;
+			}
+			button{
+				width: 120px;
+				height: 25px;
+				color: red;
+			}
+</style>
+	</head>
+
+	<body>
+		<span id="span"></span>
+		<button id="btn">看不清，换一张</button>
+		<script type="text/javascript">
+			var span = document.getElementById("span");
+			var btn = document.getElementById("btn");
+			 btn.onclick=function() {
+				console.log("11");
+				var s = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+				var arr = s.split("");
+				var sum = "";
+				for(var i = 0; i < 6; i++) {
+					var k = Math.floor(Math.random() * 62);
+					sum += arr[k] + "";
+				}
+				span.innerHTML = sum;
+				console.log(sum);
+			}
+		</script>
+	</body>
+
+</html>

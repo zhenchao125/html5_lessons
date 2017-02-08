@@ -1,0 +1,130 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.b
+02.d
+03.c
+04.a
+05.d
+06.c
+07.d
+08.d
+09.c
+10.d
+11.c
+12.c
+13.b
+14.a
+15.c
+16.d
+17.d
+18.d
+19.a
+20.d
+21.b
+22.a
+23.c
+24.b
+25.a
+26.b
+27.b
+28.d
+29.a
+30.c
+二、简答题
+
+1.
+  基本数据类型：Number / String / Boolean / undefined / null
+  引用数据类型：Array / Function /
+  判断数据类型的操作符：  typeof
+
+
+2.
+  document.getElementById('myDiv');
+  document.getElementsByName('test')[0];
+  document.getElementsByTagName('div')[0];
+  document.body.firstElementChild;
+
+3.
+
+  创建新元素 ： document.createElement('元素名');
+  创建文本节点 ：document.createTextNode('');
+  追加a到div中 ：首先获取到 var div ='' 和var a = '' 然后 div.appendChild('a');
+
+4.
+
+  prompt() : 弹出一个输入框，点击确认 返回的是用户输入的字符串 如果按取消 返回的是 null
+  alert() : 弹出一个通知框
+  confirm() : 弹出一个确认框 ，返回一个Boolean值 如果用户点击确认 返回 true 点击取消 返回 false  
+
+
+5.
+
+  innerHTML 包含了元素节点和文本节点等所有节点
+  innerText 只包含了节点的文本内容 子元素无法获取
+
+
+三、编程题：要求只需要js代码
+
+1.
+
+<script>
+    var c="";
+    var btn = document.getElementsByTagName('button')[0];
+    var txt = document.getElementsByTagName('textarea')[0];
+    var inputs = document.getElemnetsByTagName('input');
+    btn.onclick = function(){
+        for( var i = 0; i< inputs.length; i++){
+	    if(inputs[i].checked){
+		c += inputs[i].innerHTML + ",";
+	    }
+        }
+	txt.innerHTML = c;
+    }
+</script>
+
+
+2.
+
+<script>
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    document.write("今天是" + year + "年" + month + "月" + day + "日，加油考试吧！");
+</script>
+
+
+3.
+
+
+<script>
+    var c = "34,6,-23,43,34,342,0,3";
+    //函数1 切割字符串 返回数组
+    function f1(ch){
+        var arr = ch.split(',');
+	return arr;
+    }
+    var arr = f1(c);
+    //函数2 冒泡排序 降序
+    function f2(array){
+	for(var i = 0; i< array.length-1; i++){
+            for(var j = 0; j < array.length-1; j++){
+                if(array[j] < array[j+1]){
+		    var temp = array[j];
+		    array[j] = array[j+1];
+		    array[j+1] = temp;
+		}
+	    }
+        }
+    }
+    var arr2 = f2(arr);
+    //函数3 求和
+    function f3(array){
+	var sum = 0;
+        for(var i = 0; i< array.length; i++){
+	    sum += array[i];
+	}
+	return sum;
+    }
+    var sum = f3(arr);
+</script>
+ 

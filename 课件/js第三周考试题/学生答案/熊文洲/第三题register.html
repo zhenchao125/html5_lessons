@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+   
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+    var dd1=document.getElementById("userName");
+		dd1.onblur=function(){
+		var un=dd1.value;	
+		if(!(un.length>=4&&un.length<=18)){
+			alert("长度必须为4-18个");			
+		}
+		if(!((un[0] >= "a" && un[0] <= "z")||(un[0] >= "A" && un[0] <= "Z")||(un[0]<=9&&un[0]>=0)||(un[length-1] >= "a" && un[length-1] <= "z")||(un[length-1] >= "A" && un[length-1] <= "Z")||(un[length-1]<=9&&un[length-1]>=0))){
+			alert("只能是字母或者数字开头结尾");			
+		}
+		for (var i = 0; i < un.length; i++) {
+				var c = un.charAt(i);
+				if(!((c >= "a" && c <= "z") || (c >= "A" && c <= "Z")||(c<=9&&c>=0)||(c=="_")||(c==".")||(c=="-"))){
+					
+					alert("登陆名不满足要求,只能是字母，数字，下划线，减号，点")
+					
+					break;
+				}
+			}
+		}
+		var pwd=document.getElementById("pwd");
+		pwd.onblur=function(){
+			var pd=pwd.value;
+			if(!(pd.length>=6&&pd.length<=16)){
+			alert("长度必须为6-16个字母");			
+		}
+		}
+		
+		var nme=document.getElementById("nickName")
+		nme.onblur=function(){
+			var ne=nme.value;
+			if(!(ne.length>=4&&ne.length<=20)){
+			alert("长度必须为4-20个字符");			
+		}
+			for (var j = 0; j < ne.length; j++) {
+				var d = ne.charAt(i);
+				if(!((d >= "a" && d <= "z") || (d >= "A" && d <= "Z")||(d<=9&&d>=0)||(d=="@")||(d=="!")||(d=="#")(d=="@")||(d=="$")||(d=="%")||(d=="&")||(d=="*"))){
+					
+					alert("登陆名不满足要求,只能是字母，数字，@#$%*&!")
+					
+					break;
+				}
+			}
+			
+		}
+		
+	   var tel=document.getElementById("tel");
+	   tel.onblur=function(){
+	   	var tl=tel.value;
+	   	if(!(tl.length===11)){
+			alert("手机的长度必须是11位");			
+		}
+	   	var reg=/^1[3,5,8][0-9]{9}$/gi
+	   	if(!(reg.test(tl))){
+	   		alert("手机号码是13，15，18开头");
+	   	}
+	   }
+	   
+	    var eml=document.getElementById("email")
+	    eml.onblur=function(){
+	    	var el=eml.value;
+	    	for (var k = 0; k < el.length; k++) {
+				var f = el.charAt(k);
+				if(!((f == "@" && f =="."))){
+					
+					alert("登录的邮箱必须包括@和.")
+					
+					break;
+				}
+			}
+	    	
+	    	
+	    }
+	   
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fun(m,n){
+				var t = 0;
+				var p = document.getElementsByTagName("p")[0];
+				var s = "";
+				for(var i = m; i<= n; i++){				
+					if((i%4===0&&i%100!==0) || i%400===0){
+						t++;
+						if(t%5===0){
+							s += i+"\r\n";
+						}else{	
+							s += i + " ";
+						}
+					}
+				}
+				alert(s);
+			}
+			fun(1500,2016);
+		</script>
+	</body>
+</htm

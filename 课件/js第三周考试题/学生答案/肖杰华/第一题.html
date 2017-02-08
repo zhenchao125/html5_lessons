@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>第一题</title>
+		<script src="js/myTool.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<!--
+			打印出1500-2016 年中所有的闰年，并以每行5 个数的形式输出（10 分）。
+		-->
+		<p></p>
+		<script type="text/javascript">
+			var pro = prompt("请输入一段年份的时间,中间用(-)分隔", "1500-2016");
+			//截取成数组
+			var arr = pro.split("-");
+			//判断大小，将两个数按从小到大排序。
+			if(Number(arr[0]) > Number(arr[1])) {
+				var temp = arr[0];
+				arr[0] = arr[1];
+				arr[1] = temp;
+			}
+			//遍历年份，将得到的结果保存到数组
+			var leapYear = [];
+			for(var i = Number(arr[0]); i < Number(arr[1]); i++) {
+				if(isLeapYear(i)) {
+					leapYear.push(i);
+				}
+			}
+			//按照要求输出数组
+			var p = $tagName("p")[0];
+			for(var a = 0, len = leapYear.length; a < len; a++) {
+				p.innerHTML += leapYear[a] + "年 ";
+				//每 5 个换行
+				if((a + 1) % 5 === 0) {
+					p.innerHTML += "<br/>";
+				}
+			}
+		</script>
+	</body>
+
+</html>

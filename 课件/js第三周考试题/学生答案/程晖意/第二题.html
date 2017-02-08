@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			span{
+				display: inline-block;
+				width: 80px;
+				height: 30px;
+				background-color: darkseagreen;
+				border: 1px solid black;
+				font-weight: bold;
+				text-align: center;
+				line-height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--实现点击“看不清，换一张”随机生成六位验证码（可包含数字和大小写字母）-->
+		<span></span>
+		<a href="" target="_self">看不清，换一张</a>
+	</body>
+	<script type="text/javascript">
+	   		var s = "";
+			var str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			var n = 6;			
+			for(var i = 0; i < n; i++){
+				var rang = parseInt(Math.random()*str.length);
+				 s += str.charAt(rang);
+			}
+		document.getElementsByTagName("span")[0].innerHTML = s;
+	</script>
+</html>

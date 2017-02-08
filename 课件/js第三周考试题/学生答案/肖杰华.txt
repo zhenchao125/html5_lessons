@@ -1,0 +1,157 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.D
+09.C
+10.A
+11.C
+12.C
+13.B
+14.A
+15.D
+16.C
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.B
+30.C
+二、简答题
+
+1.
+
+
+简单数据类型：Number、Boolean、String、Null、Undefined
+复杂数据类型：Object、Function
+判断数据类型的操作符：typeof
+
+2.
+
+
+document.getElementById("myDiv");
+document.getElementsByName("test")[0];
+document.getElementsByTagName("div")[0];
+document.querySelect(".myDiv");
+
+3.
+创建新元素:document.createElement("");
+
+创建文本节点:document.createTextNode("");
+将 a 标签追加到一个 div 元素中:
+var div = document.createElement("div");
+var a = document.createElement("a");
+div.appendChild(a);
+
+4.
+
+prompt()可以写一到两个参数，用逗号分隔。
+如果只传入一个参数，则为提示的内容。
+如果传入两个参数，第一个参数为提示的内容，第二个参数则是输入框内默认的值。
+如果点确认则返回输入框内的字符串，点击取消则返回 undefined。
+
+alert()填入要输出的字符串或变量，会输出一个提示框，按确定按钮关闭，没有返回值。
+
+confirm()传入一个参数，提示时显示参数内容的字符串。
+如果点击确定则返回值为 true，如果点击取消则返回值为 false。
+
+
+5.
+
+
+innerHTML 是元素开始标签与结束标签之间的所有内容，包括所有的子元素标签都会一起显示，而不会被解析。
+
+innerText 只显示元素开始标签与结束标签之间的文本节点。
+
+三、编程题：要求只需要js代码
+
+1.
+<script type="text/javascript">
+	var inputs = document.getElementsByTagName("input");
+	var btn = document.getElementsByTagName("button")[0];
+	var textArea = document.getElementsByTagName("textarea")[0];
+
+	btn.onclick = function(){
+		//每次点击前先清空 textarea 中的内容。
+		textArea.innerHTML = "";
+		//遍历 input 的点击状态 ，如果为 true 则输出到 textarea 中
+		for(var i = 0,len = inputs.length;i < len;i++){
+			if(inputs[i].checked == "true"){
+				textArea.innerHTML += inputs[i].value + "<br/>";
+			}
+		}
+	}	
+</script>
+
+2.
+<script type="text/javascript">
+	//获取今天的日期时间
+	var today = new Date();
+	//获取今天的年份	
+	var year = today.getFullYear();
+
+
+	//获取今天的月份
+	var month = today.getMonth();
+	//获取今天的日期
+	var days = today.getDate();
+
+	document.write("今天是 " + year + " 年 " + month + " 月 " + days + " 日，加油考试吧！");
+</script>
+
+
+3.
+
+
+<script type="text/javascript">
+	//有一个字符串
+	var str = "34,6,-23,43,34,342,0,3"
+	//定义一个函数1：把字符串中的数字存入到一个数组中，并返回这个数组。
+	function fun1(str){
+		//保存为数组，用以","切割
+		var arr = str.split(",");
+		return arr;
+	}
+	//调用函数 1，保存返回的数组
+	var arr = fun1(str);
+	//定义一个函数2：使用冒泡排序的方式实现上面数组的降序排列。
+	//传入一个数组，返回排序后的数组。
+	function fun2 (arr){
+		//外循环从大到小，内循环调用 j
+		for(var j = arr.length - 1; j > 0; j--){
+			for(var i = 0; i < j ; i++){
+				//如果前一个数比后一个数小，则交换位置
+				//转类型以防比较的是字符串
+				if(Number(arr[i]) < Number(arr[i + 1])){
+					var temp = arr[i];
+					arr[i] = arr[i + 1];
+					arr[i + 1] = temp;
+				}
+			}
+		}
+		return arr;
+	}
+	//定义一个函数3：计算数组中所有数字的和。
+	//传入一个数组，返回它们中所有数字的和。
+	function fun3 (arr){
+		var sum = 0;
+		for(var i = 0,len = arr.length; i < len ;i++){
+			//转类型以防存入的值为字符型
+			sum += Number(arr[i]);
+		}
+		return sum;
+	}
+</script>
+

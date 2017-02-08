@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 50px;
+				background: darkgray;
+				display: inline-block;
+				text-align: center;
+				line-height: 50px;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<a href=""id="btn">看不清，换一张</a>
+		<script type="text/javascript">
+			var box = document.getElementById("box");
+			var btn = document.getElementById("btn")
+			var arr = [];
+			for(var i=0;i<6;i++){
+				var num =parseInt(Math.random()*62) ;
+				 arr.push(num);
+			}
+			var j =parseInt(Math.random()*10) ;
+			var arr1 = [0,1,2,3,4,5,6,7,8,9]
+			var arr2 = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+			var arr3 = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+			var arr4 = arr1.concat(arr2,arr3)
+			var m =arr4[arr[0]]+arr4[arr[1]]+arr4[arr[2]]+arr4[arr[3]]+arr4[arr[4]]+arr4[arr[5]];
+			box.innerHTML = m ;
+			
+		</script>
+	</body>
+</html>

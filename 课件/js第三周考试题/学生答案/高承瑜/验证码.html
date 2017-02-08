@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>验证码</title>
+	<style type="text/css">
+		span{
+			display: inline-block;
+			width: 200px;
+			height: 50px;
+			font-size: 30px;
+			color: orange;
+			background: #ccc;
+			text-align: center;
+			line-height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<span></span>
+	<a href="" >看不清换一个</a><br />
+	<script type="text/javascript">
+		var num = 0;
+		var s = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		function random(){
+			num = parseInt(Math.random()*62);//随机生成0-62的整数
+			return num;
+		}
+		var arr = [];
+		for(var i=0;i<6;i++){
+			random();
+			arr[i] = s[num];
+		}
+		document.getElementsByTagName("span")[0].innerHTML = arr.join("");	
+	</script>
+</body>
+</html>
+

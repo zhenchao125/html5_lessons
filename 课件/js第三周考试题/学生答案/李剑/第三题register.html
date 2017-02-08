@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript">
+	//用户名部分
+	userName.onfocus = function(){
+		userNameId.innerHTML = "1、由字母、数字、下划线<br/>2、只能以数字开头结尾，长度为4-18"
+		userNameId.className = "import_prompt";
+	}
+	userName.onblur = function (){
+		var str = userName.value;
+		if(str.length < 4 || str.length > 18){
+			userNameId.className = "error_prompt";
+		}else{
+			for (var i = 0; i < str.length; i++) {
+				if(str[i].search(/\w/gi)){
+					userNameId.className = "error_prompt";
+					break;
+				}else{
+					userNameId.className = "ok_prompt";
+				}
+			}
+		}
+	}
+	//密码和重复密码部分
+	pwd.onfocus = function(){
+		pwdId.innerHTML = "密码长度为6-16位"
+		pwdId.className = "import_prompt";
+	}
+	pwd.onblur = function (){
+		var str = pwd.value;
+		if(str.length < 6 || str.length > 16){
+			pwdId.className = "error_prompt";
+		}else{
+			pwdId.className = "ok_prompt";
+		}
+	}
+	repwd.onfocus = function(){
+		repwdId.innerHTML = "两次输入的密码必须一致"
+		repwdId.className = "import_prompt";
+	}
+	repwd.onblur = function (){
+		var str = repwd.value;
+		if(pwd.value === str){
+			repwdId.className = "ok_prompt";
+		}else{
+			repwdId.className = "error_prompt";
+		}
+	}
+	//昵称
+	nickName.onfocus = function(){
+		nickNameId.innerHTML = "长度为4-20字符"
+		nickNameId.className = "import_prompt";
+	}
+	nickName.onblur = function (){
+		var str = pwd.value;
+		if(str.length < 4 || str.length > 20){
+			nickNameId.className = "error_prompt";
+		}else{
+			nickNameId.className = "ok_prompt";
+		}
+	}
+	//手机号
+	tel.onfocus = function(){
+		telId.innerHTML = "手机号码必须11位"
+		telId.className = "import_prompt";
+	}
+	tel.onblur = function (){
+		var str = pwd.value;
+		var zhengZe = /[0-9]{11}/;
+		if(zhengZe.test(str)){
+			telId.className = "ok_prompt";
+		}else{
+			telId.className = "error_prompt";
+		}
+	}
+	//邮箱
+	email.onfocus = function(){
+		emailId.innerHTML = "请输入正确的邮箱地址"
+		emailId.className = "import_prompt";
+	}
+	email.onblur = function (){
+		var str = pwd.value;
+		var zhengZe = /^(\w+)@\w+(.com)$/;
+		if(zhengZe.test(str)){
+			emailId.className = "ok_prompt";
+		}else{
+			emailId.className = "error_prompt";
+		}
+	}
+</script>
+</html>

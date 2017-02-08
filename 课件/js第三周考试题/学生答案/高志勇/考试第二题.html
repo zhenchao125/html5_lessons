@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	div {
+		width: 90px;
+		height: 30px;
+		background-color: honeydew;
+		line-height: 30px;
+		text-align: center;
+		color: black;
+		font-size: 25px;
+		border:1px solid black ;
+		display: inline-block;
+	}
+	a{
+		color:blue;
+		display: inline-block;
+	}
+	
+</style>
+</head>
+
+<body>
+<div></div>
+<a href="">看不清，换一张</a>
+<script type="text/javascript">
+	function Number(m, n) {
+		return parseInt(Math.random() * (n - m + 1) + m);
+	}
+	function addNumbers() {
+		var arr = [];
+		for(var i = 0; i < 6; i++) {
+			arr[i] = Number(0, 9);
+		}
+		return arr;
+	}
+		arr = addNumbers();
+		document.getElementsByTagName("div")[0].innerHTML = arr.join("")
+		document.getElementsByTagName("a")[0].onclick = function(){
+		var arr = addNumbers();
+		document.getElementsByTagName("div")[0].innerHTML = arr.join("")
+		return false;
+	}
+</script>
+</body>
+
+</html>

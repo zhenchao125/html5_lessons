@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var sum = "";
+			for(var i = 1500; i < 2016; i++) {
+				if(i % 4 == 0 && i % 100 != 0 || i % 400 == 0) {
+					sum += i + "";
+				}
+			}
+			var arr = sum.split("");
+			console.log(arr);
+			for(var j = 1; j < arr.length; j++) {
+				document.write(arr.shift());
+				if(j % 5 == 0) {
+					document.write("<br />");
+				}
+			}
+		</script>
+	</body>
+
+</html>

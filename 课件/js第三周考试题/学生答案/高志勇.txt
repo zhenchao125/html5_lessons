@@ -1,0 +1,108 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.C
+09.D
+10.C
+11.B
+12.C
+13.A
+14.C
+15.B
+16.B
+17.A
+18.B
+19.A
+20.D
+21.B
+
+22.A
+
+23.C
+
+24.A
+
+25.C
+
+26.B
+27.C
+
+28.D
+29.A
+
+30.C
+
+二、简答题
+
+1.number string undefined
+  NaN object null 
+判断符为  typeof
+
+
+2.document.body.childrens[0];
+document.getElementById("myDiv");
+document.getElementByName("test");
+document.getElementByTagName("test"); 
+
+
+3.document.createElement("")
+
+
+document.createElementtext("")
+利用appendChild()属性，
+
+
+
+
+4.
+
+prompt（）提示用户在进入页面前输入某个值，
+alert（）弹出警告框，里面内容为括号里编辑的内容
+confirm（）用于用户验证或者接受信息。
+
+
+
+
+5.
+innerHTML内能填写多种元素代码
+innerText内为纯文本元素
+
+
+
+三、编程题：
+要求只需要js代码
+
+1.
+
+
+2.
+
+
+
+<script type="text/javascript">
+	var year = Date.getFullyear（）；
+	var month=Date.getmonth（）；
+	var day=Date.getday();
+	document.write("今天是" + year +"年" + month +"月" +day + "月")
+</script>
+
+
+
+
+
+3.
+
+<script type="text/javascript">
+	var g ="34,6,-23,43,34,342,0,3";
+	function(){
+	var  arr=[];
+        var  arr =g.value;
+	
+for(var i=0)
+}
+</script>

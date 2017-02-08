@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	span {
+		width: 200px;
+		height: 80px;
+		;
+		background: darkgray;
+		font-size: 40px;
+		display: inline-block;
+		line-height: 80px;
+		text-align: center;
+		color: orange;
+	}
+</style>
+</head>
+
+<body>
+	<span id="span"></span>
+	<a href="javascript:;" onclick="btn()">看不清换一张</a>
+	<script type="text/javascript">
+		var str = "0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		var a;
+		var b = [];
+
+		function radom(m, n) {
+			return parseInt(Math.random() * (n - m) + 1)
+		}
+
+		function btn() {
+			for(var i = 0; i < 6; i++) {
+				a = radom(0, str.length);
+				console.log(a);
+				b[i] = str.charAt(a);
+			}
+			document.getElementById("span").innerHTML = b.join("");
+		}
+		btn();
+	</script>
+</body>
+
+</html>

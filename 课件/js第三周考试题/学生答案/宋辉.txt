@@ -1,0 +1,102 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.D
+09.A
+10.C
+11.C
+12.C
+13.B
+14.A
+15.C
+16.C
+17.D
+18.D
+19.A
+20.D
+21.B
+22.A
+23.C
+24.B
+25.A
+26.B
+27.B
+28.C
+29.A
+30.D
+二、简答题
+
+
+1.基本数据类型:Null Undenified Number String Boolean 引用类型:Object(Function Array等)
+typeof 是用来判断基本类型的操作符  instanceof是用来判断引用类型的操作符
+
+2.document.getElementById("myDiv");
+document.getElementsByName("test")[0];
+document.getElementsByTagName("div")[0];
+document.getElementBySelectorAll("myDiv")[0];
+
+3.创建元素:document.createElement();
+创建节点:document.createNodes("text");
+追加:var a = document.createElement("a") div.appendChild(a);
+
+4.alert()只是弹出一个提示信息只有确认选项 confirm()弹出一个消息但是有确认取消两个选项返回值是true和false
+prompt()则是弹出一个输入框 两个参数分别是提示用的和输入框的默认内容 确认取消按钮同上
+
+5.innerHTML代表了标签之间的所有内容
+innerText代表的仅仅是标签里面text节点的内容
+三、编程题：要求只需要js代码
+
+1.
+<script type="text/javascript">
+	var inputs = document.getElementsByTagName("input");
+	var text = document.getElementById("output");
+	document.getElementByTagName("button")[0].onclick=function(){
+		for(var i = 0; i < inputs.length; i++){
+			if(inputs[i].checked.nodesValue === "checked"){
+				text.innerHtml += inputs[i].value + " "; 
+			}
+		}
+	}
+</script>
+
+
+2.
+<script type="text/javascript">
+	var date = new Date();
+	document.write("今天是"+date.getFullYear()+"年"+(date.getMonth+1)+"月"+date.getDate+"日,加油考试把!");
+</script>
+
+3.
+<script type="text/javascript">
+	var str = "34,6,-23,43,34,342,0,3";
+	function fun1(str){
+		var arr = [];
+		arr = str.split(/,/gi);
+		return arr;
+	}
+
+	function fun2(){
+		var arr = fun1(str);
+		for(var i = 0; i<arr.length-1; i++){
+			if(arr[i]<arr[i+1]){
+				var temp = arr[i];
+				var arr[i] = arr[i+1];
+				var arr[i+1] = temp;
+			}
+		}
+	}
+
+	function fun3(){
+		var sum = 0;
+		var arr = fun1(str);
+		for(var i = 0; i < arr.length; i++){
+			sum += arr[i];
+		}
+		return sum;
+	}
+</script>

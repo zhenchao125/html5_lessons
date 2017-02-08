@@ -1,0 +1,145 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.D
+09.C
+10.A
+11.C
+12.C
+13.B
+14.A
+15.D
+16.C
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.B
+30.C
+二、简答题
+
+1.
+
+
+js的数据类型：
+	简单数据类型：
+		boolean,string,number,undefined,null   es6新增symbol
+	复杂数据类型：
+		数组，对象，函数
+判断一个数据类型的操作符是：typeof
+
+2.
+
+四种方式如下：
+	document.getElementById("myDiv")
+	document.getElementsByTagName("div")
+
+
+	document.getElementsByName("myDiv")
+	document.getElementsByClassName("myDiv")
+3.
+创建新元素：document.createElement("元素名")
+创建文本节点：document.createTextNode("文本内容")
+将a追加到div中：
+	div.appendChild(document.createElement("a"))
+
+
+
+4.
+三者的区别：
+	prompt()弹出的是信息输入框，返回输入的信息或者null
+	alert()	弹出的是消息框
+	confirm()弹出的是确认框，返回的是布尔值，确定为true，取消为false
+	
+
+
+
+5.
+区别：
+	innerHTML取到的是标签里面的所有东西（包括标签函数等）
+	innerText只取标签的文本内容，适用与标签里面只有文本的时候
+
+
+
+三、编程题：要求只需要js代码
+
+1.
+document.getElementsByTagName("button")[0].onclick = function(){
+	var lis = document.getElementsByTagName("li");
+	var inputs = document.getElementsByTagName("input");
+	var arr = [];
+	for(var i=0; i<inputs.length; i++){
+		if(inpus[i].checked == checked){
+			lis[i].innerText = arr[i];
+		}
+	}
+	document.getElementById("output").innerHTML = arr;
+}
+
+	
+	
+
+2.
+var fun =  function(event){
+	event = event||window.event;
+	var year = event.getFullYear();
+	var month = event.getMonth();
+	var day = event.getDate();
+	docuemnt.write("今天是" +year+ "年" +month+ "月"+day+ "日，加油考试吧！")
+}
+fun();
+
+
+3.
+
+
+
+var s = "34,6,-23,43,34,342,0,3";
+var arr = [];
+//定义一个函数，把字符串存入数组
+var fun1 =  function (s){
+	for(var i=0; i<s.length; i++){
+		arr[i] = s.[i];
+	}
+	return arr;
+}
+fun1(s);
+
+//冒泡排序
+var fun2 =  function (arr){
+	var temp = 0;
+	for(var i=0,len = arr.length-1; i<len; i++){	
+		for(var j = 1;j<arr.length-1;j++){
+			if(arr[i]<arr[j]){
+				arr[i] = temp;
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+	return arr;
+}
+alert("排序后数组为："+fun2(arr));
+
+//计算数组中所有数字的和
+var sum = 0;
+var fun3 = function(arr){
+	for(var i=0; i<arr.length; i++){
+		sum += arr[i];	
+	}
+	return sum;
+}
+alert("数组和为："+fun3(arr));

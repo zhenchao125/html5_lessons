@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 80px;
+				height: 30px;
+				background: grey;
+				display: inline-block;
+				line-height: 30px;
+				text-align: center;
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="div" id="div">
+
+		</div>
+		<a href="" id="aa">看不清，换一张</a>
+		<script type="text/javascript">function generateNumber(m, n) {
+	return parseInt(Math.random() * (n - m + 1) + m);
+}
+
+function randomNumbers() {
+	var arr = [];
+	for(var i = 0; i < 4; i++) {
+		arr[i] = generateNumber(0, 9);
+		var arr0=["a","b","z","q","M"];
+		arr1=arr0.slice(i,i+3);
+		
+	}
+	
+	
+	
+	arr=arr1.concat(arr);
+	return arr;
+}
+var arr = randomNumbers();
+document.getElementsByTagName("div")[0].innerHTML = arr.join("")
+
+			document.getElementsByTagName("a")[0].onclick = function() {
+				var arr = randomNumbers();
+				document.getElementsByTagName("div")[0].innerHTML = arr.join("")
+				return false; 
+			}
+		</script>
+	</body>
+
+</html>

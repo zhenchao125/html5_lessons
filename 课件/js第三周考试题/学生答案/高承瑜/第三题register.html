@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+//获取焦点事件
+	userName.onfocus = function () {  
+		userNameId.innerHTML = "1:由字母，数字，点，下划线，减号组成<br>2:只能以数字，字母开头或结尾，长度为4-18位";
+		userNameId.style.border = "1px solid orange";
+		userNameId.style.background = "yellow";
+	}
+	pwd.onfocus = function () { 
+		pwdId.innerHTML = "密码长度为6-16";
+		pwdId.style.border = "1px solid orange";
+		pwdId.style.background = "yellow";
+	}
+	repwd.onfocus = function () { 
+		repwdId.innerHTML = "请重复密码确认！";
+		repwdId.style.border = "1px solid orange";
+		repwdId.style.background = "yellow";
+	}
+	nickName.onfocus = function () { 
+		nickNameId.innerHTML = "1:长度为4-20个字符";
+		nickNameId.style.border = "1px solid orange";
+		nickNameId.style.background = "yellow";
+	}
+	tel.onfocus = function () { 
+		telId.innerHTML = "1:手机号以13,15,18开头<br>2:手机号码由11位组成";
+		telId.style.border = "1px solid orange";
+		telId.style.background = "yellow";
+	}
+	email.onfocus = function () { 
+		emailId.innerHTML = "请输入你的常用电子邮箱";
+		emailId.style.border = "1px solid orange";
+		emailId.style.background = "yellow";
+	}
+	
+//失去焦点事件
+	userName.onblur = function () {  
+		var s = userName.value;
+		if(s==""){
+			userNameId.innerHTML = "✖通行证名字不能为空，请输入用户名";
+			userNameId.style.border = "1px solid orange";
+			userNameId.style.background = "yellow";
+		}
+		else if(s.match(/^[0-9a-zA-Z]+[^0-9a-zA-Z_-][0-9a-zA-Z]$/gi)||s.length>18||s.length<4){
+			userNameId.innerHTML = "✖1:由字母，数字，点，下划线，减号组成<br>2:只能以数字，字母开头或结尾，长度为4-18位"
+			userNameId.style.border = "1px solid orange";
+			userNameId.style.background = "yellow";
+		}
+		else{
+			userNameId.innerHTML = "√";
+		}
+	}
+	pwd.onblur = function () { 
+		var s = pwd.value;
+		if(s == ""){
+			pwdId.innerHTML = "✖密码不能为空";
+		}
+		else if(s.length>16||s.length<4){
+			pwdId.innerHTML = "✖密码长度为6-16";
+		}
+		else{
+			pwdId.innerHTML = "√";
+		}
+	}
+	repwd.onblur = function () { 
+		var s = repwd.value;
+		if(s == ""){
+			repwdId.innerHTML = "✖重复密码不能为空！";
+			repwdId.style.border = "1px solid orange";
+			repwdId.style.background = "yellow";
+		}
+		else if(s!=pwd.value){
+			repwdId.innerHTML = "✖两次密码不一致！";
+			repwdId.style.border = "1px solid orange";
+			repwdId.style.background = "yellow";
+		}
+		else{
+			repwdId.innerHTML = "√";
+		}
+	}
+	nickName.onblur = function () { 
+		var s = nickName.value;
+		if(s == ""){
+			nickNameId.innerHTML = "✖昵称不能为空";
+			nickNameId.style.border = "1px solid orange";
+			nickNameId.style.background = "yellow";
+		}
+		else if(s.length>20||s.length<4){
+			nickNameId.innerHTML = "✖1:长度为4-20个字符";
+			nickNameId.style.border = "1px solid orange";
+			nickNameId.style.background = "yellow";
+		}
+		else{
+			nickNameId.innerHTML = "√";
+		}
+	}
+	tel.onblur = function () { 	
+		var s = tel.value;
+		if(s == ""){
+			telId.innerHTML = "✖手机号不能为空";
+			telId.style.border = "1px solid orange";
+			telId.style.background = "yellow";
+		}
+		else if(s.length!=11){
+			telId.innerHTML = "✖手机号输入不正确";
+			telId.style.border = "1px solid orange";
+			telId.style.background = "yellow";
+		}
+		else{
+			telId.innerHTML = "√";
+		}
+	}
+	email.onblur = function () { 
+		var s = email.value;
+		if(s == ""){
+			emailId.innerHTML = "✖电子邮箱不能为空，请输入你的邮箱";
+			emailId.style.border = "1px solid orange";
+			emailId.style.background = "yellow";
+		}
+		else if(s.indexOf("@")==0){
+			emailId.innerHTML = "✖邮箱格式不正确，请重新输入";
+			emailId.style.border = "1px solid orange";
+			emailId.style.background = "yellow";
+		}
+		else{
+			emailId.innerHTML = "√";
+		}
+	}
+</script>
+</body>
+</html>

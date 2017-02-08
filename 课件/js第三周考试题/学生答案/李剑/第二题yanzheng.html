@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				display: inline-block;
+				border:1px solid black;
+				width: 80px;
+				line-height: 30px;
+				text-align: center;
+				background:grey;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="" id="btn">看不清，换一张</a>
+		<div id="yanZheng"></div>
+		<input type="text" maxlength="6"/>
+		<button>验证</button>
+	</body>
+	<script type="text/javascript">
+		//实现点击“看不清，换一张”随机生成六位验证码（可包含数字和大小写字母）
+		var yanZheng = document.getElementById("yanZheng");
+		yanZheng.innerHTML = yanZhengMa();
+		document.getElementsByTagName("button")[0].onclick = function(){
+			var str = document.getElementsByTagName("input")[0].value;
+			if(yanZheng.innerHTML === str){
+				alert("验证成功");
+			}else{
+				alert("验证失败请重新输入");
+			}
+		}
+		document.getElementById("btn").onclick = function (){
+			yanZheng.innerHTML = yanZhengMa();
+			return false;
+		}
+		function yanZhengMa(){
+			var str = "";
+			for (var i = 0; i < 6; i++) {
+				do{
+					var a = parseInt(Math.random()*128);
+					var s = String.fromCharCode(a);
+				}while(s.search(/\w/gi));
+				str += s;
+			}
+			return str;
+		}
+	/*	str="A";
+	code = str.charCodeAt(); 
+	str2 = String.fromCharCode(code);
+	str3 = String.fromCharCode(0x60+26);
+	document.write(code+'<br />');
+	document.write(str2+'<br />');
+	document.write(str3);*/
+	</script>
+</html>

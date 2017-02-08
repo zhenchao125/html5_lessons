@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title> 实现点击“看不清，换一张”随机生成六位验证码（可包含数字和大小写字母）</title>
+	</head>
+
+	<body>
+		<script>
+			var arr = [];
+			var newChar = [];
+			var j = 0;
+			var flag = true;
+			
+			for(i = 0; flag; i++) {
+				arr[i] = parseInt(Math.random() * 123 + 48)
+				if(!((arr[i] >= 48 && arr[i] <= 57) || (arr[i] >= 65 && arr[i] <= 90) || (arr[i] >= 97 && arr[i] <= 122))) {
+					continue;
+				} else {
+					newChar[j] = String.fromCharCode(arr[i]);
+					j++;
+				}
+				if(j == 6) {
+					flag = false;
+				}
+			}
+			var div = document.createElement("div");
+			var str = newChar.join("");
+			var nodeText = document.createTextNode(str);
+			div.appendChild(nodeText);
+			document.body.appendChild(div);
+			div.style.border=["1px solid #000"];
+			div.style.display = "inline-block";
+			div.style.backgroundColor="gray";
+			div.style.color="orange";
+			var a = document.createElement("a");
+			document.body.appendChild(a);
+			anodeText = document.createTextNode("看不清?换一张");
+			a.appendChild(anodeText);
+			a.onclick = function(){
+				var newChar =[];
+				for(i = 0; flag; i++) {
+				arr[i] = parseInt(Math.random() * 123 + 48)
+				if(!((arr[i] >= 48 && arr[i] <= 57) || (arr[i] >= 65 && arr[i] <= 90) || (arr[i] >= 97 && arr[i] <= 122))) {
+					continue;
+				} else {
+					 newChar[j] = String.fromCharCode(arr[i]);
+					j++;
+				}
+				if(j == 6) {
+					flag = false;
+				}
+			}
+				var str = newChar.join("");
+				div.innerText = str;
+			}
+		</script>	
+	</body>
+
+</html>

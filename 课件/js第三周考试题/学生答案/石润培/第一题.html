@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		function isLeapYear(y){
+			if((y % 4 === 0 && y % 100 !== 0) || y % 100 === 0){
+				return true;
+			}
+			return false;
+		}
+		var count = 0;
+		for(var i = 1500; i < 2017; i++){
+			if(isLeapYear(i)){
+				count++;
+				if(count % 5 === 0){
+					document.write(i);
+					document.write("<br />");
+				}else{
+					document.write(i + ",");
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

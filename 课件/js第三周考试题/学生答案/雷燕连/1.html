@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <title>打印1500-2016年份</title>
+</head>
+<body>
+    <script type="text/javascript">
+             var tag = false;
+             function judgeYear(year)
+                     { 
+                         if( year<0 )
+                         {
+                             alert("非法年份，请重新输入");
+                             return;
+                         }
+                         if( year%400==0 || ( year%4==0 && year%100!=0 ) )
+                         {
+                             tag = true;
+                             return tag;
+                         }
+                     }
+            var count = 0;
+            function printYear()
+            {
+                for( var i = 1500;i<=2016;i++ )
+                {
+                    if( judgeYear( i ) )
+                    {
+                        document.write( i+" " );
+                        count+=1;
+                        if (count == 5){
+                        	document.write("<br />");
+                        	count = 0;
+                        }
+                    }
+                }
+            }
+            printYear();
+    </script>
+             
+</body>
+</html>

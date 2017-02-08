@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#div{
+			float: left;
+			height: 30px;
+			width: 80px;
+			background: grey;
+			color: darkorange;
+			line-height: 30px;
+			text-align: center;
+			vertical-align: middle;
+		}
+		#a{
+			float: left;
+			font-size: 12px;
+			height: 30px;
+			line-height: 40px;
+			margin-left: 5px;
+		}
+	</style>
+</head>
+<body>
+	<!--
+		 实现点击“看不清，换一张”随机生成六位验证码（可包含数字和大小写字母）
+	-->
+	<div id="div">12R89f</div>
+	<a href="javascript:;" id="a">看不清，换一张</a>
+	<script type="text/javascript">
+			var div = document.getElementById("div");
+		    var a = document.getElementById("a");
+			var c = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ";//62位字符	
+			a.onclick = function(){
+				var code = "";
+				for (var i = 0 ; i < 6 ; i++) {
+					var x = parseInt(Math.random()* 62);
+					if (x != 61){
+					    code += c.substring(x,(x+1));          
+					}else if(x == 61){
+						code += "Z";
+					}	
+				}
+				div.innerHTML = code;	
+			}
+	</script>
+</body>
+</html>

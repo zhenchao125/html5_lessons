@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>机试</title>
+</head>
+<body>
+	<div></div>
+	<!--打印1500-2016的所有闰年，每五个一行-->
+	<script type="text/javascript">
+		var count = 0;
+		var fun = function(n,m){
+			for(var i=n;i<=m;i++){
+				if((i%4==0&&i%100!=0)||(i%400==0)){
+					count++
+					if(count%5==0){
+						document.write(i+"<br />");
+					}
+					else{
+						document.write(i+",");
+					}	
+				}
+			}
+		}
+		fun(1500,2016);
+	</script>
+</body>
+</html>

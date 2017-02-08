@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//判断年份是否为闰年
+			function  isLeapYear(y){
+				if( y % 4 == 0 && y % 100 != 0 || y % 400 == 0){
+					return y;
+				}
+			}
+			
+			//打印出 1500-2016 年中所有的闰年
+			function  allLeapYear(){
+				var count = -1;
+				for(var i = 1500; i<= 2016 ; i++){
+					if(isLeapYear(i)){
+						count++;
+						if(count % 5 == 0){
+						document.write("<br/>");
+					    }
+						document.write(i + " ");
+					}
+					
+				}
+			}
+			allLeapYear();
+		</script> 
+	</body>
+</html>
+<!--
+	 打印出 1500-2016 年中所有的闰年，并以每行 5 个数的形式输出（10 分）
+-->

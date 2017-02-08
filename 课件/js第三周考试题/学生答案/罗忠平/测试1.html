@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type=text/javascript>
+			function ryears(num){
+				if(num % 4 == 0 && num % 100 !== 0 || num % 400 ==0){
+					return true
+				}
+				return false
+			}
+			function sumRyears(from, to){
+				for(var num = from, sum = 0; num < to; num++){
+						if(ryears(num)){
+								document.write(num + " ");
+								sum++;
+								if(!(sum % 5)){
+									document.write("</br>");
+								}
+						}	
+				}
+			}
+	          sumRyears(1500,2016);
+		</script>
+	</body>
+</html>

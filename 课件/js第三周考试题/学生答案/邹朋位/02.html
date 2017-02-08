@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		p {
+			display: inline-block;
+			border: 2px solid #000;
+			color: #000;
+			font-size: 16px;
+			font-weight: bold;
+			padding: 10px;
+			background-color: #D6E3BC;
+		}
+	</style>
+</head>
+<!--实现点击“看不清，换一张”随机生成六位验证码（可包含数字和大小写字母） （10 分）-->
+
+<body>
+	<p id="yzm"></p>
+	<a id="change" href="javascript:;">看不清，换一张</a>
+
+	<script type="text/javascript">
+		var p = document.getElementById("yzm");
+		var a = document.getElementById("change");
+		var arr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+		function getWords() {
+			var num = parseInt(Math.random() * 62); //0-61
+			return num;
+		}
+
+		var s = arr[getWords()] + arr[getWords()] + arr[getWords()] + arr[getWords()] + arr[getWords()] + arr[getWords()];
+		p.innerHTML = s;
+
+		a.onclick = function() {
+			var s = arr[getWords()] + arr[getWords()] + arr[getWords()] + arr[getWords()] + arr[getWords()] + arr[getWords()];
+			p.innerHTML = s;
+		}
+	</script>
+</body>
+
+</html>

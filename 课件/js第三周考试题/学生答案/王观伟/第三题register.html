@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新用户注册页面</title>
+<link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+	<div id="header"><img src="images/register_logo.gif" alt="logo" /></div>
+	<div id="main">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td class="bg bg_top_left"></td>
+				<td class="bg_top"></td>
+				<td class="bg bg_top_right"></td>
+			</tr>
+			<tr>
+				<td class="bg_left"></td>
+				<td class="content">
+					<form id="registerForm" action="" method="post" name="myform">
+						<dl>
+							<dt>通行证用户名：</dt>
+							<dd><input type="text" id="userName" class="inputs userWidth" /> @163.com</dd>
+							<div id="userNameId"></div>
+						</dl>
+						<dl>
+							<dt>登录密码：</dt>
+							<dd><input type="password" id="pwd" class="inputs" /></dd>
+							<div id="pwdId"></div>
+						</dl>
+						<dl>
+							<dt>重复登录密码：</dt>
+							<dd><input type="password" id="repwd" class="inputs" /></dd>
+							<div id="repwdId"></div>
+						</dl>
+						<dl>
+							<dt>性别：</dt>
+							<dd><input name="sex" type="radio" value="" checked="checked" />男 <input name="sex" type="radio" value="" />女 </dd>
+						</dl>
+						<dl>
+							<dt>真实姓名：</dt>
+							<dd><input type="text" id="realName" class="inputs" /></dd>
+						</dl>
+						<dl>
+							<dt>昵称：</dt>
+							<dd><input type="text" id="nickName" class="inputs" /></dd>
+							<div id="nickNameId"></div>
+						</dl>
+						<dl>
+							<dt>关联手机号：</dt>
+							<dd><input type="text" id="tel" class="inputs" /></dd>
+							<div id="telId"></div>
+						</dl>
+						<dl>
+							<dt>保密邮箱：</dt>
+							<dd><input type="text" id="email" class="inputs" /></dd>
+							<div id="emailId"></div>
+						</dl>
+						<dl>
+							<dt></dt>
+							<dd><input name=" " type="image" src="images/button.gif" /></dd>
+						</dl>
+					</form>
+				</td>
+				<td class="bg_right"></td>
+			</tr>
+			<tr>
+				<td class="bg bg_end_left"></td>
+				<td class="bg_end"></td>
+				<td class="bg bg_end_right"></td>
+			</tr>
+		</table>
+	</div>
+	<script type="text/javascript">
+		var $id = function(id) {
+			return document.getElementById(id);
+		}
+		$id("nickName").onfocus = function() {
+			$id("nickNameId").innerHTML = "1、包含字母、数字、下划线以及@!#$%&*特殊字符<br />2、长度为4-20字符"
+		}
+		$id("nickName").onblur = function() {
+			var a = /\w{4,20}/g;
+			if(a.test($id("nickName").value)) {
+				$id("nickNameId").innerHTML = "输入正确"
+					//				$id("nickNameId").style.background = "green"
+			} else {
+				$id("nickNameId").innerHTML = "长度为4-20字符"
+					//				$id("nickNameId").style.background = "pink"
+			}			
+		}
+		$id("pwd").onfocus = function() {
+			$id("pwdId").innerHTML = "密码长度为6-16"
+		}
+		$id("pwd").onblur = function() {
+			var a = /\w{6,16}/g;
+			if(a.test($id("pwd").value)) {
+				$id("pwdId").innerHTML = "输入正确"
+					//				$id("pwdId").style.background = "green"
+			} else {
+				$id("pwdId").innerHTML = "密码长度为6-16"
+					//				$id("pwdId").style.background = "pink"
+			}
+		}
+		$id("repwd").onblur = function() {
+			if($id("pwd") === $id("repwd")) {
+				$id("repwdId").innerHTML = "输入正确"
+					//				$id("pwdId").style.background = "green"
+			} else {
+				$id("repwdId").innerHTML = "两次输入的密码不一致，请重新输入"
+					//				$id("pwdId").style.background = "pink"
+			}
+		}
+		$id("tel").onfocus = function() {
+			$id("telId").innerHTML = "1、手机号以13、15、18开头<br />2、手机号码由11位数字组成"
+		}
+		$id("tel").onblur = function() {
+			var a = /^[1][3|5|8][0-9]{11}/gi;
+			if(a.test($id("tel").value)) {
+				$id("telId").innerHTML = "输入正确"
+					//				$id("telId").style.background = "green"
+			} else {
+				$id("telId").innerHTML = "关联手机号码输入不正确请重新输入"
+					//				$id("telId").style.background = "pink"
+			}
+		}
+		$id("userName").onfocus = function() {
+			$id("userNameId").innerHTML = "1、由字母、数字、下划线、点、减号组成<br />2、只能以数字、字母开头或结尾，长度为4-18"
+		}
+		$id("userName").onblur = function() {
+			var a = /^([0-9|a-zA-Z])[a-zA-Z0-9\.-]{4,18}\1$/g;
+			if(a.test($id("userName").value)) {
+				$id("userNameId").innerHTML = "输入正确"
+					//				$id("pwdId").style.background = "green"
+			} else {
+				$id("userNameId").innerHTML = "1、由字母、数字、下划线、点、减号组成<br />2、只能以数字、字母开头或结尾，长度为4-18"
+//									$id("userNameId").style.background = "pink"
+			}
+			if(!$id("userName").value){
+				$id("userNameId").innerHTML = "通行证用户名不能为空，请重新输入"
+			}
+		}
+		$id("email").onfocus = function() {
+			$id("emailId").innerHTML = "请输入你常用的电子邮箱"
+		}
+		$id("email").onblur = function() {
+			var a = /^([a-zA-Z0-9_\.\-]+)@([a-zA-Z0-9_\.\-]+)\.([a-zA-Z]{2,4})$/gi;
+			if(a.test($id("email").value)) {
+				$id("emailId").innerHTML = "输入正确"
+					//				$id("telId").style.background = "green"
+			} else {
+				$id("emailId").innerHTML = "保密邮箱格式不正确，请重新输入"
+					//				$id("telId").style.background = "pink"
+			}
+		}
+	</script>
+</body>
+
+</html>

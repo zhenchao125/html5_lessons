@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>打印出 1500-2016 年中所有的闰年，并以每行 5 个数的形式输出</title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			var count=0;
+			for(var i=1500;i<=2016;i++){
+				if(i%4==0 && i%100!=0 || i%400==0 && i%100!=0){
+					if(count>5){
+						count=0;
+						document.write("<br/>");
+					}
+					count++;
+					document.write(i+" ");
+				}
+			}
+			
+		</script>
+	</body>
+</html>

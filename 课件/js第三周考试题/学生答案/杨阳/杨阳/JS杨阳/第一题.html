@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			function runYear(){
+				var arr=[];
+				for(var i=1500;i<2017;i++){
+					if(i%4===0&&i%100!=0||i%400===0){
+						arr.push(i);
+						};
+					if(arr.length%6===0){
+							arr.push("</br>");
+						}
+					
+				}
+				document.write(arr);
+				return arr;	
+			}
+	    runYear();
+		
+		</script>
+	</body>
+</html>

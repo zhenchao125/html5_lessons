@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+	span{
+		width: 80px;
+		height: 34px;
+		line-height: 34px;
+		background:#efe;
+		text-align: center;
+		display: inline-block;
+		vertical-align: bottom;
+		border:1px solid #000;
+		font-size: 25px;
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function(){
+		var s = "0123456789abcdefghijklnmopqrsduvwxyzABCDEFGHIJKLNMOPQRSDUVWXYZ";
+		var arr = s.split("");
+		var btn = document.getElementById("btn");
+		var span = document.getElementsByTagName("span");
+		var sum = "";
+		inSpan();
+		
+		btn.onclick = function(){
+			inSpan();
+		}
+		
+		function inSpan(){
+			for(var i = 0; i < 6;i++){
+				sum += arr[getRandom(0,arr.length - 1)];
+			}
+			span[0].innerHTML =sum;
+			sum = "";
+		}
+		function getRandom(m,n){
+			return parseInt(Math.random()*(n - m + 1) + m);
+		}
+	}
+		
+	</script>
+</head>
+
+<body>
+	<span></span>
+	<a href="javascript:;" id="btn">看不清，换一张</a>
+</body>
+
+</html>

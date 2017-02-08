@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript">
+  function name(){
+  	var username=userName.value;
+  	var format=/^[0-9a-zA-Z][0-9a-zA-Z_]{2,16}[0-9a-zA-Z]$/;
+  	if(format.test(username)==false){
+  	userNameId.innerHTML="通行证用户名不能为空，请输入通行证用户名";	
+  	userNameId.className="error_prompt";
+  	return false;
+  	}
+  		userNameId.innerHTML="通行证用户名正确";
+        userNameId.className="ok_prompt";
+        return true;	
+  }
+	userName.onblur=name;
+	userName.onfocus=function(){
+    userNameId.innerHTML="1.由字母、数字、下划线、点、减号组成<br/>2、只能以数字、字母开头或结尾，且长度为4-18";
+    userNameId.className="import_prompt";
+       }
+	
+	        //验证密码
+        var pwd=document.getElementById("pwd");
+        var pwdId=document.getElementById("pwdId");
+        function mima(){
+              var mimas=pwd.value;
+              var a2=/^[0-9a-zA-Z_]{6,16}$/;
+              if(!a2.test(mimas)){
+                    pwdId.innerHTML="密码长度为6-16";
+                     pwdId.className="error_prompt";
+                     return false;
+              }
+                    pwdId.innerHTML="密码输入正确";
+                     pwdId.className="ok_prompt";
+                     return true;
+        }
+        pwd.onblur=mima;
+        pwd.onfocus=function(){
+                    pwdId.innerHTML="密码长度为6-16";
+                     pwdId.className="import_prompt";
+        }
+        //验证两次密码
+          var repwd=document.getElementById("repwd");
+        var repwdId=document.getElementById("repwdId");
+        function password(){
+            if( repwd.value!=pwd.value){
+                    repwdId.innerHTML="两次输入的密码不一致，请重新输入";
+                    repwdId.className="error_prompt";
+                     return false;
+            }
+            repwdId.innerHTML="密码输入正确";
+                 repwdId.className="ok_prompt";
+                 return true;
+        }
+        repwd.onblur= password;
+        repwd.onfocus=function(){
+              repwdId.innerHTML="重复密码不能为空,请重复输入密码";
+               repwdId.className="import_prompt";
+        }
+	
+	//昵称验证
+        var nickName=document.getElementById("nickName");
+        var nickNameId=document.getElementById("nickNameId");
+        function nickname(){
+                var text1=nickName.value;
+                var a3=/^[0-9a-zA-Z_]{4,20}$/;
+            if(!a3.test(text1)){
+                 nickNameId.innerHTML="长度为4-20个字符";
+                 nickNameId.className="error_prompt";
+                  return false;
+            }
+                 nickNameId.innerHTML="昵称正确";
+                 nickNameId.className="ok_prompt";
+                  return true;
+        }
+     nickName.onblur=nickname;
+      nickName.onfocus=function(){
+                nickNameId.innerHTML="长度为4-20个字符";
+                 nickNameId.className="import_prompt";
+      }
+
+      //手机号码验证
+      var tel=document.getElementById("tel");
+      var telId=document.getElementById("telId");
+      function checkNum(){
+            var tels=tel.value;
+            var nickname=/^1[3578][0-9]{9}$/;
+            if(!nickname.test(tels)){
+                telId.innerHTML="关联手机号码输入不正确，请重新输入";
+                telId.className="error_prompt";
+                return false; 
+            }
+                telId.innerHTML="关联手机号码输入正确";
+                telId.className="ok_prompt";
+                return true;
+      }
+      tel.onblur=checkNum;
+      tel.onfocus=function(){
+                telId.innerHTML="关联手机号码是11位";
+                telId.className="import_prompt";
+      }
+
+      //邮箱验证
+      var email=document.getElementById("email");
+      var emailId=document.getElementById("emailId");
+      function checkEmail(){
+            var emasla=email.value;
+             var checkemail=/^\w+@\w{2,3}\.\w{2,3}$/;
+             if(!checkemail.test(emasla)){
+                emailId.innerHTML="邮箱格式不正确请重新输入";
+                emailId.className="error_prompt";
+                return false; 
+             }
+              emailId.innerHTML="邮箱格式正确";
+                emailId.className="ok_prompt";
+                return true; 
+      }
+      email.onblur=checkEmail;
+      email.onfocus=function(){
+         emailId.innerHTML="邮箱格式必须包含@与.";
+         emailId.className="import_prompt";
+      }
+
+    //提交表单
+    var registerForm=document.getElementById("registerForm");
+        registerForm.onsubmit=function(){
+            if(namea()==false||mima()==false||password()==false||nickname()==false||checkNum()==false||checkEmail()==false){
+                    return false;
+            }
+            return true;
+        }
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				width: 100px;
+				height: 40px;
+				background: lightcyan;
+				border: 1px solid #404040;
+				display: inline-block;
+				margin-left: 20px;
+				margin-top: 20px;
+				text-align: center;
+			}
+			p{
+				line-height: 40px;
+				font-size: 25px;
+			}
+			a{
+				margin-left: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			<p id="p">123456</p>
+		</div>
+		<a href="#" id="a">看不清，换一张</a>
+	</body>
+	<script type="text/javascript">
+		a.onclick = function(){
+			var nums = [];
+			
+			for (var i = 0; i < 6; i++) {
+				var num = parseInt(Math.random()*10);
+				nums.push(num);
+//				nums.push((String.fromCharCode(65+num)) || num);
+//				nums[i] = (String.fromCharCode(65+num)) || num
+				p.innerHTML = nums.join("");
+			}			
+		}
+		 
+	</script>
+</html>
+<!--
+	 result.push(String.fromCharCode(65+ranNum));
+-->

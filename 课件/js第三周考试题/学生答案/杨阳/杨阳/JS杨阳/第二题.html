@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 40px;
+			border: 1px solid #000;
+			background: #ccc;
+			margin: 100px 0px 0px 200px;
+			text-align: center;
+			line-height: 40px;
+			font-weight: bold;
+			font-size: 20px;
+		}
+		#aaa{
+			position: absolute;
+			left: 320px;
+			top: 130px;
+		}
+	</style>
+	<body>
+		<div id="box"></div>
+		<a id="aaa" href="">看不清，换一张</a>
+		
+		<script type="text/javascript">
+			var box=document.getElementById("box");	
+			var n="0123456789";
+			var s="abcdefghijklmnopqrstuvwxyz";
+			var S=s.toUpperCase();
+			var all=n+s+S;
+			var arrAll=all.split("");
+			console.log(arrAll);
+			var arr=new Array(6);
+			for (var i=0;i<6;i++) {
+				var	a=parseInt(Math.random()*arrAll.length);
+				arr[i]=arrAll[a];
+			}
+			var newS=arr.join("");
+			document.getElementById("box").innerHTML=newS;
+			
+//			document.getElementById("aaa").onclick=function{
+//				for (var i=0;i<6;i++){
+//				var	a=parseInt(Math.random()*arrAll.length);
+//				arr[i]=arrAll[a];
+//			}
+//			};
+		</script>
+	</body>
+</html>

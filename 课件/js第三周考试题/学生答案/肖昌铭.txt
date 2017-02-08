@@ -1,0 +1,158 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.C
+08.C
+09.C
+10.B
+11.B
+12.C
+13.B
+14.A
+15.D
+16.B
+17.C
+18.D
+19.A
+20.D
+21.C
+
+22.A
+23.C
+24.B
+25.A
+26.B
+27.D
+28.C
+29.C
+30.C
+二、简答题
+
+1.
+Number/String/Boolean/Objact/Function/Undefined
+     判断操作符:typeOf 
+		
+2.
+
+
+document.getElementById("myDiv");
+document.getElementByName("test");
+document.getElementsByClassName("myDiv");
+document.getElementsByTagName("div")[0];
+document.queryselector("div");
+
+3.
+
+
+
+var div = document.createElement("div");
+var text = document.createTextNode("你好");
+div.appendchild(text);
+4.
+
+alert()直接将结果或文本内容以弹窗的形式输出,无返回值
+confirm("提示文本")弹出确认框,可以接收一个参数作为提示文本.并且返回一个Boolean值
+prompt("提示文本","默认值"),弹出带输入框的弹窗,可以接收两个参数,
+第一个为提示文本,第二个为默认值,返回值是字符串.
+
+5.
+innerHTML是为
+某元素节点中添加文本节点,这个不会覆盖原文本节点.
+innerText是直接修改某元素节点中的文本节点,这个会覆盖原文本节点.
+
+
+三、编程题：要求只需要js代码
+
+1.
+  var ul = document.getElementsByTagName("ul")[0];
+  var li = ul.children;
+  var arr = []
+  var textarea = getElementsByTagName("textarea")[0];
+  var btn = getElementsByTagName("button")[0];
+
+  btn.onclick = function()
+  {
+//如果某个checkbox按钮的checked属性被激活,就将文本节点的值传递给数组arr
+	for(i=0,len = li.length;i<len;i++)
+  {	
+	if(li[i].getAttribute(checked))       //如果checked属性被激活则为true
+	{
+	var j=0;
+ 	arr[j] = li[i].lastChild.nodeValue;	//从arr[0]开始接收li文本节点的值r
+	j++;
+         }
+   }
+//将arr数组中存储的节点的值添加到textarea之后
+      if(arr[0]!=undefined)
+       {
+           for(i = 0;i<arr.length;i++)
+	   {
+		if(i < arr.length-1)          //去掉尾巴上的逗号;
+		{
+	   	textarea.innerHTML = arr[i]+",";
+		}
+		else
+		{
+		textarea.innerHTML = arr[i];
+		}	
+	   }	
+       }
+  }
+
+2.
+	//这是个获取当天日期并将日期输出的程序
+	var date = new Date();
+	var year = date.getFullyear;
+	var month = date.getMonth;
+	var dey = date.getDate;
+	alert("今天是"+year+"年"+month+"月"+day+"日,加油考试吧");
+	
+
+
+3.
+
+
+//定义一个函数1：把字符串中的数字存入到一个数组中，并返回这个数组。
+	function test1()
+	{
+	var s =  ‘34,6,-23,43,34,342,0,3’
+	var arr = s.split(",");
+	return arr;
+	}
+//定义一个函数2：使用冒泡排序的方式实现上面数组的降序排列。
+	fucntion test2()
+	{
+	var arr = test1();
+	for(i=0;i<arr.length;i++)
+	}
+		for(j=1;j<arr.length;j++)
+		{
+		    if(arr[i]>arr[j])
+		    {
+		     temp=arr[i];
+		     arr[i]=arr[j];
+		     arr[j]=temp;
+		    }
+		}
+	}
+//定义一个函数3：计算数组中所有数字的和。	
+	function test3()
+	{
+		arr = test1();
+		var temp=0;
+		for(i=0;i<arr.length;i++)
+		{
+		temp+=arr[i];
+		}
+		return temp;
+	}
+
+
+
+
+
+

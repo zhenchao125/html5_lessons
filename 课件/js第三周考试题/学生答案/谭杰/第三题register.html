@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+	var inputs = document.getElementsByTagName("input");
+	inputs[0].onfocus=function(){
+		userNameId.innerHTML="1、由字母、数字、下划线、点、减号组成"+"<br/>"+"2、只能以数字、字母开头或结尾，且长度为4-18";
+	}
+	var reg1 = /(\w|\.|\-){4,18}/ ;
+	inputs[0].onblur=function(){
+		console.log(reg1.test(inputs[0].value))
+		if(!(reg1.test(inputs[0].value))){
+			userNameId.innerHTML="输入有误，请重输";
+		}
+	
+	}
+	inputs[1].onfocus=function(){
+		pwdId.innerHTML="密码长度为6-16";
+	}
+	var reg2 = /.{6,16}/gi;
+	inputs[1].onblur=function(){
+		if(!(reg2.test(inputs[1].value))){
+			pwdId.innerHTML= "输入有误"
+		}
+	}
+	
+	inputs[2].onfocus=function(){
+		if(inputs[2].value!=inputs[1].value){
+			repwdId.innerHTML="两次输入的密码不一致，请重新输入";
+		}else{
+			repwdId.innerHTML="";
+		}
+	}
+	
+	var reg4 = /.{4,20}/gi;	
+	inputs[6].onfocus=function(){
+		nickNameId.innerHTML="1、长度为4-20个字符";
+	}
+	inputs[6].onblur=function(){
+		if(!(reg4.test(inputs[6].value))){
+			nickNameId.innerHTML= "输入有误"
+		}
+	}
+	
+	var reg5 = /^1\d{11}/gi;	
+	inputs[7].onfocus=function(){
+		telId.innerHTML="";
+	}
+	inputs[7].onblur=function(){
+		if(!(reg5.test(inputs[7].value))){
+			telId.innerHTML="关联手机号不正确，请重新输入";
+		}
+	}
+
+	var reg6 = /^([a-zA-Z0-9_\.\-]+)@([a-zA-Z0-9_\.\-]+)\.([a-zA-Z]{2,4})$/gi;	
+	inputs[8].onfocus=function(){
+		emailId.innerHTML="";
+	}
+	inputs[8].onblur=function(){
+		if(!(reg6.test(inputs[8].value))){
+			emailId.innerHTML="保密邮箱格式不正确，请重新输入";
+		}
+	}
+	
+	
+	
+	
+	
+	/*var reg2 = /.{6,16}/gi ;
+	inputs[1].onblur=function(){
+		alert(inputs[1].value)
+		if(reg2.test(inputs[1].value)){
+			alert("输入有误")
+		}
+	}
+	
+	inputs[2].onblur=function(){
+		if(inputs[2].value != inputs[1].value){
+			alert("输入有误")
+		}
+	}*/
+</script>
+</body>
+</html>

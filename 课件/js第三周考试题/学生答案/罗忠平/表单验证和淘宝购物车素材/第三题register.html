@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+    <style>
+    	#userNameId, #repwdId,#nickNameId,#telId,#emailId,#pwdId{
+				display: none;
+		}
+		   p{
+		   	margin: 0px;
+		   	padding: 0;
+		   }		
+    </style>
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"><p>1.由字母，数字下划线，点，减号组成</p>
+                        <p>2。只能以数字，字母开头或结尾，且长度为4-18</p></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId">密码长度为6-16</div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId">两次输入的密码不一致请重新输入</div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId">1.长度为4-20个字符</div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId">关联手机号码输入不正确，请重新输入</div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId">保密邮箱格式不正确，请重新输入</div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+	<script type="text/javascript">
+		var firstInput = document.getElementById("userName");
+		var input2 =document.getElementById("repwd")
+		var input3 =document.getElementById("nickName")
+		var input4 =document.getElementById("tel")
+		var input5 =document.getElementById("email")
+		var input6 =document.getElementById("pwd")
+		
+		
+		firstInput.onblur = function(){
+			var firstName = firstInput.value;
+			if(firstName.length < 4 || firstName.length > 18){
+				document.getElementById("userNameId").style.display = "block";
+			}
+//			for(i = 0; i< firstName.length; i++){
+//				var c = firstName.charAt(i);
+//				if(c == !(/^(\d|[a-z]|[A-Z])(\d|[a-z]|[A-Z])$/)|| c)
+//			}
+			
+		}
+		input6.onblur = function(){
+			var input6name = input6.value;
+			if(input6name.length < 6 || input6name.length > 16){
+				document.getElementById("pwdId").style.display = "block";
+			}
+		}
+		input2.onblur = function(){
+			var input2name = input2.value;
+			if(!(input2name == input6name)){
+				document.getElementById("repwdId").style.display = "block";
+			}
+		}
+		input3.onblur = function(){
+			var input3name = input3.value;
+			if(input3name.length < 4 || input3name.length > 20){
+				document.getElementById("nickNameId").style.display = "block";
+			}
+		}
+		input4.onblur = function(){
+			var input4name = input4.value;
+			if(!(input4name.length===11)){
+				document.getElementById("telId").style.display = "block";
+			}
+		}
+		input5.onblur = function(){
+			var input5name = input5.value;
+			if()
+		}
+	</script>
+</html>
