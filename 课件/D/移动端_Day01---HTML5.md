@@ -353,9 +353,221 @@ section 和 article 的区别在于， section 在本质上组织性和结构性
 
 # 四、增强的表单元素
 
+> 过去，想要让表单风格跨浏览器保持一致是很困难的。而且还需要 JavaScript 来验证表单 输入，此外，也缺少一些处理日常信息（如电话号码、电子邮箱以及 URL）的输入类型。
+>
+> 好消息是 HTML5 基本上解决了这些常见的问题。
+
+## 4.1	HTML5的新增输入类型
+
+> HTML5 新增了很多输入类型，它们最大的作用就是可以限制用户输入的数据，不需要引 入额外的 JavaScript 代码。这些新的输入类型最赞的一点，就是在那些不支持新特性的浏 览器中，它们会被降级显示为一个标准的文本输入框。
+>
+> 在移动端显示的时候，不同的输入类型弹出的虚拟键盘的布局是不一样的。
+
+### 4.1.1	email类型
+
+> 要求输入的内容中是个email，即必须包含@符号。
+>
+> 当提交的信息不符号格式时，浏览器会生成警告信息。
+>
+> **注意：不同的浏览器警告信息是不同的。**
+
+```html
+<form action="#">
+    <input type="email">
+    <p><input type="submit"></p>
+
+</form>
+```
+
+chorme:
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/35371060-file_1486620625766_afec.png)
+
+firfox:
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/65783037-file_1486620861251_bc5a.png)
+
+> 在移动终端设备，会根据输入类型改变键盘模式。
+>
+> 
+
+Android手机:键盘是全键盘形式，比较方便输入。
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/14752775-file_1486622738624_7652.png)
+
+
+
+### 4.1.2	number类型
+
+> 要输入的内容是数字。
+>
+> 这种输入类型默认还提供控制按钮，允许用户简单地点击向上或向下来改变数值。
+>
+> 只能输入数字。(小数点是可以)
+>
+> 也可以添加属性min和max来限制输入的数字的范围。
+
+```html
+<form action="#">
+    <input type="number" min="10" max="30">
+    <p><input type="submit"></p>
+
+</form>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/69110816-file_1486622976400_f949.png)
+
+### 4.1.3	url类型
+
+> 要求必须输入一个合法的url。
+
+### 4.1.4	tel类型
+
+> 期望输入一个电话号码。
+>
+> 由于各个地区的电话号码格式都不一样，所以目前几乎所有的浏览器都不会对电话号码做出验证。只是在移动弹出的虚拟键盘不一样而已。
+
+### 4.1.5	search类型
+
+> 这个在浏览器中显示和普通的文本输入框没有太大区别。
+>
+> 只是在chrome中会有个快速删除的按钮出现。
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/85123748-file_1486623794721_1036f.png)
+
+### 4.1.6	color类型
+
+> 会在支持该特性的浏览器中生成一个颜色选择器，让用户可以选择十六进制的颜色值。
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/43591321-file_1486624156089_1ddf.png)
+
+> 移动端：
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/8405331-file_1486624373374_11c1.png)
+
+### 4.1.7	range类型
+
+> 会生成一个滑动条滑动条可以手动拖动。
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/10268210-file_1486624502173_12910.png)
+
+> 这个滑动条最大的不便是不给用户展示当前的进度。如果非要显示进度只能通过js来完成。
+
+```html
+<form action="#" method="get">
+    <p>30</p>
+    <input type="range" name="a" min="0" max="100" value="30" onchange="show(this);">
+    <p><input type="submit" value="提交"></p>
+</form>
+<script type="text/javascript">
+    var p = document.getElementsByTagName("p")[0];
+    function show(ele) {
+        p.innerHTML = ele.value;
+    }
+</script>
+```
+
+### 4.1.7	时间相关类型：date、month、week、time、datatime
+
+> 把type设置成这几个值，会和设置成color差不多，会弹出一个与日期时间相关的选择器，可以从中选择日期或时间。
+>
+> 在移动端显示效果会好一些。pc端目前只有chrome实现了，firefox和safari还没有实现。
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/97268477-file_1486625234785_157c2.png)
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/50522477-file_1486625345280_16cf9.png)
+
+## 4.2	HTML5表单中新增属性
+
+### 4.2.1	placeholder属性
+
+> 在用户没有输入任何文字时，显示placeholder的值。就是占位符，并且给用户提示要输入什么样的类型的数据。当用户输入数据后，placeholder的值会自动消失
+
+```html
+<form action="#">
+    <input type="text" placeholder="请输入你的账号">
+    <input type="submit" value="提交">
+</form>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/6942410-file_1486626455632_ba7b.gif)
+
+### 4.2.2	required
+
+> 表示这个表单元素必须输入，否则提交失败。
+>
+> required只写属性名可以不写属性值，如果写属性值就和属性名保持一致就可以了。
+>
+> required="rquired"
+
+```html
+<form action="#">
+    <input type="text" placeholder="请输入你的账号" required>
+    <input type="submit" value="提交">
+</form>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/30067012-file_1486626859984_172b6.gif)
+
+### 4.2.3	autofocus
+
+> 表示这个表单元素自动获取焦点。当打开页面的时候，有autofuc的元素会自动获取用户的焦点。
+>
+> **在整个页面中不要让多个元素获取焦点，否则有可能会出现混乱，不同的浏览器处理方式不一样，有的是先出现的获取，有的后出现的获取。**
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/28886436-file_1486627109844_fe1a.gif)
+
+### 4.2.3	autocomplete
+
+> 很多浏览器默认提供自动完成功能以帮助用户输入。以往用户可以在浏览器设置中打开 或关闭这项功能，现在我们还能告知浏览器我们不想在某个表单或表单域上使用自动完 成功能。这不仅仅能保护敏感数据（例如银行账户），还可以让你确保用户用心填写表单， 手工输入一些值。
+>
+> autocomplete属性有两个值：on和 off。 
+
+正常情况，高级浏览器都开启了自动完成功能：
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/89303995-file_1486627697996_4e7.png)
+
+把autocomplete的属性值改成off之后，则不会再有自动完成功能，只能挨个手动输入。
+
+```html
+<form action="#">
+    <input type="text" autocomplete="off" name="user">
+    <input type="submit" value="提交">
+</form>
+```
+
+> **注意：也可以把这个属性给form标签，则这个form下的所有input都不会再有自动完成功能！**
+
+### 4.2.4	list属性和`listdata`标签
+
+> list 属性以及对应的 datalist 元素可以让用户在输入框中开始输入值的时候，显示 一组备选值。
+
+```html
+<form action="#">
+    输入你喜欢的编程语言:<input type="text" name="lang" list="data">
+    <datalist id="data">
+        <option value="java">java大法好</option>
+        <option value="javaScript">javaScript更牛叉</option>
+        <option value="c">c比较难</option>
+        <option value="c#">微软的贼船不要上</option>
+        <option value="c++">比c还难</option>
+
+    </datalist>
+
+</form>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/38983629-file_1486629322340_155ec.gif)
+
+### 4.2.5	form属性
+
+
+
 
 
 # 五、文件API
+
+
 
 
 
