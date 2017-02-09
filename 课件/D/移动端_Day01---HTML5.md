@@ -561,7 +561,33 @@ Android手机:键盘是全键盘形式，比较方便输入。
 
 ### 4.2.5	form属性
 
- 
+> HTML5出来之前，我们的表单元素都必须在`<form>`标签下。
+>
+> 现在，有了form属性，即使把表单元素写在了`<form>`标签外面，也可以成为这个表单的一部分被提交。
+>
+> **注意：form属性是那些表单元素`<input>`的属性**，他的值是某一个`<form>`的 id值
+>
+> 在表单特别复杂的时候比较有用。
+
+```html
+<!--这个input就属于id是form1的form-->
+<input type="text" name="user" form="form1">
+<form action="#" id="form1">
+    <input type="submit">
+</form>
+```
+
+### 4.2.6	novalidate属性
+
+> 关闭表单的自动验证功能。比如我们添加了required属性，则如果没有输入则不准提交，如果再添加上novalidate属性，则不再进行任何的验证。
+>
+> 注意：novalidate是用在`<form>`标签中
+>
+> 多了解一点：给提交提交按钮添加属性 formnovalidate 和在 `<form>`中添加novalidate属性是一样的效果。
+
+
+
+
 
 
 
