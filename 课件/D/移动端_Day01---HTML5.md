@@ -585,11 +585,62 @@ Android手机:键盘是全键盘形式，比较方便输入。
 >
 > 多了解一点：给提交提交按钮添加属性 formnovalidate 和在 `<form>`中添加novalidate属性是一样的效果。
 
+### 4.2.7	pattern属性
 
+> 表单的默认验证功能比较弱，pattern属性接收一个字符串形式的正则表达式，来验证表单。
 
+```html
+<form action="#">
+    <input type="tel" pattern="1[3578]\d{9}" placeholder="请输入11手机号码">
+    <input type="submit">
+</form>
+```
 
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/59974086-file_1486631807152_1545a.png)
 
+> 如果感觉自带的验证不通过的提示太low，可以自定义不同过时的提示信息。
+>
+> 只需要在响应的表单元素(input)中添加属性title，他的值就是自定义的提示信息
 
+```html
+<form action="#">
+    <input type="tel" pattern="1[3578]\d{9}" placeholder="请输入11手机号码"
+    title="你神经病，你家的电话是这个格式啊">
+    <input type="submit">
+</form>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/10893100-file_1486632022637_15ec3.png)
+
+### 4.2.7	disabled属性
+
+> 在某些情况下， 你可能不想让访问者使用表单中的某些部分。 例如， 你可能希望 在所有必填字段完成之前禁用提交按钮。
+>
+> 可以使用disabled属性完成这个功能。
+>
+> 写法：disabled或disabled="disabled"
+
+```html
+<form action="#">
+    <input type="text">
+    <input type="button" value="我是被禁用的按钮" disabled>
+</form>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/79684486-file_1486632454642_13bf1.png)
+
+### 4.2.8	readonly属性
+
+> 让一个表单只读
+>
+> 只能用于允许用户输入的表单元素。使用readonly后，则这个表单元素就成为只读而无法输入了。
+
+> 注意：**disabled和readonly**都是让这个元素处于只能看到不能更改的状态，但是他们还是有很大的区别的。
+>
+> 1. 作用范围： disabled可以用在任何的表单元素中。readonly只能用于允许用户输入的表单元素。
+> 2. 对元素的影响：disabled属性阻止对元素的一切操作，例如获取焦点，点击事件等等。
+>    `readonly`属性只是将元素设置为只读，其他操作正常。
+> 3. 表单提交：`disabled`属性可以让表单元素的值无法被提交。`readonly`属性则不影响提交问题。
 
 # 五、文件API
 
