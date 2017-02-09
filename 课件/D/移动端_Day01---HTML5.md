@@ -99,7 +99,7 @@
 
 # 三、HTML5新增语义标签
 
-## 3.1	新增结构化元素
+## 3.1	常用新增结构化语义元素
 
 > 在以前的html中，我们通常会用很多的div来给网页布局，然后给div定义有一个意义的类。这种情况一般情况下程序员是能读的的懂的，但是搜索引擎很难理解每个div到底代表什么意思。
 >
@@ -238,7 +238,108 @@ section 和 article 的区别在于， section 在本质上组织性和结构性
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-8/24777218-file_1486564157878_b223.png)
 
-## 3.2	非结构性标签
+## 3.2	常用非结构化语义标签
+
+> <audio>，<video>，<canvas>，<datalist>，<details>，<figure>，<figcaption>,<mark>，<progress>，<source>，<time>
+>
+> 多媒体标签：<audio>，<video>，<source>。后面专门去讲
+>
+> 画布：<canvas>。很多js API，后面专门去讲
+>
+> 表单元素：<datalist>，配合表单元素，下章专门去讲。
+
+###3.2.1	标签:<figure>和<figcaption>
+
+> <figure> 标签规定独立的流内容（图像、图表、照片、代码等等）。
+>
+> <figure> 元素的内容应该与主内容相关，同时元素的位置相对于主内容是独立的。如果被删除，则不应对文档流产生影响。
+>
+> <figure>主要用来标记图片的。
+
+以前添加图片列表经常这样写：
+
+```html
+<li>
+   <p>这个是个美女图片</P><img src="" />
+</li>
+```
+
+上面这种写法明显没有语义。使用figure可以增加语义。使用**<figure>**替换掉**<li>**
+
+```html
+<figure>
+  <p>这个是美女图片</p>
+  <img src="meinv.jpg" />
+</figure>
+```
+
+**<p>**是这个图片的标题，则可以使用**<figcaption>**来替换
+
+```HTML
+<figure>
+  <figcaption>这个是美女图片</figcaption>
+  <img src="meinv.jpg" />
+</figure>
+```
+
+### 3.2.2	标签:<mark>
+
+> <mark> 标签定义带有记号的文本。
+>
+> 出于引用的目的，对与另一个上下文相关的文本进行突出显示
+
+```html
+<h1>美女</h1>
+<p>四大<mark>美女</mark></p>
+<p>杨玉环是<mark>美女</mark></p>
+<p>凤姐也是<mark>美女</mark></p>
+```
+
+效果：
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/79583762-file_1486610329611_7512.png)
+
+### 3.2.3	标签:<progress>
+
+>  它指示某项任务的完成进度。 可以用它表示一个进度条
+
+```html
+<progress></progress>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/38677347-file_1486610760981_16447.png)
+
+> progress主要支持三个可选的属性：max，value和form
+
+- max属性指定任务的总工作量。其值必须大于0.其默认值是1
+- value是任务已经完成量。
+- form的含义，下章讲表单的时候再讲。
+
+> 可以通过js来动态的更改value的值，从而达到显示任务动态的完成情况。
+
+```html
+<progress max="100"></progress>
+<script type="text/javascript">
+    var pro = document.getElementsByTagName("progress")[0];
+    var i = 0;
+    setTimeout(function step() {
+      	//更改progress的value的值
+        pro.value = i++;
+        if(i == 100) return;
+        setTimeout(step, 100);
+    }, 100)
+</script>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/95404631-file_1486611896104_3560.gif)
+
+### 3.2.4	标签:<time>
+
+> 在以前的网页中没有标准的语义标签来表示时间，<time>标签填补了这个空白。其目的是让时间有语义，让搜索引擎等其它程序可以更容易的提取这些信息。
+>
+> **time标签在任何浏览器中都不会呈现出任何特殊的显示效果。**
+
+
 
 
 
