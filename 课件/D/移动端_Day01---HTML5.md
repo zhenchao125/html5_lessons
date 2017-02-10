@@ -642,7 +642,150 @@ Android手机:键盘是全键盘形式，比较方便输入。
 >    `readonly`属性只是将元素设置为只读，其他操作正常。
 > 3. 表单提交：`disabled`属性可以让表单元素的值无法被提交。`readonly`属性则不影响提交问题。
 
-# 五、文件API
+# 六、文件API
+
+> 在HTML5之前的，从网页上传文件一次只能上传一个文件，而且也无法对要上传的文件做更深一步的操作。
+>
+> HTML5提供了一个系列关于文件操在的API，通过使用这些API，对于从Web页面访问本地文件系统的相关处理将会变的非常简单。
+
+## 6.1	File和FileList对象
+
+> `<input>`的type属性为 file 的时候，那么它就可以访问本地文件系统了。在HTML5之前，一次只能选择一个文件。HTML5中，给`<input>`添加属性 multiple 则可以一次选择多个文件。
+>
+> **注意：multiple或multiple='multiple' 两种写法都可以。**
+
+```html
+<form action="#" enctype="multipart/form-data">
+    <input type="file" multiple>
+</form>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-10/91556762-file_1486692574714_10fab.gif)
+
+> 用户选择的每一个文件都是一个File对象，而如果选择了多个File，则FileList表示这些多个File对象的列表集合。
+>
+> **File对象提供了关于文件的一些信息并且允许Javascript去访问这些信息。**
+
+***File注意提供了3个属性(包括从Blob中的继承的)***
+
+1. File.lastModified：表示的文件的最后修改时间。以毫秒为单位。
+2. File.name：获取的是文件的文件名。由于安全考虑，这个地方的文件名不包含路径。
+3. File.size：获取到文件大小。以字节为单位。
+
+注意：上面的属性都是readonly的。
+
+**FileList是多个File的列表集合:**
+
+1. FileList.item(index)：获取列表中的File
+
+> 具体使用参考下面的代码：
+
+```html
+<form action="#" enctype="multipart/form-data">
+    <input type="file" multiple>
+</form>
+<button>获取文件相关信息</button>
+<p id="content"></p>
+<script type="text/javascript">
+    var btn = document.getElementsByTagName("button")[0];
+    //1. 获取文件元素
+    var inputFile = document.getElementsByTagName("input")[0];
+    btn.onclick = function () {
+        //2. 得到FileList
+        var files = inputFile.files;
+        for(var i = 0; i < files.length; i++){ //files.length:返回类别中File对象的数量
+            //3. files.itemt(i) 获取到每个文件。  
+            var msg = `第${i + 1}个文件的文件名:${files.item(i).name}, 最后修改时间:${files.item(i).lastModified},文件长度：${files.item(i).size}`;
+            content.innerHTML += msg + "<br>";
+        }
+    }
+</script>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-10/74322032-file_1486695032477_18f5.gif)
+
+## 6.2	Blob对象
+
+> 表示二进制原始文件。前面见到的File对象也继承了Blob对象。
+>
+> 注意包括两个属性：size和type。
+>
+> size：表示Blob对象的字节长度。  File文件的size就是继承这里的size
+>
+> type：表示Blob的MIME类型。如果未知则返回一个长度为 0 的字符串。FIle对象也继承了这个属性。
+
+**仍然以File对象来演示Blob对象:**
+
+```javascript
+for(var i = 0; i < files.length; i++){ //files.length:返回类别中File对象的数量
+            
+       var file = files.item(i);
+       var msg = `第${i + 1}个文件的MIME类型：${file.type}<br>`;
+	   content.innerHTML += msg
+}
+```
+
+## 6.3	FileReader
+
+> **FileReader对象运行Web 应用程序以异步的方式读取文件的内容，使用File对象或Blob对象指定要读取的文件**。
+>
+> FileReader对象主要包括3个属性和5个方法、6个事件。
+
+### **3个属性：**
+
+- FileReader.error: 读取文件的时候发生的错误信息
+- FileReader.readyState:0-2数字，表示FileReader的状态
+
+| EMPTY   | 0    | No data has been loaded yet.还没有加载到数据     |
+| ------- | ---- | ---------------------------------------- |
+| LOADING | 1    | Data is currently being loaded.这正在加载数据   |
+| DONE    | 2    | The entire read request has been completed.数据加载完成 |
+
+- FileReader.result:这个是最重要的属性。读取到的内容都存储在了这个属性中。只能在readyState DONE之后才能读取这个属性值。读取到的数据类型取决于用什么的方法去读取的文件。
+
+
+
+### **5个方法：**
+
+- FileReader.abort()：终止读取文件的操作。这个方法一点结束，则readyState就成为了DONE
+- FileReader.readAsArrayBuffer()：开始读取文件的内容，一旦完成，则把文件的数据存储在ArrayBuffer中。当然ArrayBuffer自然会存储在FileReader的result属性中。
+- ~~FileReader.readAsBinaryString()：以二进制的形式读取文件的内容。***这个方法是非标准方法，不要使用。***~~
+- FileReader.readAsDataURL()：将文件读取为DateUrl
+- FileReader.readAsText()：将文件的内容读取文本。读取纯文本内容的时候使用。
+
+### **6个事件：**
+
+- FileReader.onabort：**数据读取被中断时触发。**
+
+  *A handler for the [abort](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/JavaScript/JavaScript.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/Events/abort.html) event. This event is triggered each time the reading operation is aborted.*
+
+- FileReader.onerror：**数据读取发生错误时触发。**
+
+  *A handler for the [error](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/JavaScript/JavaScript.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/Events/error.html) event. This event is triggered each time the reading operation encounter an error.*
+
+- FileReader.onload：**数据读取成功后触发。**
+
+  *A handler for the [load](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/JavaScript/JavaScript.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/Events/load.html) event. This event is triggered each time the reading operation is successfully completed.*
+
+- FileReader.onloadstart：**数据开始读取时触发。**
+
+  *A handler for the [loadstart](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/JavaScript/JavaScript.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/Events/loadstart.html) event. This event is triggered each time the reading is starting.*
+
+- FileReader.onloadend：**数据读取完成后触发。不管数据读取成功还是失败都会触发。**
+
+  *A handler for the [loadend](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/JavaScript/JavaScript.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/Events/loadend.html) event. This event is triggered each time the reading operation is completed (either in success or failure).*
+
+- FileReader.onprogress：**数据读取过程中触发。**
+
+  *A handler for the [progress](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/JavaScript/JavaScript.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/Events/progress.html) event. This event is triggered while reading a [Blob](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/JavaScript/JavaScript.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/API/Blob.html) content.*
+
+
+
+
+
+
+
+# 七、拖放API
 
 
 
