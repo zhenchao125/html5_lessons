@@ -779,15 +779,186 @@ for(var i = 0; i < files.length; i++){ //files.length:返回类别中File对象�
 
   *A handler for the [progress](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/JavaScript/JavaScript.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/Events/progress.html) event. This event is triggered while reading a [Blob](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/JavaScript/JavaScript.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/API/Blob.html) content.*
 
+```html
+<input type="file" multiple id="file">
+<br><button id="readBtn">读取文件内容</button>
+<p id="content">此处显示读取到的文件内容</p>
 
-
-
-
-
+<script type="text/javascript">
+    var fileInput = document.getElementById("file");
+    var readBtn = document.getElementById("readBtn");
+    var content = document.getElementById("content");
+    
+    readBtn.onclick = function () {
+        //1. 检测当前浏览器是否支持FileReader
+        if(!FileReader) {
+            content.innerHTML = "你的文件不支持FileApi";
+            return;
+        }
+        //2. 获取到用户选择的所有文件
+        var files = fileInput.files;
+        for(var i = 0; i < files.length; i++){
+            //3. 获取用户选择的每一个文件
+            var file = files.item(i);
+            //4. 判断文件的类型，如果是文本文件就显示在p标签中，其他类型不处理
+            if(file.type.startsWith("text")){
+                //5. 创建FileReader对象
+                var reader = new FileReader();
+                //6. 定义数据读取成功的回调函数
+                reader.onload = function (event) {
+                    content.innerHTML += "<hr>" + reader.result;
+                }
+                //7. 开始读取文件数据
+                reader.readAsText(file, "utf-8");
+              //如果是图片文件，就以dataURL的形式读取。把读取到结果是一个url，给img标签的src
+            }
+        }
+    }
+    
+</script>
+```
 
 # 七、拖放API
 
 
+
+> 在HTML5中，提供了直接支持拖放操作的API。新的拖放API已经支持浏览器与其他应用程序之间的互相拖动。相比以前的使用mousedown、mouseover、mouseup实现的拖放，新的API大大简化了拖放的代码。
+
+## 7.1	实现拖放的步骤
+
+### 步骤1：
+
+> 把要拖放的对象的元素的draggable属性设为true(draggable="true")。另外对`<img>`和`<a>`元素(指定href属性)默认允许拖放。
+
+### 步骤2：
+
+> 编写与拖放有关的事件处理代码。
+>
+> 共有8个与拖放有关的事件！
+
+| 事件        | 产生事件的元素   | 描述                                       |
+| :-------- | :-------- | :--------------------------------------- |
+| dragstart | 被拖动的元素或文本 | This event is fired when the user starts dragging an element or text selection。***当开始拖动选择的元素或文本的时候出发*** |
+| drag      | 被拖动的元素或文本 | This event is fired when an element or text selection is being dragged。***在元素在拖动的过程中触发。(会重复触发)*** |
+| dragenter | 拖放的目标元素   | This event is fired when a dragged element or text selection enters a valid drop target。***元素进入目标元素区域的时候触发。*** |
+| dragover  | 拖放的目标元素   | This event is fired when an element or text selection is being dragged over a valid drop target (every few hundred milliseconds).***在目标元素领域经过的时候触发*** |
+| dragleave | 拖放的目标元素   | This event is fired when a dragged element or text selection leaves a valid drop target.***当离开目标元素的时候触发。*** |
+| dragend   | 拖放的目标元素   | This event is fired when a drag operation is being ended (by releasing a mouse button or hitting the escape key).***当拖放操作完成后触发(松开了鼠标键或者按下了esc键)*** |
+| dragexit  | 被拖动的元素    | This event is fired when an element is no longer the drag operation's immediate selection target.***当元素不再是拖动操作的直接目标时触发*** |
+| drop      | 被拖动的元素    | This event is fired when an element or text selection is dropped on a valid drop target。***当在有效的目标上放下拖动的元素后触发*** |
+|           |           |                                          |
+
+> 示例：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+        #draggable {
+            width: 200px;
+            height: 20px;
+            text-align: center;
+            background: white;
+            margin: 0 auto;
+        }
+        .dropzone {
+            box-sizing: border-box;
+            width: 400px;
+            height: 60px;
+            background: blueviolet;
+            margin: 10px auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<!--dropzone:表示可释放的区域-->
+<div class="dropzone">
+    <!--可拖动的元素 draggable="true"-->
+    <div id="draggable" draggable="true" >
+        来拖动我啊
+    </div>
+</div>
+<div class="dropzone"></div>
+<div class="dropzone"></div>
+<div class="dropzone"></div>
+
+
+<script>
+    /*储存拖动的目标*/
+    var dragged;
+
+
+    /*开始拖动的时触发。 只触发一次*/
+    document.addEventListener("dragstart", function (event) {
+//        console.log("开始拖动了");
+        // 保存被拖动的元素对象
+        dragged = event.target;
+        // 把拖动元素的该成半透明。
+        event.target.style.opacity = .3;
+    }, false);
+
+    /* 拖动的过程中触发。 只要元素在拖动，会一直重复触发 */
+    document.addEventListener("drag", function (event) {
+//        console.log("被拖的感觉真爽")
+    }, false);
+
+    /*进入另外一个元素的区域时触发*/
+    document.addEventListener("dragenter", function (event) {
+        // 判断当前的目标是否进入了潜在的 dropzone区域，如果是则高量这个潜在的目标区域
+        if (event.target.className == "dropzone") {
+//            console.log("进入潜在的目标区域");
+            event.target.style.background = "purple";
+        }
+
+    }, false);
+
+    /* 在潜在目标区域的上方的时候会重复触发 */
+    document.addEventListener("dragover", function (event) {
+//        console.log("在潜在的目前区域上方");
+        // 因为默认情况下，拖放目标是不允许接受元素的。阻值默认行为，可以随时是否元素。
+        event.preventDefault();
+    }, false);
+
+    /*松开鼠标拖放结束。*/
+    document.addEventListener("dragend", function (event) {
+        console.log("拖放结束");
+        // 把元素的透明重新设置为1
+        event.target.style.opacity = "1";
+    }, false);
+
+    /*从潜在目标元素上方离开的时候触发*/
+    document.addEventListener("dragleave", function (event) {
+        console.log("离开目标元素");
+        // 因为进入一个元素的时候更改了目标元素的北京，所以离开的时候要重置背景
+        if (event.target.className == "dropzone") {
+            event.target.style.background = "";
+        }
+
+    }, false);
+
+    /*释放拖动元素的时候触发。  这个事件是在dropend事件触发前触发。*/
+    document.addEventListener("drop", function (event) {
+        console.log("drog.....");
+        // prevent default action (open as link for some elements)
+        event.preventDefault();
+        // 把拖动的元素移动目标区域中
+        if (event.target.className == "dropzone") {
+            event.target.style.background = "";
+            //把拖动元素从他原来的父节点中移除。
+            dragged.parentNode.removeChild(dragged);
+            //插入到目标元素中。
+            event.target.appendChild(dragged);
+        }
+
+    }, false);
+</script>
+</body>
+</html>
+```
 
 
 
