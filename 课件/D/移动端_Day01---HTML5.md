@@ -920,7 +920,7 @@ for(var i = 0; i < files.length; i++){ //files.length:返回类别中File对象�
     document.addEventListener("dragover", function (event) {
 //        console.log("在潜在的目前区域上方");
         // 因为默认情况下，拖放目标是不允许接受元素的。阻值默认行为，可以随时是否元素。
-        event.preventDefault();
+        event.preventDefault();  //必须阻止默认行为，否则的后面的drop事件不会触发
     }, false);
 
     /*松开鼠标拖放结束。*/

@@ -786,6 +786,10 @@ document.querySelector("p.example");  //获取文档中 class="example" 的第�
 </body>
 ```
 
+## 6.8	checked属性
+
+> 用于type类型为radio何checkbox的input，来获取或者设置他的checked属性
+
 # 七、样式表的属性---css脚本化
 
 > 可以通过JavaScript访问css的属性，并修改css属性
@@ -822,7 +826,7 @@ document.querySelector("p.example");  //获取文档中 class="example" 的第�
     <script type="text/javascript">
 	    var box1 = document.getElementById("box1");
 	   	// alert(box1.currentStyle["width"]); //只支持IE浏览器
-	   	// alert(window.getComputedStyle(box1, null)["height"]); //支持浏览器外的其他浏览器
+	   	// alert(window.getComputedStyle(box1, null)["height"]); //支持ie浏览器外的其他浏览器
 	   	alert(getStyle(box1, "backgroundColor"));
 	   	/*
 	   		为了简化书写和兼容浏览器，一般封装一个方法出来
