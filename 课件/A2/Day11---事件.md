@@ -238,6 +238,7 @@
 <script type="text/javascript">
   	window.onresize = function () {
     //获取兼容模式下的可视宽和高
+     //window.innerWidth ie浏览器不支持。document.documentElement.clientWidth ;所有的浏览器都支持
     var width = window.innerWidth || document.documentElement.clientWidth ;
     var height = window.innerHeight || document.documentElement.clientHeight;
     alert("窗口发生了变化\n" + "宽：" + width + "\n高：" + height);
