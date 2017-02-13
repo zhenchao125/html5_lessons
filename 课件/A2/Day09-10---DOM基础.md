@@ -425,7 +425,7 @@ document.querySelector("p.example");  //获取文档中 class="example" 的第�
 
 
 
-## 4.2	appendChild() : 给一个元素添加child节点==(095)==
+## 4.2	appendChild() : 给一个元素追加child节点==(095)==
 
 > *element*.appendChild(*node*)
 >
@@ -808,7 +808,7 @@ document.querySelector("p.example");  //获取文档中 class="example" 的第�
 	    var box1 = document.getElementById("box1");
 	    box1.style.width = "100px";	//设置css属性.   设置所有属性都要使用引号括起来。
 	    box1.style["height"] = "100px";
-	    box1.style.backgroundColor = "blue";
+  .backgroundColor = "blue";
       	alert(box1.style["width"]);
     </script>
 </body>
