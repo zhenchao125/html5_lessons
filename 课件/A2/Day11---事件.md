@@ -320,7 +320,6 @@
 
 > onfocusin是onfoucs的冒泡版本，onfocusout是onblur的冒泡版本。
 >
-> **这两个方法在chrome和firfox上面均不支持。**
 
 ```html
 <body>
@@ -343,7 +342,7 @@
 	
 		var div1 = document.getElementsByTagName("div")[0];
       	//给div1设置设置获取焦点事件
-		div1.onfocusin = function () {	//当div中input获取焦点后，并会冒泡到上层div，所以这个函数不会执行。	
+		div1.onfocusin = function () {	//当div中input获取焦点后，并会冒泡到上层div，所以这个函数也会执行。	
 			div1.style.backgroundColor = "#000";
 		}
         // 给div2设置失去焦点事件
