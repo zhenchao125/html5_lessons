@@ -168,13 +168,163 @@ Adding an i (or I) before the closing bracket causes the value to be compared ca
 
 ## 1.3	结构伪类选择器
 
+- :root   根元素，他始终是html元素
+
+- :not(x) 否定伪类选择器。   x是一个选择器，not()可以看出一个否定元素，最终的结果不满足x的被选中  
+
+  ```css
+  /*选中id不是abc的div*/
+  div:not(#abc){
+      background-color: green;
+  } 
+  ```
+
+- :empty  没有子元素的被选中。 
+
+- :nth-child(n) 第n个子元素
+
+- :nth-last-child(n) 从后向前计算的第n个子元素
+
+- :nth-of-type(n)  第n个子元素
+
+- :nth-last-of-type(n) 从后向前计算的第n个子元素
 
 
-## 
+## 1.4	伪元素选择器
+
+> 伪元素和伪类有点相似。
+>
+> 伪类用一个冒号（:）表示，而伪元素用两个冒号 (::) 表示。
+>
+> 伪类一般表示的是某种状态，而伪元素表示的是 **DOM外部的某种文档结构**
+
+- ::first-letter  选中第一个字符
+- ::first-line   选中第一行
+- ::after  给选中的元素的最后添加一个子元素。 必须设置content属性
+- ::before  给选中的元素最前面添加一个子元素。 必须设置conent元素
+
+```css
+div::after{
+    content: '最后添加的内容';
+    background-color: pink;
+}
+div::before{
+    content: '最前面的位置添加的内容';
+    background-color: gray;
+}
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-18/96013523-file_1487423686893_cadb.png)
+
+- ::selection	选中用户用鼠标选中的元素
+
+```css
+::selection{
+    background-color: green;
+    color: red;
+}
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-18/75824319-file_1487424222294_16af9.gif)
 
 # 三、文字相关属性
 
+## 3.1	给文字添加阴影
+
+> text-shadow属性，可以给文本添加阴影
+>
+> - 每个shadow一般包含四个值： x偏移、y偏移、模糊半径、阴影颜色
+> - 模糊半径和颜色值都是可选的，也可以把颜色值写在其他值之前。
+> - 也可以提供多个shadow值，用逗号分开
+
+```css
+/* offset-x | offset-y | blur-radius | color */
+text-shadow: 4px 4px 2px gray;
+
+/*提供多个shadow值*/
+text-shadow: 4px 4px 2px gray, -4px -4px 2px red;
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-18/56999022-file_1487425513456_c7db.png)
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-18/20311325-file_1487425620488_7746.png)
+
+## 3.2	文本自动换行：word-break属性
+
+> 对文本来说，默认情况下单词内是不会换行的。
+>
+> 使用word-break属性，可以控制到底该怎么换行
+>
+> work-brak:normal [|](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/CSS/CSS.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/CSS/Value_definition_syntax.html#Single_bar) break-all [|](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/CSS/CSS.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/CSS/Value_definition_syntax.html#Single_bar) keep-all
+>
+> normal:正常换行
+>
+> break-all：对非Chinese/Japanese/Korean语言，运行单词内换行
+>
+> keep-all：对Chinese/Japanese/Korean不允许换行，别的语言与nomal相同。
+
+```css
+p {
+    width: 100px;
+    background-color: pink;
+    word-break: normal;
+}
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-18/4946935-file_1487426639280_993c.png)
+
+```css
+p {
+    width: 100px;
+    background-color: pink;
+    word-break: break-all;
+}
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-18/85104084-file_1487426695476_11582.png)
+
+## 3.3	文本溢出处理属性：text-overflow
+
+> 主要支持两个值：clip和ellipsis
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        p {
+            width: 105px;
+            border: 1px solid #000;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        p:nth-child(2) {
+            text-overflow: clip;
+        }
+
+        p:nth-child(3) {
+            text-overflow: ellipsis;
+        }
+
+    </style>
+</head>
+<body>
+<p>This keyword value indicates to truncate the text at the limit of the content area</p>
+<p>This keyword value indicates to truncate the text at the limit of the content area</p>
+<p>This keyword value indicates to truncate the text at the limit of the content area</p>
+</body>
+</html>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-18/37549266-file_1487427897652_c293.png)
+
 # 四、CSS3盒模型
+
+
 
 # 五、背景相关属性
 
