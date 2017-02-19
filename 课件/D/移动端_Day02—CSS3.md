@@ -337,6 +337,8 @@ p {
 > ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-19/58431396-file_1487467424399_134c8.png)
 >
 > 补充：其实还有一种盒模型叫 padding-box，不过除了firefox外没有浏览器支持。所以目前没有人用。
+
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
