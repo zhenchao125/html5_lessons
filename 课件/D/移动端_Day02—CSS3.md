@@ -425,15 +425,32 @@ p {
 
 
 
-## 4.3	边框
+# 五、边框相关属性
 
-### 4.3.1	边框圆角
+## 5.1	边框圆角:border-radius
+
+> border-radius:	给边界设置圆形或椭圆形。
+>
+> /* top-left | top-right | bottom-right | bottom-left */
+>
+> border-radius: 1px 0 3px 4px;
+
+## 5.2	边框图片:border-image
+
+> border-image:允许在边框上绘制图片。
+>
+> 相关属性：
+>
+> | *border-image-source* | 用在边框的图片的路径。                              |      |
+> | --------------------- | ---------------------------------------- | ---- |
+> | *border-image-slice*  | 图片边框向内偏移。                                |      |
+> | *border-image-width*  | 图片边框的宽度。                                 |      |
+> | *border-image-outset* | 边框图像区域超出边框的量。                            |      |
+> | *border-image-repeat* | 图像边框是否应平铺(repeated)、铺满(rounded)或拉伸(stretched)。 |      |
 
 
 
-# 五、背景相关属性
-
-# 六、边框相关属性
+# 六、背景相关属性
 
 # 七、渐变属性
 
