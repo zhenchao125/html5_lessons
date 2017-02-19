@@ -324,7 +324,110 @@ p {
 
 # 四、CSS3盒相关样式
 
+## 4.1	box-sizing属性
 
+> box-sizing属性是用来改变默认的盒模型的。主要两个值：content-box和border-box
+>
+> - content-box：就是默认的盒模型。设置的宽高属性不包括border和padding，当增加border和padding的值的时候，整个盒子的整体尺寸会增加，给容器设置的宽高属性会保持。所以这种模型也叫**外扩模型**
+>
+> ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-19/56787640-file_1487466972930_11d7.png)
+>
+> - border-box：设置的宽度包括border和padding，当增加border和padding的值的时候，会压缩盒子的content的尺寸，盒子的整体尺寸不会发生变化。所以这种模型也称之为**内缩模型**。目前大高级浏览器都支持。
+>
+> ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-19/58431396-file_1487467424399_134c8.png)
+>
+> 补充：其实还有一种盒模型叫 padding-box，不过除了firefox外没有浏览器支持。所以目前没有人用。
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        div:first-child{
+            border: 50px solid gray;
+            box-sizing: content-box;
+        }
+        div:last-child{
+            border: 50px solid goldenrod;
+            box-sizing: border-box;
+        }
+
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+</body>
+</html>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-19/58589822-file_1487468582252_1ea0.png)
+
+
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-19/13000080-file_1487468663912_a260.png)
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-19/75466539-file_1487468734741_78db.png)
+
+## 4.2	盒子的阴影：box-shadow
+
+> box-shadow:inset 0px 0px 40px 2px gray;
+>
+> 第一个值：inset表示阴影是显示在盒子内部。如果不设置，则默认显示在盒子外部。
+>
+> 第二个值：x方向的offset
+>
+> 第三个值：y方法的offset
+>
+> 第四个值：模糊半径
+>
+> 第五个值：放大阴影。 正值表示放大，负值表示缩小。
+>
+> 第六个值：阴影的颜色。
+>
+> 注意：box-shadow也可以像text-shadow一样，使用逗号分隔同时设置多个阴影。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div {
+            margin: 50px auto;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+        div:nth-child(1):hover {
+            box-shadow: 0px 0px 40px 2px gray;
+        }
+        div:nth-child(2):hover {
+            box-shadow:inset 0px 0px 40px 2px gray;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+</body>
+</html>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-19/77519232-file_1487470001610_14a8a.gif)
+
+
+
+## 4.3	边框
+
+### 4.3.1	边框圆角
 
 
 
