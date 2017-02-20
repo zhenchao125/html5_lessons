@@ -1,0 +1,124 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.C
+09.C
+10.A
+11.C
+12.C
+13.B
+14.A
+15.C
+16.B
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+简单类型：Number、Boolean、String、Undefined、Null
+复杂类型：对象(object)、函数(function)和数组(array)
+
+判断数据类型：typeof
+
+2.
+document.getElementById("myDiv");
+document.getElementsByclassName("myDiv")[0];
+document.getElementsByName("myDiv")[0];
+document.getElementsByTagName("div")[0];
+
+3.
+创建元素：document.createElement();
+创建文本节点：document.createTextNode();
+追加元素：
+var newa = document.createElement("a");
+var div = document.getElementsByTagName("div")[0];
+div.appendChild(newa);
+
+4.
+prompt()提示框
+用于提示用户输入一些文本。提示框中除了会有 确定和取消，还有一个文本框。它的返回值是用户输入的具体的文本。
+
+alert()对话框
+弹出括号内的字符或者其中变量的值
+
+confirm()对话框
+方法用于显示一个带有指定消息 确定 及 取消 按钮的对话框。点击确定按钮，则 confirm() 返回 true。取消按钮，则 confirm() 返回 false。
+
+三者都用于提示用户，区别在于alert没有返回值，confirm返回值为true或false，prompt返回值为输入的具体文本。
+
+5.
+innerText值获取标签中的文本内容，子标签本身不会获取到。
+去修改的时候，即使带有标签也会把标签作为纯文本来对待，而不会解析为标签。
+
+innerHTML 属性设置或返回标签的开始和结束标签之间的 HTML。
+即innerHTML会解析其中的标签。
+
+三、编程题：要求只需要js代码
+
+1.
+var d = new Date();
+document.write("今天是" + d.getFullYear() +"年"+ d.getMonth() +"月"+ d.getDate()+"日，加油考试吧！");
+
+2.
+function func1(){
+	var str = "34,6,-23,43,34,342,0,3";
+	var arr= str.split(",");
+	return arr
+}
+
+function func2(){
+	var arr = func1();
+	arr.sort(function(){
+		if(a > b){return -1;}
+		else{return 1;}
+	});
+	return arr;
+}
+
+function func3() {
+        var sum = 0;
+        var arr = func1();
+        for(var i = 0; i <= arr.length-1; i++){
+            sum += parseInt(arr[i]);
+        }
+        console.log(sum);
+}
+
+
+0.
+js代码部分(HTML部分未改动)：
+<script type="text/javascript">
+	var theUl = document.getElementsByTagName("ul")[0];
+	var lis = document.getElementsByTagName("li");
+	var btn = document.getElementsByTagName("button")[0];
+	var txtarea = document.getElementsByTagName("textarea")[0];
+	var arr = [];
+	for(var i = 0;i < lis.length; i++){
+		lis[i].addEventListener("change",function(event){
+			var a = this.lastChild.nodeValue;
+			console.log(a);//在控制台输出选择选择框后的文本，可省
+			arr.push(a);//将选择的内容加入数组
+		},false);
+	}
+	btn.onclick = function(){
+		var thetxt = document.createTextNode(arr);
+		txtarea.appendChild(thetxt);
+	}
+</script>

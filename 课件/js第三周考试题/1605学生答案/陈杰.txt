@@ -1,0 +1,139 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.B
+08.D
+09.C
+10.D
+11.C
+12.C
+13.B
+14.A
+15.C
+16.D
+17.D
+18.D
+19.A
+20.D
+21.B
+22.A
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+数据类型：string,number,function,boolean,null,undefined
+
+判断数据类型的操作符：typeof
+
+
+
+2.
+
+第一种：document.getElementById("myDiv");
+
+第二种：document.getElementsByClassName("myDiv")[0];
+
+第三种：document.querySelector("#div");
+
+第四种：document.getElementsByName("test")[0];
+
+
+3.
+
+创建新元素：var eleA =  document.createElement("a");
+
+创建文本节点： var textnode = document.createTextNode("您好");
+
+插入到div标签中 ： document.querySelector("div").appendChild(eleA);
+
+4.
+
+prompt(): 输入框，提示框显示附带一个输入框，含有确认按钮和返回按钮
+	  可以根据提示输入内容，返回用户输入的内容
+
+alert(): 提示框，也可以说是警告框，只有一个确认按钮
+
+confirm（）: 确认框，有提示信息，确认按钮和返回按钮，返回值是 true 或者 false
+
+5.
+
+innerText 设置标签内的文字，所有的值都是一text文本显示，HTML代码不会被解析
+
+innerHTML 设置标签内的内容，如果值为HTML代码 则会被解析
+
+
+三、编程题：要求只需要js代码
+
+1.
+代码：
+<script type = "text/javascript">
+var date = new Date();
+
+var str = "今天是"+date.getFullYear()+"年"+date.getMonth()+"月"+date.getDate()+"日，考试加油吧！";
+document.write(str);
+</script>
+
+2.
+代码：
+<script type="text/javascript">
+
+	var str = '34,6,-23,43,34,342,0,3';
+
+	//把字符串放到数组中，并返回数组
+	function f1(str){
+		var arrs = str.split(",");
+		return arrs;
+	}
+	//对数组按照降序排列
+	function f2(arr){
+		function maxToMin(a,b){return b-a;}
+		return arr.sort(maxToMin);
+	}
+	//计算数组所有数字的和
+	function f3(arr){
+		var sum = 0;
+	 	for(var index in arr){
+			var newValue = parseInt(arr[index]);
+			sum += newValue;
+		}
+		return sum;
+	}
+
+	var arrs = f1(str);
+	arrs = f2(arrs);
+	var total = f3(arrs);
+</script>
+
+3.
+
+<script type = "text/javascript">
+	
+	var checkBoxs = document.querySelectorAll("input");
+	
+	var btn = document.querySelector("button");
+	var outputArea = document.getElementById("output");
+	
+	outputArea.value = getCheckeds();
+
+	function getCheckeds(){
+		var outputText = "";
+		for(var index in checkBoxs){
+			if(checkBoxs[index].checked){
+				outputText += checkBoxs[index].value +";";
+			}
+		}
+		return outputText;
+	}
+
+</script>

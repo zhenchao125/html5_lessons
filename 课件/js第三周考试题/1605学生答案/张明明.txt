@@ -1,0 +1,158 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.C
+09.C
+10.B
+11.C
+12.B
+13.B
+14.A
+15.C
+16.C
+17.C
+18.D
+19.A
+20.D
+21.B
+22.A
+23.C
+24.B
+25.C
+26.B
+27.B
+28.D
+29.C
+30.C
+二、简答题
+
+1.
+简单类型：null,undefined,Number，String，Boolean
+复杂类型：函数，数组，对象
+
+判断类型的操作符：typeof
+
+
+
+2.
+document.getElementById("myDiv")
+document.getElementsByClassName("myDiv")[0]
+document.getElementsByTagName("div")[0]
+document.querySelector("#div")
+
+
+
+3.
+
+创建元素：document.createElement（）
+创建文本节点：document.createTextNodes（）
+a标签追加到一个div元素中：div.appendChild（a）
+
+
+
+
+4.
+prompt()是输入框，可以输入内容
+var s = prompt();弹出一个输入框，可以输入内容，输入内容后，可以点击确定返回true，也可以点击取消返回false
+
+alert（）是警告框，弹出内容
+alert("abc"）;弹出警告框内容为abc；
+
+confirm（）是确认框，有两个按钮，一个是确定，另一个是取消，
+var s = confirm（）；弹出一个确定框，选择确定返回true，选择取消返回false
+    
+5.innerHTML是放在HTML标签中的，
+而innerText是放在一个文本内，
+有标签嵌套时很容易区分
+
+
+三、编程题：要求只需要js代码
+
+1.
+<script>
+    var year = document.getFullYear()；
+    var month = document.getMonth();
+    var date = document.getDate();
+    docunment.write("今天是" + year +"年" + month + "月" + date +"日,考试加油吧！");    	
+
+</script>
+
+
+
+2.
+var str = "34,6,-23,43,34,342,0,3";
+<script>
+    //返回一个数组
+    funciton(){
+	var arr =[];
+	for(var i =0; i<str.length;i++){
+	    arr[i]= str;
+	}
+	return arr;
+    }
+
+
+    //对数组元素降序排列
+    funciton(a,b){
+	var arr =[];
+	for(var i =0; i<str.length;i++){
+	    arr[i]= str;
+	}
+	return b-a;
+    }
+
+    
+
+    //求数组中所有数字的和
+    funciton(){
+	var arr =[];
+	for(var i =0; i<str.length;i++){
+	    arr[i]= str;
+	}
+	
+	var sum = 0;
+	for(var i =0;i<arr.length;i++){
+          sum + = sum; 
+	}
+	return sum;
+    }
+
+</script>
+
+
+
+3.
+
+<script>
+	
+	var btn = document.getElementsByTagName("button")[0];
+	var textarea = document.getElementsByTagName("textarea")[0];
+
+
+	
+	//先要获取打钩的内容，将获得的内容存入一个新建的数组中
+
+	var arr =[];		
+	function(){
+	    for(var i = 0; i< 5; i++){
+		var inputs = document.getElementsByTagName("input")[i];
+		arr[i]= inputs.onclick();
+	    }
+	    return arr;//["北京""上海"" 深圳"]
+	}
+
+	//当点击中间按钮时触发事件，将arr的元素存入textarea中
+
+	btn.onclick = function(){
+	    textarea.innerHTML = arr[i];
+	    return textarea;
+	}
+
+
+
+</script>

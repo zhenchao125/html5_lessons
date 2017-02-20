@@ -1,0 +1,103 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.C
+09.C
+10.D
+11.C
+12.B
+13.B
+14.A
+15.C
+16.B
+17.D
+18.D
+19.A
+20.C
+21.D
+22.A
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.C
+30.C
+二、简答题
+
+1.
+数据类型
+Number,String,boolear,objest
+判断数据类型
+typeof
+
+
+2.
+document.getElementById("myDiv");
+document.getElementsByTagName("div")[0];
+document.getElementsByClassName("myDiv")[0];
+document.getElementsByName(test);
+
+3.
+创建新的元素：var a = document.createElement("a");
+创建文本节点：var t = docuemtnt.createTextNode("t");
+插入DIV标签：document.querySelector("div");
+
+
+4.
+alert();提示框
+confirm();警告框，可以设置一个判断语句，true返回什么，false返回什么
+prompt();输入框，可以让用户输入一段文本，判断是否为true或false
+
+5.
+innerHTML可以向HTML返回内容
+innerText 可以像HTML的标签内返回文本
+
+
+三、编程题：要求只需要js代码
+
+1.
+var date = new Date();
+date.setFullYear(2017);
+date.setMonth(1);
+date.setDate(20);
+document.write("今天是"+date.getFullYear+"年"+date.getMonth+"月"+date.getDate+"日,加油考试吧！");
+
+2.
+1.把字符串的数字存入数组
+var t= '34,6,-23,43,34,342,0,3';
+function f(t){
+	var arr = str.split(",");
+	return arr;
+}
+
+2.降序排序
+function(a,b){
+	return b-a;
+}
+
+3.求和
+ function(){
+	for(var i = 0;i<arr.length;i++){
+		arr[i]+=arr[i-1];
+	}
+}
+
+3.
+<script type = "text/javascript">
+	var inputs = document.getElementsByTagName("input");
+	var btn = document.getElementsByTagName("button")[0];
+	var text = document.getElementById("output");
+	btn.addElementListener("click",function(){
+		var va = inputs.value; 
+		if(inputs.style.checked ==checked){
+			
+		}
+	});
+</script>

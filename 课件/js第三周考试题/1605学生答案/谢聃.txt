@@ -1,0 +1,111 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.C
+03.C
+04.C 
+05.D
+06.D 
+07.D
+08.D
+09.C
+10.A
+11.C
+12.B
+13.B
+14.A 
+15.C
+16.C
+17.D
+18.D 
+19.A
+20.D
+21.B
+22.A
+23.B
+24.B
+25.A
+26.C
+27.D
+28.C
+29.C
+30.C
+二、简答题
+
+1.
+数据类型Nunber（数字）,String（字符串）,Nall(空)，undefined(未定义),Boolerm（布尔值）
+数据：typeof
+
+
+2.
+
+document.getElementById("myname");
+document.getElementsByTageName("div")[0];
+document.getElementsByName("test")[0];
+document.getElementsBy..
+
+
+3.
+document.createElementChilder()
+document.crealtTextNodle();
+div.appendChild("a")
+
+
+
+
+4.
+弹出输入框，点击确定后返回输入的值，点击返回键输入Null
+弹出警告框，只有确认键
+弹出确认框，点击确定输入true。点击取消输入false
+
+
+
+5.
+设置和获取一个节点里的全部内容，并设置标签的正确显示
+只能设置和获取元素的内容
+
+三、编程题：要求只需要js代码
+
+1.
+<script type=""text/javascript>
+var date = new Date();
+var year = date.getFullYear();
+var mounth = date.getMount();
+var day = date.getDate();
+
+docunment.write("今天是"+year+"年".mounth +"月"+day+"日".+"加油考试吧！")
+
+</script>
+2.
+
+var str = "34,6,-23,43,34,342,0,3"
+// 1.
+function getArray(str) {
+var arr = str.split(",");
+return arr
+}
+//2.
+function z (a,b){
+  return b-a;
+}
+//3.
+function add() {
+ for(var i = 0;i < arr.length;i++){
+sum += i 
+console.log 
+	}
+}
+
+3.
+<scripy ..>
+var  output = document.getElementById("output");
+var btn = document.getElementByTageName（"button"）[0]
+var input = document.getElenmentByTagName("input")
+
+btn.onclick = function(){
+output.innerHTML = "";
+for(var i = 0;i < length ;i++)
+if(inputs[i].checked){
+var a = inputs{i}.
+	}
+}
+console.log(i);

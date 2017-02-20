@@ -1,0 +1,128 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.C
+06.C
+07.D
+08.D
+09.A
+10.D
+11.D
+12.C
+13.B
+14.A
+15.C
+16.C
+17.C
+18.D
+19.A
+20.D
+21.B
+22.C
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+简单：String  Number  Boolean  Null Undefined  
+复杂：Function  Array   Object
+判断：typleof("");
+
+2.
+document.getElementById("myDiv");
+document.getElementByClassName("myDiv")[0];
+document.getElementByName("myDiv")[0];
+document.getElementByTayName("div")[0];
+
+3.
+创建元素： creatElement
+创建文本节点： creatTextNode
+追加：  var div = document.createElement("div");
+
+ 	var a = document.createElement("a");
+
+ 	div.appendChild(a);
+
+
+4.
+ alert（）需要用户知道某些信息，只有确认按钮 
+
+ confirm（）需要用户点击 确认或取消，返回一个布尔值
+
+ prompt（）如果用户点击取消，返回 null。如果用户点击确认，返回输入文本框内的文本。
+
+
+5.
+1. innerHTML  标签会被解析，只会把标签内输入的文本打印出来
+
+2. innerText  标签不会被解析，会把所有的文字打印出来，包括标签
+
+三、编程题：要求只需要js代码
+
+1.
+<script type="text/javascript">
+	var d = new Date();
+	document.write("今天是" + d.getFullYear() + "年" + d.getMonth() + "月" + d.getDate() + "日" + "，考试加油吧！");
+</script>
+
+
+2.
+定义一个函数1.
+<script type="text/javascript">
+	function a(){
+		var str = "34,6,-23,43,34,342,0,3";
+		var arr = str.split(",");
+	}
+	a();
+</script>
+
+定义一个函数2.
+<script type="text/javascript">
+	var arr = [34,6,-23,43,34,342,0,3];
+	arr.sort(b);
+	function b(a,b){
+		if(a>b){
+		return 1;
+		}
+		
+	}
+</script>
+
+定义一个函数3.
+<script type="text/javascript">
+	var arr = [34,6,-23,43,34,342,0,3];
+	for(var i = 0;i<arr.length;i++){
+		arr[i];
+		var sum = 0;
+		sum += arr[i]
+	}
+
+</script>
+
+
+3.
+<script type="text/javascript">
+	var Li = document.getElementsByTagName("li");
+	var Input = document.getElementsByTagName("input");
+	var but = document.getElementsByTagName("button")[0];
+	var Text = document.getElementsByTagName("textarea")[0];
+
+	but.onclick = function(){
+		var arr = [];
+		for(var i = 0;i < Input.length;i++){
+			if (Input[i].checked == true) {
+				arr.push(Li[i].lastChild.nodeValue);
+				Text.innerHTML = arr;
+			}
+		}
+	}
+</script>
+

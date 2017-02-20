@@ -1,0 +1,86 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.C
+03.A
+04.A
+05.C
+06.C
+07.D
+08.B
+09.D
+10.C
+11.C
+12.B
+13.B
+14.C
+15.D
+16.C
+17.D
+18.D
+19.D
+20.D
+21.A
+22.C
+23.C
+24.A
+25.A
+26.B
+27.A
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+字符串、数字、布尔、数组、对象、Null、Undefined
+typeof()
+
+
+
+2.
+ document.getElementById("myDiv")
+ document.getElementByClassName("myDiv")
+ document.getElementByName("myDiv")
+ document.getElementByTagName("Div")
+3.
+
+
+
+
+4.
+prompt() 是输入框 它给用户提供了一个输入框
+alert() 是警告框 只能点确定
+而confirm 是确认框 它可以返回两个值  点确定返回true 点取消返回false
+
+
+
+
+5.
+ innerHTML的内容会语义化  而innerText不会
+ 比如说innerHTML = "<a href='http://www.baidu.com' >百度一下</a>";
+      		则此时添加的内容为一个可以跳转到百度首页的名字为"百度一下"的超级链接
+      而innerText = "<a href='http://www.baidu.com' >百度一下</a>"; 添加的则是
+			 "<a href='http://www.baidu.com' >百度一下</a>"这个内容切不能够点击进入到百度首页
+三、编程题：要求只需要js代码
+
+1.
+<script>
+	var t = new Date();
+    document.write("今天是"+t.getFullYear()+"年"+
+                    	(t.getMonth()+1) +"月"+
+                    	t.getDay()+"日"+","+"我们加油考试吧!" );
+</script>
+
+
+2.
+<script>	
+  var arr = [34,6,-23,43,34,342,0,3];
+
+</script>
+  
+
+
+
+3.
+
+

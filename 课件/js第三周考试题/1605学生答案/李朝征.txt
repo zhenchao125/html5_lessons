@@ -1,0 +1,108 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.D
+09.C
+10.A
+11.C
+12.B
+13.B
+14.A
+15.C
+16.C
+17.D
+18.D
+19.A
+20.D
+21.B
+22.A
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+1.【答】js的数据类型有Null，Undefined，String，Number和Object等。
+判断一个数据的类型的操作符是typeof。
+
+2.【答】1）document.getElementById(“myDiv”);
+2)document.getElementByClassName(“myDiv”);
+3)document.getElementByName(“test”);
+4)document.body.firstElementChild;
+
+3.【答】1）DOM操作中，创建新元素的方法：
+document.createElement(“div”);
+2)创建文本节点：
+document.createTextNode(“content”);
+3)将a标签追加到一个div元素中：
+div.appendElement(document.createElement(“a”));
+
+4.【答】1)prompt()函数是弹出一个输入框，需要手动进行内容输入，然后点击“确认”返回输入框中的值，点击“取消”返回null。常用于需要用户输入数据的时候。2）alert()函数是弹出一个警告框，只有一个“OK”按钮，没有返回值。常用于需要提示一些警告信息的时候。3）confirm()函数是弹出一个确认框。点击“确认”按钮会返回true，点击“取消”按钮会返回false。常用于需要用户确认某一个操作的时候。
+
+5.【答】innerHTML属性是表示一个节点内部的HTML结构，而innerText属性仅仅只是一个节点内部的文本字符串。
+
+三、编程题：要求只需要js代码
+1. <script type=“text/javascript”>
+	var date = new Date();
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var day = date.getDate();
+	document.write(“今天是” + year + “年” + 
+	month + “月” + day + “日，加油考试吧！”);
+</script>
+
+2. <script type=“text/javascript”>
+	var str = “34,6,-23,43,34,342,0,3”;
+	//将字符串中的数字存入到数组中并返回数组
+	function getArray(str){
+	    var arr = str.split(“,”);
+	    return arr;
+	}
+	//对数组中的元素按照降序排列
+	function sortFromLargeToLittle(arr){
+	    for(var i = 0;i < arr. length - 1;i ++){
+		for(var j = 0;j < arr.length - 1 - i;j ++){
+		    if(arr[j] < arr[j + 1]){
+			var temp = arr[j];
+			arr[j] = arr[j + 1];
+			arr[j + 1] = temp; 
+		    }
+		}
+	    }
+	}
+	//计算数组中所有数字的和
+	function sumFromArray(arr){
+	    var sum = 0;
+	    for(var i = 0;i < arr. length;i ++){
+		sum += arr[i];
+	    }
+	    return sum;
+	}
+</script>
+
+3.<script type=“text/javascript”>
+        var inputs = document.getElementByTagName(“input”);
+        var button = document.getElementByTagName(“button”);
+        var textarea = document.getElementById(“output”);
+        var string = “”;
+	button.click = function(){
+	    for(var i = 0;i < inputs.length;i ++){
+		if(inputs[i].checked){
+		    string += inputs[i].innerHTML + “ ”;
+		}
+	    }
+	    textarea.innerHTML = string;
+	};
+</script>
+
+
+==========================================================
+

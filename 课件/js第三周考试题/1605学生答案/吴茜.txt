@@ -1,0 +1,118 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.D
+09.C
+10.D
+11.C
+12.B
+13.B
+14.B
+15.B
+16.C
+17.B
+18.D
+19.A
+20.D
+21.B
+22.A
+23.C
+24.A
+25.A
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+数据类型：字符串、数字、布尔、数组、对象、Null、Undefined
+
+
+操作符：typeof
+
+
+2.
+ var d1 = document.getElementById("myDiv");//通过ID
+
+ var d2 = document.getElementsByName("test");//通过name属性
+
+ var d3 = document.getElementsByTagName("div");//通过标签名
+
+ var d4 = document.getElementsByClassName("div");//通过class
+
+
+
+3.
+创建新元素：var d = document.createElement("div");
+
+创建文本节点：var dText = document.createTextNode("666666");
+
+添加a标签：d.innerHTML=’<a>6666666</a>’;
+
+
+4.
+alert()   弹出个提示框  （确定）
+confirm()  弹出个确认框  （确定，取消）
+prompt()  弹出个输入框    （请在框内输入）
+
+
+
+
+5.
+innerText和innerHTML都是将字符串放入hmtl标签中的一个函数
+innerHTMl他可以解析hmtl标记,获取到html标签
+
+innerText只支持普通字符串，不获取html标签
+
+三、编程题：要求只需要js代码
+
+1.
+
+var d = new Date();
+
+document.write("今天是"+d.getFullYear() + "年" + 
+(d.getMonth() + 1) + "月" + d.getDate() + "日"+",加油考试吧！");
+
+
+
+2.
+（1）var arr=[34,6,-23,43,34,342,0,3]
+	alert(arr.toString());
+	alert(arr);
+
+（2）var arr=[34,6,-23,43,34,342,0,3]
+      arr.sort();
+       document.write(arr);
+
+（3）var arr = [34,6,-23,43,34,342,0,3];
+     var value = eval(arr.join("+"));
+        console.log(value);
+
+3.
+
+/*
+var all=document.getElementsByTagName("button");
+	all.onclick=function (){
+
+
+		var cs=document.getElementsByName("c")
+		for(var i=0;i<cs.length;i++){
+			
+		if(cs[i].checked = true){
+			
+			document.getElementById('output').value=cs.value
+		};
+		
+		};	  
+};
+
+*/
+这些代码功能并没有实现
+

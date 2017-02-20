@@ -1,0 +1,143 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.D
+03.A
+04.A
+05.C
+06.C
+07.D
+08.C
+09.C
+10.D
+11.C
+12.C
+13.B
+14.A
+15.C
+16.B
+17.D
+18.D
+19.A
+20.D
+21.C
+22.B
+23.C
+24.A
+25.A
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+简单数据类型：number,string,boolean undefinde null
+复杂数据类型：object,array,function
+
+typeof
+
+2.
+document.getElementById("myDiv")
+document.getElementsByTagName("div")[0];
+document.getElementsByClassName("myDiv")[0];
+document.getElementsByName("test")[0];
+
+
+
+3.
+
+创建新元素:document.createElement();
+创建文本节点:document.createTextNode();
+将a标签追加到一个div元素中:
+var div=document.getElementsByTagName("div")[0];
+var text=document.createTextNode("askljfg");
+div.appendChild(text);
+
+
+4.
+
+prompt() 显示一个提示输入文本框，有 确定 和 取消按钮，返回值为用户在文本框中输入的文本内容
+alert（）显示一个提示框，只有确定按钮
+confirm（）显示一个带有“确定”和“取消”按钮的对话框，如果点击确定，则返回true，如果点击取消，则返回false
+
+
+5.
+innerHTML 设置或返回开始标签和结束标签中间部分的HTML代码，“”内填写的内容会被浏览器解析
+innerText 获取标签中的文本内容，“”内填写的内容不会被浏览器解析，而是以文本格式显示
+
+三、编程题：要求只需要js代码
+
+1.
+
+	<body>
+		<h1></h1>
+		<script type="text/javascript">
+			var h1=document.getElementsByTagName("h1")[0];
+			console.log(h1);
+			window.setInterval(function(){
+				var d=new Date();
+				var years=d.getFullYear();
+				var months=d.getMonth();
+				var days=d.getDate();
+				var times=d.getHours();
+				var minutes=d.getMinutes();
+				var seconds=d.getSeconds();
+				h1.innerHTML="今天是"+years+"年"+(months+1)+"月"+day+"日"+"，加油考试吧！";
+			},1000);
+			
+		</script>
+	</body>
+
+
+
+
+2.
+<script type="text/javascript">
+			var str= "34,6,-23,43,34,342,0,3";
+			var obj=str.split(",");
+			var num=[];
+			for(i=0;i<obj.length;i++){
+				
+				var a=parseInt(obj[i]);
+				num.push(a)
+			}
+
+			document.write(num);
+			
+			for(i=0;i<num.length-1;i++){
+				for(j=0;j<num.length-1-i;j++){
+					if(obj[j]<[j+1]){
+						var temp=obj[j];
+						obj[j]=obj[j+1];
+						obj[j+1]=temp;
+					}
+
+				}
+				
+			}
+			document.write("<br/>"+num);
+			
+		</script>
+
+
+
+3.
+<script type="text/javascript">
+	var inputs=document.getElementsByTagName("input");
+	var lis=document.getElementsByTagName("li");
+	var btn=document.getElementsByTagName("button")[0];
+	var textArea=document.getElementsByTagName("textarea")[0];
+	var arr=[];
+	for(var i=0;i<lis.length;i++){
+		lis[i].onchange=function(event){
+			var value=this.lastChild.nodeValue;
+			arr.push(value);
+		}
+	}
+	btn.onclick=function(){
+		var t=document.createTextNode(arr);
+		textArea.appendChild(t);
+	}
+</script>
+

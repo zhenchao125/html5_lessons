@@ -452,6 +452,65 @@ p {
 > | *border-image-outset* | 边框图像区域超出边框的量。                            |      |
 > | *border-image-repeat* | 图像边框是否应平铺(repeated)、铺满(rounded)或拉伸(stretched)。 |      |
 
+1. border-image-slice：这个属性的值表示的在把边框图片进行分割为9宫格时候的偏移量。每个border-image都会被这个属性分割成9宫格。比如下面的图片 （78 * 78），如果设置border-image-slice : 27，则会进行如下分割。
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-20/11745585-file_1487561208943_247b.png)
+
+2. border-image-repeat：设置蓝色快的拉伸或平铺模式。主要有四个值：streth拉伸(默认)、repeat重复、round重复、space重复。具体效果看下面的代码。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            float: left;
+            background-color: pink;
+            text-align: center;
+            line-height: 200px;
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            border: 27px solid red;
+            border-image-source: url("border.png");
+            border-image-slice: 27;
+            border-image-width: 27px;
+        }
+        div:nth-child(1){
+            border-image-repeat: stretch;
+        }
+        div:nth-child(2){
+            border-image-repeat: repeat;
+        }
+        div:nth-child(3){
+            border-image-repeat: round;
+        }
+        div:nth-child(4) {
+            border-image-repeat: space;
+        }
+        div:nth-child(5) {
+            border-image-repeat: round stretch;
+        }
+    </style>
+</head>
+<body>
+<div>stretch</div>
+<div>repeat</div>
+<div>round</div>
+<div>space</div>
+<div>round stretch</div>
+</body>
+</html>
+```
+
+
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-20/11724743-file_1487563422066_653d.png)
+
+
+
 
 
 # 六、背景相关属性

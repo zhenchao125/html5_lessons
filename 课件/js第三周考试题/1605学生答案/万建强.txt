@@ -1,0 +1,123 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.b
+02.d
+03.c
+04.a
+05.d
+06.c
+07.c
+08.d
+09.c
+10.d
+11.c
+12.c
+13.b
+14.a
+15.c
+16.c
+17.d
+18.d
+19.a
+20.d
+21.b
+22.a
+23.c
+24.b
+25.a
+26.b
+27.b
+28.c
+29.a
+30.c
+二、简答题
+
+1.
+js中的数据类型分为，基本数据类型，引用数据类型
+	基本数据类型：
+		number，Boolean，String，null，undefined
+	引用数据类型
+		数组（Array），函数（function）
+	
+判断一个数据类型的操作：typeOf（）
+
+2.
+	var a=document.getElementById("myDiv");
+	var a=document.querySelect("div")[0];
+	var a=document.getElementsByTagName("div")[0];
+	var a=document.getElementsByName("test");
+
+
+
+3.
+	创建新元素
+		document.createElement（标签元素名）
+	创建文本节点
+		document.createTextNode（文本内容）
+	
+	最加
+	div.appendChild（a）
+
+
+4.
+	alert（）是警告框，只有一个确认按钮
+	confirm（）是提示框，有两个按钮，分别是确认，取消，单击确认返回一个1，否则返回0
+	prompt（）是用户输入框，其中间有一个供用户输入内容的框，如果有内容，单击确认就返回用户输入的内容，如果没有内容，就返回空
+	
+
+
+5.	
+	innerHTML：用于获取或设置非表单元素的HTML元素的值，它与innerText的区别是，innerHTML浏览器会将其内容解析，而innerText中的内容浏览器不会将其解析，
+
+三、编程题：要求只需要js代码
+
+1.
+	var Date=new Date（）;
+	alert("今天是"+Date.getFullYear()+"年"+(Date.getMonth()+1)+"月"+Date.getDate()+"日，加油考试吧！");
+
+
+
+2.
+	1.
+		var b=[];
+		var a="34,6,-23,43,34,342,0,3";
+		function returnArray(){
+			var arr=a.split(",");
+			for(var i=0;i<arr.length;i++){
+				b.push(arr[i]);
+			}	
+			return b;
+		}
+	
+
+	2.	b.sort(function(a,b){
+			return b-a;
+		})
+	
+	
+	3.	var sum=0;
+		function Sum(){
+			for(var i=0;i<b.length;i++){
+				sum+=b[i];
+				
+			}
+			return sum;
+		}
+		alert("和为"+Sum());
+
+
+3.
+var checkBox=document.getElementsByTagName("input");
+var btn=document.getElementsByTagName("button")[0];
+var text=document.getElementsByTagName("textarea")[0];
+var b=[];//用于存放被勾选的选项
+btn.onclick=function(){
+	for(var i=0; i<cherkBox.length ; i++）{
+		if(checkBox[i].checked){
+			b.push(checkBox[i]);		
+
+		}
+	
+	}
+	var str=b.join('\n');
+	text.innerHTML=str;
+}

@@ -1,0 +1,111 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.B
+08.C
+09.C
+10.D
+11.C
+12.C
+13.B
+14.A
+15.B
+16.D
+17.C
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.B
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+数据类型有:number、String、boolean、null、undefined、function、object
+
+判断类型的操作符是typeof
+
+2.
+document.getElementById("myDiv"）;
+document.getElementsByClassName("myDiv")[0];
+document.getElementsByName("test");
+document.getElementsByTagName("div")[0];
+document.querySelector("#myDiv");
+
+3.
+创建新元素:document.creatElement("div");
+创建文本节点：document.creatTextNode();
+将a标签追加到div中：div.appendChild（a）;
+
+
+4.
+prompt()是一个可输入内容的文本框，有确定和取消按钮
+alert（）是一个有内容的文本提示框，只有确认按钮，不可以直接取消和输入内容
+confirm（）是一个有内容的文本提示框，有确认和取消按钮
+
+5.
+innerHTML和innerText都会把元素内容给替换掉，但是innerHTML是从元素的起始位置到终止位置的
+全部内容，包含html标签，innerText也是从元素的起始位置到终止位置，但不包含html标签。
+
+
+三、编程题：要求只需要js代码
+
+1.
+<script type="text/javascript">
+	var d=new Date();
+	console.log("今天是"+d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日,加油考试吧!");
+</script>
+
+
+
+2.
+var arr=[34,6,-23,43,34,342,0,3];
+function a(){
+	return arr;
+}
+function b(){
+	
+	for(var i=0;i<arr.length;i++){
+		for(var j=arr.length-1;j>i;j--){
+		var t;
+        	if(a[i]<a[j]){
+        		t=a[j];
+        		a[i]=t;
+      		}
+		}
+		return arr;
+	}
+}
+function c(){
+	var sum=0;
+	for(var i=0;i<arr.length;i++){
+	sum+=arr[i];
+	alert(sum);
+	}
+}
+
+
+
+3.
+<scritpt type="text/javascript">
+	var inputs=document.getElementsByTagName("input")[0];
+	var text=document.getElementsByTagName("textarea")[0];
+	document.getElementsByTagName("button").onclick=function(){
+		for(var i=0;i<inputs.length;i++){
+		if(inputs[i].checked){
+			text.innerHTML=inputs[i].value+" ";
+		}
+		}
+	}
+</script>

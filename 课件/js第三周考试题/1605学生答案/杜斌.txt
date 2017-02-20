@@ -1,0 +1,141 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.B
+04.A
+05.D
+06.C
+07.D
+08.D
+09.C
+10.D
+11.C
+12.B
+13.B
+14.A
+15.C
+16.C
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.B
+28.C
+29.B
+30.C
+二、简答题
+
+1.
+基本
+number
+boolean
+string
+undefined
+null
+对象
+Object
+
+判断数据类型： typeof
+比如：alert(typeof NaN);
+
+2.
+document.getElementById("myDiv")
+document.querySelector("#myDiv")
+document.querySelector(".myDiv")
+document.getElementsByName("test")[0]
+document.getElementsByTagName("div")[0]
+document.getElementsByClassName("myDiv")[0]
+
+3.
+var a= createElement("a")
+createTextNode(文本)
+div.addendChild(a)
+//假设div是个div元素
+
+4.
+alert 弹出提示，本身不会有返回值。
+confirm 弹出提示，有确认和取消按钮，点击不同按钮会返回不同的boolean值。
+prompt 弹出提示，并提供输入框，最后会返回输入的内容。
+三者的参数都会显示在弹出的提示中。
+
+你要的例子：
+if(confirm("老师你确定这卷子的选择器不有点太坑了吗？请确认")){
+    alert("确认");
+}else{
+    var a = prompt("你觉得速成班考试不出基础知识题，出这种题目合适吗？")
+    alert(a);
+}
+
+5.
+innerHTML 里面如果是html标签，则会被浏览器解释为html元素
+innerText 只能输出text，即使写html标签，也不会被浏览器识别。
+
+
+三、编程题：要求只需要js代码
+
+1.
+	var dateA = new Date();
+        var str = "今天是"+dateA.getFullYear()+"年"+dateA.getMonth()+"月"+dateA.getDate()+"日，加油考试吧！";
+        document.write(str);
+
+
+
+2.
+    var str="34,6,-23,43,34,342,0,3";
+    //第一题
+    function f1(str){
+        var array = str.split(",");
+        return array;
+    }
+    //第二题
+    function f2(arr){
+        arr.sort(function(a,b){
+            return b-a;
+        })
+        return arr;
+    }
+    //第三题
+    function f3(){
+        var sum = 0;
+        arr.forEach(function(e,index){
+            sum = sum+Number(e);
+        })
+    }
+    //我就不调用了，反正你只要求写函数！
+
+
+
+3.
+var ele1 = document.getElementsByTagName("button")[0];
+    ele1.onclick = function(e){
+        var str1 = "";
+        var inputele1 = document.getElementsByTagName("input");
+        for(var i =0;i<inputele1.length;i++){
+            if(inputele1[i].checked){
+                var str2 = inputele1[i].innerText || inputele1[i].nextSibling ;
+                //因为不知道单标签能不能支持innerText，使用用一下nextSibling，不知道IE是否支持
+                //因为nextSibling可以取出text，利用这种设定，应该可以？
+                str1+=str2+"；"; 
+            }
+        }
+        document.getElementById("output").innerText= str1;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+

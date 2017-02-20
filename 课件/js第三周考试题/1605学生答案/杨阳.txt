@@ -1,0 +1,145 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.D
+09.C
+10.D
+11.B
+12.C
+13.B
+14.C
+15.C
+16.C
+17.D
+18.D
+19.A
+20.D
+21.D
+22.A
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.A
+30.D
+二、简答题
+
+1.数据类型分为：
+	基本类型：number；string；null；undefined；boolean；
+	复杂类型：object
+
+判断数据类型的操作符：typeof()
+
+
+
+2.document.getELementById("myDiv");
+document.getELementByTagName("div");
+document.getELementByClassName("myDiv");
+document.getELementByName("test");
+
+
+
+
+3.创建新元素：createElenment("");
+创建文本节点：createTextNode();
+将a标签添加到div中：
+		var div = getElementByTagName("div");
+		createAtrribute("a",div);
+
+
+
+
+4.prompt():提示框，可用于用户输入一段文本的对话框，有确认和取消按钮，取消代表输入null
+alert()：警告框，用于系统警告性文本的对话框，当页面加载到alert需要用户手动确认，否则不会继续执行代码
+confirm()：确认框，用户用户确认信息的对话框
+
+
+
+
+5.1
+innerHTML:从对象的起始位置到终止位置的全部内容替换掉，包含html标签；
+innerText：也是从起始位置到终止位置的全部内容替换掉，但不包含html标签。
+
+
+三、编程题：要求只需要js代码
+
+1.
+<script type="text/javascript">
+
+var d = new Date();
+var year = d.getFullyear();//获取当前年份
+var month = d.getMonth()+1;//获取当前月份
+var day = d.getDate();//获当前日期
+document.write="今天是"+"year"+"年"+"month"+"月"+"day"+"日，加油考试吧";
+
+</script>
+
+
+
+2.
+
+<script type="text/javascript">
+var str="34,6,-23,43,34,34,342,0,3";
+	//定义一个函数1：将字符串存入一个数组，并返回这个数组
+	function arr(){
+		for(var i=0;i<str.length;i++){
+			var arrs=[];
+			arrs.push()=str[i].value;//存入字符串的数据到数组中
+		}
+		retrun arrs;
+	}
+	arr();
+	//定义一个函数2：对数组中的元素降序排列
+
+	function sort(){
+		str.sort(funtion(a,b){
+			if(a-b){
+			retrun a,b;
+			}else{retrun b,a}
+		})
+		
+	}
+	sort();
+	//定义一个函数3：计算数组所有数字的和
+	
+	function sum(){
+	for(var i=0;i<str.length;i++){
+	sum+=str[i].value;
+	}
+	retrun sum;
+	}
+	sum();
+</script>
+
+
+3.
+<script type="text/javascript">
+
+var lis=document.getElementByTagName("li");
+var button=document.getElementByTaName("button")[0];
+var output=document.getElementById("output");
+//监听li列表项发生改变
+lis.addEventListen(onchange,fuction(){
+var arr=[];
+//当li选项被选中后，存入数组
+if(lis=="checkbox"){
+arr.push()=lis.value;
+retrun arr;
+}
+},false);
+//监听button按钮点击事件
+button.onclick=function{
+output.innerHTML=arr.value;//数组数据显示
+}
+
+</script>
+
+
+

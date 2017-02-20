@@ -1,0 +1,121 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.C
+03.C
+04.D
+05.C
+06.C
+07.D
+08.C
+09.C
+10.D
+11.B
+12.B
+13.B
+14.B
+15.C
+16.C
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.B
+30.C
+二、简答题
+
+1.Number、String、boolean、Object、null、Undefined、NaN
+  
+typeof
+
+
+2.
+var Div = document.getElementById("myDiv");
+var Div = document.getElementByClassName("myDiv")[0];
+var Div = document.getElementsByTagName("div")[0];
+var Div = document.querySelector(".myDiv");
+3.
+	var a =document.createElement("a");//创建新元素
+	var a1 = document.createTextNode("");//创建文本节点
+	div.appendChild(a);//把新创建的a标签追加到div标签中
+
+
+
+4.	alert()是警告框
+	prompt()是提示框
+	confirm()是确认框  返回的是一个布尔值
+
+
+
+
+5.innerHTML 表示某个标签内的所有内容，用它可以获取到某个标签中的所有内容，包括文本内容
+  innerText 表示某个标签内的文本内容，用它只能获取到某个标签中的文本内容
+
+
+三、编程题：要求只需要js代码
+
+1.
+	<script type = "text/javascript">
+	var d = new Date();
+	var tYear,tMonth,tDay;
+	tYear 	= d.getFullYear();
+	tMonth 	= d.getMonth()+1;
+	tDay 	= d.getDate();
+	document.write("今天是"+ tYear +"年"+ tMonth +"月"+ tDay +"日，加油考试吧");
+
+	</script>
+
+
+2.
+	<script type = "text/javascript">
+	var a,a1,sum = 0;
+	function er1(){
+		a = "34,6,-23,43,34,342,0,3";
+		a1 = a.match(/\d/gi);
+		alert(a1);
+		return a1;
+	}
+	er1();
+	function er2(){
+		a1.sort(function(x,y){
+		return x-y;	
+		})
+		alert(a1);
+	}
+	er2();
+	function er3(){
+		for(var i=0;i<a1.length;i++){
+			sum += parseInt(a1[i]);
+		}
+		alert(sum);
+	}
+	er3();
+
+	</script>
+
+3.
+	<script type = "text/javascript">
+	
+  	var text1 = document.getElementsByTagName("textarea")[0];
+    	var input1 = document.getElementsByTagName("input");
+    	var a;
+    	var b = [];
+    document.getElementsByTagName("button")[0].onclick = function(){     	
+    	for(var i = 0;i<input1.length;i++){
+      	a = input1[i];
+      	if(a.checked){
+        	b.push(a.parentElement.innerText);
+      	}
+   	 }
+    	text1.innerHTML = b.join(",");
+   	}
+
+	</script>
+

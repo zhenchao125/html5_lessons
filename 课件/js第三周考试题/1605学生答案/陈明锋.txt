@@ -1,0 +1,125 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.D
+09.C
+10.D
+11.C
+12.C
+13.B
+14.A
+15.C
+16.B
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+基本数据类型：string、number、boolean、null、undefined
+引用数据类型：object、array、function
+判断一个数据的类型的操作符：typeof
+
+2.
+document.getElementById("myDiv");
+document.getElementByClassName("myDiv")[0];
+document.getElementByName("test")[0];
+document.getElementByTagName("div")[0];
+
+3.
+创建新元素：document.creatElement("");
+创建文本节点：document.creatTextNode("");
+将a标签追加到一个div元素中：div.appendChild("a");
+
+4.
+prompt();用于提示用户输入数据，点击确定按钮后返回输入框中的值，点击取消按钮返回null
+如：提示用户输入用户名和密码
+
+alert();用于确保用户能够得到某些信息，必须由用户点击确定按钮后才能继续操作，没有返回值
+如：当用户输入错误信息的时候，弹出警告框提醒用户输入错误
+
+confirm();用于验证用户是否接受某些操作，点击确认按钮后返回true，点击取消按钮后返回false
+如：询问用户是否确定执行删除操作
+
+5.
+innerHTML：返回当前标签的开始和结束标签之间的所有内容，设置的内容会被解析为HTML代码
+innerText：获取当前标签中的文本内容，不能获取到子标签，会把标签作为纯文本处理，不会把标签解析为HTML代码
+
+三、编程题：要求只需要js代码
+
+1.
+var d = new Date(2017,2,20);
+var Year = d.getFullYear();
+var Month = d.getMonth();
+var Date = d.getDate();
+document.write("今天是" + Year + "年" + Month + "月" + Date + "日，加油考试吧！");
+
+
+2.
+str = "34,6,-23,43,34,342,0,3";
+函数1：
+function fun1(str){
+    var arr = [];
+    var s = str.split(",");
+    for(var i = 0; i < s.length; i++){
+        arr[i] = Number(s[i]);
+    }
+    return arr;
+}
+函数2：
+function fun2(arr){
+    var temp;
+    for(var i = 0; i < arr.length-1; i++){
+        for(var j = i+1; j < arr.length; j++){
+            if(arr[i] < arr[j]){
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    return arr;
+}
+函数3：
+function fun3(arr){
+    var sum = 0;
+    for(var i = 0; i < arr.length; i++){
+        sum = sum + arr[i];
+    }
+    return sum;
+}
+
+
+3.
+var inputs = document.getElementsByTagName("input");
+var output = document.getElementById("output");
+var btn = document.getElementsByTagName("button")[0];
+
+btn.onclick = function(){
+    var arr = [];
+    var j = 0;
+    for(var i = 0; i < inputs.length; i++){
+        if(inputs[i].checked){
+            arr[j] = inputs[i].innerText;
+            j++;
+        }
+    }
+    output.innerHTML = arr.join("\n");
+}
+
