@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function isLeapYear (year) {
+			//能被4整除并且不能被100整除的，或者能被400整除的数字是闰年
+			var result = ((year%4 === 0) && (year%100 !== 0)) || (year%400 === 0) ? true : false;
+			//注意要返回结果，因为忘记导致没有输出
+			return result;
+		}
+		
+		var count = 0;
+		for (var year = 1500; year <= 2016; year++) {
+			if (isLeapYear(year)) {
+				document.write(year + " ");
+				count++;
+				if (count%5 === 0) {
+					document.write("<br />");
+				}
+			}
+		}
+	</script>
+</body>
+</html>

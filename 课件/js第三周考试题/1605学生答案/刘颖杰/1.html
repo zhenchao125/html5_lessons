@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		document.write("1500-2016年间的所有闰年"+"<br />");
+		(function(from,to){
+			for(var i=from;i<to;i++){
+				if(year(i)){
+					document.write("&nbsp"+i+"年是闰年");
+				}
+			}
+		})(1500,2016);
+		
+		function year(num){
+			if(num>0){
+				var a=num%4===0&num%100!==0||num%400===0?true:false;
+				return a;
+			}
+		}
+	</script>
+</html>

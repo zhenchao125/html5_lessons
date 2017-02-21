@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #div{
+            width:200px;
+            height:100px;
+            background:#D5E2BB;
+            display: inline-block;
+            font-size: 40px;
+            text-align: center;
+            line-height: 100px;
+            vertical-align:middle;
+            border: 1px solid #000;
+        }
+        #a{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<a href="javascript:void(0);" id="a">看不清，换一个</a>
+</body>
+<script type="text/javascript">
+    var odiv=document.getElementById("div");
+    var oA=document.getElementById("a");
+    //封装一个随机函数，生成一个随机数
+    function Random(min,max){
+        var rand=Math.random()*(max-min+1);
+        rand=Math.floor(rand)+min;
+        return rand;
+    }
+    function RandomNumber(){
+        var arr=[];
+        for(var i=0;i<6;i++){
+            arr[i]=Random(0,9);
+        }
+        return arr;
+    }
+    var arr1=RandomNumber();
+    var str=arr1.join("");
+    odiv.innerHTML=str;
+    oA.onclick=function(){
+        var arr1=RandomNumber();
+        var str=arr1.join("");
+        odiv.innerHTML=str;
+    }
+</script>
+</html>

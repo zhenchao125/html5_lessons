@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{
+				width: 150px;
+				height: 50px;
+				background: greenyellow;
+				float: left;
+				text-align: center;
+			}
+			#div p {
+				line-height: 0px;
+				font-size: 35px;
+			}
+			a{
+				display: inline-block;
+				margin-top:30px ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"><p></p></div>
+		<a href="javascript:;">看不清，换一张</a>
+		<script type="text/javascript">
+			var a = document.getElementsByTagName("a")[0];
+			var p = document.getElementsByTagName("p")[0];
+			function Random(min,max){
+				var random = Math.random() * (max - min);
+				random = Math.floor(random) + min;
+				return random;
+			}
+			function build(){
+				var arr = [];
+				for(var i = 0; i < 6; i++){
+					arr[i]=Random(0,10);
+				}
+				return arr;
+			}
+			var arr1;
+			a.onclick = function(){
+				arr1 = build();
+				str = arr1.join("");
+				p.innerHTML = str;
+			}
+		</script>
+	</body>
+</html>

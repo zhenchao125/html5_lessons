@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		
+		var arr = [];
+    for (var i = 1500; i <= 2016; i++) {
+        if(arr.length%6==0){
+            arr.push("<br>");
+        }
+        if(i%4==0&&i%100!==0||i%400==0) {
+            arr.push(i);
+        }
+        console.log(arr);
+    }
+    document.write(arr.join(" "));
+
+
+	</script>
+</html>

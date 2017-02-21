@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 80px;
+				height: 30px;
+				background: #d5e2bb;
+				border: 1px solid #000;
+				display: inline-block;
+				text-align: center;
+				line-height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			as
+		</div>
+		<a href="javascript:_tv();">
+			看不清，换一张
+		</a>
+		<script type="text/javascript">
+			var box = document.getElementById("box");
+
+			var arr = [1,2,3,4,5,6,7,8,9,"q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m","Q","W","E","R","T","Y","U","I","O","P","A","S","D","F","G","H","J","K","L","Z","X","C","V","B","N","M"];
+			function _ck(){
+				var n = "";
+				for(var i =0;i<6;i++){
+            		n+=arr[num(0,arr.length-1)];
+       			}
+        		return n;
+			}
+			function num(min,max){
+		        return Math.floor(Math.random()*(max-min+1)+ min);
+		    }
+			function _tv(){
+				box.innerHTML = _ck();
+			}
+			_tv();
+			
+		</script>
+	</body>
+</html>

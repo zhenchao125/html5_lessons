@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{
+				width: 400px;
+	    		height: 150px;
+	    		background: gray;
+	    		display: inline-block;
+	    		vertical-align: middle;
+	    		font-size: 100px;
+	    		text-align: center;
+	    		color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<a href="javascript:void(0);" id="a">看不清，换一个</a>
+		<script type="text/javascript">
+			var div=document.getElementById("div");
+			var a=document.getElementById("a");
+			function Random(min,max){
+			var rand = Math.random() * (max - min + 1);
+			rand = Math.floor(rand) + min;
+			return rand;
+			}
+	
+			function RandomNumber(){
+			var arr = [];
+			for(var i = 0; i < 6; i++){
+				arr[i] = Random(0,9);
+			}
+			return arr;
+			}
+			
+			var arr1 = RandomNumber();
+			var str = arr1.join("");
+			div.innerHTML = str;
+			
+			a.onclick=function(){
+				var arr1 = RandomNumber();
+				var str = arr1.join("");
+				div.innerHTML = str;
+			}
+			
+			var aAdd=['a-z'];
+			console.log(aAdd)
+		</script>
+	</body>
+</html>

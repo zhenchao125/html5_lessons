@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+	document.write("1500-2016中所有的闰年有"+"<br/>");
+	var j=0;
+		for(var i=1500;i<=2016;i++){	
+			if(i%4==0&&i%100!==0||i%400==0){
+				j++;
+				document.write(i+" ");
+				if(j%5==0){
+					document.write("<br/>");
+				}
+			}	
+		}
+	</script>
+</html>

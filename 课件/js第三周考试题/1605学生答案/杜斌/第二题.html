@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid;
+            background:#D5E2BB ;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+<body>
+<div></div><a href="javascript:;" onclick="sj()">看不清，换一种</a>
+</body>
+<script type="text/javascript">
+    var chars="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var div1 = document.getElementsByTagName("div")[0];
+    function sj(){
+        var f="";
+        for(i = 0;i<6;i++){
+            f += chars.charAt(getRandom(0,63)-1);
+        }
+        div1.innerText = f;
+    }
+    sj();
+
+    function getRandom(max,min){
+        var rand = Math.random() * (max - min + 1);
+
+        rand = Math.floor(rand)+min;
+
+        return rand;
+    }
+
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#myDiv{
+				display: inline-block;
+				width: 300px;
+				height: 100px;
+				background: #ccc;
+				font-size: 70px;				color: midnightblue;
+				text-align: center;
+				line-height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="myDiv">
+			
+		</div>
+		<a href="###">看不清，换一个</a>
+	</body>
+	<script type="text/javascript">
+		var clicka = document.getElementsByTagName("a")[0];
+		
+		/*刷新页面时加载*/
+		var arr = randomArr().join("");
+		myDiv.innerHTML = arr;
+		
+		/*点击a标签时加载*/
+		clicka.onclick = function(){
+			arr = randomArr().join("");
+			myDiv.innerHTML = arr;
+		}
+		
+		function randomArr(){
+			var str = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLMNBVCXZ1234567890';
+			var len = str.length;
+			var arr = [];
+			for(var i = 0; i < 6; i++){
+//				arr[i] = randomNum(0,9);
+				arr[i] = str.charAt(Math.floor(Math.random() * len));
+			}
+			return arr;
+		}
+		
+		/*声明随机数*/
+		function randomNum(min,max){
+			var rand = Math.random() * (max - min +1);
+			rand = Math.floor(rand) + min;
+			return rand;
+		}
+//		console.log(str.length)
+	
+		
+	</script>
+</html>

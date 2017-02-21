@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1500-2016所有闰年</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var arr = [""];
+    for (var i = 1500; i <= 2016; i++) {
+        if((i % 4 == 0) && (i % 100 != 0 || i % 400 == 0)){
+            arr.push(i);
+            if(arr.length % 6 ==0){
+                arr.push("<br>");
+            }
+        }
+    }
+    document.write(arr.join(" "));
+</script>
+</html>

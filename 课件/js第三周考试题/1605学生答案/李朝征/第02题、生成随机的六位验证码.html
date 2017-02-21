@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrap{
+				text-align: center;
+				margin: 50px auto;
+			}
+			#box{
+				height: 35px;
+				width: 100px;
+				background-color: #CDDEAE;
+				border: 1px solid black;
+				line-height: 35px;
+				display: inline-block;
+				font: bold;
+			}
+			#a{
+				color: #5889D9;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box">
+			</div>
+			<a href="javascript:;" id="refresh">看不清，换一张</a>
+		</div>
+		<script type="text/javascript">
+			var box = document.getElementById("box");
+			var refresh = document.getElementById("refresh");
+			var arr = ["0","1","2","3","4","5","6","7","8","9",
+			"a","b","c","d","e","f","g","h","i","j",
+			"k","l","m","n","o","p","q","r","s","t",
+			"u","v","w","x","y","z","A","B","C","D",
+			"E","F","G","H","I","J","K","L","M","N",
+			"O","P","Q","R","S","T","U","V","W","X",
+			"Y","Z"];
+			function getRandomStr(){
+				var s = "";
+				for (var i = 0; i < 6; i++) {
+					var index = getRandomNumber(0,arr.length);
+					s += arr[index];
+				}
+				box.innerHTML = s;
+			}
+			getRandomStr();
+			//点击刷新
+			refresh.onclick = function(){
+				getRandomStr();
+			}
+			//产生随机数的函数
+			function getRandomNumber(m,n){
+				return parseInt(Math.random()*(n-m) + m);
+			}
+		</script>
+	</body>
+</html>

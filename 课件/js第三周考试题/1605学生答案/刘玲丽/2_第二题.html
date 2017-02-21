@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 50px;
+				background-color: gainsboro;
+				display: inline-block;
+				font-size: 20px;
+				text-align: center;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<a href="javascript:;" id="a">看不清,换一个</a>
+	</body>
+	<script type="text/javascript">
+		var box=document.getElementById("box");
+		var A=document.getElementById("a");
+		//定义一个验证码
+		var code;
+		box.innerHTML = createCode();
+		function createCode(){ 	
+    		code = "";   
+     		var codeLength = 6;//验证码的长度     
+     		var random = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R',  
+     'S','T','U','V','W','X','Y','Z');//随机数  
+     		for(var i = 0; i < codeLength; i++) {//循环操作  
+        		var index = Math.floor(Math.random()*36);//取得随机数的索引（0~35）  
+       			 code += random[index];//根据索引取得随机数加到code上  
+   			}  
+       		return code; 
+		} 
+		A.onclick=function(){
+			box.innerHTML = createCode();
+		}
+	</script>
+</html>

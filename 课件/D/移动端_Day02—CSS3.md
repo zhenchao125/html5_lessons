@@ -509,7 +509,13 @@ p {
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-20/11724743-file_1487563422066_653d.png)
 
+> border-image的这些属性也可以使用简写。
 
+```css
+/* image-source | image-slice | image-width | image-repeat */
+border-image: url("/images/border.png") 30 30 repeat;
+border-image: url("/images/border.png") 30 30 stretch;
+```
 
 
 

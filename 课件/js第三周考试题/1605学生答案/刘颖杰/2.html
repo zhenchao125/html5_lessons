@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			 #box{  
+               	width: 200px; 
+               	height: 50px;
+                border:1px solid #000;  
+                letter-spacing:2px;  
+                color:black;
+                font-size: 30px;  
+                text-align: center;
+            }
+		</style>
+	</head>
+	<body>
+	   
+        <input id="box" onclick="createCode()"/>  
+        <input type = "button" value = "看不清,换一张" onclick = "change()"/>  
+   
+	</body>
+	<script type="text/javascript">
+    var str;
+    function createStr(){
+        str = "";
+        var strLength = 6;
+        var box = document.getElementById("box");
+        var arr = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z',
+        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r', 's','t','u','v','w','x','y','z');
+        for(var i = 0; i < strLength; i++){
+             var index = Math.floor(Math.random()*62);
+             str += arr[index]; 
+        }
+       	box.value = str;
+    }
+    function change(){
+    	 createStr();
+    }
+	</script>
+</html>

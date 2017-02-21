@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	div {
+		width: 100px;
+		height: 50px;
+		background-color: #808080;
+		line-height: 50px;
+		text-align: center;
+		color: #D9A00A;
+		font-size: 30px;
+		display: inline-block;
+		/*margin: 0 auto;*/
+	}
+	
+</style>
+</head>
+
+<body>
+<div></div>
+<a href="">看不清，换一张</a>
+<script type="text/javascript">	
+	var a=[];
+	var selectChar = new Array(0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+	for(var i = 0; i<6;i++){
+		var z = parseInt(Math.random()*57);
+		a[i] = selectChar[z];
+		selectChar.splice(z,1);
+		console.log(z);console.log(a)
+	}
+	document.getElementsByTagName("div")[0].innerHTML = a.join("");
+//	alert(a);
+</script>
+</body>
+
+</html>

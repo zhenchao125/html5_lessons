@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId" class="hide">
+                        	<span>1、由字母、数字、下划线、点、减号组成</span><br />
+                        	<span>2、只能以数字、字母开头或结尾，且长度为4-18</span>
+                        </div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId" class="hide">
+                        	<span>密码长度为6-16</span>
+                        </div>
+                        
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId" class="hide">
+                        	<span>两次输入的密码不一致，请重新输入</span>
+                        </div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId" class="hide">
+                        	<span>1、包含字母、数字、下划线以及特殊字符</span><br />
+                        	<span>2、长度为4-20个字符</span>
+                        </div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId" class="hide">
+                        	<span>1、手机号码以13、15、18开头</span><br />
+                        	<span>2、手机号码由11位数字组成</span>
+                        </div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId" class="hide">
+                        	<span>请输入您常用的邮箱</span>
+                        </div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name="sub" type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript">
+	var inputs = document.getElementsByClassName("inputs");
+	var sub = document.getElementsByName("sub");
+	var uni,rpi,nni,tel,emi;
+	//判断是否可以提交
+	sub.onclick = function(){
+		if(uni!=-1&&pwi!=-1&&nni!=-1&&tel!=-1&&emi!=-1){
+		alert("您已提交");
+	}else{
+		alert("您不能提交");
+	}
+	}
+	//判断用户名
+	inputs[0].onfocus = function (){
+		userNameId.style.display="block";
+	}
+	inputs[0].onblur = function (){
+		userNameId.style.display="none";
+		var n=inputs[0].value;
+		console.log(n);
+		var na = /^[0-9A-Za-z][\w_.-]{2,16}[0-9A-Za-z]$/gi;
+		uni = n.search(na);
+		console.log(uni);
+		if(uni == -1){
+			userNameId.style.display="block";
+			userNameId.style.borderColor="red";
+			userNameId.style.backgroundColor="#FFF1E4";
+		}
+	}
+	//判断密码
+	inputs[1].onfocus = function (){
+		pwdId.style.display="block";
+	}
+	var p,pa,pwi;
+	inputs[1].onblur = function (){
+		pwdId.style.display="none";
+		p=inputs[1].value;
+		pa = /\w{6,16}/gi;
+		pwi = p.search(pa);
+		if(pwi == -1){
+			console.log(pwi);
+			pwdId.style.display="block";
+			pwdId.style.borderColor="red";
+			pwdId.style.backgroundColor="#FFF1E4";
+		}
+	}
+	//再次输入密码
+		inputs[2].onblur = function (){
+		repwdId.style.display="none";
+		var r=inputs[2].value;
+		var ra = pa;
+		rpi = pwi;
+		if(r!= p){
+			console.log(rpi);
+			repwdId.style.display="block";
+			repwdId.style.borderColor="red";
+			repwdId.style.backgroundColor="#FFF1E4";
+		}
+	}
+//判断昵称
+	inputs[4].onfocus = function (){
+		nickNameId.style.display="block";
+	}
+	inputs[4].onblur = function (){
+		nickNameId.style.display="none";
+		var c=inputs[4].value;
+		var ca = /.{4,20}/gi;
+		nni = c.search(ca);
+		if(nni == -1){
+			console.log(nni);
+			nickNameId.style.display="block";
+			nickNameId.style.borderColor="red";
+			nickNameId.style.backgroundColor="#FFF1E4";
+		}
+	}
+	//判断手机号
+	inputs[5].onfocus = function (){
+		telId.style.display="block";
+	}
+	inputs[5].onblur = function (){
+		telId.style.display="none";
+		var t=inputs[5].value;
+		var ta = /^1[358]\d{9}$/g;
+		tel = t.search(ta);
+		if(tel == -1){
+			console.log(tel);
+			telId.style.display="block";
+			telId.style.borderColor="red";
+			telId.style.backgroundColor="#FFF1E4";
+		}
+	}
+	//判断邮箱
+	inputs[6].onfocus = function (){
+		emailId.style.display="block";
+	}
+	inputs[6].onblur = function (){
+		emailId.style.display="none";
+		var e=inputs[6].value;
+		var ea = /\w+@.+[.](com|cn)$/gi;
+		emi = e.search(ea);
+		if(emi == -1){
+			console.log(emi);
+			emailId.style.display="block";
+			emailId.style.borderColor="red";
+			emailId.style.backgroundColor="#FFF1E4";
+		}
+	}
+</script>
+</html>

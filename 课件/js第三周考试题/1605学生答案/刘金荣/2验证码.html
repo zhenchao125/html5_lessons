@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gb2312">
+    <title>验证码</title>
+    <style>
+        #code {
+            width: 100px;
+            text-align: center;
+            border: 1px solid black;
+            background-color: #C0B0E0;
+        }
+    </style>
+</head>
+<body>
+<div id="code">
+
+</div>
+<a href="验证码.html">看不清换一个</a>
+<script>
+
+    //当前验证码获取的随即范围
+    var codeStr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdegfhijklmnopqrstuvwxyz";
+    var code = document.getElementById("code");
+
+    function getCode() {
+        var str = "";　　　　　　　　//定义一个空字符串
+        for (var i = 0; i < 6; i++) {    // 生个6个随机字符
+            var sum = getRandom(0, 61);      //调用getRandom方法
+            str += codeStr.charAt(sum);      //把codeStr字符串里，我们指定获取ran
+        }
+        code.innerHTML = str;       //呈现在页面上
+    }
+    getCode();
+
+    //随机数
+    function getRandom(n, m) {
+        return Math.round(Math.random() * (m - n) + n);  //随机数的方法
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+    var str = "";
+    var arr = [];
+    //获取闰年
+    for (var i = 1500; i <= 2016; i++) {
+        if ((i % 4 == 0 && i % 100 != 0) || (i % 400 == 0)) {
+            arr.push(i);
+        }
+    }
+    //每5个数换行
+    for (var i = 0; i < arr.length; i++) {
+        if ((i + 1) % 5 == 0) {
+            str += arr[i] + "<br />";
+        } else {
+            str += arr[i] + "  ";
+        }
+    }
+    document.write(str);
+
+</script>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = [];
+			for(i=1500;i<=2016;i++){
+				if(i%400==0||i%4==0&&i%100!=0){
+					a.push(i);	
+				}else{
+					continue;
+				}
+			}
+			for(var j=0;j<a.length;j++){				
+				if(j%5==0){
+					document.write("<br>"+a[j]+" ");
+				}else{
+					document.write(a[j]+" ");
+				}
+			}
+			
+		</script>
+	</body>
+</html>

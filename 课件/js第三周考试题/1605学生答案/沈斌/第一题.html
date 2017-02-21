@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<p></p>
+<script>
+var p = document.querySelector("p");
+var msg="",count=0,i;
+for( i = 1500;i<=2016;i++){
+    if((i%4==0)&&(i%100!=0)||(i%400==0)){
+       msg += i;
+       count++;
+    }
+    if(count==5){
+        count=0;
+        msg +="<br>";
+    }
+
+}
+p.innerHTML= msg+" ";
+
+</script>
+</body>
+</html>

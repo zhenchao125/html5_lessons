@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{
+            display: inline-block;
+            width: 100px;
+            line-height: 60px;
+            background:grey;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<span id="number"></span><a href="javascript:;">看不清，换一张</a>
+<script>
+    var oNum = document.getElementById("number");
+    var oText = document.querySelector("a");
+    var num=[],str=[];
+    function roodomNumber(min, max) {
+        return Math.random() * (max - min + 1) + min;
+    }
+    function show() {
+        for(var k= 0 ;k<3;k++){
+            num[k] = parseInt(roodomNumber(0,9));
+            str[k] = String.fromCharCode(parseInt(roodomNumber(65,90)));
+        }
+        var arr = num.concat(str);
+        //随机排序
+        oNum.innerHTML = arr.sort(function(){return Math.random()-0.5;}).join("");
+    }
+    oText.addEventListener("click",show);
+    show();
+</script>
+</body>
+</html>

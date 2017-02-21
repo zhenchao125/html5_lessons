@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>生成验证码</title>
+		<style type="text/css">
+			#div{
+				width: 400px;
+				height: 150px;
+				background: lightcyan;
+				display: inline-block;
+				line-height: 150px;
+				color: teal;
+				font-size: 100px;
+				text-align: center;
+				font-weight: bold;
+				font-family: "Microsoft YaHei";
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">894856</div>
+		<a href="javascript:;" id="a">看不清，换一个</a>
+	</body>
+	<script type="text/javascript">
+		var oDiv = document.getElementById("div");
+		var oA = document.getElementById("a");
+		function Random(min,max){
+			var rand = Math.random()*(max-min+1);
+			rand = Math.floor(rand)+min;
+			return rand;
+		}
+		function RandomNumber( ){
+			var arr = [ ];
+			for(var i = 0; i<3; i++){
+				arr[i] = str1.charAt(Math.floor(Math.random() * 52)) + Random(0,9) ;
+			}
+			return arr;
+		}
+		var str1 = "qwertyuiopasdfghjklmnbvcxzQWERTYUIOPLKJHGFDSAZXCVBNM0123456789";
+	
+   	
+ 		arr1 = RandomNumber();
+		str = arr1.join("");
+		oDiv.innerHTML= str;
+		oA.onclick = function(){
+			var arr1 = RandomNumber();
+			var str = arr1.join(""); 
+			oDiv.innerHTML =str;
+		}
+	</script>
+</html>

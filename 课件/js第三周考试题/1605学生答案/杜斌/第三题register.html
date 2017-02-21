@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId" ></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript">
+    //提示方法，获取焦点后提示，会清理掉之前的提示然后添加自己的提示
+    var from1=document.getElementById("registerForm");
+
+    from1.addEventListener("focus",function(e){
+        if(e.target.tagName=="INPUT"){
+            //如果获取焦点的元素是userName
+            if(e.target.id=="userName"){
+                var userName = document.getElementById("userNameId");
+                userName.className ="import_prompt";
+                userName.innerText = "1.由字母、数组、下划线、点、减号组成\n2.只能以数组、字母开头或结尾，且长度为4-18";
+            }
+            //密码
+            if(e.target.id=="pwd"){
+                var pwd = document.getElementById("pwdId");
+                pwd.className ="import_prompt";
+                pwd.innerText = "密码长度为6-16";
+            }
+            //昵称
+            if(e.target.id=="nickName"){
+                var nickName = document.getElementById("nickNameId");
+                nickName.className ="import_prompt";
+                nickName.innerText = "1.包含字母、数组、下划线以及@!#$%&*特殊符号 \n 2.长度为4-20个字符";
+            }
+            //手机号码
+            if(e.target.id=="tel"){
+                var tel = document.getElementById("telId");
+                tel.className ="import_prompt";
+                tel.innerText = "1.手机号码以13,15,18开头\n2.手机号码由11位数字组成";
+            }
+            //邮箱
+            if(e.target.id=="email"){
+                var email = document.getElementById("emailId");
+                email.className ="import_prompt";
+                email.innerText = "请输入您常用的电子邮箱";
+            }
+        }
+    },true);
+
+    //验证方法，失去焦点或点击提交按钮时验证，会清理掉之前的提示然后添加自己的提示，根据验证结果显示指定样式的内容。
+    from1.addEventListener("blur",function(e){
+        if(e.target.tagName=="INPUT"){
+            //如果获取焦点的元素是userName
+            if(e.target.id=="userName"){
+                var userName2 = document.getElementById("userNameId");
+                if(e.target.value==""){
+                    userName2.className ="error_prompt";
+                    userName2.innerText = "通行证用户名不能为空，请输入通行证用户名";
+                }else{
+                    //js正则太麻烦了，根本没法用，不信？上课时的例子拿出来，把值写两遍，你看能不能验证。
+                    pwd2.className ="ok_prompt";
+                    pwd2.innerText = "格式正确";
+                }
+            }
+            //密码
+            if(e.target.id=="pwd"){
+                var pwd2 = document.getElementById("pwdId");
+                var pwd2Val=e.target.value;
+                if(pwd2Val==""){
+                    pwd2.className ="error_prompt";
+                    pwd2.innerText = "密码不能为空，请输入密码";
+                }else if(pwd2Val.length>16||pwd2Val.length<6){
+                    pwd2.className ="error_prompt";
+                    pwd2.innerText = "密码长度6-16";
+                }else{
+                    pwd2.className ="ok_prompt";
+                    pwd2.innerText = "格式正确";
+                }
+            }
+            //昵称
+            if(e.target.id=="nickName"){
+                var nickName2 = document.getElementById("nickNameId");
+                var nickName2Val=e.target.value;
+                if(nickName2Val==""){
+                    nickName2.className ="error_prompt";
+                    nickName2.innerText = "昵称不能为空，请输入昵称";
+                }else if(nickName2Val.search(/[^0-9a-zA-Z_@!#$%&*]/gi)>0||(nickName2Val.length>20||nickName2Val.length<4)){
+                    nickName2.className ="error_prompt";
+                    nickName2.innerText = "1.包含字母、数组、下划线以及@!#$%&*特殊符号 \n 2.长度为4-20个字符";
+                }else{
+                    nickName2.className ="ok_prompt";
+                    nickName2.innerText = "格式正确";
+                }
+            }
+            //手机号码
+            if(e.target.id=="tel"){
+                var tel2 = document.getElementById("telId");
+                var tel2Val = e.target.value;
+                if(tel2Val==""){
+                    tel2.className ="error_prompt";
+                    tel2.innerText = "关联手机号不能为空，请输入关联手机号";
+                }else if(tel2Val.search(/^(13|15|18)/i)<0||(tel2Val.length!=11)||tel2Val.search(/\D/i)!=-1) {
+                    tel2.className = "error_prompt";
+                    tel2.innerText = "1.手机号码必须以13、15、18开头 \n 2.由长度为11位的数组组成";
+                }
+                else{
+                    tel2.className ="ok_prompt";
+                    tel2.innerText = "格式正确";
+                }
+            }
+            //邮箱
+            if(e.target.id=="email"){
+                var email2 = document.getElementById("emailId");
+                if(e.target.value==""){
+                    email2.className ="error_prompt";
+                    email2.innerText = "保密邮箱不能为空，请输入保密邮箱";
+                }else{
+                    //js正则太麻烦了
+                    pwd2.className ="ok_prompt";
+                    pwd2.innerText = "格式正确";
+                }
+            }
+            //重复密码
+            if(e.target.id=="repwd") {
+                var repwd2 = document.getElementById("repwdId");
+
+                var pwd3 = document.getElementById("pwd").value;
+                if (e.target.value == "") {
+                    repwd2.className = "error_prompt";
+                    repwd2.innerText = "重复密码不能为空，请输入重复密码";
+                }else if(e.target.value!=pwd3){
+                    repwd2.className = "error_prompt";
+                    repwd2.innerText = "两次密码输入不一致，请重新输入";
+                }else{
+                    repwd2.className ="ok_prompt";
+                    repwd2.innerText = "格式正确";
+                }
+            }
+        }
+    },true);
+</script>
+</html>

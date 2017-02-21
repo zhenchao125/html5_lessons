@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script >
+    function runnian(){
+        var count = 0;
+        for(var a = 1500;a<=2016;a++){
+            if(a%400==0||a%4==0&&a%100!=0){
+                document.write(a+"&nbsp");
+                count++;
+                if(count%5==0){
+
+                    document.write("<br>");
+
+
+                }
+            }
+        }
+    }
+    runnian();
+</script>
+</html> 

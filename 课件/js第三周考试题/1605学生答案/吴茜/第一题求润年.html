@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+	<p>点击按钮输出1500-2016年中的闰年</p>
+	<!--<input type="text" id="num"/>-->
+	<input type="button" value="按钮" id="submit"/>
+	<script type="text/javascript">
+
+		document.getElementById("submit").onclick = function(){
+			var j=2016;var x=5;
+		for(var v=1500;v<j;v++){
+  			 if(v % 4===0 && v % 100 !== 0 || v % 400 === 0){
+			
+				 document.write(v+" ");
+				 
+
+			}else{
+					 document.write(" ");
+
+ 			}  
+		}
+		
+		}
+	
+		
+		
+		
+		
+	/*	var isLeapYear = function(d){
+    var year = d.getFullYear();
+    return !!((year & 3) == 0 && (year % 100 || (year % 400 == 0 && year)));
+};
+var getNextLeapYear = function(year){
+    year = parseInt(year,10);
+    var b = isLeapYear(year);//判断是否是闰年
+    var result = '';//返回结果
+    for(var i=year;i<year+5;i++){
+        if(isLeapYear(i)){
+            result = i;
+            break;
+        }
+    }
+    return result;
+};
+var r = getNextLeapYear(2000);//2000
+var rr = getNextLeapYear(2001);//2004
+*/
+	</script>
+</body>
+
+</html>

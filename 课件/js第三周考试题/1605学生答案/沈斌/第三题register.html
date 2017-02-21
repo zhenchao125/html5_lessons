@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="Id1"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="Id2"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="Id3"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="Id4"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="Id5"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="Id6"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript">
+    var inputs = document.getElementsByTagName("input");
+    var oTips = document.getElementsByClassName("userNameId");
+    var reg = [],content;
+    //添加提示
+    function  addTips(i) {
+        switch (i){
+            case 0:
+                reg[0] = /^[0-9a-z][\w\.-]{3,17}$/gi;
+                msg="只能以字母、数字、“_”、的组合，4-18个字符";
+                document.getElementById("Id1").innerHTML = msg;
+                break;
+            case 1:
+                reg[1] = /^(.+){6,16}$/gi;
+                msg="密码长度为6-16个字符";
+                document.getElementById("Id2").innerHTML = msg;
+                break;
+            case 2:
+                reg[2] = /^(.+){6,20}$/gi;
+                msg="请再次输入密码";
+                document.getElementById("Id3").innerHTML = msg;
+                break;
+            case 6:
+                reg[6] = /^(.+){4,20}$/gi;
+                msg="包含数字字母下划线以及特殊符号，长度在4-20之间";
+                document.getElementById("Id4").innerHTML = msg;
+                break;
+            case 7:
+                reg[7] = /^1[358]\d{9}$/gi;
+                msg="手机号以13,15,18开头，共11位";
+                document.getElementById("Id5").innerHTML = msg;
+                break;
+            case 8:
+                reg[8]=/^\w+@.+\.(com|cn)$/gi
+                msg="请输入你常用的电子邮箱";
+                document.getElementById("Id6").innerHTML = msg;
+                break;
+            default:
+                break;
+        }
+    }
+
+    //清空提示符
+    function clear() {
+        document.getElementById("Id1").innerHTML = "";
+        document.getElementById("Id2").innerHTML = "";
+        document.getElementById("Id3").innerHTML = "";
+        document.getElementById("Id4").innerHTML = "";
+        document.getElementById("Id5").innerHTML = "";
+        document.getElementById("Id6").innerHTML = "";
+
+    }
+
+
+    for(let i= 0;i<inputs.length;i++){
+
+        //验证
+        function isTrue() {
+            content = inputs[i].value;
+            if(reg[i].test(content)){
+               console.log("good");
+            }
+            else if(content!=""){
+                console.log("false");
+                switch (i){
+                    case 0:
+                        msg="只能以数字、字母开头或结尾，长度为4-18";
+                        document.getElementById("Id1").innerHTML = msg;
+                        document.getElementById("Id1").style.color = "red";
+                        break;
+                    case 1:
+                        msg="密码长度为6-16";
+                        document.getElementById("Id2").innerHTML = msg;
+                        document.getElementById("Id2").style.color = "red";
+                        break;
+                    case 2:
+                        msg="两次输入不一致";
+                        document.getElementById("Id3").innerHTML = msg;
+                        document.getElementById("Id3").style.color = "red";
+                        break;
+                    case 6:
+                        msg="长度为4-20";
+                        document.getElementById("Id4").innerHTML = msg;
+                        document.getElementById("Id4").style.color = "red";
+                        break;
+                    case 7:
+                        msg="手机输入不正确，请重新输入";
+                        document.getElementById("Id5").innerHTML = msg;
+                        document.getElementById("Id5").style.color = "red";
+                        break;
+                    case 8:
+                        msg="邮箱格式不正确，请重新输入";
+                        document.getElementById("Id6").innerHTML = msg;
+                        document.getElementById("Id6").style.color = "red";
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else{
+                //不写了
+                console.log("不能为空");
+            }
+        }
+        //获得焦点
+        inputs[i].onfocus = function () {
+            if(this.value.length>0)return;
+            clear();
+            addTips(i);
+        }
+        //失去焦点
+        inputs[i].onblur = function () {
+            console.log(i);
+            clear()
+            isTrue();
+        }
+    }
+
+</script>
+</html>

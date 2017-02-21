@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 200px;
+				height: 70px;
+				background: #ccc;
+				display: inline-block;
+				font-size: 40px;
+				line-height: 70px;
+				text-align: center;
+				letter-spacing: 3px;
+				color:blue;
+		}
+		a{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+	<a href="#" id="aaa">看不清，换一张</a>
+	<script type="text/javascript">
+		//封装方法
+		function bbb(){
+		var sun=document.getElementById("div");
+		var arr =[0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+		var num=Array(6);
+		for(var i = 0; i<6; i++){
+			var j=parseInt(Math.random() * 63);
+			num[i] = arr[j];
+		}
+		sun.innerHTML=num.join("");
+		}
+		bbb();
+		//调用
+		var aaa=document.getElementById("aaa");
+		aaa.onclick=function(){
+			bbb();
+		}
+	</script>
+</body>
+</html>

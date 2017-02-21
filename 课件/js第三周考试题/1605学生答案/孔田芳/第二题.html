@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #NumBer{
+            width: 400px;
+            height: 150px;
+            background: #ccc;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 100px;
+            color: #96ff38;
+        }
+    </style>
+</head>
+<body>
+<div id="NumBer"></div>
+<a href="#">看不清，换一张</a>
+</body>
+<script type="text/javascript">
+    var Odiv = document.getElementById("NumBer");
+    var OA = document.getElementsByTagName("a")[0];
+
+    //创建随机数，放大倍数
+    function Random(max,min){
+        var random = Math.floor(Math.random() * (max - min +1)) + min;
+        return random;
+    }
+    //获取随机数，
+    var arr = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z'];
+    function randomNumber(){
+        var arr1 = [];
+        for (var i = 0; i < 6; i++) {
+            arr1[i] = arr[Random(0,62)];
+        }
+        return arr1;
+    }
+    //未点击时出现随机数
+    var arr2 = randomNumber();
+    Odiv.innerHTML = arr2.join("");
+    //点击获取随机数
+    OA.onclick = function () {
+        var arr2 = randomNumber();
+        Odiv.innerHTML = arr2.join("");
+    }
+</script>
+</html>

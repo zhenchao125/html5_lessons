@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>验证码</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		.wrap{
+			text-align:center;
+			padding-top: 350px;
+		}
+		#box{
+			border: 1px solid #111;
+			width:100px;
+			height: 50px;
+			text-align: center;
+			display: inline-block;
+			background-color: pink;
+			line-height: 50px;
+			font-weight:bold;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div id="box">
+		</div>
+		<a href="javascript:;" id="change">看不清楚，再换一张</a>
+	</div>
+</body>
+<script type="text/javascript">
+	var box = document.getElementById('box');
+	var change = document.getElementById("change");
+
+	// var arr = /(0-9a-zA-Z)/gi;
+	// var arr = /^[0-9a-zA-Z]$/gi;
+	var arr = ["0","1","2","3","4","5","6","7","8","9"];
+	function createCode(){
+		var s = "";
+		for (var i = 0;i < 6; i++) {
+			var r = getIntergeRandom(0,arr.length);
+			s += arr[r];
+		}
+		box.innerHTML = s;
+	}
+
+	createCode();
+
+	 change.onclick = function(){
+	 	createCode();
+	 	return false;
+	 }
+	 function getIntergeRandom(m,n){
+
+	 	return parseInt(Math.random()*(n-m)+m);
+	 }
+</script>
+</html>

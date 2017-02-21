@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input id="input" type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    var registerForm = document.getElementById("registerForm");
+    var userName = document.getElementById("userName");
+    var userNameId = document.getElementById("userNameId");
+    var pwd = document.getElementById("pwd");
+    var pwdId = document.getElementById("pwdId");
+    var repwd = document.getElementById("repwd");
+    var repwdId = document.getElementById("repwdId");
+    var realName = document.getElementById("realName");
+    var nickName = document.getElementById("nickName");
+    var nickNameId = document.getElementById("nickNameId");
+    var tel = document.getElementById("tel");
+    var telId = document.getElementById("telId");
+    var email = document.getElementById("email");
+    var emailId = document.getElementById("emailId");
+    var input = document.getElementById("input");
+
+    //用户名获得焦点
+    userName.onfocus = function () {
+        createPromptCSS(userNameId);
+        userNameId.innerText = "1.由字母、数字、下划线、点、减号组成" + "\n" + "2.只能以数字、字母开头或结尾，且长度为4--18";
+    }
+    //用户名失去焦点的时候
+    userName.onblur = function () {
+        var inTxt = userName.value;
+        var reg = /.{4,18}/;
+        if(reg.test(inTxt)){
+            createRightCss(userNameId);
+            userNameId.innerText = "输入正确"
+        }else if (inTxt == ""){
+            createNotCss(userNameId);
+            userNameId.innerText = "通行证用户名不能为空,请输入通行证用户名"
+        }
+        else{
+            createNotCss(userNameId);
+            userNameId.innerText = "1.由字母、数字、下划线、点、减号组成" + "\n" + "2.只能以数字、字母开头或结尾，且长度为4--18";
+        }
+    }
+    //密码获得焦点
+    pwd.onfocus = function () {
+        createPromptCSS(pwdId);
+        pwdId.innerText = "密码长度为6--16";
+    }
+    //密码失去焦点的时候
+    pwd.onblur = function () {
+        var inTxt = pwd.value;
+        var reg = /.{6,16}/;
+        if(reg.test(inTxt)){
+            createRightCss(pwdId);
+            pwdId.innerText = "输入正确";
+        }else if(inTxt == ""){
+            createNotCss(pwdId);
+            pwdId.innerText = "密码不能为空,请输入密码";
+        }else{
+            createNotCss(pwdId);
+            pwdId.innerText = "密码不正确,请输入正确密码";
+        }
+    }
+
+    //重复密码
+    repwd.onfocus = function () {
+        var txt = repwd.value;
+        createPromptCSS(repwdId);
+        repwdId.innerText = "请输入相同的密码";
+    }
+    repwd.onblur = function () {
+        var txt = repwd.value;
+        if (txt == ""){
+            createNotCss(repwdId);
+            repwdId.innerText = "重复密码不能为空,请输入重复密码密码";
+        }
+        else{
+            createNotCss(repwdId);
+            repwdId.innerText = "两次输入的密码不一致,请重新输入";
+        }
+    }
+
+    //昵称
+    nickName.onfocus = function () {
+        createPromptCSS(nickNameId);
+        nickNameId.innerText = "1.包好字母、数字、下划线、以及@！#￥%*特殊字符 \n 2.长度为4 - 20个字符";
+    }
+    //昵称失去焦点的时候
+    nickName.onblur = function () {
+        var inTxt = nickName.value;
+        var reg = /.{4,20}/;
+        if(reg.test(inTxt)){
+            createRightCss(nickNameId);
+            nickNameId.innerText = "输入正确";
+        }else if(inTxt == ""){
+            createNotCss(nickNameId);
+            nickNameId.innerText = "昵称不能为空,请输入昵称";
+        }else{
+            createNotCss(nickNameId);
+            nickNameId.innerText = "1.长度为4 - 20个字符";
+        }
+    }
+
+    //关联手机号
+    tel.onfocus = function () {
+        createPromptCSS(telId);
+        telId.innerText = "1.手机号码以13 15 18 开头 \n 2.手机号码由11位数字组成";
+    }
+    //关联手机号码失去焦点的时候
+    tel.onblur = function () {
+        var inTxt = tel.value;
+        var reg = /(13|15|18)\d{9}/;
+        if(reg.test(inTxt)){
+            createRightCss(telId);
+            telId.innerText = "输入正确";
+        }else if(inTxt == ""){
+            createNotCss(telId);
+            telId.innerText = "关联手机号不能为空,请输入关联手机号码";
+        }else{
+            createNotCss(telId);
+            telId.innerText = "关联手机号码不正确,请输入正确的手机号码";
+        }
+    }
+    //邮箱
+    email.onfocus = function () {
+        createPromptCSS(emailId);
+        emailId.innerText = "请输入您常用的电子邮箱";
+    }
+    //昵称失去焦点的时候
+    email.onblur = function () {
+        var inTxt = email.value;
+        var reg = /^([a-zA-Z0-9_\.\-]+)@([a-zA-Z0-9_\.\-]+)\.([a-zA-Z]{2,4})$/;
+        if(reg.test(inTxt)){
+            createRightCss(emailId);
+            emailId.innerText = "输入正确";
+        }else if(inTxt == ""){
+            createNotCss(emailId);
+            emailId.innerText = "保密邮箱不能为空,请输入保密邮箱";
+        }else{
+            createNotCss(emailId);
+            emailId.innerText = "1.请输入正确的邮箱";
+        }
+    }
+
+
+    input.onclick = function () {
+        if(userNameId || pwdId || repwdId || nickNameId || telId || emailId){
+            alert("注册成功");
+        }
+    }
+
+
+    // 失去焦点的时候,如果对了,显示这个
+    function createRightCss(Parent) {
+        Parent.setAttribute("class","ok_prompt")
+    }
+    // 失去焦点的时候,如果错了,显示这个
+    function createNotCss(Parent) {
+        Parent.setAttribute("class","error_prompt")
+    }
+    //获取焦点的时候,提示的方法
+    function createPromptCSS(Parent) {
+        Parent.setAttribute("class","import_prompt");
+    }
+</script>
+</body>
+</html>

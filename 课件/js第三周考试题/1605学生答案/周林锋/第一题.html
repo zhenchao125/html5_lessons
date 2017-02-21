@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [];
+			for(var x =1500;x<=2016;x++){
+				if(x%4==0 && (x%100!=0 || x%400==0)){
+					arr.push(x);
+				}
+			}
+			console.log(arr)
+			for(var i = 0; i< arr.length;i++){
+				if(i%5==0 && i!=0){
+					document.write(" "+"<br>");
+				}
+				document.write(arr[i]+" ");
+			}
+		</script>
+	</body>
+</html>

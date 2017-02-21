@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 60px;
+				border: 1px solid black;
+				background: greenyellow;
+				display: inline-block;
+				text-align: center;
+				/*vertical-align: middle;*/
+				line-height: 60px;
+				font-size: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">12d8r9</div>
+		<a href="">看不清，换一张</a>
+	</body>
+	<script type="text/javascript">
+		var boxs = document.getElementById("box");
+		var a = document.getElementsByTagName("a");
+		var code = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
+		var arr = code.split("");
+//		console.log(arr);
+		var newArr = new Array(6);
+		
+		function getCode(){
+			for(var i=1;i<=6;i++){
+				var index = parseInt((Math.random()*62));
+				newArr[i] = arr[index];
+			}
+			boxs.innerHTML = newArr.join("");
+		}
+		getCode();
+		
+		a.onclick = function(){
+			getCode();
+			return false;
+		}
+		
+		
+	</script>
+</html>
+<!-- 实现点击“看不清，换一张”随机生成六位验证码（可包含数字和大小写字母）-->

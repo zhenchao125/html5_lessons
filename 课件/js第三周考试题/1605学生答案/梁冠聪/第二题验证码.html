@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style type="text/css">
+        div{
+            width: 100px;
+            height: 40px;
+            background-color: #D6E3BC;
+            border: 1px solid #000;
+            float: left;
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+        }
+        a{
+            display: block;
+            margin-top: 25px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="div"></div>
+    <a href="#" id="a">看不清，换一张</a>
+</body>
+<script type="text/javascript">
+    var str = "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+    var arr = str.split("");
+    var div = document.getElementById("div");
+    var a = document.getElementById("a");
+    var len = arr.length;
+    function ran(from,to) {
+        return parseInt(Math.random() * (to - from + 1)+from);
+    }
+    for (var i = 0; i < 6; i++) {
+        div.appendChild(document.createTextNode(arr[ran(0,len-1)]));
+    }
+    a.onclick = function () {
+        div.innerHTML = "";
+        for (var i = 0; i < 6; i++) {
+            div.appendChild(document.createTextNode(arr[ran(0,len-1)]));
+        }
+    }
+</script>
+</html>

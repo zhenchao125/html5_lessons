@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+   	 	<link type="text/css" rel="stylesheet" href="css/register.css" />
+   	 	<style type="text/css">
+   	 		
+   	 	</style>
+	</head>
+	<body>
+		<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+	var registerForm=document.getElementById("registerForm");
+	var userNameId=document.getElementById("userNameId");
+	var pwdId=document.getElementById("pwdId");
+	var inputs=document.getElementsByClassName("inputs");
+	var divs=document.getElementsByTagName("div");
+	for(var i=2;i<divs.length;i++){
+		divs[i].setAttribute("class","import_prompt")
+	}
+	//循环遍历dd标签	
+	for(var i=0;i<divs.length;i++){
+		var newElement=document.createElement("span");
+		divs[i].appendChild(newElement);//添加span标签
+	}
+	var spans=document.getElementsByTagName("span");
+	//给input添加focus事件
+	for(var i=0;i<inputs.length;i++){
+		
+		inputs[i].onfocus=function(){
+			
+			for(var i=0;i<inputs.length;i++){
+				
+			switch(i){
+			case 1:
+			var newText=document.createTextNode("")
+			spans[i].appendChild(newText);
+			spans[i].innerText="1、由字母、数字、下划线、点、减号组成"+"\n"+"2、只能以数字、字母为开头或结尾，且长度为4-18"
+			break;
+			case 2:
+			var newText=document.createTextNode("")
+			spans[i].appendChild(newText);
+			spans[i].innerText="密码长度为6-16"
+			break;
+			case 3:
+			var newText=document.createTextNode("")
+			spans[i].appendChild(newText);
+			spans[i].innerText="密码长度为6-16"
+			break;
+			case 4:
+			var newText=document.createTextNode("")
+			spans[i].appendChild(newText);
+			spans[i].innerText="1、包含字母、数字、下划线、以及@!&*"+"\n"+"2、长度为4-20个字符";
+			break;
+			case 5:
+			var newText=document.createTextNode("")
+			spans[i].appendChild(newText);
+			spans[i].innerText="1、手机号以13、15/18开头"+"\n"+"2、手机号由11位数字组成";
+			break;
+			case 6:
+			var newText=document.createTextNode("")
+			spans[i].appendChild(newText);
+			spans[i].innerText="1、由字母、数字、下划线、点、减号组成"+"\n"+"2、只能以数字、字母开头或结尾，长度为4-18";
+			break;
+		}
+			}
+		}
+	}
+	
+
+	inputs[0].onblur=function(){
+		var inTxt = userName.value;
+        var reg = /.{4,18}/;
+        if(reg.test(inTxt)){
+        	
+            spans[0].innerText = "输入正确";
+        }else if (inTxt == ""){
+            spans[0].innerText = "通行证用户名不能为空,请输入通行证用户名"
+        }
+        else{
+           spans[0].innerText = "1.由字母、数字、下划线、点、减号组成" + "\n" + "2.只能以数字、字母开头或结尾，且长度为4--18";
+        }
+	}
+	inputs[1].onblur=function(){
+		 var inTxt = pwd.value;
+        var reg = /.{6,16}/;
+        if(reg.test(inTxt)){
+            spans[1].innerText = "输入正确";
+        }else if(inTxt == ""){
+            spans[1].innerText = "密码不能为空,请输入密码";
+        }else{
+            spans[1].innerText = "密码不正确,请输入正确密码";
+        }
+	}
+</script>
+	</body>
+</html>

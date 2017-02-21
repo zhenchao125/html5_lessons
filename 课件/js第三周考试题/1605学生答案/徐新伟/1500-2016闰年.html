@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title>1500-2016闰年</title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		for(let i=1500,j=0;i<2016;i++){
+			if(i% 4 == 0 && i %100 !=0  || i%400 == 0){
+				j++;
+				if(j%5==0){
+					document.write(i+"<br>");
+				}
+				else{
+					document.write(i+" ");
+				}
+			}
+		}
+	</script>
+</html>

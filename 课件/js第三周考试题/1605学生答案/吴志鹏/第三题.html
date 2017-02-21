@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+	var inputs = document.getElementsByClassName("inputs");
+	var userName = document.getElementById("userNameId");
+	var pwd = document.getElementById("pwdId");
+	var repwd = document.getElementById("repwdId");
+	var nick = document.getElementById("nickNameId");
+	var tel = document.getElementById("telId");
+	var email = document.getElementById("emailId");
+	var pass;
+	
+	for(var i = 0;i<inputs.length;i++){
+		this.onfocus = function () {
+            fa(i);
+        }
+        this.onblur = function (){
+            change(i);
+        }
+	}
+	function fa(num){
+		var classname = "import_prompt";
+		var text1="";
+		switch(num){
+			case 0:
+				userName.setAttribute("class",classname);
+					text1 = "1、由数字、字母、点、下划线、减号组成" +"<br>" +                    "2、只能以数字，字母开头或结尾，且长度为4-18";
+				userName.innerHTML=text1;
+				break;
+			case 1:
+				pwd.setAttribute("class",classname);
+					text1 = "密码长度为6-16";
+				pwd.innerHTML=text1;
+				break;
+			case 2:
+				repwd.setAttribute("class",classname);
+					text1 = "两次输入的密码不一致，请重新输入";
+				repwd.innerHTML=text1;
+				break;
+			case 4:
+				nick.setAttribute("class",classname);
+					text1 = "1、长度为4-20个字符";
+				nick.innerHTML=text1;
+				break;
+			case 5:
+				tel.setAttribute("class",classname);
+					text1 = "关联手机输入不正确，请重新输入";
+				tel.innerHTML=text1;
+				break;
+			case 6:
+				email.setAttribute("class",classname);
+					text1 = "关联手机输入不正确，请重新输入";
+				email.innerHTML=text1;
+				break;
+		}
+	}
+	function change(num){
+		var text2 ="";
+		var count;
+		switch(num){
+			case 0:
+				var reg = /^[0-9A-Za-z]{2,14}[0-9A-Za-z]$/g; 
+				if(inputs[0].value = ""){
+					count = false;
+					text2 = "通行证用户名不能为空，请输入通行证用户名";
+				}else{
+					if (reg.test(inputs[0].value)) {
+	                        count = true;
+	                    	text2 = "正确";
+	                }else{
+	                    chount = false;
+	                    text2 = "1.由数字、字母、点、下划线、减号组成"+"<br>"+                            "2.只能以数字，字母开头或结尾，且长度为4-18";
+	                }
+				}
+			info(nickName,text2,count);
+	        break;
+	        
+	        case 1:
+				var reg = /^[0-9A-Za-z]{2,14}[0-9A-Za-z]$/g; 
+				if(inputs[1].value = ""){
+					count = false;
+					text2 = "通行证用户名不能为空，请输入通行证用户名";
+				}else{
+					if (reg.test(inputs[1].value)) {
+	                        count = true;
+	                    	text2 = "正确";
+	                }else{
+	                    chount = false;
+	                    text2 = "1.由数字、字母、点、下划线、减号组成"+"<br>"+                            "2.只能以数字，字母开头或结尾，且长度为4-18";
+	                }
+				}
+			info(pwd,text2,count);
+	        break;
+	        case 2:
+				var reg = /^[0-9A-Za-z]{2,14}[0-9A-Za-z]$/g; 
+				if(inputs[2].value = ""){
+					count = false;
+					text2 = "通行证用户名不能为空，请输入通行证用户名";
+				}else{
+					if (reg.test(inputs[2].value)) {
+	                        count = true;
+	                    	text2 = "正确";
+	                }else{
+	                    chount = false;
+	                    text2 = "1.由数字、字母、点、下划线、减号组成"+"<br>"+                            "2.只能以数字，字母开头或结尾，且长度为4-18";
+	                }
+				}
+			info(repwd, text2,count);
+	        break;
+	        case 4:
+				var reg = /^[0-9A-Za-z]{2,14}[0-9A-Za-z]$/g; 
+				if(inputs[4].value = ""){
+					count = false;
+					text2 = "通行证用户名不能为空，请输入通行证用户名";
+				}else{
+					if (reg.test(inputs[4].value)) {
+	                        count = true;
+	                    	text2 = "正确";
+	                }else{
+	                    chount = false;
+	                    text2 = "1.由数字、字母、点、下划线、减号组成"+"<br>"+                            "2.只能以数字，字母开头或结尾，且长度为4-18";
+	                }
+				}
+			info(nick, text2,count);
+	           break;
+	        case 5:
+				var reg = /^[0-9A-Za-z]{2,14}[0-9A-Za-z]$/g; 
+				if(inputs[5].value = ""){
+					count = false;
+					text2 = "通行证用户名不能为空，请输入通行证用户名";
+				}else{
+					if (reg.test(inputs[5].value)) {
+	                        count = true;
+	                    	text2 = "正确";
+	                }else{
+	                    chount = false;
+	                    text2 = "1.由数字、字母、点、下划线、减号组成"+"<br>"+                            "2.只能以数字，字母开头或结尾，且长度为4-18";
+	                }
+				}
+			info(tel, text2,count);
+	           break;
+	        case 6:
+				var reg = /^[0-9A-Za-z]{2,14}[0-9A-Za-z]$/g; 
+				if(inputs[6].value = ""){
+					count = false;
+					text2 = "通行证用户名不能为空，请输入通行证用户名";
+				}else{
+					if (reg.test(inputs[6].value)) {
+	                        count = true;
+	                    	text2 = "正确";
+	                }else{
+	                    chount = false;
+	                    text2 = "1.由数字、字母、点、下划线、减号组成"+"<br>"+                            "2.只能以数字，字母开头或结尾，且长度为4-18";
+	                }
+				}
+			info(email, text2,count);
+	           break;
+		}
+	}
+	function info(element,text2,count) {
+        if (count) {
+            element.setAttribute("class","ok_prompt");
+        } else {
+            element.setAttribute("class","error_prompt");
+        }
+        element.innerHTML = text2;
+    }
+	
+	
+</script>
+</body>
+</html>

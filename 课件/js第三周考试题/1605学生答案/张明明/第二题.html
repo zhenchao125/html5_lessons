@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">	
+		
+		#box{
+			border: 1px solid #000;
+			width: 100px;
+			height: 30px;
+			text-align: center;
+			display: inline-block;
+			background-color: green;
+			line-height: 30px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="outer">
+		<div id="box">
+		</div>
+		<a href="javascript:;" id="change">看不清，换一张</a>
+	</div>
+	<script type="text/javascript">
+		var box = document.getElementById("box");
+		var change = document.getElementById("change");
+		
+		//创建一个数组，元素包含数字0-9，小写字母a-z，大写字母A-Z
+		var arr = ["0","1","2","3","4","5","6","7","8","9",
+					"a","b","c","d","e","f","g","h","i","j","k","l","m","n",
+					"o","p","q","r","s","t","u","v","w","x","y","z",
+					"A","B","C","D","E","F","G","H","I","J","K","L","M","N",
+					"O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+		
+		//随机数
+		function Random(m,n){
+			var rand = parseInt(Math.random()*(n-m)+m);
+			return rand;
+		}
+		
+		function createCode(){
+			var str = "";
+			for (var i = 0; i < 6; i++) {
+				var r = Random(0, arr.length);
+				str += arr[r];
+			}
+			box.innerHTML = str;
+		}
+		
+		createCode();
+		
+		change.onclick = function(){
+			createCode();
+			return false;
+		}
+		
+		
+		
+	</script>
+</body>
+
+</html>

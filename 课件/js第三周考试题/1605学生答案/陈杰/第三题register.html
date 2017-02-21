@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css"/>
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio"
+                                                                                                value=""/>女
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs"/></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name="sub" type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript">
+    var inputs = document.querySelectorAll(".inputs");
+    var userNameTip = document.getElementById("userNameId");
+    var pwdTip = document.getElementById("pwdId");
+    var repwdNameTip = document.getElementById("repwdId");
+    var nickNameTip = document.getElementById("nickNameId");
+    var telTip = document.getElementById("telId");
+    var emailTip = document.getElementById("emailId");
+    var sub = document.getElementById("sub");
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].onfocus = function () {
+            console.log(i);
+            onFoucusTip(i);
+        };
+        inputs[i].onblur = function () {
+            onChangeVail(i);
+        }
+    }
+    function onFoucusTip(index) {
+        var classStyle = "import_prompt";
+        var msg = "";
+        switch (index) {
+            case 0:
+                userNameTip.setAttribute("class", classStyle);
+                msg = "1.由数字、字母、点、下划线、减号组成" + "<br>" +
+                    "2.只能以数字，字母开头或结尾，且长度为4-18";
+                userNameTip.innerHTML = msg;
+                break;
+            case 1:
+                pwdTip.setAttribute("class", classStyle);
+                msg = "密码长度为6-16";
+                pwdTip.innerHTML = msg;
+                break;
+            case 2:
+                repwdNameTip.setAttribute("class", classStyle);
+                msg = "重复密码";
+                repwdNameTip.innerHTML = msg;
+                break;
+            case 4:
+                nickNameTip.setAttribute("class", classStyle);
+                msg = "1.包含数字、字母、下划线以及@#!%&*特殊符号" + "<br>" + "2.长度为4-20个字符";
+                nickNameTip.innerHTML = msg;
+                break;
+            case 5:
+                telTip.setAttribute("class", classStyle);
+                msg = "1.手机号码以13，15，18开头" + "<br/>" + "2.手机号码由11位数组成";
+                telTip.innerHTML = msg;
+                break;
+            case 6:
+                emailTip.setAttribute("class", classStyle);
+                msg = "请输入您常用的电子邮箱";
+                emailTip.innerHTML = msg;
+                break;
+            default:
+                break;
+        }
+    }
+    var passwd ;
+    function onChangeVail(index) {
+        var msg = "";
+        var state;
+        switch (index) {
+            case 0:
+                var reg = /^[\w][\w-]{2,16}[a-z0-9A-Z]$/gi;
+                if(inputs[0].value.length==0){
+                    state = false;
+                    msg = "通行证用户名不能为空，请输入通行证用户名";
+                }else {
+                    if (reg.test(inputs[0].value)) {
+                        state = true;
+                       msg = "正确";
+                    } else {
+                        state = false;
+                        msg = "1.由数字、字母、点、下划线、减号组成" + "<br>" +
+                            "2.只能以数字，字母开头或结尾，且长度为4-18";
+                    }
+                }
+                setTipInfo(userNameTip, msg, state);
+                break;
+            case 1:
+                var reg = /^[\w]{4,16}$/gi;
+                if(inputs[1].value.length==0){
+                    state = false;
+                    msg = "密码不能为空，请输入密码";
+                }else {
+                    if (reg.test(inputs[1].value)) {
+                        state = true;
+                       msg = "正确";
+                        passwd = inputs[1].value;
+                    } else {
+                        state = false;
+                        msg = "密码长度为6-16";
+                    }
+                }
+                setTipInfo(pwdTip, msg, state);
+                break;
+            case 2:
+                if(inputs[2].value.length==0){
+                    state = false;
+                    msg = "重复密码不能为空，请输入重复密码";
+                }else {
+                    if (inputs[2].value == passwd) {
+                        state = true;
+                       msg = "正确";
+                    } else {
+                        state = false;
+                        msg = "两次输入密码不一致，请重新输入";
+                    }
+                }
+                setTipInfo(repwdNameTip, msg, state);
+                break;
+            case 4:
+                var reg = /^[\w@\#\!\%\*]{4,20}$/gi;
+                if(inputs[4].value.length==0){
+                    state = false;
+                    msg = "昵称不能为空，请输入重复昵称";
+                }else {
+                    if (reg.test(inputs[4].value)) {
+                        state = true;
+                       msg = "正确";
+                    } else {
+                        state = false;
+                        msg = "长度为4-20个字符";
+                    }
+                }
+                setTipInfo(nickNameTip, msg, state);
+                break;
+            case 5:
+                var reg = /^1[3584]\d{9}$/gi;
+                if(inputs[5].value.length==0){
+                    state = false;
+                    msg = "关联手机号码不能为空，请输入手机号码";
+                }else {
+                    if (reg.test(inputs[5].value)) {
+                        state = true;
+                       msg = "正确";
+                    } else {
+                        state = false;
+                        msg = "关联手机号码不正确，请重新输入";
+                    }
+                }
+                setTipInfo(telTip, msg, state);
+                break;
+            case 6:
+                var reg = /\w+@.{2,6}[.](com|cn)$/gi;
+                if(inputs[6].value.length==0){
+                    state = false;
+                    msg = "密保邮箱不能为空，请输入密保邮箱";
+                }else {
+                    if (reg.test(inputs[6].value)) {
+                        state = true;
+                        msg = "正确";
+                    } else {
+                        state = false;
+                        msg = "密保邮箱格式不正确，请重新输入";
+                    }
+                }
+                setTipInfo(emailTip, msg, state);
+                break;
+            default:
+                break;
+        }
+    }
+    function setTipInfo(element, msg, state) {
+        if (state) {
+            element.setAttribute("class", "ok_prompt");
+        } else {
+            element.setAttribute("class", "error_prompt");
+        }
+        element.innerHTML = msg;
+    }
+    document.getElementById("registerForm").onsubmit = function (event) {
+        var count = 0;
+        for(var index in inputs){
+            if(index==3)continue;
+            if(inputs[index].parentElement.nextElementSibling.getAttribute("class")=="ok_prompt"){
+                count++;
+            }
+        }
+        if(count != 6){
+            event.preventDefault();
+            return;
+        }
+    }
+</script>
+</html>

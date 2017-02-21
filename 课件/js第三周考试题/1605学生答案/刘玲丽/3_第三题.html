@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap{
+				width: 800px;
+				padding: 20px;
+				border: 1px solid #000;
+			
+			}
+			.user{
+				width: 800px;
+				height: 50px;
+				position: relative;
+			}
+			#userName{
+	
+			}
+			.box1{
+				border: 1px solid red;
+				font-size: 16px;
+				background-color:#FF0BFF;
+				position: absolute;
+				left: 400px;
+				top: 0px;
+				display: none;
+			}
+			.box2{
+				border: 1px solid red;
+				background-color:#FF0BFF;
+				display: none;
+				position: absolute;
+				left:300px;
+				top:-5px;
+			}
+			.box3{
+				border: 1px solid red;
+				background-color:#FF0BFF;
+				display: none;
+				position: absolute;
+				left:300px;
+				top:-5px;
+			}
+			.box4{
+				border: 1px solid red;
+				background-color:#FF0BFF;
+				position: absolute;
+				left:300px;
+				top: -5px;
+				display: none;
+			}
+			.box5{
+				border: 1px solid red;
+				background-color:#FF0BFF;
+				display: none;
+				position: absolute;
+				left:300px;
+				top:-5px;
+			}
+			.box6{
+				border: 1px solid red;
+				background-color:#FF0BFF;
+				display: none;
+				position: absolute;
+				left:300px;
+				top:-5px;
+			}
+			#btn{
+				width: 100px;
+				height: 40px;
+				border-radius: 10%;
+				margin: 10px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<span style="font-size: 40px; color: red;">网易</span>
+		<span style="font-size: 40px;">通行证</span>
+		<div class="wrap">
+			<div class="user">
+				<span >通行证用户名:</span>
+				<input type="text"  id="userName"/> <span>@163.com</span>
+				<div class="box1">
+					1、由字母、数字、下划线、点、减号组成<br />
+					2、只能以数字、字母开头或结尾，且长度为14-18
+				</div>
+			</div>
+			<div style="position: relative;">
+				<span>登录密码:</span>
+				<input type="password" id="passwords"/>
+				<span class="box2" >密码长度为6-16</span>
+			</div><br />
+			<div style="position: relative;">
+				<span>重复登录密码:</span>
+				<input type="password"  id="repeatPasswords"/>
+				<span class="box3">两次输入的密码不一致,请重新输入</span>
+			</div>
+			<br />
+			<div>
+				<span>性别:</span>
+				<input type="radio" value=""/>男
+				<input type="radio" value=""/>女
+			</div><br />
+			<div style="position: relative;">
+				<span>真实姓名:</span>
+				<input type="text" id="trueName"/>
+			</div>
+			<br />
+			<div style="position: relative;">
+				<span>昵称:</span>
+				<input type="text" id="otherName"/>
+				<div class="box4">1、包含字母、数字、下划线以及@！#￥%&*特殊字符<br />
+								2、长度为4-20个字符
+				</div>
+			</div>
+			<br />
+			<div style="position: relative;">
+				<span>关联手机号:</span>
+				<input type="text" id="phoneNumber"/>
+				<span class="box5">关联手机号码不正确,请重新输入</span>
+			</div><br />
+			<div style="position: relative;">
+				<span>保密邮箱:</span>
+				<input type="text" id="email"/>
+				<span class="box6">保密邮箱格式不正确,请重新输入</span>
+			</div>
+			<br />
+			<button id="btn">注册</button>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		var userName=document.getElementById("userName");
+		var passwords=document.getElementById("passwords");
+		var repeatPasswords=document.getElementById("repeatPasswords");
+		var trueName=document.getElementById("trueName");
+		var otherName=document.getElementById("otherName");
+		var phoneNumber=document.getElementById("phoneNumber");
+		var email=document.getElementById("email");
+		var box1=document.getElementsByClassName("box1")[0];
+		var box2=document.getElementsByClassName("box2")[0];
+		var box3=document.getElementsByClassName("box3")[0];
+		var box4=document.getElementsByClassName("box4")[0];
+		var box5=document.getElementsByClassName("box5")[0];
+		var box6=document.getElementsByClassName("box6")[0];
+		userName.addEventListener("click",function(){
+			box1.style.display="block";
+		},false);
+		passwords.addEventListener("click",function(){
+			box2.style.display="block";
+		},false);
+		otherName.addEventListener("click",function(){
+			box4.style.display="block";
+		},false);
+		
+		function eMail(){
+			var reg1=/\w+@.+[.](com|cn)$/gi;
+			if(reg.test(email.value)==false){
+			box6.style.display="block";
+			}
+		}
+		function phone(){
+				var reg = /1[34578]\d{9}$/g;
+				if(reg.test(phoneNumber.value)==false){
+					box5.style.display="block";
+				}
+				
+		}
+		function repeat(){
+				var arr1=repeatPasswords.value;
+				var arr2=passwords.value;
+				if(arr1!=arr2){
+					box3.style.display="block";
+				}
+				
+		}
+		document.getElementById("btn").onclick=phone;
+		document.getElementById("btn").onclick=eMail;
+		document.getElementById("btn").onclick=repeat;
+	</script>
+</html>

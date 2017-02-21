@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    arr = [];
+    var j = 0;
+    for (var i = 1500;i <= 2016;i++){
+        //提取闰年
+        if ((i % 4 == 0 && i % 100 != 0) || i % 400 == 0){
+            j++;
+            //判断换行
+            if (j == 5){
+                document.write(i + "<br />") ;
+                j = 0;
+            }else {
+                document.write(i + "  ");
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		(function (star,year){
+			var num = [];
+			var j=0;
+			for(var i = star; i<=year;i++){
+				if(i%4==0&&i%100==0||i%400==0){
+					num[j] = i;
+					j++;
+					}
+				}
+			for(var n=0;n<num.length;n++){
+				if(n%5==0 &&n!=0){
+					document.write("<br />");
+				}
+				document.write(num[n] + " ");
+			}
+		}
+		
+		)(1500,2016);
+		
+		
+		
+		
+	</script>
+</html>

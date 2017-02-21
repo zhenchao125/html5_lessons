@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+//1。能被4整除而不能被100整除。
+//2。能被400整除。
+var j=0;
+for(var i = 1500;i<=2016;i++){
+    if(((i%4)==0&&(i%100!=0))||i%400==0){
+        j++;
+        if(j%5==0){
+            document.write(i+"</br>");
+        }else{
+            document.write(i+" ");
+        }
+    }
+}
+</script>
+</html>

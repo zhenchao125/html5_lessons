@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style type="text/css">
+        .wrap{
+            width: 400px;
+            margin: 0 auto;
+        }
+        span{
+            width: 150px;
+            text-align: center;
+            display: inline-block;
+            background: #DEE58F;
+            border: 1px solid #000;
+            padding: 8px;
+            font-size: 25px;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <span id="sp"></span>
+        <a href="javascript:;">看不清，换一张</a>
+    </div>
+</body>
+<script type="text/javascript">
+    var eSp = document.getElementById("sp");
+    var eA = document.querySelector("a");
+    var arrs = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L",
+        "M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j",
+        "j","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+
+    function getVailCode() {
+        var strCode = "";
+        for(var i =0;i<6;i++){
+            strCode+=arrs[getRandomNumber(0,arrs.length-1)];
+        }
+        return strCode;
+    }
+
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    function setCodeToView() {
+        eSp.innerHTML = getVailCode();
+    }
+
+    setCodeToView();
+    eA.onclick = function () {
+        setCodeToView();
+    }
+</script>
+</html>

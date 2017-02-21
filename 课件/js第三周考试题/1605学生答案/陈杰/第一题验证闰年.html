@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证闰年</title>
+</head>
+<body>
+<p>打印出 1500-2016 年中所有的闰年，并以每行 5 个数的形式输出</p>
+<div id="div"></div>
+<p></p>
+</body>
+<script type="text/javascript">
+
+    function checkYear(min, max) {
+        var count = 0;
+        var meg  = min+"年-"+max+"年是闰年的分别是："+"<br/><br/>";
+        for (var i = min; i <= max; i++) {
+            if ((i % 4 == 0 && i % 100 != 0)||i%400==0){
+                meg += i+"  ";
+                count++;
+                if(count%5==0){
+                    meg+="<br/>"
+                }
+            }
+        }
+        return meg;
+    }
+    document.querySelector("#div").innerHTML = checkYear(1500,2016);
+</script>
+</html>

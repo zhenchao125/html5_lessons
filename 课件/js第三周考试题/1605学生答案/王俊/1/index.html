@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		var n = 0;
+		for(var i = 1500; i <= 2016; i++) {
+			sx(i);
+		}
+		
+		function sx(value) {
+			if(value % 4 == 0 && value % 100 != 0 || value % 400 == 0) {
+				n++
+				document.write(value + " ");
+				if(n % 5 == 0) {
+					document.write("<br/>")
+				}
+			} else { return -1; }
+		}
+
+		sx(11);
+	</script>
+
+</html>

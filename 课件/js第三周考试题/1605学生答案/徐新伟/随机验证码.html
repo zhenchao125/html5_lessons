@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>生成验证码</title>
+	<style type="text/css">
+	    #div{
+	    		width: 150px;
+	    		height: 70px;
+	    		background: #ccc;
+	    		display: inline-block;
+	    		vertical-align: middle;
+	    		font-size: 50px;
+	    		text-align: center;
+	    		color: orange;
+	    		border: 2px solid #000;
+	    }
+	    a{
+	    		
+	    }
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+	<a href="javascript:void(0);" id="a">看不清，换一张</a>
+</body>
+<script type="text/javascript" charset="utf-8">
+    var div = document.getElementById("div");
+    var aa= document.getElementById("a");
+    
+	//声明一个随机数的方法
+	function Random(min,max){
+		var rand = Math.random() * (max - min + 1);
+		rand = Math.floor(rand) + min;
+		return rand;
+	}
+	
+	//声明取随机数个数的方法
+	function RandomNumber(){
+		var arr = [];
+		for(var i = 0; i < 6; i++){
+			arr[i] = Random(0,9);
+		}
+		return arr;
+	}
+	
+	var arr1 = RandomNumber();
+	var str = arr1.join("");
+	
+	div.innerHTML = str;
+	
+	aa.onclick = function(){
+		var arr1 = RandomNumber();
+		var str = arr1.join("");
+		div.innerHTML = str;
+	}
+</script>
+</html>

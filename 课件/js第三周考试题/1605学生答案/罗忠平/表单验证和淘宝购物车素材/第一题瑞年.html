@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+		function  year(num){
+			if(num % 4 == 0 && num % 100 != 0 || num % 400 ==0){
+				return   true;
+			}
+			return  false;
+		}
+		function dayi(from,to){
+			var sum = 0;
+			for(i = from; i < to; i++){
+				
+				if(year(i)){
+					sum ++					
+					if(sum % 5 ==0){
+						document.write(i+"<br>")
+					}else{
+						document.write(i +"   ");
+					}
+					
+					console.log(sum);
+				}
+			}
+		}
+		dayi(1500,2016);
+	</script>
+</html>

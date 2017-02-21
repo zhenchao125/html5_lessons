@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				width: 200px;
+				height: 100px;
+				background-color: cyan;
+				float: left;
+				vertical-align:middle;
+				text-align: center;
+				line-height: 100px;
+				font-size: 50px;
+			}
+			a{
+				float: left;
+				vertical-align: center;
+				margin-top: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+		<a href="javascript:void(0);" >看不清，换一张</a>
+		
+	</body>
+	<script>
+		var wrap = document.getElementsByClassName("wrap")[0];
+		var A = document.getElementsByTagName("a")[0];
+
+		
+ 	var arr = Array(0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z');
+ 	console.log(arr)
+ 	
+ 	function Random(min,max){
+		var rand = Math.random() * (max - min + 1);
+		rand = Math.floor(rand) + min;
+		return rand;
+	}
+ 	
+ 	console.log(arr)
+ 	function arrNumber(){
+ 		 var num = [] 
+ 		for( i = 0 ; i < 6 ; i++){			
+ 			var Num
+ 			 a = Random(0,60)
+ 		  num[i]=arr[a];
+ 		}
+ 		return num; 		
+ 	}
+ 	
+ 	
+ 	var Num = arrNumber();
+ 		var str = Num.join("");
+ 	wrap.innerHTML = str;
+ 	
+ 	A.onclick = function(){
+ 		var Num = arrNumber();
+ 		var str = Num.join("");
+ 		wrap.innerHTML = str;
+ 	}
+
+	</script>
+</html>

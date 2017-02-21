@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #div {
+            width: 120px;
+            height: 40px;
+            display: inline-block;
+            background: #D6E3BC;
+            border: 1px solid #000000;
+            line-height: 40px;
+            font-size: 30px;
+            text-align: center;
+            color: #000;
+        }
+        #warp{
+            width: 250px;
+            margin: 200px auto;
+
+        }
+        a {
+            margin-left: 10px;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+
+<body>
+<div id="warp">
+    <div id="div"></div><a href="javascript:void(0);" id="a">看不清，换一张</a>
+</div>
+
+</body>
+<script type="text/javascript">
+    var oDiv = document.getElementById("div");
+    var oA = document.getElementById("a");
+    //创建随机数
+    function Random() {
+        var Random = Math.floor(Math.random() * 62);
+        return Random;
+    }
+    //每一个位数的值
+    function RandomNumber() {
+        //定义随机内容
+        var arrNum = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','n','m','o','p','q','r','s','t','u','v','w','x','y','z'];
+        var Newarr = [];
+        for(var i = 0; i < 6; i++) {
+            Newarr[i] = arrNum[Random()];
+        }
+        return Newarr;
+    }
+    //页面加载显示随机数
+    window.onload = function () {
+        var arr = RandomNumber();
+        var str = arr.join("");
+        oDiv.innerHTML = str;
+    };
+    //点解按钮刷新随机数
+    oA.onclick = function() {
+        var arr = RandomNumber();
+        var str = arr.join("");
+        oDiv.innerHTML = str;
+    }
+</script>
+
+</html>

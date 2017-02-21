@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+	<style type="text/css">
+		#userNameId,#pwdId,#repwdId,#nickNameId,#telId,#emailId{
+			background-color: pink;
+			border: 1px solid red;
+			vertical-align: middle;
+		}
+	</style>
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"><img src="images/li_err.gif">请输入通行证用户名</div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"><img src="images/li_err.gif">密码不能为空，请输入密码</div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"><img src="images/li_err.gif">重复密码不能为空，请输入密码</div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"><img src="images/li_err.gif">昵称不能为空，请输入昵称</div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"><img src="images/li_err.gif">关联手机号不能为空，请输入关联手机号</div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"><img src="images/li_err.gif">保密邮箱不能为空，请输入保密邮箱</div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript">
+
+	var userName=document.getElementById("userName");
+	var pwd=document.getElementById("pwd");
+	var rePwd=document.getElementById("repwd");
+	var nickName=document.getElementById("nickName");
+	var tel=document.getElementById("tel");
+	var email=document.getElementById("email");
+	
+	var userNameId=document.getElementById("userNameId");
+	var pwdId=document.getElementById("pwdId");
+	var rePwdId=document.getElementById("repwdId");
+	var nickNameId=document.getElementById("nickNameId");
+	var telId=document.getElementById("telId");
+	var emailId=document.getElementById("emailId");
+	
+	userName.onfocus=function(){
+		userNameId.innerText="1、由字母、数字、下划线、点、减号组成 \n2、只能以数字、字母开头或结尾，且长度为4-18 ";
+		userNameId.style.border="1px solid orange";
+		userNameId.style.backgroundColor="#FFFFDA"
+	}
+	userName.onblur=function(){
+		userNameId.innerHTML="请输入通行证用户名";
+		userNameId.style.border="1px solid red";
+		userNameId.style.backgroundColor="pink"
+	}
+	
+	pwd.onfocus=function(){
+		pwdId.innerText="密码长度为6-16";
+		pwdId.style.border="1px solid orange";
+		pwdId.style.backgroundColor="#FFFFDA"
+	}
+	pwd.onblur=function(){
+		pwdId.innerHTML="密码不能为空，请输入密码";
+		pwdId.style.border="1px solid red";
+		pwdId.style.backgroundColor="pink"
+	}
+	
+	rePwd.onfocus=function(){
+		rePwdId.innerHTML="请输入密码";
+		rePwdId.style.border="1px solid orange";
+		rePwdId.style.backgroundColor="#FFFFDA"
+	}
+	rePwd.onblur=function(){
+		rePwdId.innerHTML="重复密码不能为空，请输入密码";
+		rePwdId.style.border="1px solid red";
+		rePwdId.style.backgroundColor="pink"
+	}
+	
+	nickName.onfocus=function(){
+		nickNameId.innerText="1、包含字母、数字、下划线以及@!#$%&*特殊字符\n2、长度为4-20个字符 ";
+		nickNameId.style.border="1px solid orange";
+		nickNameId.style.backgroundColor="#FFFFDA"
+	}
+	nickName.onblur=function(){
+		nickNameId.innerHTML="昵称不能为空，请输入昵称";
+		nickNameId.style.border="1px solid red";
+		nickNameId.style.backgroundColor="pink"
+	}
+	
+	tel.onfocus=function(){
+		telId.innerText="1、手机号以13、15、18开头\n2、手机号码由11位数字组成";
+		telId.style.border="1px solid orange";
+		telId.style.backgroundColor="#FFFFDA"
+	}
+	tel.onblur=function(){
+		telId.innerHTML="关联手机号不能为空，请输入关联手机号";
+		telId.style.border="1px solid red";
+		telId.style.backgroundColor="pink"
+	}
+	
+	email.onfocus=function(){
+		emailId.innerText="请输入您常用的点子邮箱 ";
+		emailId.style.border="1px solid orange";
+		emailId.style.backgroundColor="#FFFFDA"
+	}
+	email.onblur=function(){
+		emailId.innerHTML="保密邮箱不能为空，请输入保密邮箱";
+		emailId.style.border="1px solid red";
+		emailId.style.backgroundColor="pink"
+	}
+</script>
+</html>

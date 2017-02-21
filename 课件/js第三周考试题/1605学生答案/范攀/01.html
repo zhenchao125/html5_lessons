@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>闰年</title>
+</head>
+<body>
+	
+</body>
+	<script type="text/javascript">
+
+		(function(from, to) {
+			for(var i = from, count=0;i < to; i++) {
+				if(isLeapYear(i)) {
+					document.write("&nbsp;" + i + "年是闰年"+ "&nbsp;");
+					count++;
+					if(!(count % 5)){
+						document.write("<br/>");
+					}
+				}
+			}
+		})(1500, 2016);
+		//判断是否是闰年
+		function isLeapYear(num) {
+			if(num > 0) {
+				var TF = num % 4 === 0 && num % 100 !== 0 || num % 400 === 0 ? true : false;
+				return TF;
+			}
+		}
+	</script>
+</html>

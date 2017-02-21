@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 50px;
+				background: #ccc;
+				text-align: center;
+				line-height: 50px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			
+		</div>
+		<a href="#" id="a">看不清，换一个</a>
+	</body>
+	<script type="text/javascript">
+		var div = document.getElementById("div");
+		var a = document.getElementById("a");
+		function xixi(){
+			var code="";
+			var num;
+			var arr=[];
+			var radom = new Array(0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","j","k","l",
+						"m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L",
+						"M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+			for(var i = 0; i<6;i++){
+					num= Math.floor(Math.random()*62);
+					arr += radom[num];
+			}
+					div.innerHTML = arr;
+		}
+		xixi();
+		a.onclick = function(){
+				xixi();
+		}
+	</script>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		#div{
+			width: 100px;
+			height: 50px;
+			border: 1px solid #000;
+			background-color: #D6E3BC;
+			display: inline-block;
+			line-height: 50px;
+			text-align: center;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+	<a href="javascript:;" id="change">看不清，换一张</a>
+	<script type="text/javascript">
+		var div = document.getElementById("div");
+		var change = document.getElementById("change");
+		
+		var arr = ["0","1","2","3","4","5","6","7","8","9",
+			"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
+			"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+		
+		//未点击之前产生验证码
+		createRandomCode();
+		
+		/*给a标签添加点击事件*/
+		change.onclick = function () {
+			createRandomCode();
+		}
+		
+		/*随机生成六位验证码*/
+		function createRandomCode () {
+			var str = "";
+			for (var i = 0; i < 6; i++) {
+				var index = getIntRandom(0, arr.length);
+				str += arr[index];
+			}
+			div.innerHTML = str;
+		}
+		
+		/*生成随机整数*/
+		function getIntRandom (min, max) {
+			num = parseInt(Math.random() * (max - min) + min);
+			return num;
+		}
+	</script>
+</body>
+</html>

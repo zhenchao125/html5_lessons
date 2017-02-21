@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 100px;
+				background: red;
+				font-size: 80px;
+				text-align: center;
+				line-height: 100px;
+				float: left;
+			}
+			a{
+				display: inline-block;
+				height: 80px;
+				line-height: 160px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div"></div>
+		<a href="#" onclick="Next();">看不清，换一张</a>
+	</body>
+	<script type="text/javascript">
+		var div = document.getElementById("div");
+		function Next(){
+			var str = new Array(0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","g","k","l","m","n","o","p","q","r","s","t","u","v","w","s","y","z");
+   				var num ="";
+    			rand ="";
+    			for(var i = 0;i<str.length;i++){
+        		num=Math.floor(Math.random()*36+0);
+     			rand = rand+str[num];
+        		if(i>4){
+        			break;
+     			}
+    		}
+        	div.innerHTML = rand;
+		}
+		Next();
+	</script>
+</html>
+
