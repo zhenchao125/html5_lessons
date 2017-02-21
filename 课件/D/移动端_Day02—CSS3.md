@@ -517,9 +517,44 @@ border-image: url("/images/border.png") 30 30 repeat;
 border-image: url("/images/border.png") 30 30 stretch;
 ```
 
-
-
 # 六、背景相关属性
+
+## 6.1	background-size属性
+
+​	在 CSS3之前，背景图片的尺寸是由图片的实际尺寸决定的。在 CSS3 中，可以规定背景图片的尺寸，这就允许我们在不同的环境中重复使用背景图片。可用以像素或百分比规定尺寸。如果以百分比规定尺寸，那么尺寸相对于父元素的宽度和高度。
+
+几个特殊值：
+
+​	contain：完全按照背景图片的原始宽高比来适应元素，会尽可能的扩大或缩小图片，如果元素的尺寸比较大，元素的其他部分会用背景色填充。注意背景图片不会被裁减，总是能够完整的显示。
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-21/15232670-file_1487688493137_185f4.png)
+
+​	cover：尽可能的让背景图片覆盖整个元素，即使图片被裁减也在所不惜。放大图片的时候，也会保持图片的宽高比。
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-21/85513020-file_1487688674185_d9d5.png)
+
+
+
+## 6.2	background-origin属性
+
+​	属性规定背景图片的定位区域。主要包括三个值：content-box、padding-box
+或 border-box
+
+- padding-box   背景图像相对于内边距框来定位。  
+- border-box    背景图像相对于边框盒来定位。
+- content-box  背景图像相对于内容框来定位
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-21/41891209-file_1487688931620_2308.png)
+
+> 具体效果：
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-21/3303973-file_1487689434601_11979.gif)
+
+## 6.3	background-clip区域
+
+> 属性规定背景的绘制区域.
+>
+> 他的值和backgound-origin的值是一样的
 
 # 七、渐变属性
 
