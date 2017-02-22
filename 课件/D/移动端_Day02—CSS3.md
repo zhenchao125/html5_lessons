@@ -564,9 +564,42 @@ border-image: url("/images/border.png") 30 30 stretch;
 
 ## 7.1	线性渐变
 
-​	
+> 线性渐变是css提供的一个函数，这个函数是创建了一个image，这个image展示了颜色的渐变。
+>
+> 需要注意的是css的渐变 不是颜色，而是image，只是这个image没有固有的尺寸而已。所以渐变是给background属性或者background-image属性赋值的。
+>
+> 语法：
+
+```css
+linear-gradient( 45deg, blue, red );           /* A gradient on 45deg axis starting blue and finishing red */
+linear-gradient( to left top, blue, red);      /* A gradient going from the bottom right to the top left starting blue and 
+                                                  finishing red */
+
+linear-gradient( 0deg, blue, green 40%, red ); /* A gradient going from the bottom to top, starting blue, being green after 40% 
+                                                  and finishing red */
+```
+
+例如：
+
+```css
+background: linear-gradient(45deg, red, blue);
+或者
+background-image: linear-gradient(45deg, red, blue);
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-22/25070760-file_1487774819272_16254.png)
 
 ## 7.2	径向渐变
+
+> 径向渐变和线性渐变的含义差不多,只是径向渐变是沿着虚拟的轴从中心向外渐变。
+
+```css
+background-image: radial-gradient(circle farthest-corner at center , #00FFFF 0%, rgba(0, 0, 255, 0) 50%, #0000FF 95%);
+
+说明：circle是指定的径向渐变的时候的形状。farthest-corner 一个扩展关键字，指的是到最远的的角相切
+at center开始渐变的起始位置。
+#00FFFF 0%, rgba(0, 0, 255, 0) 50%, #0000FF 95%  各种颜色，额可以根据需要添加很多颜色
+```
 
 
 
