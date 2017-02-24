@@ -80,7 +80,7 @@
 (function () {
 	alert("匿名函数立即执行")
     
-})();
+}());
 ```
 
 > 说明
@@ -250,8 +250,10 @@
 ```html
 <script type="text/javascript">
 	function sum(num1, num2){
+      
 		var sum = num1 + num2;
 		return sum;
+      
 	}
 </script>
 ```
@@ -293,6 +295,7 @@
 ```html
 <script type="text/javascript">
 	function sum(num1, num2){
+      	
 		var sum = num1 + num2;
 		function inner (a) {
 			
