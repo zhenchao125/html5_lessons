@@ -183,10 +183,10 @@ type="text/x-javascript"：x前缀表示这是实验性的，不是标准的类�
 A：src表示要链接的文件的地址。这个地址可以是一个文件，也可以是一个url地址。
 B：引入外部js文件的时候，不要再在标签内添加js代码，即使添加了也不会执行。
 C：虽然这个时候不再script标签中添加js代码，但是也不能把script标签改成单标签。例如下面的形式是错误的。
-<script type="text/javascript" src="a.js" /> <!-- 把script写成这种但标签的方式是错误的 -->
+<script type="text/javascript" src="a.js" /> <!-- 把script写成这种单标签的方式是错误的 -->
 ```
 
-> 3、**在HTML标签中: ** 作为某个元素的事件属性值或者是超链接href属性值。
+> 3、**在HTML标签中: ** 作为某个元素的事件属性值或者是超链接 href属性值。
 ```javascript
 <a href="javascript:alert('育知同创欢迎你!')">点我啊</a>
 <input name="btn" type="button" value="弹出消息框"  onclick="javascript:alert('育知同创欢迎你!');"/>
