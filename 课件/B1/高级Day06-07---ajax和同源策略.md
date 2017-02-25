@@ -96,7 +96,7 @@ function createXHR() {
 /*调用open方法
 * 参数1：请求方法，一般是get或post
 * 参数2：请求是url
-* 参数3：是否为异步。true表示异步，默认是true
+* 参数3：是否为异步。true表示异步，默认是true异步。
 */
 xhr.open("GET", "msg.json", true);
 ```
@@ -115,13 +115,13 @@ xhr.open("GET", "msg.json", true);
 
 ​	xhr.readyState的值保存了xhr的状态。一共有5种状态，每个状态用1个整数来表示
 
-- 0	  未初始化。对象new出来了，但是还没有调用open方法
+- 0    未初始化。对象new出来了，但是还没有调用open方法
 - 1    启动。 已经调用open，但是还没有调用send方法
 - 2    发送。 已经send方法，但是还没有接收到相应
 - 3    接收。 已经开始接收数据，但是还没有完全接收。
 - **4    完成。 已经完全接收数据。**
 
-****作为开发者，我们一般只关注 **第4种** 状态。
+作为开发者，我们一般只关注 **第4种** 状态。
 
 ```javascript
 //监听状态
@@ -136,6 +136,8 @@ xhr.onreadystatechange = function () {
 }
 ```
 
+**注意：步骤2和步骤3可以调换顺序。**
+
 ## 3.4	步骤4：调用send方法发送请求	
 
 ```javascript
@@ -145,13 +147,13 @@ xhr.send(null);
 
 #四、 使用AJAX是携带参数
 
-​	不同的请求方式，携带参数的方式不一样。
+​	**不同的请求方式，携带参数的方式不一样。**
 
 ## **4.1**	GET请求
 
-​	get请求携带的参数直接追加到url后面即可。? 后面跟的就是参数，多个参数之间用&连接。注意，参数中的中文必须要经过url编码。
+​	get请求携带的参数直接追加到url后面即可。?后面跟的就是参数，多个参数之间用&连接。注意，参数中的中文必须要经过url编码。
 
-```html
+```javascript
 var url = 'http://wthrcdn.etouch.cn/weather_mini?city='+encodeURI('深圳')+'&pwd='+pwdValue;
 ```
 
@@ -159,9 +161,10 @@ var url = 'http://wthrcdn.etouch.cn/weather_mini?city='+encodeURI('深圳')+'&pw
 
 ​	post请求的的参数是在send方法中携带，参数的格式必须是：xxx=XXX&yyy=YYY格式。并且需要添加头部信息
 
-xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;")
+xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
 
 ```javascript
+//post请求必须添加这个头部
 req.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
 xhr.send('user='+encodeURI(nameVal) + '&pwd=' + pwdVal);
 ```
