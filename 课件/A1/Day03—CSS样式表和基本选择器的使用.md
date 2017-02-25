@@ -391,3 +391,251 @@ h3 {
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-25/65365538-file_1488016161033_9de4.png)
 
+## 7.6	复合选择器
+
+> 根据元素的名称、id、类名，使符合条件的元素共同拥有样式;各选择器条件要以**分号****(,)**隔开。
+>
+> 语法: 
+>
+> h2 , #subid , .subclass {color:blue;}
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box,.mytitle,input{
+				color:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">我是内容部分</div>
+		<h2 class="mytitle">我是2级标题</h2>
+		<h3 class="mytitle">我是3级标题</h3>
+		<h3>我是3级标题</h3>
+		<input type="button" value="按钮" />
+		<input type="button" value="按钮" />
+	</body>
+</html>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-25/6451716-file_1488018336895_da6e.png)
+
+# 八、选择器的优先级及权重
+
+> 先来比较一下行内样式表及id选择器
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS选择器</title>
+		<style type="text/css">
+			#myColor{
+				color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<h3 style="color:red;" id="myColor">我是内容部分</h3>
+	</body>
+</html>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-25/18865007-file_1488019440876_1355b.png)
+
+==**结论1：很明显,行内的样式比id选择器的优先级要高，**==
+
+> 接下来我们再来比较一下id选择器及类别选器的样式。
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS选择器</title>
+		<style type="text/css">
+			.myStyle{
+				color: orange;	
+			}
+			#myColor{
+				color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<h3 id="myColor" class="myStyle">我是内容部分</h3>
+	</body>
+</html>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-25/84085415-file_1488019634908_af56.png)
+
+==**结论2：很明显，不难看出，id选择器比类别选别器的优先级要高**==
+
+> .那我们再来比较一下类别选择器和标签选择器。
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS选择器</title>
+		<style type="text/css">
+			.myStyle{
+				color: orange;	
+			}
+			h3{
+				color: deepskyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<h3  class="myStyle">我是内容部分</h3>
+	</body>
+</html>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-25/88003470-file_1488019755039_1709d.png)
+
+==**结论3:大家也看了吧，明显的类别选择器比标签选择器的优先级要高**==
+
+> ，那我们再来看一下标签选择器和全局选择器谁的优先级高！
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS选择器</title>
+		<style type="text/css">
+			*{
+				color: orange;	
+			}
+			h3{
+				color: deepskyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<h3 >我是内容部分</h3>
+	</body>
+</html>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-25/24089987-file_1488019869707_44a2.png)
+
+==**结论4：很明显，标签选择器比全局选择器的优先级要高。综上述，我们就知道了选择器的优先级了！**==
+
+
+
+==***最终结论：***
+
+==***行内样式表>id选择器>类别选择器>标签选择器>全局选择器***==
+
+```tex
+在CSS中，会根据选择器的特殊性来决定所定义的样式规则的次序，具有更特殊选择器的规则优先于具有一般选择器的规则，如果两个规则的特殊性相同，那么后定义的规则优先。
+
+那么，又怎么来计算选择器的特殊性呢？
+
+我们把特殊性分为4个等级，每个等级代表一类选择器，每个等级的值为其所代表的选择器的个数乘以这一等级的权值，最后把所有等级的值相加得出选择器的特殊值。
+
+4个等级的定义如下：
+1.	第一等：代表行内样式，如: style=””，权值为1000。
+2.	第二等：代表ID选择器，如：#content，权值为100。
+3.	第三等：代表类，伪类和属性选择器，如.content，权值为10。
+4.	第四等：代表类型选择器和伪元素选择器，如div p，权值为1。
+
+注意：通用选择器（*），子选择器（>）和相邻同胞选择器（+）并不在这四个等级中，所以他们的权值都为0。
+理解选择器的特殊性很重要，特别是在修复bug的时候，因为你需要了解哪些规则优先及其原因。至于具体的应用，我们放到后面的再做具体的讲解。
+
+最后我们再说一下选择器如何使用，原则有三点：
+1.	选择可以准确的找到要控制的标签； 
+2.	使用最合理的优先级的选择器； 
+3.	还要是html和css看起来简洁美观可读性强。 
+
+好了，我们了解了选择器，我们一直在使用一个样式那就是文字颜色（color）,觉得有些厌烦了，我们再看一下其它的常用的样式。
+
+```
+
+# 九、一些CSS基本样式
+
+> 1. color：颜色；规定颜色值为颜色单词名称例如（red）或者十六进制值得颜色例如（#ff0000）或者为rgb值得颜色例如（rgb(255,0,0)）；
+>
+> 2.       width:宽度；设置元素的宽度值，值为数字；单位为px（像素)、em（字符）、%（百分比）；默认值为auto（自动，通过浏览器自动计算出宽度值单位为像素）
+> 3.        height：高度；设置元素的高度值，值为数字；单位为px（像素)、em（字符）、%（百分比）；默认值为auto（自动，通过浏览器自动计算出宽度值单位为像素）
+> 4.        background-color:背景颜色；规定颜色值为颜色单词名称例如（red）或者十六进制值得颜色例如（#ff0000）或者为rgb值得颜色例如（rgb(255,0,0)）；
+> 5.        inherit：属性值，大部分属性都有该属性值意义为继承。
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 300px;
+				height: 200px;
+				color:red;
+				background-color:yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">我是内容部分</div>
+	</body>
+</html>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-25/7903175-file_1488024510878_a9ec.png)
+
+# 十、CSS的尺寸单位介绍
+
+> 1. px：为像素单位。它是显示屏上显示的每一个小点，为显示的最小单位。它是一个绝对尺寸单位；是固定单位。
+> 2. em：它是描述相对于应用在当前元素的字体尺寸，所以它也是相对长度单位。一般浏览器字体大小默认为16px，则2em == 32px；是相对于其父元素来设置字体大小的.
+> 3. %： 百分比，它是一个更纯粹的相对长度单位。它描述的是相对于父元素的百分比值。如50%，则为父元素的一半。 
+> 4. rem**：**是相对单位;** **是相对于根元素<html>改变大小。 
+
+# 十一、CSS的颜色值表示法
+
+> 1. 单词表示法 
+>
+> red green blue black white grey yellow pink orange…
+>
+> 2. 十六进制表示法 
+>
+> \#ff0000 #00ff00 #0000ff #000000 #ffffff   #111111
+>
+> \#f00 #0f0  #00f  #000 #fff #111
+>
+> 3. rgb表示法 
+>
+> (255,0,0)
+>
+> 4. rgba表示法 
+>
+> (255,255,0,0.3)
+>
+> 5. CSS3新支持的HSL和HSLA颜色
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
