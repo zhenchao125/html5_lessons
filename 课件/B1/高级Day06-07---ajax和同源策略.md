@@ -62,6 +62,8 @@ post请求：
 
 ​	异步和同步：
 
+
+
 ​	Ajax的全称是Asynchronous JavaScript+XML ，Ajax不是一个技术，它实际上是几种技术，每种技术都有其独特这处，合在一起就成了一个功能强大的新技术。Ajax结合了Java技术、XML以及JavaScript等编程技术，可以让开发人员构建基于Java技术的Web应用，并打破了使用页面重载的惯例。 Ajax是使用客户端脚本与Web服务器交换数据的Web应用开发方法。这样，Web页面不用打断交互流程进行重新加载，就可以动态地更新。使用Ajax，用户可以创建接近本地桌面应用的直接、高可用、更丰富、更动态的Web用户界面。
 
 ​	Ajax刚出生的时候，用的比较多的数据格式是XML，后来JSON数据格式更多的去替换了XML格式的数据。
@@ -136,7 +138,7 @@ xhr.onreadystatechange = function () {
 }
 ```
 
-**注意：步骤2和步骤3可以调换顺序。**
+==**注意：步骤2和步骤3可以调换顺序。**==
 
 ## 3.4	步骤4：调用send方法发送请求	
 
@@ -166,7 +168,7 @@ xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
 ```javascript
 //post请求必须添加这个头部
 req.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
-xhr.send('user='+encodeURI(nameVal) + '&pwd=' + pwdVal);
+xhr.send('user='+nameVal + '&pwd=' + pwdVal);
 ```
 
 # 五、同源策略
@@ -256,5 +258,65 @@ function foo(data) {
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/16-12-10/15828407-file_1481381845672_6961.png)
 
+> php端支持跨域的代码：
+
+```php
+header("Access-Control-Allow-Origin:*");
+```
+
 # 七、AJAX的数据解析
+
+## 7.1	解析JSON数据
+
+## 7.2	解析XML数据
+
+> 一段xml数据：
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<users>
+	<user id="1" >
+		<name>李四</name>
+		<age>20</age>
+		<sex>男</sex>
+	</user>
+	<user id="2">
+		<name>张三</name>
+		<age>20</age>
+		<sex>女</sex>
+	</user>
+</users>	
+```
+
+# 八、使用ajax提交表单数据
+
+## 8.1	FormData
+
+> FormData主要方便序列化表单数据和创建与表单数据格式相同的数据。
+
+```javascript
+//创建一个FormData对象
+var data = new FormData(); 
+//append接收两个参数：键和值。相当于表单中的name的值和value的值
+data.append("name", "lisi");
+```
+
+> 传入表单元素，则可以把表单中的数据直接存入到了FormData中
+
+```javascript
+//直接把表单中的数据存入到FormData中
+var data = new FormData(document.forms[0]);
+```
+
+> 有了FormData对象可以把它作为send函数的参数。
+
+```javascript
+xhr.send(new FormData(form))
+```
+
+**注意：**
+
+​	使用 FormData 的方便之处体现在不必明确地在 XHR 对象上设置请求头部。XHR 对象能够ខ别传 入的数据类型是 FormData 的实例，并配置适当的头部信息。
+
+
 
