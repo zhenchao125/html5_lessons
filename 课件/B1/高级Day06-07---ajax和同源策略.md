@@ -318,5 +318,22 @@ xhr.send(new FormData(form))
 
 ​	使用 FormData 的方便之处体现在不必明确地在 XHR 对象上设置请求头部。XHR 对象能够ខ别传 入的数据类型是 FormData 的实例，并配置适当的头部信息。
 
+# 附录php代码
+
+```php
+<?php
+/*$user = $_POST["user"];
+$pwd = $_POST["pwd"];*/
+
+$user = $_GET["user"];
+$pwd = $_GET["pwd"];
+if($user == "zs"){
+	echo $user . "登录成功";
+}else{
+	echo $user . "登录失败";
+}
+?>
+```
+
 
 
