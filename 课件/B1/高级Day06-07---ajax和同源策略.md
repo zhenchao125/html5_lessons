@@ -227,7 +227,7 @@ xhr.send('user='+nameVal + '&pwd=' + pwdVal);
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/public/16-11-14/63159156.jpg)
 
-## 6.1	使用JSONP规避同源
+## 6.1	使用JSONP规避同源（服务器端和前端要配合）
 
 ​	JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。
 

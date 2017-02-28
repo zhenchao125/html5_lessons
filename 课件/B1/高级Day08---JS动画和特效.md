@@ -547,12 +547,12 @@ Easing = {
 .bird1 {width:86px; height:60px; background-position: -90px -2px}
 .bird2 {width:86px; height:60px; background-position: -2px -2px}
 
- #bird{
+ #bird{ 
    position: absolute;
    left: 100px;
    top: 100px;
    zoom: 0.5;
- }
+ }The 32
 </style>
 <div id="bird" class="sprite bird1"></div>
 var i = 0;
