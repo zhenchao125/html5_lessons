@@ -15,7 +15,7 @@
 
 ​	JavaScript的动画用的最多的3个api就是setInterval()、setTimeout()和requestAnimationFrame()
 
-​	据说，普通人眼能看到1/24秒，就是说1秒至少24帧，每次移位间隔需要小于1000/24=41.7毫秒，也就说setInterval要每隔至少40毫秒执行一次，一般地，我们采用10毫秒，当然间隔时间越短，客户端执行计算次数就越多，如果你code计算量大则可以适当调长些。 
+​	普通人眼能看到1/24秒，就是说1秒至少24帧，每次移位间隔需要小于1000/24=41.7毫秒，也就说setInterval要每隔至少40毫秒执行一次，一般地，我们采用10毫秒，当然间隔时间越短，客户端执行计算次数就越多，如果你code计算量大则可以适当调长些。 
 
 ## 1.1 setTimeout()和setInterval ()
 
@@ -23,11 +23,13 @@
 
 ## 1.2 requestAnimationFrame(回调函数)
 
-​	像setTimeout、setInterval一样，requestAnimationFrame是一个全局函数。调用requestAnimationFrame后，它会要求浏览器根据自己的频率进行一次重绘，它接收一个回调函数作为参数，在即将开始的浏览器重绘时，会调用这个函数，并会给这个函数传入调用回调函数时的时间作为参数。由于requestAnimationFrame的功效只是一次性的，所以若想达到动画效果，则必须连续不断的调用requestAnimationFrame，就像我们使用setTimeout来实现动画所做的那样。requestAnimationFrame函数会返回一个资源标识符，可以把它作为参数传入cancelAnimationFrame函数来取消requestAnimationFrame的回调。跟setTimeout的clearTimeout很相似啊。
+​	像setTimeout、setInterval一样，requestAnimationFrame是一个全局函数。调用requestAnimationFrame后，它会要求浏览器根据自己的频率进行一次重绘，它接收一个回调函数作为参数，在即将开始的浏览器重绘时，会调用这个函数，并会给这个函数传入调用回调函数时的时间作为参数。由于requestAnimationFrame的功效只是一次性的，所以若想达到动画效果，则必须连续不断的调用requestAnimationFrame，就像我们使用setTimeout来实现动画所做的那样。requestAnimationFrame函数会返回一个资源标识符，可以把它作为参数传入cancelAnimationFrame函数来取消requestAnimationFrame的回调。
+
+​	跟setTimeout的clearTimeout很相似啊有木有。
 
 ​	可以这么说，requestAnimationFrame是setTimeout的性能增强版。
 
-​	有一点需要注意的是，requestAnimationFrame不能自行指定函数运行频率，而是有浏览器决定刷新频率。所以这个更能达到浏览器所能达到的最佳动画效果了。
+​	有一点需要注意的是，requestAnimationFrame不能自行指定函数运行频率，而是**浏由览器决定刷新频率**。所以这个更能达到浏览器所能达到的最佳动画效果了。
 
 ​	这个方法不是所有的浏览器都兼容。
 
@@ -149,8 +151,6 @@ block.addEventListener("click", function() {
   }, 100);
 });
 ```
-
-
 
 示例2：让滑块在**2秒**内向右匀速移动600px
 
