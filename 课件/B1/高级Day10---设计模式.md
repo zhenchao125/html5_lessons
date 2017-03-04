@@ -237,5 +237,3 @@ salesOffices.publish(100, "600万");
 
 
 
-# 六、模块模式
-
