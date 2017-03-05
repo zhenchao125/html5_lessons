@@ -453,3 +453,47 @@ transition-timing-function: step-end;
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-3-5/30148798-file_1488717635216_a877.gif)
 
+> `@keyframes 动画名{`
+>
+> ​	//定义关键帧
+>
+> `}`
+>
+> 1. 关键帧定义时可以使用from、to、百分比
+> 2. from表示0%、to表示100%
+> 3. 可以定义很多关键帧。20%、30%、...
+> 4. 百分比其实是指的时间完成的百分比。(考虑以前学习过的归一化的时间)
+
+> animation-timing-function可以是以下的关键值：
+>
+> ```css
+> animation-timing-function: ease;
+> animation-timing-function: ease-in;
+> animation-timing-function: ease-out;
+> animation-timing-function: ease-in-out;
+> animation-timing-function: linear;
+> animation-timing-function: step-start;
+> animation-timing-function: step-end;
+> ```
+>
+> 也可以是下面的函数：
+>
+> ```css
+> animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+> animation-timing-function: steps(4, end);
+> ```
+>
+> - cubic-bezier：贝塞尔曲线。如果提供的关键值不是我们想要的，则可以使用贝塞尔曲线定制自己需要的任何速度曲线。可以使用在线工具生成贝塞尔函数。
+>
+> https://isux.tencent.com/css3/tools.html
+>
+> 例如：
+>
+> cubic-bezier(0.315, -0.575, 0.680, 1.650)
+>
+> 对应的曲线：
+>
+> ![](http://o7cqr8cfk.bkt.clouddn.com/17-3-5/79878285-file_1488720393755_fd93.png)
+>
+> - steps(4, end):  表示每两个关键帧中间共需要再填充3个关键帧。
+
