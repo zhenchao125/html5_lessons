@@ -47,14 +47,14 @@ JQuery的使用也是如此。一般使用下面的入口来完成。
 
 > 说明：
 
-- \$ 是jquery中的对象。我们使用jquery的所有操作，都是在 \$ 的基础上完成的
-- 其实 $ 是 jQuery 对象的简称。  \$ === jQuery
+- `$` 是jquery中的对象。我们使用jquery的所有操作，都是在 `$` 的基础上完成的
+- 其实 `$` 是 jQuery 对象的简称。  `$ === jQuery`
 
 
 
 ## 2.2	JQuery对象和DOM对象的互换
 
-  使用JQuery获得的是JQuery对象，使用原生js获得的DOM对象，二者是完全不同的对象。使用的时候一定要区别开来。
+  **使用JQuery获得的是JQuery对象，使用原生js获得的DOM对象，二者是完全不同的对象。使用的时候一定要区别开来。**
 
 ```javascript
 <script type="text/javascript">	
@@ -85,7 +85,7 @@ JQuery的使用也是如此。一般使用下面的入口来完成。
 
 1. 执行时机：onload事件必须等页面完全加载完毕后才能执行；ready当页面节点加载完毕后就可以执行。比onload要早一点
 2. 添加个数：onload事件只能添加一个，如果添加了多个，则最后执行的onload事件会覆盖前边的事件;ready事件可以添加多个，且互相之间不会覆盖。（onload事件和ready时间之间也不会互相覆盖）
-3. 简化写法：onload没有简化写法；ready事件可以简化为:$(function(){});
+3. 简化写法：onload没有简化写法；ready事件可以简化为:`$(function(){})`;
 
 
 
@@ -127,7 +127,7 @@ JQuery的使用也是如此。一般使用下面的入口来完成。
 ```
 # 四、JQuery进阶选择器
 
-## 4.1	群组选择器
+## 4.1	群组选择器(并集)
 
 ```javascript
 <script type="text/javascript">

@@ -24,7 +24,7 @@
 
 ## 2.1	获取和设置元素的内容
 
-> 三个方法：text()、html()和val()
+> 三个方法：text()、html()和 val()
 
 ```javascript
 <!DOCTYPE html>
@@ -998,6 +998,8 @@ ele.click(function(event){        });  event就是事件对象。函数触发的
 ```
 
 ### 5.3.4	终极的on和off方法
+
+
 
 
 
