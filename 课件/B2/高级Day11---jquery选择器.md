@@ -294,8 +294,10 @@ $(function() {
 		var $ids5 = $("[id^=b]");
 		console.log($ids5)
 		
-		// id属性的值包含b的
+		// id属性的值包含子字符串b的
 		var $ids6 = $("[id*=b]");
+  		// 包换单词bb
+  		var boxs = $("[class~=bb]")
 		console.log($ids6)		
 	})
 </script>
