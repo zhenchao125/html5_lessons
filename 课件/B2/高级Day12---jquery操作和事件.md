@@ -6,7 +6,7 @@
 
 ### 1.1	DOM Core
 
-​	并不是JavaScript所专有，也不仅仅只操作HTML文档。只要文档是DOM结构，都可以使用核心DOM中的方法，如html文档和xml文档都可以使用getElement(s)相关的方法获得元素
+​	并不是JavaScript所专有，也不仅仅只操作HTML文档。只要文档是DOM结构，都可以使用核心DOM中的方法，如html文档和xml文档都可以使用getElementByxx(s)相关的方法获得元素
 
 ### 1.2	HTML-DOM
 
@@ -281,7 +281,7 @@ $(function () {
 //					alert(bg);
 					//设置背景色。
 //					$(".box").css("background-color", "#808080");
-					//也可是使用对象设置多个css属性
+					//也可是使用对象同时设置多个css属性
 					$(".box").css({"background-color":"#808080", "border":"10px solid green"});
 					//单独设置透明度。第二个参数是number可以不加引号。(加上也可以的)
 					$(".box").css("opacity",0.5);
@@ -304,13 +304,16 @@ $(function () {
 </html>
 ```
 
+> css方法使用总结：
+>
+> 1. 如果只传入一个字符串，则是获取匹配的第一元素的这个字符串表示的属性的值。css("backgroundColor")获取背景色。
+> 2. 如果传入的是一个数组，则可以获取匹配的第一个元素的多个属性值。
+> 3. 如果传入两个参数：第一个参数是一个字符串，第二个参数是字符串或者数字。则表示设置所有匹配元素的属性的值。
+> 4. 如果传入的是一个js对象，则表示同时设置多个css属性和值
+
 ## 3.2	offset方法
 
-​	获取这个元素在当前文档的相对偏移。其中返回的对象包含两个属性，left和top
-
-
-
-> offsetWidth:  包括padding和border
+> 获取这个元素在当前文档的相对偏移。其中返回的对象包含两个属性，left和top。(这个值类似pageX和pageY)
 
 ```html
 <!DOCTYPE html>
@@ -335,7 +338,7 @@ $(function () {
 		<script type="text/javascript">
 			$(function() {
 				$("button").click(function () {
-					//获取相对文档偏移量
+					//获取相对文档偏移量 获取到的对象有两个属性，一个left一个top
 					var $off = $(".box").offset();
 					console.log($off.left + "  " + $off.top);
 					//设置相对文档偏移量
@@ -357,11 +360,11 @@ $(function () {
 
 ## 3.3	position方法
 
-获取标签相对于参照定位标签的偏移量
+获取标签相对于参照定位标签(参照物父容器)的偏移量
 
 position（）方法的返回值和offset()一样，有top和left
 
-一般只用来获取而不是用来设置。
+**注意：这个方法不接受任何参数，所以只能获取不能设置。**
 
 ```html
 <!DOCTYPE html>
@@ -411,7 +414,6 @@ position（）方法的返回值和offset()一样，有top和left
 		</div>
 	</body>
 </html>
-
 ```
 
 ## 3.4	scrollTop()和scrollLeft()方法
@@ -502,6 +504,18 @@ var $li1 = $("<li id='js'>javaScrpt</li>"); //创建属性节点同元素节点�
 
 ## 4.2	插入节点
 
+> a.append(b)  : 向a中追加一个b
+>
+> a.appendTo(b) :  把a追加的b中
+>
+> a.prepend(b): 在a中的最前面追加b
+>
+> a.prependTo(b): 把a追加到b的最前面
+>
+> a.after(b) :  在a元素的后面插入一个b  
+>
+> a.before(b) : 在a元素的前面插入一个b
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -531,7 +545,13 @@ var $li1 = $("<li id='js'>javaScrpt</li>"); //创建属性节点同元素节点�
 
 ## 4.3	删除节点
 
-> remove、detach和empty三个方法可以完成删除节点的操作
+> remove()  删除这个节点，绑定的事件会丢失。  干掉自己
+>
+> detach() 删除节点，但是绑定的事件还在  干掉自己
+>
+> empty()  清空这个节点的所有内容。但是这个节点还在。  干掉所有的后代
+>
+> 三个方法可以完成删除节点的操作
 
 ```html
 <!DOCTYPE html>
@@ -613,6 +633,10 @@ var $li1 = $("<li id='js'>javaScrpt</li>"); //创建属性节点同元素节点�
 
 ## 4.5	替换节点
 
+> a.replaceWith(b): a中的每一个元素都用 b去替换   b干掉a
+>
+> a.replaceAll(b) :  用a去把满足b的每一个替换掉。  a干掉b
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -653,6 +677,8 @@ var $li1 = $("<li id='js'>javaScrpt</li>"); //创建属性节点同元素节点�
 > b.wrapAll(a) 	所有的b用同一个a包裹，如果有其他元素则扔到包裹的后面
 >
 > b.wrapInner(a);	用a去包裹b的内容。不包裹b这个标签本身。
+>
+> b.unwap()去除b的父元素
 
 ```html
 <!DOCTYPE html>
@@ -994,7 +1020,8 @@ ele.click(function(event){        });  event就是事件对象。函数触发的
 ### 5.3.3	事件委托
 
 ```html
-
+delegate委托
+undelegate解除委托
 ```
 
 ### 5.3.4	终极的on和off方法

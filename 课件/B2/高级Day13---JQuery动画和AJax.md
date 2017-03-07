@@ -53,7 +53,7 @@
 >
 > show(时间)、hide(时间)
 >
-> JQuery还提供了3个值：slow(600ms), nomal(400ms),fast(200ms)
+> JQuery还提供了3个值：slow(表示600ms), nomal(表示400ms),fast(表示200ms)
 
 ```javascript
 $box.show("slow");
