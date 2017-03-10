@@ -49,7 +49,7 @@
 </html>
 ```
 
-> show和hide方法也可以传入表示时间的参数。意思是说，从显示到隐藏，或隐藏到显示经过的事件。在这个过程中，元素的透明度会变大或变小，尺寸会变小或变大.
+> show和 hide方法也可以传入表示时间的参数。意思是说，从显示到隐藏，或隐藏到显示经过的事件。在这个过程中，元素的透明度会变大或变小，尺寸会变小或变大.
 >
 > show(时间)、hide(时间)
 >
@@ -64,18 +64,18 @@ $box.hide(2000);
 
 # 二、淡入和淡出
 
-> fadeIn()和fadeOut()淡入和淡出。只改变透明度，不改变尺寸。
+> fadeIn()和 fadeOut() 淡入和淡出。只改变透明度，不改变尺寸。
 >
-> 参数和show、hide一致
+> 参数和 show、hide 一致 
 
 ```javascript
-$box.fadeOut(2000);//淡入
-$box.fadeIn(2000); //淡出
+$box.fadeOut(2000);//淡出
+$box.fadeIn(2000); //淡入
 ```
 
 # 三、展开和收起
 
-> slideUp()和slideDown()。收起和展开。通过改变元素的尺寸
+> slideUp()和 slideDown()。收起和展开。通过改变元素的尺寸
 
 ```javascript
 $box.slideUp(1000);	//收起
@@ -119,7 +119,7 @@ $box.slideDown(1000); //展开
 					$box.slideToggle(2000);
 				})
 				$("button:eq(3)").click(function() {
-                  	//改变透明度到指定透明度值。值改变透明度
+                  	//改变透明度到指定透明度值。只改变透明度
 					$box.fadeTo(2000, 0.3)
 				})
 			})
@@ -146,6 +146,8 @@ $box.slideDown(1000); //展开
 > 参数2：可选。速度
 >
 > 参数3：动画算子（字符串。jquery默认只有linear和swing）。更复杂的需要第三方支持。
+>
+> 务必要先导入jquery再导入动画算子插件。
 >
 > 参数4：回调函数。可选。表示动画执行完毕之后然后再执行的函数。
 
@@ -286,11 +288,11 @@ $box.slideDown(1000); //展开
 
 ​	对AJAX一共封装了6个方法，分成三层。
 
-​	最底层：$.ajax()
+​	最底层：`$.ajax()`
 
-​	第二层：\$.load()、\$.get()、\$.post()
+​	第二层：`$.load()、$.get()、$.post()`
 
-​	第三层：\$.getScript()、$.getJson()
+​	第三层：`$.getScript()、$.getJson()`
 
 **第二层的方法使用最多最广泛**
 
@@ -304,7 +306,7 @@ $box.slideDown(1000); //展开
 >
 > **callback**:载入成功时回调函数。可选
 >
-> 注意：默认使用 GET 方式 - 传递附加参数时自动转换为 POST 方式
+> **注意：默认使用 GET 方式 - 传递附加参数时自动转换为 POST 方式**
 
 ### 7.1.1	加载静态HTML页面
 
@@ -363,11 +365,11 @@ $("#content").load("html_data.html  h1,#p", function function_name (response,sta
 
 > load一般用来读取静态html页面(动态也可以)。如果想方便传递数据到服务器，更多的使用get或post。
 >
-> load方法是  **jQuery 对象**  的方法，而get和post方法是JQuery中的全局函数，所以可以直接使用\$.get()和$.post()来调用
+> load方法是  **jQuery 对象**  的方法，而get和post方法是JQuery中的全局函数，所以可以直接使用\$.get()和`$.post()`来调用
 >
-> $.get(url, data, success(data,textStatus,xhr), dataType)
+> `$.get(url, data, success(data,textStatus,xhr), dataType)`
 >
-> $.post(url, data, success(data, textStatus,  xhr), dataType)
+> `$.post(url, data, success(data, textStatus,  xhr), dataType)`
 
 | 参数                             | 描述                                       |
 | ------------------------------ | ---------------------------------------- |
@@ -412,7 +414,7 @@ $("#content").load("html_data.html  h1,#p", function function_name (response,sta
 
 ## 7.3	getScript方法
 
-​	异步的方式加载js文件，并能加载完成后可以立即执行js文件中的代码
+​	异步的方式加载js文件，并在加载完成后可以立即执行js文件中的代码
 
 ```html
 <!DOCTYPE html>
@@ -483,7 +485,7 @@ $("#content").load("html_data.html  h1,#p", function function_name (response,sta
 
 ​	该方法是JQuery底层的AJAX实现，前面的方法都是对这个方法的封装。**只有一个参数(对象)**，所有关于请求的数据都可以封装到这个参数中
 
-$.ajax ( [ setting ] )
+`$.ajax ( [ setting ] )`
 
 ```html
 <!DOCTYPE html>

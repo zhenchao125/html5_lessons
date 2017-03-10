@@ -155,12 +155,148 @@ listener2 byvoid 1991
 - **crypto**：提供加密和解密功能，基本上是对OpenSSL的包装。
 
 
+# 三、node基本模块使用
+
+## 3.1	一些全局变量
+
+1. __dirname
+
+```javascript
+console.log(__dirname);
+// 输出: /Users/mjr
+console.log(path.dirname(__filename));
+// 输出: /Users/mjr
+
+```
+2. __filename
+
+```javascript
+console.log(__filename);
+// 输出: /Users/mjr/example.js
+console.log(__dirname);
+// 输出: /Users/mjr
+```
+
+## 3.3	fs模块
+
+> 文件 I/O 是由简单封装的标准 POSIX 函数提供的。 通过 `require('fs')` 使用该模块。 所有的方法都有异步和同步的形式。
+
+### 3.3.1	读文件
+
+```javascript
+/**
+ * Created by lzc on 2017/3/8.
+ */
+var fs = require("fs");
+/**
+ 异步的方式读取文件
+ 参数1：文件
+ 参数2：可选参数可以省略.可以是对象或者字符串。如果是文本文件可以指定编码 "utf8".
+        如果不指定文件则回调函数中传入的data为Buffer数据。指定编码则返回字符串。
+ 参数3：回调函数。
+        回调函数中，第一个参数为err。如果没有发生错误，则是null或者undefined
+        回调函数的第二个参数是文件内容
+
+*/
+fs.readFile("test.txt", "utf8", function (err, data) {
+    if(err) throw err;
+    console.log(data);
+})
+```
+
+### 3.3.2	写文件
+
+```javascript
+/**
+ * Created by lzc on 2017/3/8.
+ */
+var fs = require("fs");
+/**
+ 异步的方式读取文件
+ 参数1：文件
+ 参数2：写入到文件中的内容
+ 参数3：如果是文本文件，在这里添加文本的编码
+ 参数3：回调函数。
+        回调函数中只有一个参数：err
+
+*/
+fs.writeFile("hello.txt", "这是要写入的文件", "utf-8", function (err) {
+    if(err){
+        console.log("文件写入出错")
+    }else{
+        console.log("文件写入成功");
+    }
+})
+```
+
+### 3.3.3	用流的方式读写文件
+
+> 如果读取的是非文本文件或者是比较大的文件，建议使用流的方式读取文件。
+
+```javascript
+/**
+ * Created by lzc on 2017/3/8.
+ */
+var fs = require("fs");
+/**
+    参数：文件
+ 返回一个新的ReadStream 对象
+*/
+var readStream = fs.createReadStream("a.jpg");
+var writeStream = fs.createWriteStream("b.jpg")
+readStream.on("data",function (chunk) {
+    //把缓冲区写入到写入流中。完成了复制
+    writeStream.write(chunk)
+})
+```
+
+# 四、手动搭建Web应用
+
+> 使用node.js核心模块手动搭建一个web服务器
+
+```javascript
+// 先导入http模块。
+var http = require("http");
+//使用http模块创建一个服务器
+var server = http.createServer();
+//导入url模块，可以对url进行分析
+var url = require("url");
+var count = 1;
+// 服务监听一个事件：request事件（请求事件）.   回调函数：两个参数  request， response
+server.on("request", function(req, res){
+    //给客户端返回信息，通过res这个对象
+    res.setHeader("Content-Type", "text/html;charset=utf-8");  //给浏览器发送响应头
+    res.write("你是本网站的第" + count++ + "个访问者");
+    res.end();  //把写入到缓存中的数据发送到客户端
+
+});
+//监听指定的端口
+server.listen(8888);   //端口号：0 - 65535   0-1024 一般操作系统或一些默认的应用给占用
+```
 
 # 三、搭建web应用
 
 ​	使用Node.js搭建web服务器，一般使用一些框架来帮助完成。
 
 ​	**express** 是一个开源的node.js项目框架，初学者使用express可以快速的搭建一个Web项目，express中已经集成了Web的http服务器创建、请求和文件管理以及Session的处理等功能，所以express是非常适合初学者的入门学习。
+
+注意：为了加快框架的下载速度，建议更改npm的镜像地址。愿意你懂的
+
+第一步:下载nrm
+
+`npm install -g nrm`
+
+第二步：查看目前支持的所有镜像
+
+`nrm ls`
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-3-8/14867504-file_1488981070901_6688.png)
+
+第三步：建议更换淘宝镜像，国内速度相对比较快。
+
+nrm use taobao
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-3-8/897940-file_1488980986492_81fe.png)
 
 ## 3.1	安装Express框架
 
