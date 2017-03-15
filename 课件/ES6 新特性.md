@@ -352,7 +352,7 @@ function add(first = second, second)) {  // 这种写法是错误的
 > 1. ****剩余参数是用在函数的声明的时候的参数列表中，而且必须在参数列表的后面
 > 2. 扩展运算符是用在函数调用的时候作为实参来传递的，在实参中的位置没有限制。
 
-# 四、全新的函数：箭头函数（=>）->
+# 四、全新的函数：箭头函数（=>)
 
 > ECMAScript 6 最有意思的部分之一就是箭头函数。正如其名，箭头函数由 “箭头”（=>）这种新的语法来定义。
 >
@@ -681,7 +681,7 @@ console.log(Object.is(5, "5"));     // false
 
 > 使用assign主要是为了简化对象的混入（mixin）。混入是指的在一个对象中引用另一个对象的属性或方法。
 >
-> assing可以把一个对象的属性和访问完整的转copy到另外一个对象中。
+> assing可以把一个对象的属性和方法完整的转copy到另外一个对象中。
 
 ```javascript
 <script type="text/javascript">
@@ -1179,7 +1179,7 @@ var a = {
 
 ## 8.4	Symbol属性名的遍历
 
-​	Symbol 作为属性名，该属性不会出现在for...in、for...of循环中，也不会被Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()返回。但是，它也不是私有属性，有一个Object.getOwnPropertySymbols方法，可以获取指定对象的所有 Symbol 属性名。
+​	Symbol 作为属性名，该属性不会出现在for...in循环中，也不会被Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()返回。但是，它也不是私有属性，有一个Object.getOwnPropertySymbols方法，可以获取指定对象的所有 Symbol 属性名。
 
 > 看下面的代码
 
@@ -1209,7 +1209,6 @@ for (var i in obj) {
 }
 
 Object.getOwnPropertyNames(obj);// []   只能拿到非Symbol类型的属性
-
 
 Object.getOwnPropertySymbols(obj) //[Symbol(foo)]
 ```
