@@ -1332,7 +1332,7 @@ Reflect.ownKeys(obj);//  ["enum", "nonEnum", Symbol(my_key)]
 >
 > **是通过我们前面说过的 Object.is(a, b) 来判断两个元素是否相等。**
 >
-> 回忆一下：这个方法除了 +0和-0、NaN和NaN认为相等，其余和三个 === 是完全一样的。
+> 
 
 ```javascript
 <script type="text/javascript">
@@ -1546,13 +1546,12 @@ for(var v of set){
  </script>
 ```
 
-# 十一、迭代器和for...of循环
+# 十一、迭代器(iterator)和for...of循环
 
 ## 11.1	循环问题
 
 ```javascript
 var colors = ["red", "green", "blue"];
-
 for (var i = 0, len = colors.length; i < len; i++) {
     console.log(colors[i]);
 }
@@ -1566,7 +1565,7 @@ for (var i = 0, len = colors.length; i < len; i++) {
 
 1. 迭代器是一个对象
 2. 迭代器提供一个方法next() 这个方式总是能够返回迭代到的对象。
-3. next返回的对象中，应该有两个属性：done 是一个boolean值。  value：具体的数据
+3. next返回的对象中，至少有两个属性：done 是一个boolean值(表示数据是否迭代完)。  value：具体的数据(迭代到的具体数据)
 
 
 
@@ -1632,9 +1631,9 @@ console.log(iterator.next());           // "{ value: undefined, done: true }"
 </script>
 ```
 
-> **迭代器函数也是函数，所以他可以像正常的函数一样调用，但是生成器函数会自动返回一个迭代器对象。**
+> **迭代器函数也是函数，所以他可以像正常的函数一样调用，但是迭代器生成器函数会自动返回一个迭代器对象。**
 >
-> 每调用一次迭代器的next方法，如果碰到yield都会返回一个迭代到的一个对象，然后停止执行，直到下次调用next方法，会从上次停止的地方继续执行。
+> 每调用一次迭代器的next方法，如果碰到 yield 都会返回一个迭代到的一个对象，然后停止执行，直到下次调用next方法，会从上次停止的地方继续执行。
 
 ```javascript
 //这个迭代器函数返回的迭代器可以迭代传入的数组中的所有元素。
@@ -1927,7 +1926,6 @@ let PersonClass = class PersonClass2{
         console.log(this.name);
     }
 };
-
 ```
 
 > 注意：具名类表达式中PersonClass2这个类名只能在类的内部访问到，在外面是访问不到的.
