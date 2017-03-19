@@ -1,4 +1,4 @@
-#  **Day 07---字符串操作和数学函数**![](http://www.yztcedu.com/images/logo.png)
+#  **Day 07---字符串操作和数学函数**![](http://www.yztcedu.com/images/logo.png)—李振超
 
 # 一、	字符串操作
 
@@ -78,6 +78,8 @@ var s = "a你好bcd";
 alert(s.charCodeAt(0)); // 弹出:	97
 alert(s.charCodeAt(2)); // 弹出： 22909
 ```
+
+> 3. fromChar
 
 ### 1.3.2	字符串连接方法
 
@@ -196,7 +198,7 @@ var s = " \n \t ABc   Abc   \t \n \t";
 alert(s.trim());//ABc   Abc
 ```
 
-### 1.3.6	字符串替换方法
+### 1.3.6	字符串替换、匹配、搜索方法
 
 > 1. s.replace(regexp/substr,replacement)	方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
 >
@@ -207,7 +209,7 @@ alert(s.trim());//ABc   Abc
 >
 > 说明：
 
-1. 正则表达式，仅了解。后面再细讲。  /abc/gi   
+1. 正则表达式，仅了解。后面再细讲。    
 2. 如果是普通的字符串，则只替换第一个满足要求的。
 
 ```javascript
@@ -226,10 +228,10 @@ alert(s.replace(/ab/gi, js));  //替换所有的ab，且忽略大小写
 
 ```javascript
 var s = "abcaba";
-var arr = s.match("ab"); //因为是 普通字符串， 所以只匹配第一个
+//因为是 普通字符串， 所以只匹配第一个.  这个数组其实多了两个属性：index和input
+var arr = s.match("ab"); 
 alert(arr);	// ["ab"]
 alert(s.match(/ab/gi)); // ["ab", "ab"]
-
 var s1 = "今天是是2016年11月5日";
 //匹配所有的数字
 var nums = s1.match(/\d+/gi);
@@ -248,7 +250,7 @@ alert(arr);	// 0
 alert(s.search(/ab/gi)); // 0  忽略全局
 
 var s1 = "今天是是2016年11月5日";
-//匹配所有的数组
+//匹配所有的数字
 var nums = s1.search(/\d+/gi);
 console.log(nums.toString()); //输出 : 4
 ```
