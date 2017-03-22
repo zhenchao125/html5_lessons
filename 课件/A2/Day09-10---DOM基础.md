@@ -1,4 +1,4 @@
-#  Day 09-10---DOM基础![](http://www.yztcedu.com/images/logo.png)
+#  Day 09-10---DOM基础![](http://www.yztcedu.com/images/logo.png)—李振超
 
 # 一、DOM概述==(079)==
 
@@ -45,7 +45,7 @@ DOM Level 0: 首先我们的确定的是在DOM标准中并没有DOM 0级的。�
 </html>
 ```
 
-- ![](http://o7cqr8cfk.bkt.clouddn.com/16-11-6/6815318.jpg)
+- ![](http://o7cqr8cfk.bkt.clouddn.com/16-11-6/6815318.jpg-yztcText)
 
 > 说明：
 
@@ -130,9 +130,7 @@ DOM Level 0: 首先我们的确定的是在DOM标准中并没有DOM 0级的。�
 - nodeValue 的值为 null ；
 - parentNode 的值为 null ；
 - ownerDocument 的值为  null ；
-- 其子节点可能是一个 DocumentType （最多一个）、 Element （最多一个）、 ProcessingInstruction
-
-或 Comment 
+- 其子节点可能是一个 DocumentType （最多一个）、 Element （最多一个）、 ProcessingInstruction或 Comment 
 
 > 通过document对象，不仅可以取得与页面有关的信息，而且还能操作页面的外观及其底层结构。
 

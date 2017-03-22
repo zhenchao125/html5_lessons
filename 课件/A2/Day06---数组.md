@@ -1,4 +1,4 @@
-# **Day 06---数组**![](http://www.yztcedu.com/images/logo.png)
+# **Day 06---数组**![](http://www.yztcedu.com/images/logo.png)—李振超
 
 # 一、	数组的概念
 

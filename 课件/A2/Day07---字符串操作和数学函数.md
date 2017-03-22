@@ -79,7 +79,7 @@ alert(s.charCodeAt(0)); // 弹出:	97
 alert(s.charCodeAt(2)); // 弹出： 22909
 ```
 
-> 3. fromChar
+> 3. String.fromCharCode
 
 ### 1.3.2	字符串连接方法
 

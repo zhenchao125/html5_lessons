@@ -88,7 +88,7 @@ alert("窗口宽度：" + w + "\n窗口高度：" + h);
 > - window.resizeTo(w, h) ：调整到指定的大小
 > - resizeBy(deltW, deltH) ：增加指定值的窗口的宽和高
 >
-> 一些浏览器已经禁用了这个方法(Chrome和Firfox均禁用了这两个方法, ie可用)
+> 一些浏览器已经禁用了这个方法(Chrome和Firfox均禁用了这两个方法, ie和 safari可用)
 
 ```javascript
 <body>
@@ -259,7 +259,7 @@ win.close();
 </script>
 ```
 
-## 2.2	location对象
+## 2.2	location对象(了解)
 
 > location对象其实是window对象的子对象。可以 这样使用：window.location,但是使用的时候一般省略window。
 >
