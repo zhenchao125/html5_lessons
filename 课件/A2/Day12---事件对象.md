@@ -295,3 +295,8 @@
 1. 完全可以考虑给document添加一个事件处理程序，用来处理页面上发生的某种特定类型的事件。
 2. 比较适合事件委托的事件：click 、 mousedown 、 mouseup 、 keydown 、 keyup 和 keypress。
 
+
+
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-3-28/19508949-file_1490691949870_d502.png)
+
