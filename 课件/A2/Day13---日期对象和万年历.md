@@ -312,7 +312,7 @@
 1. toDateString() ——以特定于实现的格式显示星期几、月、日和年；
 2. toTimeString() ——以特定于实现的格式显示时、分、秒和时区；
 3. toLocaleDateString() ——以特定于地区的格式显示星期几、月、日和年；
-4. toLocaleTimeString() ——以特定于实现的格式显示时、分、秒；
+4. toLocaleTimeString() ——以特定于地区的格式显示时、分、秒；
 5. toUTCString() ——以特定于实现的格式完整的 UTC 日期。
 
 
