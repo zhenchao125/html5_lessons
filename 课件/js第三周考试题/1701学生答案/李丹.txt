@@ -1,0 +1,122 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.A
+04.D
+05.D
+06.C
+07.A
+08.C
+09.C
+10.C
+11.C
+12.C
+13.B
+14.B
+15.D
+16.C
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.D
+28.B
+29.D
+30.C
+二、简答题
+
+1.String、undefined、object、function、number、boolen、NaN,操作符是typeOf.
+
+
+
+
+2.document.getElementById,document.getElementByTagName,document.getElementByClassName,
+
+body.firstElementChild
+
+
+3.createElement(),createNode(),div.appendChild(a)
+
+
+
+
+4.prompt()是提示框，提示用户输入相关的信息，可以是数字、字符串、字母等等，alert（）是警告框
+
+只有在用户点击确定，返回值为1时，用户才可以在当前页面进行其他操作，否则不能。
+confirm()是确认框，用户可以选择确认或者取消，确认时返回1，取消返回0.
+
+
+5.innerHTML可以插入各种元素，而innerText只能插入文本
+
+
+三、编程题：要求只需要js代码
+
+1.var date=Date();
+  console.log("今天是"+date.getYear（）+"年"+date.getMonth()+"月"+date.getDay()+"加油考试吧！" )
+
+
+
+ 
+2.function max(a,b,c){
+      var s1,s2,s3,max;
+      if(s1>s2){
+          if(s1>s3){
+              max=s1
+          }
+          else{
+              max=s3
+          }
+      else if(s2>s3){
+         max=s2
+      
+ 	}
+      else{
+         max=s3
+  
+      }
+    }
+  return max;
+}
+    max();
+
+
+3.var arr=[34,6,-23,43,34,342,3,0]
+function (){
+     
+     return arr1=arr.push(34,6,-23,43,34,342,3,0)
+}
+function(){
+  for(j=0;j<arr.length-1;i++){
+      for(i=0;i=arr.length-1-j;i++){
+           if(arr[i]<arr[i+1]){
+              var temp=arr[i+1]；
+             arr[i+1]=arr[i]；
+             arr[i]=temp;
+
+
+}       
+
+}
+        
+}
+}
+function(){
+    
+     for(i=0；i<=arr1.length;i++){
+           var s=arr1.pop()
+           var sum+=s
+
+}
+
+
+
+
+
+}
+

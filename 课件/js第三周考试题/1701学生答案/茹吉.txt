@@ -1,0 +1,109 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.D
+03.C
+04.A
+05.D
+06.C
+07.B
+08.C
+09.C
+10.C
+11.C
+12.C
+13.B
+14.A
+15.C
+16.C
+17.C
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.A
+25.A
+26.B
+27.D
+28.D
+29.A
+30.C
+二、简答题
+
+1.简单数据类型：Number , Boolean , String , Null , Undefined
+  复杂数据类型：Object , Function , Array , 等
+  操作符：  typeof
+
+2.第一种：document.getElementById("myDiv")
+  第二种：document.getElementsByClassName("myDiv")[0]
+  第三种：document.querySelector("#myDiv")
+  第四种：document.querySelector(".myDiv")
+
+3.创建新元素：document.createElement("ele");
+  创建文本节点：document.createTextNode("text")
+  追加：var a=document.createElement("a");
+	div.appendElementChild(a);
+
+4.prompt:输入框；用户可以输入一段字符串，确认后可获取用户输入的字符串
+ confirm:确认框；用来确认是否进行操作，有确认和取消两个按钮，点击确认则返回true,继续执行；
+		点击取消返回false，不执行。
+  alert：警告框；用来提醒用户。只有一个确认按钮，不点击无法进行下面的操作。
+
+
+
+
+5.innerHTML:为向指定的元素中添加内容，如果添加元素，则元素便签会被解析。
+  innerText:为向指定的元素中添加文本，但是元素便签等不会被解析，以字符串的方式显示；
+	    如：div.innerText = "<p>这是p标签</p>"；到页面上也为  “<p>这是p标签</p>”
+
+三、编程题：要求只需要js代码
+
+1.<script>
+	var date = Date();
+	var year = date.getFullYear;
+	var month = date.getMonth + 1;
+	var day = date.getDate;
+	document.body.innerHTML = "今天是" + year + "年" + month + "月" + day + "日，加油考试吧";
+</script>
+
+
+2.<script>
+	function max(num1,num2,num3){
+       	  var arr = [];
+	  arr.push(num1,num2,num3);
+	  arr.sort(function(a,b){
+		return b-a;
+	  })
+	  var max = arr[0];
+	  return max;	  
+	}
+
+
+</script>
+
+3.<script>
+	var str="34,6,-23,43,34,342,0,3";
+	function pushToArr(str1){
+	  var arr=[];
+	  for(i=0;i<str.length;i++){
+		arr.push(str[i]);
+	  }
+		return arr;
+	}
+	function px(){
+	  var arr1 = pushToArr(str);
+	  arr1.sort(function(a,b){
+		return b-a;
+	  })
+	  return arr1;
+	}
+	function add(arr){
+		var sum=0;
+ 	  for(i=0;i<arr.length;i++){
+		sum += arr[i];
+	  }
+	  return sum;
+	}
+	add(px());
+</script>

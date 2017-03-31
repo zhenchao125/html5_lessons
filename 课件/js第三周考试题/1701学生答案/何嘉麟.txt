@@ -1,0 +1,128 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.B
+04.A
+05.B
+06.C
+07.B
+08.D
+09.C
+10.C
+11.C
+12.A
+13.A
+14.A
+15.B
+16.B
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.A
+25.A
+26.B
+27.A
+28.D
+29.A
+30.C
+二、简答题
+
+1.JS中的数据类型有两种:简单数据类型以及复杂数据类型.简单数据类型有:number,string,null,boolean,undefined;
+复杂数据类型有:object,array,function;判断数据类型的操作符是  .typeOf() 
+
+
+
+
+2.①document.getElementById("myDiv");②document.getElementByClassName("myDiv");
+  ③document.getElementByTagName("div");④document.body.firstElementChild
+
+
+
+
+3.①创建新元素:document.creatElement("") ; ②创建文本节点: document.creatTextNode("");
+  ③将a标签追加到一个DIV中: var tagA = document.creatElement("a"); div.appendChild(tagA);
+
+
+
+
+4.①prompt()  是弹出一个可以让用户输入文本信息的提示框,其返回值是用户输入的文本信息;
+  ②alert()  是弹出一个警告框.内容是括号内的内容,用户点确定取消警告框;
+  ③confirm() 是弹出一个确认框,询问用户是否确认括号内的内容,其返回值是布尔值.
+
+
+
+
+5.innerHTML会解读置换内容的代码,如果在innerHTML中放入一个完整的标签,则innerHTML会将其作为一个完整的
+标签替换原来的内容;innerText则不会对代码进行解读,即使在里面放入一个完整的标签如<input>,也只会在页面中显示<input>.
+
+
+三、编程题：要求只需要js代码
+
+1.<script>
+	var today = getLocalDate;
+	var fight =newString( "今天是"+today+",加油考试吧");
+	alert(fight);
+  </script>
+
+
+
+
+2.<script>
+    
+    function compare(){
+	var num1 = prompt("请输入第1个数字");
+             if(typeOf(num1) != number)){alert("请输入正确的数字")};
+	var num2 = prompt("请输入第2个数字");
+             if(typeOf(num1) != number)){alert("请输入正确的数字")};
+	var num3 = prompt("请输入第3个数字");
+	     if(typeOf(num1) != number)){alert("请输入正确的数字")};
+	var nums = [num1,num2,num3];
+        for(var j=0;j<nums.length-1;j++){
+	     for(var i=0;i<nums.length-1-j;i++){
+		 if(nums[i]>nums[i+1]){
+		     var temp = nums[i];nums[i]=nums[i+1];nums[i+1]=temp};};
+	}
+	alert("你输入的数字中最大值为"+num3)};
+	
+  </script>
+
+
+
+
+3.<script>
+	var st1 =‘34,6,-23,43,34,342,0,3’;
+//把字符串中的数字存入到一个数组中，并返回这个数组
+	function turnStoA(st){
+	    var arr = newArray()
+	    for(var i=0;i<st.length;i++){var arr[i] = st[i];};
+	    return arr;
+	    
+}
+//对数组中的元素按照降序排列。
+        function compare(){
+	     for(var j=0;j<arr.length-1;j++){
+		 for(var i=0;i<arr.length-j-1;i++){
+		if(arr[i]>arr[i+1]){
+		     var temp = arr[i];arr[i]=arr[i+1];arr[i+1]=temp}
+	};};
+	return arr[arr.length-1]
+
+}
+       compare();
+// 定义一个函数3：计算数组中所有数字的和。
+     function sum(){
+	 for(i=0;i<arr.length;i++){
+	   var sums = 0 ;
+		sums += arr[i];};
+		return sums;
+	
+}	
+	sum();
+
+  </script>
+
+

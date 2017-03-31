@@ -1,0 +1,129 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.C
+09.D
+10.C
+11.C
+12.B
+13.D
+14.A
+15.D
+16.D
+17.C
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.A
+25.A
+26.B
+27.B
+28.D
+29.C
+30.C
+二、简答题
+
+1.有2种数据类型：
+   简单型：Undefined Number String Null Boolean；
+   复杂型：Array Object function；
+   typeof；
+
+
+
+
+2.var id = document.getElementById("myDiv");
+  var id = document.getElementsByTagName("div");
+  var id = document.getElementByName("mydiv");
+  var id = document.getElementsByTypeName("test");
+
+
+
+3.var ele = document.createElement("div");  例如创建一个div
+  var text = document.createTextNodes("哈哈哈我是一个文本节点");
+  var a = document.createElement("a");  例如创建一个a标签
+	a.innerHtml = "6666666";
+  var new = ele.appendChild(a); 
+
+
+4.alert() 警告框 用户无法进行输入；只是可以看到HTML所返回的信息；
+  
+  confirm（）确认框，用户可以进行输入，并且可以返回一个布尔值。是1   ：不是0。
+
+  prompt（）输入框。用户可以进行输入。并且把用户输入的信息传入。
+
+5.innerHTML 可以塞入标签  而 innerText只能塞入文本。
+
+
+三、编程题：要求只需要js代码
+
+1.<html>
+   utf-8...
+   tittle....
+<head>
+	<style>
+	
+	</style>
+</head>
+
+<body>
+	<p id="p"></p>;
+</body>
+ 	<script>
+                var p = document.getElementById("p");
+		var date = new Date();
+        	var y = event.date.getFullYear();
+                var m = event.date.getMonth();
+                var d = event.date.getDate();
+
+                p.appenChild("今天是"+y+"年"+m+"月"+d+"日,加油考试吧!");
+      
+	</script>
+
+  </html>
+
+
+
+
+2.function bigs(a,b,c){
+    var big =0;
+    a>b? big=a : big=b;
+    big>c?  big=big : big=c;
+    return big;
+}
+
+
+
+
+3.  
+	1.function push(str){
+	var str = "34,6,-23,43,34,342,0,3";
+        var a = [];
+        a.appenChild(str);
+        return a;	
+}
+
+       2.function jx(str){
+	for(var i =0;i<str.length-1;i++){
+	    var temp = 0;
+            if(str[i]<str[i+1]){
+		temp = str[i];
+                str[i]=str[i+1];
+                str[i+1]=temp;	}		}
+}
+
+
+       3.function add(str){
+	var sum = 0;
+        for(var i =0;i<str.length;i++){
+         sum+=str[i];
+}
+       return sum;
+}

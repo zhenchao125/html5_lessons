@@ -1,0 +1,163 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.C
+09.A
+10.D
+11.B
+12.C
+13.D
+14.A
+15.C
+16.C
+17.C
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.D
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+
+简单数据类型: Number String Boolean null undefined
+对象数据类型: 数组 函数 对象 
+typeof();
+
+
+2.
+
+document.getElementById(“myDiv”)
+document.getElementsByTagName(“div”)
+document.getElementsByClassName(“myDiv”)
+document.querySelector(“#myDiv”)
+
+
+3.
+
+document.createElement(“”)
+document.createTextNode(“”)
+
+document.createElement(“div”);
+div.id = father;
+document.createElement(“a”);
+a.id = son;
+father.appendChild(“son”)
+div.innerHTML = “<a>…</a>”
+
+4.
+
+prompt()输入框 用户需要输入相应的值,再通过点击确定或取消返回给电脑一个值来进行下一步运算
+alert() 警告框 用户无需输入,警告框需要点击才可以再次操作.
+confirm()确认框  用户无需输入 ,确认事件的正确与否,点击后可以再次操作
+
+5.
+
+innerText 只能插入文本 而innerHTML 都可以插入
+
+三、编程题：要求只需要js代码
+
+1.
+
+<script>
+var date = new Date();
+var day =date.toLocalString();
+document.write(“今天是” + “day” + “,加油考试吧!”)
+</script>
+
+2.
+
+请输入第一个值<input id=“Num1” value=“”/>
+请输入第二个值<input id=“Num2” value=“”/>
+请输入第三个值<input id=“Num3” value=“”/>
+<button id= “btn”>按钮</button>
+<script>
+btn.onclick = function(){
+	var Num1 = parseInt(document.getElementById(“Num1”).value) ;
+	var Num2 = parseInt(document.getElementById(“Num2”).value) ;
+	var Num3 = parseInt(document.getElementById(“Num3”).value) ;
+	if(Num1 > Num2)	{
+		if(Num1 > Num3){
+			alert(“Num1”);
+		}else if(Num3 > Num2 && Num1 > Num3){
+			alert(“Num1”);
+		}
+	}else if(Num2 > Num1){
+		if(Num2 > Num3){
+			alert(“Num2”);
+		}else if(Num3 > Num1 && Num2 > Num3){
+			alert(“Num2”);
+		}
+	}else if(Num3 > Num1){
+		if(Num3 > Num2){
+			alert(“Num3”);
+		}else if(Num2 > Num1 && Num3 > Num2){
+			alert(“Num3”);
+		}
+	}
+}
+
+</script>
+3.
+
+<script>
+
+function NumSave(){
+var s = ’34,6,-23,43,34,342,0,3’ ;
+var RegExp = /\d/gi ;
+var s1 = match(RegExp);
+var Zu = [];
+for(var i = 0; i < s1.length ;i++){
+	Zu.appendChild(s1[i]);
+}
+return Zu;
+}
+
+</script>
+
+——————————————————————————————————
+
+<script>
+
+function NumRev(){
+var s = ’34,6,-23,43,34,342,0,3’ ;
+var RegExp = /\d/gi ;
+var s1 = match(RegExp);
+var Zu = [];
+for(var i = 0; i < s1.length ;i++){
+	Zu.appendChild(s1[i]);	
+}
+return Zu.reverse();
+}
+
+</script>
+
+————————————————————————————————————
+<script>
+
+function NumRev(){
+var s = ’34,6,-23,43,34,342,0,3’ ;
+var RegExp = /\d/gi ;
+var s1 = match(RegExp);
+var sum = 0;
+for(var i = 0; i < s1.length ;i++){
+	sum += +s1[i];	
+}
+return sum;
+}
+
+
+</script>

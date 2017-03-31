@@ -1,0 +1,110 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.D
+09.C
+10.C
+11.C
+12.B
+13.A
+14.A
+15.C
+16.B
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.D
+24.A
+25.A
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+  a、简单数据类型：number,string,array,underfine,bealeen,ES6新增一种
+  b、复杂数据类型：object,
+  c、判断一个数据的类型的操作符	typeof（）
+
+2.
+  a. document.getElementById("myDiv)	
+  b. document.etElementByTagName(div)
+  c. document.querySelector("div")
+  d. document.querySelectorAll("div")
+  e. document.getElementByClassName("myDiv")
+
+
+3.
+  a. document.createElement()
+  b. document.createTextNode()
+  c. div.append(a)
+
+4.
+  a. prompt()  输入框：用户可以在此框进行输入
+  b. alert()   警告框：用于警告用户某些事情，需要用户手动关闭。
+  c. confirm   确认框：用于提示用户，用户需要点击 确定 或者 取消。
+
+5.
+ a. innerHTML  直接把需要的内容插入到某个标签内，标签里原来的内容会被替换
+ b. innerText  插入到文本，一般还需要通过 append.()来添加到某个标签内
+
+三、编程题：要求只需要js代码
+
+1.
+<script>
+    var time = '"今天是" +getFullYear + "年"
+		+ getMonth + "月"
+		+ getDate + "日,加油考试吧"'
+    console.log(time);
+</script> 
+
+
+
+2.
+<script>
+    function foo(a,b,c){
+	var temp = a>b ? a : b;
+	var num = temp>c? temp:c ;
+	return num;
+    }
+</script>
+
+3.
+<script>
+    var str ="34,6,-23,43,34,342,0,3";
+    var arr = [];
+    //定义一个函数1：把字符串中的数字存入到一个数组中，并返回这个数组。
+    function foo1(){
+	for(var i =0;i<str.length;i++){
+	    arr.push(+str.charAt(i));
+	    return arr;
+    }
+    //定义一个函数2：对数组中的元素按照降序排列。
+    function foo2(){
+	arr.sort(a,b){
+    	    a-b;
+	return arr;
+        }
+    }
+    //定义一个函数3：计算数组中所有数字的和。
+    var add = 0;
+    function foo3(){
+  	for(var i =0;i<arr.length;i++){
+	    add =arr[i]+add;
+	    return add;
+	}
+    }
+</script>
+
+
+

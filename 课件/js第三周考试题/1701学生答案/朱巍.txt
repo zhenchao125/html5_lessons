@@ -1,0 +1,121 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.C
+08.D
+09.C
+10.D
+11.C
+12.C
+13.B
+14.A
+15.C
+16.B
+17.C
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.A
+25.C
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.答：Number String Boolean  Undefined  object  Function   
+
+	操作符：typeof(）
+
+
+
+2.答：2.1  document.getElementById("myDiv")
+      2.2  document.getElementsByClassName("myDIV")
+      2.3  document.getElementsByTagName("div")
+      2.4  document.querySelector("div")
+
+
+3.答：创建新元素 createElement()
+      创建文本节点   createTextNode()
+       div.appendChild("a")
+
+
+
+
+4.答：prompt()是提示框，alert()是警告框，confirm()是确认框
+区别：prompt()提示用户的输入，没有确定取消的操作，alert()是警告，有确定的操作，只有点击确定了才能进行下一步，否则无法继续下一步，而confirm()有确定和取消的操作，点击确定返回true,点击取消返回false.
+
+
+
+
+5.答：innerHTML 是指标签内部的所有的"文本"，包括内嵌的标签.文字等。
+      innerText 是指标签内容的纯文本，不包括内嵌的标签等。
+	
+
+三、编程题：要求只需要js代码
+
+1.var year=getFullYear("2017");
+  var month=getMonth("3");
+  var date=getDate(""31);
+  console.log("今天是"+"year"+"年"+"month"+"月"+"date"+"日"，+"加油考试吧！")；
+
+
+
+
+2.答：//两个数的最大值
+	function a(num1,num2){
+	var max;
+	if(nmu1>num2){
+	  max=num1;
+	  return max;	
+	}
+	else{
+	  return max=num2;	
+	}
+      }
+
+	//三个数的最大值，调用上面函数a
+	function max(num1,num2,mum3){
+	var m=a(num1,num2);
+	var n=a(num2,num3)
+	var max2;
+	max2=a(m,n);
+	console.log(max2);
+     	}
+	max();
+
+
+3.答： 
+    1	var arr=new array("34","6","-23","43","34","342","0","3");
+ 	 console.log(arr);
+  
+	//升降排序
+    2 function Desc(num1,num2){
+	 ruturn num1-num1;
+ 	}
+	var arr1=arr.sort(Desc);
+	console.log(arr1);
+
+	
+	//计算数组中的所有数字的和
+     3 for(var index in arr){
+       	console.log(arr[index]);
+       }
+       function add(arr[index]){
+	var sum=0;
+	sum=sum+arr[index];
+	return sum;
+       }
+	var add1=add("34","6","-23","43","34","342","0","3");
+	console.log(add1);
+
+
+

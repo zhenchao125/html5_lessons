@@ -1,0 +1,129 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.D
+02.D
+03.A
+04.A
+05.D
+06.D
+07.D
+08.A
+09.c
+10.A
+11.B
+12.B
+13.B
+14.B
+15.C
+16.B
+17.B
+18.D
+19.D
+20.D
+21.C
+22.A
+23.C
+24.B
+25.B
+26.A
+27.A
+28.D
+29.15
+30.C
+二、简答题
+
+1.
+
+undefined String number null boolean 
+
++ - * / % ,
+
+
+2.
+document.getElementById('myDiv');
+document.getElementsByClassName("myDiv");
+document.getElementsByTagName("test");
+document.getElementsByTagNameNS("div");
+
+
+3.
+
+var div=document.createElement("div");
+	var text=document.createTextNode("text");
+	var a=document.createElement("a");
+	div.appendChild(a);
+
+
+4.
+
+prompt()方法：提示框，用于显示可提示用户进行输入的对话框。
+alert()方法：警告框，用于显示 带有一条指定消息和一个ok按扭的警告框。
+confirm()方法：确认框，用于显示一个带有指定消息和OK及取消按钮的对话框。
+
+
+5.
+
+innerHTML是有HTML元素加文本
+
+innerText只有文本，不能转化HTML元素标签
+
+
+三、编程题：要求只需要js代码
+
+1.
+
+var p=document.getElementById("p");
+		var date=new Date();
+		var year=date.getFullYear();
+		var month=date.getMonth()+1;
+		var day=date.getDate();
+		var html="今天是："+year+"年"+month+"月"+day+"日"+"加油考试吧!";
+		p.innerHTML=html;
+
+
+2.
+
+var big=0;
+		
+		for(var i=0;i<3;i++){
+			var num=parseInt(prompt("请输入一个数"));
+			if(num<big){
+				big=num;
+
+			}
+			
+		}
+		alert("您输入的最大数是 :"+num);
+
+
+3.
+
+var str="34,6,-23,43,34,342,0,3";
+	
+	function fn1(){
+		var arr=str.split(",");
+		for(var i=0;i<arr.length;i++){
+			arr[i]=parseInt(arr[i])
+		}
+		return arr;
+	}
+	console.log(fn1(str));
+	
+
+	var arr=fn1(str);
+	function fn2(arr){
+		arr.sort(function(a,b){
+			return b-a;
+		})
+		return arr;
+	}
+	console.log(fn2(arr));
+
+
+	function fn3(arr){
+		var sum=0;
+		for(var i=0;i<arr.length;i++){
+			sum+=arr[i];
+		}
+		return sum;
+	}
+	console.log(fn3(arr));

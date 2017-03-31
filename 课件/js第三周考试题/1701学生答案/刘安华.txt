@@ -1,0 +1,112 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.D
+07.D
+08.D
+09.C
+10.A
+11.C
+12.C
+13.B
+14.A
+15.D
+16.B
+17.C
+18.D
+19.A
+20.D
+21.C
+22.C
+23.C
+24.B
+25.A
+26.B
+27.A
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+number、bolean、string、object、Null、Undefined function
+
+typeof()
+
+2.
+ document.getElementById("myDiv")
+ document.getElementsByClassName("myDiv")
+ document.getElementByName("test")
+ document.getElementByTagName("Div")
+ document.querySelector("div")
+ document.querySelectorAll("div")
+
+3.
+ DOM创建元素：     document.createElement("eleName")
+ 新建文本节点：    document.createTextNode("文本内容")
+ 将a标签追加到div: div.appendChild("a");
+		   a.innerHTML= "我是一个a标签"
+
+4.
+prompt() 是输入框 它给用户提供了一个输入框
+alert() 是警告框 只能点确定
+而confirm 是确认框 它可以返回两个值  点确定返回true 点取消返回false
+
+
+5.
+ innerHTML的内容会语义化  而innerText不会
+ 比如说innerHTML = "<a href='http://www.baidu.com' >百度一下</a>";
+  则此时添加的内容为一个可以跳转到百度首页的名字为"百度一下"的超级链接;
+
+
+    而innerText = "<a href='http://www.baidu.com' >百度一下</a>"; 添加的则是
+"<a href='http://www.baidu.com' >百度一下</a>"这个文本内容切不能够点击进入到百度首页
+三、编程题：要求只需要js代码
+
+1.
+<script>
+	var t = new Date();
+    document.write("今天是"+t.getFullYear()+"年"+
+                    	(t.getMonth()+1) +"月"+
+                    	t.getDay()+"日"+","+"我们加油考试吧!" );
+</script>
+
+
+2.
+ function ints(){
+		var max = arguments[0];
+		for(var i=1;i<arguments.length;i++){
+			if(max<arguments[i]){
+				max=arguments[i];
+			}
+		}
+		console.log(max);
+	}
+	ints(1,2,3,4,5,6,7,1,1,3,10);
+  
+
+
+
+3.
+<script>
+ // 把字符串存入数组并返回这个数组
+ ① var str = "1,2,3,4,5,6,7,8";
+	var arr = str.split(",");
+	console.log(arr);
+// 把这个数组降序排列
+ ② 
+	function less(a,b){
+	return b-a;
+}
+	console.log(arr.sort(less));
+// 求数组中所有数字的和
+
+ ③  var sum = 0;
+	for(i = 0;i<arr.length;i++){
+	sum+=arr[i]
+}
+	console.log(sum);
+

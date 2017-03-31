@@ -1,0 +1,92 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.D
+07.C
+08.C
+09.C
+10.B
+11.D
+12.C
+13.B
+14.A
+15.C
+16.C
+17.C
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.A
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+  js的数据类型有number、string、array、function、object、null、undefined；
+  判断数据类型的操作符：typeOf();
+
+2.
+  1)document.getElementById("myDiv");
+  2)document.getElementsByTagName("test")[0];
+  3)document.getElementByClassName("myDiv");
+  4)document.getElementByName("test");
+
+3.
+  1)创建新元素：createElement();
+  2)创建文本节点：createTextNodes();
+  3)追加节点：div.appendChild(a);
+
+4.
+  1)prompt():输入框，提示用户输入内容；
+  例如：prompt("请输入名字");//页面会弹出提示内容为“请输入名字”的输入框；
+  2)alert():警告框，只有确认项，确认用户已知晓信息；如不确认，无法进行后续操作；
+  例如：alert("非法操作");//页面会弹出提示内容为“非法操作”的警告框；
+  3)confirm():提示框，有确认和取消选项，用户确认返回true，取消返回false；
+  例如：confirm("是否跳转页面");//页面会弹出提示内容为“是否跳转页面的提示框”。
+
+5.
+  1)innerHTML是解析内容后添加到父容器中；
+  2)innerText是不解析所添加的内容，直接以文本方式添加内容到指定的父容器中。
+三、编程题：要求只需要js代码
+
+1.
+document.write("今天是"+getFullYear()+"年"+("getMonth()"+1)+"月"+getDate(2017,3,0)+"日，加油考试吧!")
+
+2.
+  function compareNum(num1,num2,num3){
+	var num=(num1>num2?(num1>num3?num1:num3):(num2>num3?num2:num3))
+	return num;
+  }
+
+3.
+  1)function arr(str,strArr){
+	var strArr=str.slice(",");
+	return strArr;	
+}
+  2)function down(arr,newArr){
+	for(var i=0;i<arr.length;i++){
+	    newArr=sort(arr[i]);
+	    
+	}
+	return newArr;
+}
+  3)function sum(arr,sum){
+	var sum=0;
+	for(var i=0;i<arr.length;i++){
+		sum=sum+arr[i];
+	}
+	return sum;
+}
+
+
+

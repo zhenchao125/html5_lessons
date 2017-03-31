@@ -1,0 +1,137 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.C
+02.D
+03.B
+04.A
+05.D
+06.D
+07.D
+08.B
+09.C
+10.D
+11.C
+12.C
+13.B
+14.C
+15.D
+16.B
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.D
+24.A
+25.A
+26.B
+27.A
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+
+简单数据类型和复杂数据类型，typeof
+
+
+
+
+2.
+
+document.getElementById("myDiv")
+document.getElementByname("test")
+document.getElementByTagname("div")
+document.querySelector("#myDiv")
+
+
+
+
+3.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div"></div>
+</body>
+<script type="text/javascript">
+    var div = Document.getElementById("div");
+    var textNode = Document.create.textNode("文本")
+    div.appendChild(textNode);
+</script>
+</html>
+
+
+4.
+
+prompt()输入框 
+alert（）警告框
+confirm（）确认框
+
+
+
+
+5.
+
+innerHTML 属性设置或返回标签的开始和结束标签之间的 HTML
+innerText 属性是获取标签内文本的内容
+
+三、编程题：要求只需要js代码
+
+1.
+
+<script>
+    var p = document.getElementById("p");
+    setInterval(function (){
+        var = new Date;
+        p.inned rHTML = "今天是"+d.getFullYear() + "年"
+            + (d.getMonth() + 1) + "月"
+            + d.getDate() + "日"+"，"+"加油考试吧！"
+    }, 500);
+</script>
+
+
+2.
+
+<script>
+	function MaxNumber(x ,y , z){
+		return Math.max(x , y ,z);
+	}
+</script>
+
+
+3.
+
+var nums = [];
+	var cs = ['34,6,-23,43,34,342,0.3'];
+	for(var i =0 ; i<cs.length; i++){
+		nums.push(cs[i]);
+	}
+
+function sortNumber (num1, num2) {
+
+		if(num1 <num2){
+			return 1;
+		}else if(num1 == num2){
+			return 0;
+		}else {
+			return -1;
+		}
+	}
+	var nums =  [34,6,-23,43,34,342,0.3];
+	nums.sort(sortNumber);
+
+var sum = 0;
+	for(var i = 0 ;i<nums.length ; i++){
+		sum +=i
+	}
+	console.log(sum);
+
+
+
+

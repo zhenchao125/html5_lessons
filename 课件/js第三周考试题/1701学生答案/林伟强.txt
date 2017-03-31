@@ -1,0 +1,110 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.D
+07.D
+08.C
+09.C
+10.B
+11.B
+12.C
+13.C
+14.C
+15.C
+16.C
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.A
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+答：js的数据类型有 numbe object string boolean 
+判断数据类型可以用typeof
+
+
+
+2.
+document.getElementByid("myDiv")
+document.getElementByName("test")
+document.body.childNodes[0]
+document.body.div
+
+
+
+3.
+答：可以用document.creatElement("")创建，
+可以用div.innerHTML = "<a></a>"添加a标签
+
+
+
+4.
+答：prompt()可以用于用户自行输入内容获取用户输入的内容
+alert()是用于用户的警告操作
+confirm()是用于用户的提示操作
+
+
+
+5.
+答：innerHTML可以在所选内容中加入文字，数字，标签等等
+而innerText只能在选所内容中加入文字。
+
+三、编程题：要求只需要js代码
+
+1.
+<script type ="text/javascript">
+function (){
+ var shi = new 
+
+ console.log("今天是"+ +",加油考试吧")
+}
+
+</script>
+
+
+2.
+function pan(a,b,c){
+if(a > b && a > c){
+ console.log(a)
+}if(a < b && b > c){
+ console.log(b)
+}if(a < c && b < c){
+ console.log(c)
+}
+}
+pan(10,5,5)
+3.
+1.
+var shu = "34,6,-23,43,34,342,0,3"
+function (){
+   var arr[];
+   for(var i = 0;i<shu.lenght;i++){
+   arr[] = shu[i]
+}
+console.log(arr)
+}
+
+2.
+
+3.
+function (){
+  var he = 0;
+  for(var i = 0;i<arr.lenght;i++){
+  he += arr[i]
+}
+  console.log(arr)
+}
+

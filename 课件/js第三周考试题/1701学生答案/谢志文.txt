@@ -1,0 +1,103 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.B
+04.A
+05.A
+06.C
+07.D
+08.D
+09.C
+10.C
+11.D
+12.C
+13.B
+14.C
+15.C
+16.C
+17.C
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.A
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+数据类型有：一、简单数据类型：1、Number;2、String(字符串）3、布尔值；4、undefined;5、null
+	二、复杂数据类型：1、对象;2、数组;3、函数;4、Date;
+	判断操作符是：typeof()
+
+
+2.
+1、通过元素Id获取； 2、通过CSS选择器获取；3、通过ClassName（类选择器）获取；4、通过元素名（标签名）获取
+	var myDiv1=document.getElementById("myDiv");
+	var myDiv2=document.getElementsByClassName("myDiv");
+	var myDiv3=document.querySelector("#myDiv");
+	var myDiv4=document.getElementsByTagName("div")[0];
+
+
+3.
+1、创建新元素：document.createElement("元素名")；2、创建新文本：document.createTextNodes("元素名")；
+3、获取或创建a标签和div元素，再追加进去div.appendChild（a）；
+
+
+4.
+1、prompt（）为提示框，提示用户输入值，点击确认则将内容返回，取消则返回null；
+2、alert（）为警告框，提醒用户，只能点击确认；
+3、confirm（）为确认框，让用户获知信息，点击确认则返回true，点击取消则返回false；
+
+
+
+5.
+1、innerHTML会将内容中的元素和元素子集解析，并获取所有文本内容；
+2、innerText只会添加纯文本内容，不会解析内容中的元素标签，
+
+三、编程题：要求只需要js代码
+
+1.
+	var date=new Date();
+	document.body.innerHTML="今天是"+date.getFullYear()+"年"+date.getMonth()
+	+"月"+date.getDate()+"日，加油考试吧！";
+
+
+
+2.
+var num1=parseInt(prompt("请输入第一个值"));
+var num2=parseInt(prompt("请输入第二个值"));
+var num3=parseInt(prompt("请输入第三个值"));
+var num0=0;
+	if(num1>num2){
+		num0=num1;
+	}else{
+		num0=num2;
+	}
+	if(num3>num0){
+		num0=num3;
+	}
+alert(num0);
+
+3.
+1、
+var str="34,6,-23,43,34,342,0,3"
+var x=str.match(/\d+/gi);
+2、
+function my(num4,num5){return num5-num4;}
+var y=x.sort(my);
+console.log(y);
+3、
+var sum=0;
+for(i=0;i<y.length;i++){
+sum=sum+(+y[i]);
+}
+console.log(sum);
+console.log(sum);
+
