@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#numbox{
+			float: left;
+			width: 150px;
+			height: 50px;
+			border: solid 1px gray;
+			font-size: 22px;
+			text-align: center;
+			line-height: 50px;
+			
+		}
+		#change a{
+			line-height: 80px;
+			margin-left: 10px;
+			font-size: 20px;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="numbox"></div>
+	<div id="change"><a id="cText" href="">看不清，换一张</a></div>
+</body>
+<script type="text/javascript">
+	var numbox=document.getElementById("numbox");
+	var change=document.getElementById("change");
+	var cText=document.getElementById("cText");
+	var arr=[0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+	function suzi(from,to){
+		var num=parseInt(Math.random()*(to-from+1)+from);
+		return num;
+	}
+	var html="";
+	for(var i=0;i<6;i++){
+
+		var index=suzi(0,arr.length-1);
+		html+="<span>"+arr[index]+"</span>";
+
+	}
+	numbox.innerHTML=html;
+
+
+
+</script>
+</html>

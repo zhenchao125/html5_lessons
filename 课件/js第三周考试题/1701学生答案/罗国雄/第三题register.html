@@ -1,0 +1,198 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth" name="user"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs" name="password1"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs" name="password2"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" name="trueName" /></dd>
+                    	<div id="r"></div>
+                    </dl>
+                    
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs" name="niChen"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs" name="tel"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs" name="email"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	var form=document.myform
+	var user=form.user;
+	var password1=form.password1;
+	var password2=form.password2;
+	var trueName=form.trueName;
+	var niChen=form.niChen;
+	var tel=form.tel;
+	var email=form.email;
+	var userNameId=document.getElementById("userNameId");
+	var pwdId=document.getElementById("pwdId");
+	var repwdId=document.getElementById("repwdId");
+	var rID=document.getElementById("r");
+	var nickNameId=document.getElementById("nickNameId");
+	var telId=document.getElementById("telId");
+	var emailId=document.getElementById("emailId");
+	//初始化全部不能为空。
+	userNameId.innerHTML="不能为空";
+	userNameId.style.backgroundColor="red";
+	pwdId.innerHTML="不能为空";
+	pwdId.style.backgroundColor="red";
+	repwdId.innerHTML="不能为空";
+	repwdId.style.backgroundColor="red";
+	rID.innerHTML="不能为空";
+	rID.style.backgroundColor="red";
+	nickNameId.innerHTML="不能为空";
+	nickNameId.style.backgroundColor="red";
+	telId.innerHTML="不能为空";
+	telId.style.backgroundColor="red";
+	emailId.innerHTML="不能为空";
+	emailId.style.backgroundColor="red";
+	//定义函数：判断是否符合标准
+	//input:节点；noOK:不符合标准输出的字符串；regExp:判断的正则表达式，out:提示输出的节点
+	function isOkOrNo(input,noOk,regExp,out){
+			
+			var value1=input.value;
+			if(input.value==""){
+				out.innerHTML="不能为空";
+				out.style.backgroundColor="red";
+			}
+			 else if(value1.search(regExp)!=0){
+				out.innerHTML=noOk;
+				out.style.backgroundColor="red"; 
+				}
+			
+			else {
+			out.innerHTML="可以使用";
+			out.style.backgroundColor="green"}
+	}
+	//用户名：
+	user.onblur=function(){
+		var isuser=/^([\da-zA-Z])[\w\.-]{2,16}[\da-zA-Z]$/;
+		var s="1、由字母、数字、下划线、点、减号组成<br>2.只能以数字开头或结尾，长度4-18";
+		isOkOrNo(user,s,isuser,userNameId);
+	}
+	user.onfocus=function(){
+		userNameId.innerHTML="1、由字母、数字、下划线、点、减号组成<br>2.只能以数字开头或结尾，长度4-18";
+		userNameId.style.backgroundColor="yellow";
+	}
+	//密码：
+	password1.onblur=function(){
+		var s="密码长度6-16"
+		var ispassword=/.{6,16}/;
+		isOkOrNo(password1,s,ispassword,pwdId);
+	}
+	password1.onfocus=function(){
+		pwdId.innerHTML="请输入密码长度：6-16";
+		pwdId.style.backgroundColor="yellow";
+	}
+	//确认密码
+	password2.onblur=function(){
+		if(password2.value!=password1.value||password2.value==""){
+			repwdId.innerHTML="密码不一致"
+			repwdId.style.backgroundColor="red"}
+		else
+			{repwdId.innerHTML="可以使用";
+			repwdId.style.backgroundColor="green"		
+			}
+		}	
+	//真实姓名：
+	trueName.onblur=function(){
+		var s="不能为空";
+		var istrueName=/.+/;
+		isOkOrNo(trueName,s,istrueName,rID);
+	}
+	trueName.onfocus=function(){
+		rID.innerHTML="请输入你真实名字";
+		rID.style.backgroundColor="yellow";
+	}
+	//昵称：
+	niChen.onblur=function(){
+		var s="1.包含字母、数字、下划线、！@￥%&特殊字符<br>2.长度为4-20个字符";
+		var isnicheng=/.{4,20}/;
+		isOkOrNo(niChen,s,isnicheng,nickNameId);
+	}
+	niChen.onfocus=function(){
+		nickNameId.innerHTML="请输入你的昵称";
+		nickNameId.style.backgroundColor="yellow";
+	}
+	//电话：
+	tel.onblur=function(){
+		var s="1.手机号码需要以13,15,18，开头<br>2.长度是11位数字";
+		var istel=/^(13)|^(15)|^(18)\d\d\d\d\d\d\d\d\d/;
+		isOkOrNo(tel,s,istel,telId);
+	}
+	tel.onfocus=function(){
+		telId.innerHTML="请输入你的手机号码";
+		telId.style.backgroundColor="yellow";
+	}
+	//电子邮箱：
+	email.onblur=function(){
+		var s="邮箱不正确，请重新输入";
+		var isemail=/.+@.*(\.com)$/;
+		isOkOrNo(email,s,isemail,emailId);
+	}
+	email.onfocus=function(){
+		emailId.innerHTML="请输入正确的邮箱"
+		emailId.style.backgroundColor="yellow";
+	}
+</script>

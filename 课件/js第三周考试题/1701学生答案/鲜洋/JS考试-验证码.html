@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>JS考试-验证码</title>
+		<style type="text/css">
+			div {
+				width: 150px;
+				height: 50px;
+				background-color: #ccc;
+				text-align: center;
+				line-height: 50px;
+				font-size: 25px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box"></div>
+		<a href="javascript:;" id="change">看不清，换一个</a>
+	</body>
+	<script type="text/javascript">
+		var box = document.getElementById('box');
+		var change = document.getElementById('change');
+
+		function show() {
+			var arr = [];
+			var zidian = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+			for(var i = 0; i < 6; i++) {
+
+				arr.push(zidian[randomInt(0, zidian.length - 1)]);
+			}
+			box.innerHTML = arr.join(' ');
+		}
+		show();
+		//随机函数
+		function randomInt(min, max) {
+			return parseInt(Math.random() * (max - min + 1) + min);
+		}
+		change.onclick = function() {
+			show();
+		}
+	</script>
+
+</html>

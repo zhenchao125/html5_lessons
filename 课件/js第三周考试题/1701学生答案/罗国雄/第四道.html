@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{width: 400px;
+				height: 400px;
+				background-color: yellow;
+				position: absolute;right: 0;bottom: 0;}
+			#close{
+				width: 30px;
+				height: 30px;
+				background-color: red;
+				position: absolute;
+				top: 0;
+				right: 0;
+				text-align: center;
+				line-height: 30px;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+			<div id="close">
+			x
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var close1=document.getElementById("close");
+	var box=document.getElementById("box");
+	close1.onclick=function(){
+		box.style.display="none";
+	}
+	
+	setInterval(function(){
+		box.style.display="block"
+	},5000)
+</script>

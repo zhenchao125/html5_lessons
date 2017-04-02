@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>title</title>
+	</head>
+	<body>
+		<script>
+			var str=[];	
+			var count=0;
+			function output(){
+				for(var i=1500;i<2017;i++){					
+					var year=runNian(i);					
+					str.push(year);
+					count++;	
+					if(count===5){
+						console.log(str.join(""));
+						count=0;
+					}
+				}
+			}
+			output();
+			function runNian(year){
+				if(year%4===0&&year%100!==0||year%400===0){
+					return year;
+				}
+			}
+		</script>
+	</body>
+</html>

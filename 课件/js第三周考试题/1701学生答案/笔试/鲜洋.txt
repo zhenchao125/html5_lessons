@@ -71,7 +71,7 @@ alert("今天是"+date+", 加油考试吧")；
 2.
 //返回三个数中最大的值
 function max(a,b,c){
-	return(Math.max(a,b,c));
+	return Math.max(a,b,c);
 	
 }
 

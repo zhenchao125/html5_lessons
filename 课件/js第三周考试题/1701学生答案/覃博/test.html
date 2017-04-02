@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" method="get" name="registerForm">
+    <div>
+        用户：<input type="text" name="user" placeholder="请输入用户名"><i></i><!--来提示用户的输入情况-->
+    </div>
+    <div>
+        密码：<input type="password" name="pwd"><i></i><!--来提示用户的输入情况-->
+    </div>
+    <div>
+        邮箱：<input type="text" name="email"><i></i><!--来提示用户的输入情况-->
+    </div>
+    <div>
+        手机：<input type="text" name="phone"><i></i><!--来提示用户的输入情况-->
+    </div>
+    <div><input type="submit" value="注册"></div>
+</form>
+<script>
+    //验证表单
+    //用户名： 必须是字母单词，不能数字开头，长度在 3-12
+    var form = document.forms.registerForm; //获取指定name属性值的表单元素
+    form.user.onblur = function (){
+        ///^[a-z_]\w{1,10}\w$/gi
+        inputCheck(this, /^[a-z_]\w{1,10}\w$/gi, "ok", "no ok", this.nextElementSibling)
+    }
+    form.email.onblur = function (){
+        inputCheck(
+            this,
+            /.{3,}@\w{2,}(\.com)$/gi,
+            "ok",
+            "no ok",
+            this.nextElementSibling)
+    }
+    /*
+     作者：李振超    2017年3月30日 15:23
+     
+     参数1：需要验证的表单元素
+     参数2：验证的正则表达式
+     参数3：通过之后显示的信息
+     参数4：不通过之后显示的信息
+     参数5：通过和不通过的信息显示的位置
+     */
+    function inputCheck(input, regExp, successMsg, failMsg, ele){
+        //获取表单元素的value值
+        var userValue = input.value;
+        var index = userValue.search(regExp);
+        if (index > -1){
+            ele.innerHTML = successMsg;
+        }else{
+            ele.innerHTML = failMsg;
+            input.focus();//让这个input继续获取焦点
+        }
+    }
+</script>
+</body>
+</html>
+<!--
+var forms = document.forms; // 得到当前页面中所有的form元素
+    //    var form = forms[0];
+    var registerForm = forms.registerForm;
+    console.log(registerForm)
+-->

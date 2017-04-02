@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	
+	</head>
+	<body>
+		<div id=p></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var arr=[];
+	var p=document.getElementById("p");
+	function isruinian(year){
+		if(year%4==0&&year%100!=0||year%400==0)
+		return year;
+	}
+	for(var i=1500;i<2017;i++){
+		if(isruinian(i))
+		arr[arr.length]=i;
+	}
+	arr.unshift("");
+	for(var j=1;j<arr.length;j++){
+		console.log(arr[j]);
+		if(j%5==0)
+		console.log("\n");
+	}
+	
+	
+</script>

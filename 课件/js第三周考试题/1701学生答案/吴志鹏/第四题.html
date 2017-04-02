@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,p,textarea,h1{
+				padding: 0;
+				margin: 0;
+			}
+			#wrap{
+				width: 600px;
+				height: 400px;
+				overflow: hidden;
+				position: absolute;
+				right: 0px;
+				bottom: 0px;
+			}
+			#box{
+				width: 600px;
+				height: 400px;
+				background: #afbdd5;
+				position: absolute;
+				top: 400px;
+				
+			}
+			h1{
+				width: 580px;
+				height: 50px;
+				background: #f1f2f6;
+				padding: 10px;
+				line-height: 50px;
+				position: relative;
+			}
+			p{
+				padding: 0px 25px;
+				
+				background: white;
+				position: absolute;
+				line-height: ;
+				top: 10px;
+				right: 10px;
+			}
+			textarea{
+				width: 580px;
+				height: 280px;
+				margin-left:10px ;
+				resize: none;
+			}
+			button{
+				width: 100px;
+				height: 30px;
+				margin-left:10px ;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box">
+				<h1>
+					请咨询
+					<p>x</p>
+				</h1>
+				<textarea name="" rows="" cols=""></textarea>
+				<button>提交</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var box = document.querySelector("#box");
+		var close = document.querySelector("p");
+		var boxDisplay;
+		window.onload = function(){
+			var top = 400;
+			
+			
+			boxDisplay = setInterval(function dis(){
+				top -=8;
+				box.style.top =top +"px" ;
+				stop(top<=0,boxDisplay);
+			},10);
+			function stop(con,fun){
+				if(con){
+					clearInterval(fun);
+				}
+			}
+			close.onclick = function(){				
+				var boxClose = setInterval(function(){
+					top+=8;
+					box.style.top = top+"px";
+					stop(top>=400,boxClose);
+				},10);
+				setTimeout(function(){
+				boxDisplay = setInterval(function dis(){
+						top -=8;
+						box.style.top =top +"px" ;
+						stop(top<=0,boxDisplay);
+					},10);
+				},5000);
+			}
+		}
+			
+			
+		
+	</script>
+</html>

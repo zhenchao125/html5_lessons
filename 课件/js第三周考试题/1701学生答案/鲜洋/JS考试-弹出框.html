@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>JS考试-弹出框</title>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+
+		<input type="button" name="btn" id="btn" value="点我打开广告框" />
+
+		<!--点击input标签后，弹出一个500px*500px的广告框，用户可以点该广告框右上角关闭，关闭后五秒再弹出来-->
+
+	</body>
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+
+		btn.onclick = function() {
+			guangGao();
+		}
+		//如何判断用户关闭了页面？？？ 这个事件写不出来……
+
+		//这是用户关闭后执行的代码
+		setTimeout(function() {
+			guangGao();
+		}, 5000);
+		//打开广告页面的方法 先在右下角，然后到中间。
+		function guangGao() {
+			var guangGao = window.open('', '', 'width=100,height=100,left=1200,top=1000');
+			setTimeout(function() {
+				setInterval(function() {
+					guangGao.resizeTo(400, 300);
+					guangGao.moveTo(600, 250)
+				}, 1000)
+			}, 1000)
+		}
+	</script>
+
+</html>

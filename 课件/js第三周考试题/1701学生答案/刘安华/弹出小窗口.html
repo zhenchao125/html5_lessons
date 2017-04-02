@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹出聊天窗口</title>
+	<style>
+		#ask{
+			width: 400px;
+			height: 300px;
+			border: 2px solid #000;
+			background-color: #ccc;
+			position: absolute;
+			border-radius: 5px;
+			left:  960px;
+			top: 330px;
+			opacity: 0;
+			transition: all .6s;
+		}
+		p{
+			font-family: Microsoft Yahei;
+			font-size: 25px;
+			margin-top: 0;
+
+		}
+		#close{
+			position: absolute;
+			top: 0;
+			left: 373px;
+		}
+		#input{
+			
+			border: 6px solid #ccc;
+			margin-top: -10px;
+			margin-left: 1px;
+		}
+		#up,#down{
+			width: 120px;
+			height: 26px;
+			margin-top: 5px;
+			margin-left: 20px;
+			border-radius: 7px;
+			background: #ccc;
+
+		}
+		#down:hover{
+			background: white;
+		}
+		#up:hover{
+			background: white;
+		}
+		#close:hover{
+			background: gray;
+		}
+		#up{
+			position: absolute;
+			left: 250px;
+		}
+		#down{
+			position: absolute;
+			left: 120px;
+		}
+		
+		
+	</style>
+</head>
+<body>
+	<div id="ask">
+		<p>请咨询:</p>
+		<button id="close">X</button>
+		<textarea name="" id="input" cols="52" rows="13"></textarea>
+		<!-- <i>已发送√</i> -->
+		<button id="down">关闭(c)</button>
+		<button id="up">发送(S)</button>
+	</div>
+</body>
+<script>
+   var ask = document.getElementById('ask');
+   var close = document.getElementById("close");
+   var down = document.getElementById("down");
+   var input = document.getElementById("input");
+   var up = document.getElementById("up");
+
+
+
+   //在页面打开后3秒钟在页面的右下角弹出聊天窗口
+	 function open(){
+	 	setTimeout(function(){
+		ask.style.opacity = "1";
+	},2000)
+	}
+	open();
+
+	//点击X按钮关闭当前聊天晓窗口
+	close.onclick= function(){
+		ask.style.opacity = "0";
+	}
+
+	//点击关闭按钮也能关闭当前聊天窗口
+	down.onclick= function(){
+		ask.style.opacity = "0";
+	}
+
+
+	// 关闭后让小聊天窗口在2秒钟之后又出现
+	 
+	if (ask.style.opacity == 0) {
+		setTimeout(function(){
+			ask.style.opacity = "1"
+		},2000)
+	}
+
+	//点击发送让textarea的内容消失
+	up.onclick = function(){
+		input.value = " ";
+		alert("消息发送成功!")
+
+	}
+</script>
+</html>

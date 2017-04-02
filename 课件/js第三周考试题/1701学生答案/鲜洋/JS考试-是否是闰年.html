@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>JS考试-是否是闰年</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#text1 {
+				list-style: none;
+				border: 1px solid;
+				width: 500px;
+				text-align: center;
+			}
+			
+			#text1 li {
+				float: left;
+				width: 100px;
+				font-size: 14px;
+				background: #ccc;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="y_m">
+			<p>请选择开始年份和结束年份，计算中间的闰年并输出到页面中</p>
+			<span>开始年份</span>
+			<select id="startYear">
+			</select>
+			<span>结束年份</span>
+			<select id="endYear">
+			</select>
+			<input type="button" name="btn" id="btn" value="开始计算" />
+			<ul id="text1"></ul>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		
+		//增加了弹性，用户选择开始和结束年份，来计算中间的闰年，并输出到页面。
+		
+		var starYearEle = document.getElementById('startYear');
+		var endYearEle = document.getElementById('endYear');
+		var btn = document.getElementById('btn');
+		var text1 = document.getElementById('text1');
+
+		for(var starYear = 1480; starYear < 3000; starYear++) {
+			appendOption(starYearEle, starYear, starYear);
+		}
+		for(var endYear = 1480; endYear < 3000; endYear++) {
+			appendOption(endYearEle, endYear, endYear);
+		}
+		btn.onclick = function() {
+			var startValue = starYearEle.value;
+			var endValue = endYearEle.value;
+
+			for(var i = startValue; i < endValue; i++) {
+				if((i % 4 === 0 && i % 100 !== 0) || i % 400 === 0) {
+					var lis = document.createElement('li')
+					lis.innerHTML = ' ' + i + '年是闰年';
+					text1.appendChild(lis);
+//					console.log(i + "年是闰年");
+				} else {}
+			}
+		}
+
+		//创建一个option 并把创建的option插入到传入的select中
+		function appendOption(select, text, value) {
+			var opt = document.createElement('option');
+			opt.innerHTML = text;
+			opt.value = value;
+			select.appendChild(opt);
+		}
+	</script>
+
+</html>

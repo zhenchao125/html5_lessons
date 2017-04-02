@@ -73,9 +73,7 @@
 2.
 <script>
     function foo(a,b,c){
-	var temp = a>b ? a : b;
-	var num = temp>c? temp:c ;
-	return num;
+	     return a > b ? (a > c ? a : c) : (b > c ? b : c);
     }
 </script>
 

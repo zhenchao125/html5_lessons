@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box {
+				width: 100px;
+				height: 40px;
+				display: inline-block;
+				border: 2px solid black;
+				background: #d5e2bb;
+				text-align: center;
+				line-height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+
+		</div>
+		<a href="javascript:_change()">看不清，换一张</a>
+	</body>
+	<script type="text/javascript">
+		var box = document.getElementById("box");
+		var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+		var arr2 = [];
+
+		function code() {
+			for(var i = 0; i < 6; i++) {
+				arr2.push(arr[randomInt(0, arr.length)]);
+			}
+			box.innerHTML = arr2.join("");
+			return arr2;
+		}
+		box.innerHTML = arr2.join("");
+		code();
+
+		function _change() {
+			if(arr2.length != 0) {
+				arr2 = [];
+			}
+			code();
+		}
+
+		function randomInt(form, to) {
+			return parseInt(Math.random() * (to - form + 1) + form);
+		}
+	</script>
+
+</html>

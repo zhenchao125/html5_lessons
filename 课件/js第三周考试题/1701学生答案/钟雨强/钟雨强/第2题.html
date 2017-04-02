@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>title</title>
+		<style type="text/css">
+			*{
+				padding:0;
+				margin:0;
+			}
+		    #d{
+		    	width:100px;
+		    	height:50px;
+		    	background-color:rgba(0,0,0,0.2);
+		    	color:#000;
+		    	text-align: center;
+		    	line-height:50px;
+		    	border:1px solid gray;
+		    	display: inline-block;
+		    	
+		    }
+		    a{
+		    	width:200px;
+		    	height:20px;
+		    	color:blue;
+		    	
+		    	
+		    	
+		    }
+		</style>
+	</head>
+	<body>
+		<div id="d"></div>
+		<a href="#" id="a">看不清，换一张</a>
+		<script>
+		var d=document.getElementById("d");
+		var a=document.getElementById("a");
+		
+		function change(){
+			var nums=[];
+			var strs=[0,1,2,3,4,5,6,7,8,9,"a","b","C","d","E","f","G","h"];			
+			for(var i=0;i<6;i++){
+				nums.push(strs[(randomNum(0,strs.length-1))]);
+			}			
+						
+			d.innerHTML=nums.join("");
+		}
+		change();
+		
+		a.onclick=function(){
+			change();
+		}
+		
+		function randomNum(from,to){
+			return parseInt(Math.random()*(to-from+1)+from);
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+		input{
+			margin-top: 15px;
+		}
+		#box{
+			width: 820px;
+			height: 420px;
+			border: 1px solid #000;
+			border-radius: 5px;
+			margin: 50px auto;
+			/*font-family: Microsoft Yahei;*/
+		}
+		.content{
+			margin-top: 10px;
+			margin-left: 50px;
+			position: relative;
+		}
+		button{
+			width: 140px;
+			height: 53px;
+			background: url(./images/button.gif);
+			border-radius: 8px;
+			position: absolute;
+			left: 435px;
+			top: 370px;
+			cursor: pointer;
+		}
+		img{
+			position: absolute;
+			left: 270px;
+			top: 0px;
+		}
+	</style>
+	<title>网易注册页面</title>
+</head>
+<body>
+	<img src="./images/register_logo.gif" alt="">
+	<form action="#" name="registerForm" method="get">
+	<div id="box">
+		<div class="content">
+			通行证用户名：<input type="text" name="user">@163.com <i></i><br>
+		&nbsp&nbsp登陆密码：<input type="text" name="pasd"> <i></i><br>
+		重复登陆密码：<input type="text" name="repasd"><i></i><br>
+		&nbsp&nbsp&nbsp&nbsp性别：<input type="radio">男     <input type="radio">女<br>
+		&nbsp&nbsp真实姓名：<input type="text" name="name"> <i></i><br>
+		&nbsp&nbsp&nbsp&nbsp昵称：<input type="text" name="call"><i></i><br>
+		&nbsp关联手机号：<input type="text" name="phone"> <i></i><br>
+		&nbsp&nbsp密保邮箱: <input type="text" name="email"><i></i>
+		</div>
+		<button id="btn"></button>
+		</form>
+		
+	</div>
+</body>
+<script>
+    var msg = document.querySelectorAll("i");
+	var form = document.forms.registerForm;
+	var btn = document.getElementById('btn');
+	var input = document.querySelectorAll("input");
+
+	console.log(form);
+
+
+	form.user.onblur = function(){
+		inputCheck(this,
+			/^([0-9]|[a-z])\w{2,16}([0-9]|[a-z])$/gi,
+			"OK",
+			"不能为空",
+			"数字字母_.-组成只能以数字字母开头或者结尾长度4-18",
+			
+			this.nextElementSibling);
+	}
+	form.pasd.onblur = function(){
+		inputCheck(this,
+			 /^.{4,16}$/,
+			"OK",
+			"不能为空",
+			"密码长度6-16",
+			this.nextElementSibling);
+	}
+	form.repasd.onblur = function(){
+		if (this.value == form.pasd.value) {
+			this.nextElementSibling.innerHTML = "OK";
+		}else if (this.value != form.pasd.value) {
+			this.nextElementSibling.innerHTML = "请填写与上次一致的密码!";
+		}else if(this.value == undefined){
+			this.nextElementSibling.innerHTML = "不能为空";
+		}
+	}
+	form.name.onblur = function(){
+		inputCheck(this,
+			 /./gi,
+			"OK",
+			"不能为空","",
+			this.nextElementSibling);
+	}
+	form.call.onblur = function(){
+		inputCheck(this,
+			 /^.{4,20}$/gi,
+			"OK",
+			"不能为空",
+			"长度4-20!",
+			this.nextElementSibling);
+	}
+	form.phone.onblur = function(){
+		inputCheck(this,
+			/^1[358]\d{9}/gi,
+			"OK",
+			"不能为空",
+			"请填写正确手机号！",
+			this.nextElementSibling);
+	}
+	form.email.onfocus = function(){
+		this.nextElementSibling.innerHTML = "请填写您的常用邮箱"
+	}
+	form.email.onblur = function(){
+		this.nextElementSibling.innerHTML = "";
+	}
+
+	btn.onclick = function(){
+		input.value==null?msg.innerHTML="不能为空":msg.innerHTML="";
+	}
+
+
+
+
+	//封装验证表单方法
+
+	 function inputCheck(input, regExp, successMsg, nullMsg,failMsg, ele){
+        //获取表单元素的value值
+        var userValue = input.value;
+        var index = userValue.search(regExp);
+
+        if (index > -1){
+            ele.innerHTML = successMsg;
+          // 当input value值为空的时候显示 nullmsg
+        }else if (this.value ==""||this.value ==null) {
+        	ele.innerHTML = nullMsg;
+        	// input.focus();//让这个input继续获取焦点
+        }else{
+            ele.innerHTML = failMsg;
+            input.focus();//让这个input继续获取焦点
+        }
+
+    }
+
+</script>
+</html>

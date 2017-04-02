@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	function foo(){
+		var i = 0;
+		for(var year = 1500; year <= 2017; year++){
+			var cond1 = year % 4 == 0;
+			var cond2 = year % 100 != 0;
+			var cond3 = year % 400 == 0;
+			var cond = cond1 && cond2 || cond3;
+			if(cond){
+				document.write(year + " ");
+				i++;
+				if(i % 5 == 0){
+					document.write("<br>");
+				}
+			}
+		}
+	}
+	foo();
+</script>
+</html>

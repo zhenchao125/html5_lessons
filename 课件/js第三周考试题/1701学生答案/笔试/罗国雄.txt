@@ -100,7 +100,7 @@
 <script>
 	function max(number1,number2,number3){
 		var max;
-		var arr[number1,number2,number3];
+		var arr = [number1, num..];
 		arr.sort(function(a,b){
 			return(b-a);
 		})
