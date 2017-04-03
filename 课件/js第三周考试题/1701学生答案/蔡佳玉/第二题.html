@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{border:1px solid black;width: 120px;height: 40px;background: #D6E3BC;float: left;
+				font-size: 25px;text-align: center;}
+			a{float: left;}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+		</div>
+		<a href="#" id="check" id="al">看不清换一张</a>
+	</body>
+	<script type="text/javascript">
+		var box=document.getElementById('box');
+		var check=document.getElementById('check');
+		var al=document.getElementById('al');
+		box.innerHTML=addword();
+		check.onclick=function(){
+			box.innerHTML=addword();
+		}
+		
+		
+		function addword(){
+			var str='';
+			for (var i = 0; i <6; i++) {				
+				str+=random();		    
+			}
+			return str;
+		}
+		
+		function random(){
+			var dote="0123456789abcdefghijklmenpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			var ran=dote[randomInt(0,dote.length-1)];
+			
+			return ran;
+			
+		}
+		function randomInt(from1,to){return  parseInt(Math.random()*(to-from1+1)+from1); }
+		
+	</script>
+</html>

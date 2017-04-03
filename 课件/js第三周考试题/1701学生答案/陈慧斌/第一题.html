@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script type="text/javascript">
+			var box = document.getElementById("box");
+				for(var n = 1500; n <= 2017;n++){
+					for(var i = 0;i < n.length; i++){
+						var m =runNian(i);
+						console.log(m);
+					}
+					
+				}
+		
+			
+			function runNian(year) {
+		        return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+		    }
+		</script>
+	</body>
+</html>

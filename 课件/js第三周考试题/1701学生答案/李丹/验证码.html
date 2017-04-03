@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		 
+		<input type="text" id="input" />
+		<a href="#a" id="a">看不清，换一张</a>
+		<script type="text/javascript">
+			var input=document.getElementById("input")
+			var a=document.getElementById("a")
+			function randomInt(from, to) {
+        		return parseInt(Math.random() * (to - from + 1) + from);
+       		}
+			a.onclick=function f(){
+			  var arr=[];
+			  var s=[0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g",
+			  "h","i","j","k","l","m","n","o","p","A","B","C","D"]
+			  for(i=0;i<6;i++){
+			  	 arr.push(s[randomInt(0,s.length-1)])
+			  }
+			  input.value=arr.join("");
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>打印闰年</title>
+		<style type="text/css">
+			div {
+				width: 500px;
+			}
+			
+			ul {
+				list-style: none;
+			}
+			
+			li {
+				width: 100px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div">
+			<ul>
+			    <li></li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" charset="utf-8">
+		var div = document.getElementById("div");
+		var arr = [];
+		for(var i = 1500; i <= 2017; i++) {
+			if(i % 4 == 0 && i % 100 != 0 || i % 400 == 0) {
+				arr.push(i);
+			}
+		}
+		var arrValue;
+		for(i in arr){
+			arrValue =arr[i];
+			console.log(arrValue);
+		}
+		
+	</script>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#outer{ width:300px;height:200px;margin: 100px auto; }
+			#randomNum{ padding: 20px;height:30px;width:140px;text-align: center;line-height: 30px;font-size: 30px;letter-spacing: 2px;display: inline-block;
+			border:1px solid #000; background: #D6E3BC;vertical-align: bottom;}
+		</style>
+	</head>
+	<body>
+		<div id="outer">
+			<div id="randomNum">12d8R9</div>
+			<a href="#" id="refresh">看不清，换一张</a>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			// String.fromCharCode(65)  48~57 65~90  97~122
+			var oA = document.getElementById("refresh");
+			var oRandomNum = document.getElementById("randomNum");
+			
+			oA.onclick = function () {
+			    var ASCArr = createASCNum();
+			    var randomASCArr = getRandomArrOfArr(ASCArr,6);
+			    var randomNum = ASCToString(randomASCArr);
+			    
+			    oRandomNum.innerHTML = randomNum.join("");
+			}
+			function ASCToString (arr) {
+				var newArr = [];
+			    for (var ele of arr) {
+			        newArr.push(String.fromCharCode(ele));
+			    }
+			    return newArr;
+			}
+			function createASCNum () {
+				var ASCArr = [];
+				for (var i = 48; i <= 57 ; i++) {
+			    	ASCArr.push(i);
+				} 
+				for (var i = 65; i <= 90 ; i++) {
+			    	ASCArr.push(i);
+				} 
+				for (var i = 97; i <= 122 ; i++) {
+			    	ASCArr.push(i);
+				} 
+				return ASCArr;
+			}
+			function getRandomArrOfArr (arr,num) {
+				if (arr.length < num) {
+				    return;
+				}
+				var newArray = [];
+			    arr.sort((a,b)=>Math.random()-0.5);
+				for (var i = 0; i < num; i++) {
+				    newArray.push(arr[i]);
+				}
+				return newArray;
+			}
+		</script>
+	</body>
+	
+</html>

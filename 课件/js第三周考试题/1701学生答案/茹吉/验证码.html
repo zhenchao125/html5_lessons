@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#p1{
+				height: 50px;
+				width: 200px;
+				background: darkseagreen;
+				text-align: center;
+				line-height: 50px;
+				display: inline-block;
+				font-size: 25px;
+			}
+			#a{
+				font-size: 30px;
+				display: inline-block;
+				vertical-align: bottom;
+				text-decoration: underline;
+				color: cadetblue;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<p id="p1"></p><div id="a">看不清，换一张</div>
+	</body>
+	<script type="text/javascript">
+		var p = document.getElementById("p1");
+		var a = document.getElementById("a");
+		var arr=[0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","j","k","m",
+		"l","n","o","p","q","r","s","t","u","v","w","x","y","z",
+		"Q","W","E","R","T","Y","U","I","O","P","A","S","D","F","G","H","J","K","L",
+		"Z","X","C","V","B","N","M"];
+		function change(){
+			for(i=0;i<6;i++){
+				var zf = arr[sjs(0,61)];
+				p.appendChild(document.createTextNode(zf));
+			}
+		}
+		change();
+		a.onclick=function(){
+			p.innerHTML = "";
+			change();
+		}
+		function sjs(from,to){
+			return parseInt(Math.random()*(to-from+1)+from);
+		}
+	</script>
+</html>

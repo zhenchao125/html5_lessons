@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p{width: 100px;
+			  height: 20px;
+			  display: inline-block;
+			  vertical-align: middle;}
+			
+			a{width: 100px;
+			  height: 20px;
+			  vertical-align: middle;}
+		</style>
+	</head>
+	<body>
+		
+		<p id="text"></p><a id="a" href="###">看不清,换一张</a>
+		
+	</body>
+	<script type="text/javascript">
+		var a = document.getElementById("a");
+		var text = document.getElementById("text");
+		var length = 6;
+		text.innerHTML = "1D4ASD";
+		a.onclick = function (){
+			text.innerHTML = "";
+			var arr = [0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z']
+		 	var zhi = "";
+		 	for(var i = 0;i < length;i++){
+		 		var index = randomInt(0,36);
+		 		if(index > 36 || index < 0){
+		 			index = 4;
+		 		}
+		 		
+		 		zhi += arr[index];
+		 		
+		 		text.innerHTML = zhi;
+		 	}
+		 	
+		}
+		
+		function randomInt(form, to){
+		return parseInt(Math.random()*(to - form+1)+form);
+		}
+		
+	</script>
+</html>

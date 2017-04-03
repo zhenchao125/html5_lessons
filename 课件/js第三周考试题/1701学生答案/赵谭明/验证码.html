@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#xianShi{
+				width: 300px;
+				height: 200px;
+				border:3px solid black;
+				float:left;
+				background:yellow;
+				color:royalblue;
+				font-size: 50px;
+				line-height: 200px;
+				text-align: center;
+			}
+			#hUan{
+				margin-top:80px;
+				width: 300px;
+				height: 40px;
+				font-size: 40px;
+				text-align: center;
+				line-height: 40px;
+				float:left;
+				color:chocolate;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="xianShi">
+			
+		</div>
+		<div id="hUan">
+			<a href="">看不清，换一张</a>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var xianShi=document.getElementById("xianShi");
+		var hUan=document.getElementById("hUan");
+		var ziMu=[1,2,3,4,5,6,7,8,9,0,"W","A","X","T","H","M","U","a","c","d","b","e","f","g","h","i","j","o","p","q","a","e","z"];
+		
+		hUan.onclick=function(){
+		xianShi.innerHTML="";
+		for(i=0;i<6;i++){
+		var zf=ziMu[suiji(0,31)];
+			xianShi.appendChild(document.createTextNode(zf))
+		}
+
+	    function suiji(a,b){
+			return parseInt(Math.random()*(b-a+1)+a);
+		}
+		}
+		
+	</script>
+</html>

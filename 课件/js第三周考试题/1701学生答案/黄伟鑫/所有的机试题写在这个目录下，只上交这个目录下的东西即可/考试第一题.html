@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;
+			  padding: 0;}
+			    
+			  
+			#div1{width: 500px;
+			      border: 1px solid red;
+			      margin: 100px auto;
+			      overflow: hidden;} 
+			      
+			ul{	width: 100%;
+				list-style: none;} 
+				
+			li{float: left;
+		       width: 100px;
+		       height: 50px;
+		       text-align: center;
+		       line-height: 50px;}	
+		       
+		    li:hover{background-color: #FF0000;}           
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<ul id="ul1">
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var ul =document.getElementById("ul1")
+		for(var i =1500;i<2017;i++){
+			if(i%4==0&&i%100!==0||i%400==0){
+				var li = document.createElement("li");
+			    li.innerHTML = i;
+			   ul.appendChild(li);
+			}
+		}
+		
+	</script>
+</html>

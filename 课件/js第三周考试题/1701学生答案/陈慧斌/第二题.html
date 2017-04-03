@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}
+			#box{
+				width: 150px;
+				height: 40px;
+				background: rgb(214,227,188);
+				border: 1px solid black;
+				font-weight: bold;
+				font-size: 30px;
+				text-align: center;
+				line-height: 40px;
+				float: left;
+				margin-left: 300px;
+			}
+			p{
+				font-size: 30px;
+				text-decoration: underline;
+				color: cornflowerblue;
+				float: left;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<p id="p">看不清，换一张</p>
+		<script type="text/javascript">
+			var box = document.getElementById("box");
+			var p = document.getElementById("p");
+			(function(){
+				box.innerHTML = randomInt(100000,999999);
+			})();
+			p.onclick = function(){
+				box.innerHTML = randomInt(100000,999999);
+				
+			}
+			function randomInt(from,to){
+				return parseInt(Math.random()*(to - from + 1) + from);
+			}
+		</script>
+	</body>
+</html>

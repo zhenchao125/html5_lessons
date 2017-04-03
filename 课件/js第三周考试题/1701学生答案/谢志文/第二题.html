@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;height: 40px;background: pink;float: left;font-size: 20px;
+				text-align: center;line-height: 40px;border: 1px solid black;
+			}
+			#btn{
+				width: 200px;height: 40px;float: left;margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<a href="javascript:;" id="btn">看不清，请换一张</a>
+	</body>
+	<script type="text/javascript">
+	var box=document.getElementById("box");
+	var btn=document.getElementById("btn");
+	var x=[];
+	function random(){
+		for(i=0;i<6;i++){
+			x[i]=randomNum(0,9);
+		}
+		return box.innerHTML=x.join("");
+	}
+	btn.onclick=function(){
+		random();
+	}
+	function randomNum(from,to){
+		return parseInt(Math.random()*(to-from+1)+from);	
+	}
+	
+	</script>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrap{
+				width: 500px;
+				height: 0px ;
+				border: 1px solid lightgray;
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				transition: all 1s;
+			}
+			#top{
+				width: 100%;
+				height: 100px;
+				background: lightgray;
+				position: relative;
+			}
+			#p{
+				height: 100px;
+				width: 150px;
+				font-size: 40px;
+				text-align: center;
+				line-height: 100px;
+				display: inline-block;
+			}
+			#close{
+				width: 30px ;
+				height: 30px;
+				font-size: 20px;
+				text-align: center;
+				line-height: 30px;	
+				background: white;
+				display: inline-block;
+				position: absolute;
+				top: 10px;
+				right: 10px;
+			}
+			#area{
+				width: 498px;
+				height: 250px;
+			}
+			#btn{
+				width: 100px;
+				height: 30px;
+				border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="top">
+				<p id="p">请咨询</p>
+				<div id="close">
+				X	
+				</div>
+			</div>
+			<textarea name="" rows="" cols="" id="area">
+				
+			</textarea>
+			<button id="btn">提交</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var btn=document.getElementById("btn");
+		var wrap=document.getElementById("wrap");
+		var close= document.getElementById("close")
+		window.onmouseover = function(){
+			wrap.style.height = 400 +"px";
+		}
+		close.onclick=function(){
+			wrap.style.height = 0 +"px";
+			window.onmouseover = null;
+			setTimeout(function(){
+				wrap.style.height = 400 + "px";
+			},5000)
+		}
+		
+	</script>
+</html>

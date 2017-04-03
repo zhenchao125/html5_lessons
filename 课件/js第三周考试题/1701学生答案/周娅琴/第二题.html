@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		    #authcode{
+		    	width: 100px;
+		    	height: 50px;
+		    	border: 1px solid #000;
+		    	background-color: yellowgreen;
+		    	display: inline-block;
+		    }
+		    #change{
+		    	display: inline-block;
+		    	font-size: 20px;
+		    	width: 200px;
+		    	height: 50px;
+		    	vertical-align: middle;
+		    	position: absolute;
+		    	top: 0;
+		    }
+		</style>
+	</head>
+	<body>
+		<div id="authcode">
+			
+		</div>
+		<div id="change"><a href="javescript:;">看不清，换一张</a></div>
+	</body>
+	<script type="text/javascript" charset="utf-8">
+	    var authcode = document.getElementById("authcode");
+	    var change = document.getElementById("change");
+	    //生成随机0-9整数函数
+	    function randomNum () {
+	        return parseInt(Math.random()*10);
+	    }
+	    //随机生成大写字母函数
+	    function randomString () {
+	        var ranNum = Math.ceil(Math.random() * 25)
+	        var result=[];
+	        result.push(String.fromCharCode(65+ranNum));
+	         return result.toString();
+	    }
+	    //随机生成小写字母函数
+	    function randomSmallString () {
+	        var ranNum = Math.ceil(Math.random() * 25)
+	        var result=[];
+	        result.push(String.fromCharCode(97+ranNum));
+	         return result.toString();
+	    }
+	    change.onclick = function () {
+	    	var arr = [];
+	        for (var i = 0; i < 4; i++) {
+	           var n=randomNum();
+	           arr.push(n);
+	        }
+	        var m = randomString ();
+	        arr.push(m);
+	        var p = randomSmallString ();
+	        arr.push(p);
+	        arr.sort(function (a,b) {
+	            return Math.random()*0.5;
+	        })
+	        authcode.innerHTML = arr;
+	    }
+	</script>
+</html>
+<!--
+	65-90
+	97-122
+-->

@@ -1,0 +1,163 @@
+<!DOCTYPE html >
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>新用户注册页面</title>
+		<link type="text/css" rel="stylesheet" href="css/register.css" />
+	</head>
+
+	<body>
+		<div id="header"><img src="images/register_logo.gif" alt="logo" /></div>
+		<div id="main">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="bg bg_top_left"></td>
+					<td class="bg_top"></td>
+					<td class="bg bg_top_right"></td>
+				</tr>
+				<tr>
+					<td class="bg_left"></td>
+					<td class="content">
+						<form id="registerForm" action="" method="post" name="myform">
+							<dl>
+								<dt>通行证用户名：</dt>
+								<dd><input type="text" id="userName" class="inputs userWidth" /> @163.com</dd>
+								<div id="userNameId"></div>
+							</dl>
+							<dl>
+								<dt>登录密码：</dt>
+								<dd><input type="password" id="pwd" class="inputs" /></dd>
+								<div id="pwdId"></div>
+							</dl>
+							<dl>
+								<dt>重复登录密码：</dt>
+								<dd><input type="password" id="repwd" class="inputs" /></dd>
+								<div id="repwdId"></div>
+							</dl>
+							<dl>
+								<dt>性别：</dt>
+								<dd><input name="sex" type="radio" value="" checked="checked" />男 <input name="sex" type="radio" value="" />女 </dd>
+							</dl>
+							<dl>
+								<dt>真实姓名：</dt>
+								<dd><input type="text" id="realName" class="inputs" /></dd>
+							</dl>
+							<dl>
+								<dt>昵称：</dt>
+								<dd><input type="text" id="nickName" class="inputs" /></dd>
+								<div id="nickNameId"></div>
+							</dl>
+							<dl>
+								<dt>关联手机号：</dt>
+								<dd><input type="text" id="tel" class="inputs" /></dd>
+								<div id="telId"></div>
+							</dl>
+							<dl>
+								<dt>保密邮箱：</dt>
+								<dd><input type="text" id="email" class="inputs" /></dd>
+								<div id="emailId"></div>
+							</dl>
+							<dl>
+								<dt></dt>
+								<dd><input id="button" type="image" src="images/button.gif" /></dd>
+							</dl>
+						</form>
+					</td>
+					<td class="bg_right"></td>
+				</tr>
+				<tr>
+					<td class="bg bg_end_left"></td>
+					<td class="bg_end"></td>
+					<td class="bg bg_end_right"></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<script type="text/javascript" charset="utf-8">
+		var form = document.forms.myform;
+		//  var inputs = document.getElementsByTagName("input");
+		var userName = document.getElementById("userName")
+		var userNameId = document.getElementById("userNameId");
+		var pwd = document.getElementById("pwd")
+		var pwdId = document.getElementById("pwdId");
+		var repwd = document.getElementById("repwd")
+		var repwdId = document.getElementById("repwdId");
+		var nickName = document.getElementById("nickName")
+		var nickNameId = document.getElementById("nickNameId");
+		var tel = document.getElementById("tel")
+		var telId = document.getElementById("telId");
+		var email = document.getElementById("email")
+		var emailId = document.getElementById("emailId");
+		var div = document.querySelectorAll("form div");
+		var btn = document.getElementById("button");
+		//input输入框产生焦点和失去焦点时
+		userName.onfocus = function() {
+			userNameId.innerHTML = "1、由字母、数字、下划线、点、减号组成<br>2、只能以数字、字母开头或结尾，且程度为4-18";
+		}
+		userName.onblur = function () {
+		    inputCheck(userName,/^[\da-z]([\w\.-]){2,16}[\da-z]$/gi,"<img src = 'images/li_err.gif'>通行证用户名不能为空，请输入通行证用户名", "<img src = 'images/li_err.gif'>1、由字母、数字、下划线、点、减号组成<br>2、只能以数字、字母开头或结尾，且程度为4-18", userNameId);
+		}
+		pwd.onfocus = function() {
+			pwdId.innerHTML = "密码长度为6-16";
+		}
+		pwd.onblur = function () {
+			inputCheck(pwd, /.{6,16}/gi,"<img src = 'images/li_err.gif'>密码不能为空，请输入密码", "<img src = 'images/li_err.gif'>密码长度为6-16", pwdId);
+		}
+		repwd.onfocus = function () {
+		    repwdId.innerHTML = "请重复输入相同的密码";
+		}
+		repwd.onblur = function () {
+		    if(repwd.value == pwd.value){
+		    	repwdId.innerHTML = "";
+		    }else{
+		    	repwdId.innerHTML = "<img src = 'images/li_err.gif'>两次输入的密码不一致，请重新输入";
+		    }
+		}
+		nickName.onfocus = function() {
+			nickNameId.innerHTML = "1、包含字母、数字、下划线以及@！#$%&*特殊字符<br>2、长度为4-20个字符";
+		}
+		nickName.onblur = function () {
+		    inputCheck(nickName, /([\w@!#$%&*]){4,20}/gi,"<img src = 'images/li_err.gif'>昵称不能为空，请输入昵称", "<img src = 'images/li_err.gif'>1、包含字母、数字、下划线以及@！#$%&*特殊字符<br>2、长度为4-20个字符", nickNameId);
+		}
+		tel.onfocus = function() {
+			telId.innerHTML = "1、手机号码以13,15,18开头<br>2、手机号码由11位数字组成";
+		}
+		tel.onblur = function () {
+		    inputCheck(tel,/^((13)|(15)|(18))\d{8}\d/gi, "<img src = 'images/li_err.gif'>关联手机号不能为空，请输入关联手机号", "<img src = 'images/li_err.gif'>1、手机号码以13,15,18开头<br>2、手机号码由11位数字组成", telId);
+		}
+		email.onfocus = function() {
+			emailId.innerHTML = "请输入您常用的电子邮箱";
+		}
+		email.onblur = function () {
+		    inputCheck(email,/\w{2,5}@\w{2,5}\.((.com)|(.cn)$)/, "<img src = 'images/li_err.gif'>保密邮箱不能为空，请输入保密邮箱", "<img src = 'images/li_err.gif'>请输入您常用的电子邮箱", emailId);
+		}
+		//判断所有input内容
+		function inputCheck(input,regExp,emptyMsg, failMsg, ele) {
+			var userValue = input.value;
+			var index1 = userValue.search(/.+/gi); //判断是否为空
+			var index2 = userValue.search(regExp); //判断是否正确
+			if(index1 > -1) {
+				if(index2 > -1) {
+					ele.innerHTML = "";
+				} else {
+					ele.innerHTML = failMsg;
+				}
+			} else {
+				ele.innerHTML = emptyMsg;
+			}
+		}
+		
+		//点击提交按钮事件
+		btn.onclick = function() {
+			inputCheck(userName,/^[\da-z]([\w\.-]){2,16}[\da-z]$/gi,"<img src = 'images/li_err.gif'>通行证用户名不能为空，请输入通行证用户名", "<img src = 'images/li_err.gif'>1、由字母、数字、下划线、点、减号组成<br>2、只能以数字、字母开头或结尾，且程度为4-18", userNameId);
+			inputCheck(pwd, /.{6,16}/gi,"<img src = 'images/li_err.gif'>密码不能为空，请输入密码", "<img src = 'images/li_err.gif'>密码长度为6-16", pwdId);
+		    inputCheck(repwd, /.{6,16}/gi,"<img src = 'images/li_err.gif'>重复密码不能为空，请重复输入密码", "<img src = 'images/li_err.gif'>两次输入的密码不一致，请重新输入", repwdId);
+		    inputCheck(nickName, /([\w@!#$%&*]){4,20}/gi,"<img src = 'images/li_err.gif'>昵称不能为空，请输入昵称", "<img src = 'images/li_err.gif'>1、包含字母、数字、下划线以及@！#$%&*特殊字符<br>2、长度为4-20个字符", nickNameId);
+		    inputCheck(tel,/^((13)|(15)|(18))\d{8}\d/gi, "<img src = 'images/li_err.gif'>关联手机号不能为空，请输入关联手机号", "<img src = 'images/li_err.gif'>1、手机号码以13,15,18开头<br>2、手机号码由11位数字组成", telId);
+		    inputCheck(email,/\w{2,5}@\w{2,5}\.((.com)|(.cn)$)/, "<img src = 'images/li_err.gif'>保密邮箱不能为空，请输入保密邮箱", "<img src = 'images/li_err.gif'>请输入您常用的电子邮箱", emailId);
+		    
+		}
+	</script>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box1{
+				width: 300px;
+				height: 200px;
+				background-color:#F1F2F6 ;
+				position: fixed;
+				bottom: 0;
+				right: 0;
+			}
+			p{
+				display: inline-block;
+				font-size: 20px;
+			}
+			#but{
+				float: right;
+				position: relative;
+				top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+		<div id="box1">
+			<p>请咨询</p>	
+			<button id="but">X</button>
+			<textarea id="sry" rows="8" cols="38"></textarea>
+			<button id="tj">提交</button>
+		</div>
+		</div>
+	</body>
+	<script>
+		var box=document.getElementById("box");
+		var box1=document.getElementById("box1");
+		var but=document.getElementById("but");
+		var height=0;
+		var intervalId=setInterval(function step (){
+        height += 8; 
+        box1.style.height = height + "px"; 
+        if(height>=200){
+        	clearInterval(intervalId);
+        }
+		},100);
+		but.onclick=function(){
+			box.style.display="none"
+		}
+		setInterval(function(){
+			
+			box.style.display="block"
+		},5000)
+	</script>
+</html>

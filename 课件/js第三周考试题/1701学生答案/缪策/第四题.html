@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				position: relative;
+			}
+			#box{
+				position: absolute;right	:0;bottom: 0;
+				width: 400px;height: 600px;background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<!--右下角页面打开后一个聊天的窗口慢慢的显示出来，点击X将小窗口关闭，但是过5移钟后聊天窗口又显示出来。-->
+		<div id="box"></div>
+		<script type="text/javascript">
+		   var box = document.getElementById("box")
+		   var left = 0;
+		   var intervalId = setInterval(function step (){
+        			bottom-=8
+        			setTimeout(function (){
+            			win.close();
+        			}, 5000)
+    			},1000)
+		</script>
+	</body>
+</html>
+  

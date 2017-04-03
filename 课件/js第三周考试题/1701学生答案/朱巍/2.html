@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+    <style type="text/css">
+        #box {
+            width: 160px;
+            height: 50px;
+            background-color: darkcyan;
+            text-align: center;
+            line-height: 50px;
+            font-size: 25px;
+            color:black;
+            float:left;
+
+        }
+        #box1{
+        	float:left;
+        	margin-left:20px;
+        	margin-top:18px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="box"></div>
+<div id="box1"><a href="javascript:;" id="change">看不清，换一个</a></div>
+<script type="text/javascript">
+    var box = document.getElementById("box");
+    function show() {
+        var nums = [];
+        var cs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","S","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l",
+        				"m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        for(var i = 0; i < 6; i++){
+            nums.push(cs[randomInt(0, cs.length - 1)]);
+        }
+        box.innerHTML = nums.join(" ")
+    }
+    show();
+    function randomInt(from, to) {
+        return parseInt(Math.random() * (to - from + 1) + from);
+    }
+    change.onclick = function () {
+        show();
+    }
+</script>
+</body>
+</html>

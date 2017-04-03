@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		function myFunction(num1){
+			if(((num1%4==0)&&(num1%100!=0))||((num1%100==0)&&(num1%400==0))){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+		for(var num1=1500;num1<=2017;num1++){
+			if(myFunction(num1)){
+				document.write(" "+num1);
+			}
+			else{
+				continue;
+			}
+		}
+	</script>
+</html>

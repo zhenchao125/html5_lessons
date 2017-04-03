@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<p id="p1"></p>
+	</body>
+	<script>
+	var p1=document.getElementById("p1")
+		var arr=[];
+		for (var i=1500;i<=2017;i++) {
+			
+			if(i%4==0&&1%100!=0||i%400==0){
+				arr.push(i);
+				if(arr.length %5 ==0){
+					var ds=[];
+					arr=ds;	
+					console.log(ds);
+				}
+		}	
+		}
+	</script>
+</html>

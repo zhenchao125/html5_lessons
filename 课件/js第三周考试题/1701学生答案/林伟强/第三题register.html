@@ -1,0 +1,124 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+	<script type="text/javascript">
+		var userName = document.getElementById("userName");
+		var pwd = document.getElementById("pwd");
+		var repwd =document.getElementById("repwd");
+		var nickName =document.getElementById("nickName");
+		var tel =document.getElementById("tel");
+		var email =document.getElementById("email");
+		
+		userName.onblur = function(){
+			yanZheng(this,/^.\w{2,16}.$/gi,"输入正确","只能以数字、字母开头或者结尾，且长度为4—18",userNameId)
+		}
+		
+		pwd.onblur = function(){
+			yanZheng(this,/^.\w{4,14}.$/gi,"输入正确","密码长度为6-16",pwdId)
+		}
+		
+		repwd.onblur = function(){
+			var mi = this.value;
+			var ma = pwd.value;
+			if(mi != ma){
+				repwdId.innerHTML = "两次输入的密码不一致，请重新输入"
+			}else{
+				repwdId.innerHTML = "输入正确"
+			}
+		}
+		
+		nickName.onblur = function(){
+			yanZheng(this,/^.\w{4,18}.$/gi,"输入正确","长度为4-20个字符",nickNameId)
+		}
+		
+		tel.onblur = function(){
+			yanZheng(this,/^1[35678]\d{8}\d$/gi,"输入正确","关联的手机号码不正确，请重新输入",telId)
+		}
+		
+		email.onblur = function(){
+			yanZheng(this,/^\w{4,10}@\w{2,}(\.com)$/gi,"输入正确","保密邮箱格式不正确，请重新输入",emailId)
+		}
+		
+		function yanZheng(input, regExp, yesText, noText, ele){
+        var zhi = input.value;
+        var index = zhi.search(regExp);
+        if (index > -1){
+            ele.innerHTML = yesText;
+        }else{
+            ele.innerHTML = noText;
+        }
+    }
+	</script>
+</html>

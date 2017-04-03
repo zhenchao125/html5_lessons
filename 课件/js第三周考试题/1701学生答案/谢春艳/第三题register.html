@@ -1,0 +1,179 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" name="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript">
+	//获取表单。
+	var form=document.forms.myform;
+	/*
+	 * 检验通行证用户名。
+	 * 1、由字母、数字、下划线、点、减号组成。
+	 * 2、只能以数字、字母开头或结尾，长度为4-18。
+	 * regExp=/^[0-9a-z][\w\.-]{2,16}[0-9a-z]$/gi;
+	 */
+	form.userName.onfocus=function(){
+		tips(this,"1、由字母、数字、下划线、点、减号组成。2、只能以数字、字母开头或结尾，长度为4-18。",this.parentNode.nextElementSibling);
+	}
+	form.userName.onblur=function(){
+		inputCheck(this,/^[0-9a-z][\w\.-]{2,16}[0-9a-z]$/gi,"通行证用户名不能为空，请输入通行证用户名。","用户名不正确,请重新输入",this.parentNode.nextElementSibling);
+	}
+	/*
+	 * 检验登录密码。
+	 * 要求：长度为6-16。
+	 * regExp=/^..{4,14}.$/gi;
+	 */
+	form.pwd.onfocus=function(){
+		tips(this,"密码长度为6-16。",this.parentNode.nextElementSibling);
+	}
+	form.pwd.onblur=function(){
+		inputCheck(this,/^..{4,14}.$/gi,"密码不能为空，请输入密码。","密码不符合规范,请重新输入",this.parentNode.nextElementSibling);
+	}
+	//检验第二次输入密码是否正确。
+	var pwd=document.getElementById("pwd");
+	var repwd=document.getElementById("repwd");
+	repwd.onfocus=function(){
+		tips(this,"请再次输入密码。",this.parentNode.nextElementSibling);
+	}
+	repwd.onblur=function(){
+		var value=repwd.value;
+		if(pwd===repwd){
+			var ok=document.createElement("div");
+			ok.className="ok_prompt";
+			this.parentNode.nextElementSibling.innerHTML=null;
+			this.parentNode.nextElementSibling.appendChild(ok);
+		}else if(value===""){
+			this.parentNode.nextElementSibling.innerHTML="重复密码不能为空，请重复输入密码。";
+		}else{
+			var err=document.createElement("div");
+			err.className="error_prompt";
+			this.parentNode.nextElementSibling.innerHTML=null;
+			this.parentNode.nextElementSibling.appendChild(err);
+			this.parentNode.nextElementSibling.innerHTML="两次输入的密码不一致，请重新输入。";
+		}
+	}
+	/*
+	 * 检验昵称。
+	 * 1、包含字母、数字、下划线以及@!$%&*
+	 * 2、长度为4-20个字符。
+	 * regExp=/^[\w@!$%&*][\w@!$%&*]{2,18}[\w@!$%&*]$/gi;
+	 */
+	form.nickName.onfocus=function(){
+		tips(this,"1、包含字母、数字、下划线以及@!$%&*。 2、长度为4-20个字符。",this.parentNode.nextElementSibling);
+	}
+	form.nickName.onblur=function(){
+		inputCheck(this,/^[\w@!$%&*][\w@!$%&*]{2,18}[\w@!$%&*]$/gi,"昵称不能为空，请输入昵称。","昵称不符合规范,请重新输入",this.parentNode.nextElementSibling);
+	}
+	/*
+	 * 检验手机号码。
+	 * 1、手机号码以13、15、18开头
+	 * 2、手机号码由11位数字组成。
+	 * regExp=/^1[358]\d{8}\d$/gi;
+	 */
+	form.tel.onfocus=function(){
+		tips(this,"请输入常用手机号码",this.parentNode.nextElementSibling);
+	}
+	form.tel.onblur=function(){
+		inputCheck(this,/^1[358]\d{8}\d$/gi,"电话号码不能为空，请输入联系电话。","手机号码不符合规范,请重新输入",this.parentNode.nextElementSibling);
+	}
+	/*
+	 * 验证邮箱。
+	 * 1、
+	 */
+	//封装一个函数，当输入框获取焦点时提示输入格式。
+	function tips(input,tipMsg,ele){
+		ele.style.display="block";
+		ele.innerHTML=tipMsg;
+	}
+	//封装一个函数，用于检验输入内容是否符合要求的函数。
+	function inputCheck(input,regExp,msg,failMsg,ele){
+		var value=input.value;
+		var alright=value.search(regExp);
+		if(alright>-1){
+			var ok=document.createElement("div");
+			ok.className="ok_prompt";
+			ele.innerHTML=null;
+			ele.appendChild(ok);
+		}else if(value===""){
+			ele.innerHTML=msg;
+		}else{
+			var err=document.createElement("div");
+			err.className="error_prompt";
+			ele.innerHTML=null;
+			ele.appendChild(err);
+			ele.innerHTML=failMsg;
+			input.focus();
+		}
+	}
+</script>
+</html>

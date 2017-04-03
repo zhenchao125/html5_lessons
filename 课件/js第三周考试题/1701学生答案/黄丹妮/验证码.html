@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 150px;
+				height: 50px;
+				background: pink;
+				text-align: center;
+				line-height: 50px;
+				font-size: 35px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<br>
+		<a href="" id="change">看不清，换一张</a>
+	</body>
+	<script type="text/javascript">
+	 var box = document.getElementById("box");
+	 function show(){
+	 	var num = [];
+	 	var cs = [0,1,2,3,4,5,6,7,8,9,"A","B","d","D",];
+	 	for(var i = 0 ; i<6 ; i++){
+	 		num.push(cs[randomInt(0,cs.length-1)]);
+	 	}
+	 	box.innerHTML = num.join("");
+	 }
+	 show();
+	 
+	 function randomInt(from, to) {
+        return parseInt(Math.random() * (to - from + 1) + from);
+    }
+	 change.onclick = function(){
+	 	show();
+	 }
+	</script>
+</html>

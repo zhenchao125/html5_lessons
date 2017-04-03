@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>打印出 1500-2017 年中所有的闰年，并以每⾏5 个数的形式输出</title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript" charset="utf-8">
+	    //判断是否是闰年函数
+	    function isLeapYear (year) {
+	        return year%4 == 0 && year%100!=0 || year%400 ==0;
+	    }
+	    //打印出1500-2017 年中所有的闰年，并以每⾏5 个数的形式输出
+	    for (var i = 1500,j=0; i <=2017; i++) {
+	        if(isLeapYear(i)){
+	        	document.write(i + "\n");
+	        	j++; //计算得到的闰年数量
+	        	if(j>4){ 
+	        		document.write("<br>");  //5个的时候输出换行符
+	        		j=0; //又从0开始计算闰年数量
+	        	}
+	        }
+	    }
+	</script>
+</html>

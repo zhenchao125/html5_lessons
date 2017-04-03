@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_2x2ncj0lkapxpqfr.css"/>
+		<style type="text/css">
+			#window{ width:300px;height:300px;border:1px solid #000;position: fixed;right: 20px;bottom:-302px; }
+			#top{ width:100%;height:50px; background: cornflowerblue;text-align: right;line-height: 50px;}
+			#content{ width: 100%;height:250px;background: aliceblue; }
+			.closed{ height:30px;width:30px;margin-right: 20px;line-height:30px;display: inline-block;
+			font-size: 30px; background: brown;vertical-align: middle;}
+		</style>
+	</head>
+	<body>
+		<div id="window">
+			<div id="top">
+				<div class="closed iconfont icon-iconfontcha"></div>
+			</div>
+			<div id="content"></div>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			var oClosed = document.getElementsByClassName("closed")[0];
+			var oWindow = document.getElementById("window");
+			var cloneWindow = oWindow.cloneNode(true);
+			var bottom = -302;
+			var intervalId;
+			
+			timeoutId = setTimeout(function foo() {
+				bottom += 2;
+				oWindow.style.bottom = bottom + "px";
+				timeoutId = setTimeout(foo,10);
+				if (bottom == 20) {
+				    clearTimeout(timeoutId);
+				}
+			},0);
+			
+			oClosed.onclick = function () {
+			    document.body.innerHTML = "";
+			    setTimeout(function () {
+					bottom = -302;
+			    	document.body.appendChild(cloneWindow);
+			    	cloneWindow.style.bottom = bottom + "px";
+			    	timeoutId = setTimeout(function foo() {
+						bottom += 2;
+						cloneWindow.style.bottom = bottom + "px";
+						timeoutId = setTimeout(foo,10);
+						if (bottom == 20) {
+			    			oClosed = document.getElementsByClassName("closed")[0];
+						    clearTimeout(timeoutId);
+						}
+					},10);
+			    },5000)
+			}
+		</script>
+	</body>
+</html>

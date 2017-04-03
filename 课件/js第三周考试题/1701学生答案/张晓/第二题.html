@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>随机验证码</title>
+		<style type="text/css">
+			div {
+				width: 150px;
+				height: 50px;
+				background: red;
+				text-align: center;
+				line-height: 50px;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="div"></div>
+		<a href="javascript:;" id="change">看不清，换一个</a>
+	</body>
+	<script type="text/javascript" charset="utf-8">
+		var div = document.getElementById("div");
+
+		function show() {
+			var str = [];
+			var arr = ["a", "b", 0, 1, 2, 3, 4, 5,6,7,8,9,"c","d","e","f","g","h","A","C","G","H","K","M","E","I","Y","T","u","m","z","Z","w"];
+			for(var i = 0; i < 6; i++) {
+				str.push(arr[randomInt(0, arr.length - 1)]);
+			}
+			div.innerHTML = str.join(" ");
+		}
+		show();
+
+		function randomInt(from, to) {
+			return parseInt(Math.random() * (to - from + 1) + from);
+		}
+		change.onclick = function() {
+			show();
+		}
+	</script>
+
+</html>

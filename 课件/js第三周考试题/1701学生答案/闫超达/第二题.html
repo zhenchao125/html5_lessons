@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				height: 50px;
+				width: 160px;
+				border: 1px solid gray;
+				background: lightseagreen;
+				font-size: 20px;
+				text-align: center;
+				line-height: 50px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="">
+			
+		</div>
+		<a href="javascript:;" id="numss">看不清，换一张</a>
+		<script type="text/javascript">
+			var div = document.getElementsByTagName('div');
+			var a = document.getElementsByTagName('a');
+			var nums = document.getElementsByTagName('nums');
+			function check(){
+				var nums = []
+				var num =[];
+				var word =['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+				
+				for(var i =0 ;i<=9; i++){
+					num.push(i);
+				}
+				num.push(...word);
+				console.log(num);
+//				for(var j =a; j <==z; j++){
+//					num.push(j);
+//				}
+				
+				for(var n=0; n<6;n++){
+					nums.push(num[randomInt(0,num.length-1)])
+				}
+				console.log(nums);
+//				div[0].innerHTML = nums;
+				div[0].innerHTML = nums.join(' ');
+				
+			}
+			check()
+		    function randomInt(from, to) {
+		        return parseInt(Math.random() * (to - from + 1) + from);
+		    }
+
+			numss.onclick= function (){
+				check();
+			}
+		</script>
+	</body>
+</html>

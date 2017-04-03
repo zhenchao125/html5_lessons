@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{height: 1000px;}
+			#windows{width: 500px;height: 300px;position: fixed;bottom: 0;right: -520px;
+					border: 1px solid black;background:#AFBDD5 ;}
+			#close{width: 30px;height: 30px;border: 3px outset beige;
+					position: absolute;right: 10px;top: 10px;
+					font-size: 25px;text-align: center;line-height: 30px;}
+			p{margin: 0;padding: 10px 20px;width: 500px;background: #F1F2F6;font-size: 30px;}
+			textarea{margin: 5px;width: 490px;height: 180px;}
+			input{width: 70px;height: 30px;margin-right: 20px;position: relative;left: 20px;}
+		</style>
+		
+	</head>
+	<body>
+		<div id="windows">
+			<div id="close">X</div>
+			<p>请咨询</p>
+			<textarea name="" rows="" cols=""></textarea>
+			<input type="button" name="" id="" value="提交" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		var close=document.getElementById('close');
+		var windows=document.getElementById('windows');
+		window.onload=function(){
+		openWindows();
+		}
+		
+		close.onclick=function(){
+			windows.style.right='-510px';
+			setTimeout(function(){
+				openWindows();
+			},5000)
+		}
+		//打开对话框
+		function openWindows(){
+			var mover=-510;
+			var setIntervalNew=setInterval(function(){
+				mover+=2;
+				windows.style.right=mover+'px';
+				if(mover>=0){clearInterval(setIntervalNew)}
+			},3)
+		}
+		
+	</script>
+</html>

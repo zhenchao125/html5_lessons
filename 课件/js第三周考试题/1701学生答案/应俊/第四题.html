@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#top1{
+				width: 305px;
+				height: 320px;
+				background: darkseagreen;
+				border: 1px solid darkseagreen;
+				position: fixed;
+				right: 0;
+				bottom: 0;
+			}
+			#btn{
+				float: right;
+			}
+			p{
+				float: left;
+				padding: 0;
+				margin: 0;
+			}
+			#wirte{
+				resize: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="top1">
+				<p>请咨询</p>
+				<input type="button" name="" id="btn" value="X" />
+				<textarea id="wirte" name="" rows="15" cols="40"></textarea>
+			<input type="button" name="" id="ask" value="提交" />
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var btn = document.getElementById("btn");
+		var box = document.getElementById("box")
+		var top1 = document.getElementById("top1");
+		var height = 0;
+		var intervalId = setInterval(function step(){
+			height += 8;
+			top1.style.height=height+"px"	
+			if(height >= 320){
+//				clearInterval(intervalId)
+			height=320+"px"
+			}
+			},20);
+		btn.onclick = function(){
+			box.style.display="none";
+		}
+		var intervalId = setInterval(function(){
+			box.style.display="inline-block";
+		},5000);
+	</script>
+</html>

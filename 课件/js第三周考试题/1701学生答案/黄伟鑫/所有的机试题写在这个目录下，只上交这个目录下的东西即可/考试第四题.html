@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;
+			  padding: 0;}
+			#gg {width: 300px;
+			     height: 300px;
+			     border:1px slid cornflowerblue ;
+			     background-color: #00FA9A;
+			     position: relative;
+			     top: 350px;
+			     left: 1020px;
+			     }
+			     
+			#close{width: 30px;
+			       height: 30px;
+			       border: 1px solid red;
+			       background-color: chartreuse;
+			       position: absolute;
+			       left: 270px;
+			       box-sizing: border-box;
+			       z-index: 2;}
+			   
+			            
+			#mn{width: 300px;
+			    height: 300px;
+			    z-index: 1;
+			    position: absolute;
+			    }
+		</style>
+	</head>
+	<body>
+		<div id="gg">
+			<img id="mn" src="images/mn33.png" alt="" />
+			<div id="close"></div>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var gg = document.getElementById("gg");
+		var close = document.getElementById("close");
+		
+		close.onclick = function(){
+			gg.style.display = "none";
+			var haha = setTimeout(function(){
+			gg.style.display = "block";
+		},5000)
+		}
+		
+	</script>
+</html>

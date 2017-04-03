@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div2{width: 200px;
+			      height: 100px;
+			      border: 1px solid mediumspringgreen;
+			      background-color: greenyellow;
+			      text-align: center;
+			      line-height: 100px;
+			      font-size: 30px;
+			      color: plum;}
+			      
+			a{color: #00FA9A;
+			  cursor: pointer;}      
+			      
+			      
+		</style>
+	</head>
+	<body>
+		<div id="div2"></div>
+		<a id="change">看不清楚，换一个</a>
+	</body>
+	
+	<script type="text/javascript">
+		var div2 = document.getElementById("div2");
+		var change = document.getElementById("change");
+		function randomInt(from, to) {
+        return parseInt(Math.random() * (to - from + 1) + from);   
+    }
+		
+		function show(){
+			var a=[];
+			var num =[0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"
+						];
+			for(var i=0;i<6;i++){
+			a.push(num[randomInt(0, num.length - 1)]);	
+			}
+			div2.innerHTML = a.join(" ");
+		}
+		
+		show();
+		
+		change.onclick = function(){
+			show();
+		}
+		
+	</script>
+</html>

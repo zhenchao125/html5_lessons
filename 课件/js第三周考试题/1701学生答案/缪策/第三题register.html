@@ -1,0 +1,118 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+    <style type="text/css">
+    		#userNameId,#pwdId{
+    			font-weight: bold;
+    		}
+    </style>
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                        <div id="realNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+	//获取form表单
+	var form = document.forms.registerForm;
+	//输入6位数,不能是数字开头
+	form.userName.onblur = function(){
+		inputCheck(this, /^[a-z_]\w{4}\w$/gi, "请继续输入密码!", "您输入的有误请重试!", document.getElementById("userNameId"))
+	}
+	//输入6-12位密码
+	form.pwd.onblur = function(){
+		inputCheck(this, /\d{6,12}/gi, "请重复登录密码!", "您输入的有误请重新输入!", document.getElementById("pwdId"))
+	}	//验证密码
+	form.repwd.onblur = function(){
+		inputCheck(this, /\d{6,12}/gi, "请重复登录密码!", "您输入的有误请重新输入!", document.getElementById("repwdId"))
+	}
+	//验证名字
+	form.realName.onblur = function(){
+		inputCheck(this, /\W{2,3}+/gi, "请重复登录密码!", "您输入的有误请重新输入!", document.getElementById("realNameId"))
+	}
+	
+	
+	
+	
+	//验证函数
+	function inputCheck(input, regExp, successMsg, failMsg, ele){
+        var Value = input.value;
+        var index = Value.search(regExp);
+        if (index > -1){
+            ele.innerHTML = successMsg;
+        }else{
+            ele.innerHTML = failMsg;
+            input.focus();
+        }
+    }
+	
+</script>
+</body>
+</html>
+

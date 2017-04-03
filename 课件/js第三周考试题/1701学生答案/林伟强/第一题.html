@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		(function pan(){
+			var arr = [];
+			for(var i = 1500;i<=2017;i++){
+				if(i%4==0 && i%100!==0 ||i%400==0){
+				arr.push(i);
+				}
+			}
+//			for(var a = 0;a < arr.length; a++){
+//				if(a = 4 || a % 5 ==0){
+//					arr[5] += '<br>'
+//				}
+//			}
+			console.log(arr)
+		})()
+	</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var arr = []
+		var j = 0;
+		function isRunNian(){
+			for(i=1500;i<2018;i++){
+				if(i % 4===0 && i % 100 !== 0 || i % 400 === 0){
+					j++
+					arr.push(i);
+				}
+				if(arr.length%5 == 0){
+					arr.push("\n");
+				}	
+			}
+		}
+		isRunNian()
+		document.write(arr);	
+	</script>
+</html>

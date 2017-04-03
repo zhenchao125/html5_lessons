@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+		<style type="text/css">
+			#outer{
+				width: 510px;
+				box-sizing: border-box;
+				border: red solid 2px;
+				margin: 100px auto;
+				position: relative;
+			}
+			ul{
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				float: left;
+				width: 100px;
+				height: 50px;
+			}
+			
+		</style>
+	<body>
+		1500-2017 间所有的闰年
+		<div id="outer">
+			<ul id="year">
+				
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var year = document.getElementById("year");
+		var years = ["1500"];
+		//在数组中填入1500-2017所有年份
+		for(var i =0;i<517;i++){
+			years.push(i+1501);
+		};
+		console.log(years);
+//在数组中填入所有闰年
+			var run = [];
+			console.log(run);
+			for(var i = 0;i<517;i++){
+				if( years[i]%100==0 && years[i]/400==0 || years[i]%4==0 && years[i]%100 != 0){
+					var a=years[i];
+					run.push(a);
+				}
+			}
+			console.log(run);
+	//把闰年添加到li中	
+		for(var i=0;i<run.length;i++){
+			var li = document.createElement("li");
+			li.innerHTML = run[i];
+			year.appendChild(li);
+		}
+    
+			
+		
+	</script>
+</html>

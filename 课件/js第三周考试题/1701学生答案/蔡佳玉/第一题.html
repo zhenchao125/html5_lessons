@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+		
+		var arr=isThat(1500,2017);
+		var bat=[];
+		for (var i = 0; i < arr.length; i++) {
+			
+			bat.push(arr[i]);
+		    if((i+1)%5){}
+		    else{console.log(bat.toString());
+		    	bat=[]}
+		}
+		console.log(bat.toString());
+		//将一个时间段内的所有闰年写到一个数组中	
+		function isThat(froM,to){
+			var arr=[];
+			for(var i=froM;i<to;i++){
+				if(isRun(i)){
+					arr.push(i);
+				}			
+			}
+			return arr;
+		}
+		//查看是否是闰年
+		function isRun(year){
+			if(!(year%4)&&year%100||!(year%400)){
+			return 	true ;	
+			}
+			else{return false;}			
+		}
+	</script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 400px;height: 300px;background: pink;position: absolute;
+				right:5px;bottom: 5px;opacity: 0;
+			}
+			#content1{
+				width: 100%;height: 50px;background: rgb(241,242,241);
+				position: relative;
+			}
+			#btn{
+				width: 50px;height: 30px;background: white;position: absolute;
+				right: 5px;top: 5px;text-align: center;cursor: pointer;font-size: 25px;
+				line-height: 30px;
+			}
+			#ask{
+				font-size: 25px;position: absolute;left: 3px;top: 3px;
+			}
+			#content2{
+				width: 100%;height: 250px;background: rgb(189,189,189);
+				position: relative;
+			}
+			#content2 #inter1{
+				width: 390px;height: 200px;background: white;position: absolute;
+				top: 0;left: 10px;
+			}
+			#content2 #inter2{
+				width: 200px;height: 30px;background: white;position: absolute;
+				left: 10px;bottom: 10px;text-align: center;border-radius: 15px;
+				line-height: 30px;
+			}
+			#bar{
+				width: 8px;height: 50px;background: black;
+				position: absolute;right: 405px;bottom: 5px;opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="content1">
+				<div id="ask">请咨询</div>
+				<div id="btn">×</div>
+			</div>
+			<div id="content2">
+				<div id="inter1"></div>
+				<div id="inter2">提交</div>
+			</div>
+		</div>
+		<div id="bar"></div>
+	</body>
+	<script type="text/javascript">
+		var box=document.getElementById("box");
+		var btn=document.getElementById("btn");
+		var bar=document.getElementById("bar");
+		window.setTimeout(function(){
+			box.style.opacity=1;
+			bar.style.opacity=1;
+		},1000)
+		btn.onclick=function(){
+			box.style.opacity=0;
+			bar.style.opacity=0;
+			setTimeout(function(){
+				box.style.opacity=1;
+				bar.style.opacity=1;
+			},5000)
+		}
+	</script>
+</html>

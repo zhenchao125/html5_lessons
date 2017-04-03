@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div{
+			width: 170px;
+			height: 60px;
+			border: black solid 2px;
+			background-color: darkseagreen;
+			
+		}
+		i{
+			position: absolute;
+			display: block;
+			height: 40px;
+			left: 190px;
+			top: 40px;
+			font-size: 30px;
+			color: blue;
+			text-decoration: underline;
+			font-style: normal;
+			cursor: pointer;
+		}
+	</style>
+	<body>
+		<div id="check">
+			
+		</div>
+		<i id="re">看不清,换一张</i>
+	</body>
+	<script type="text/javascript">
+		var aa=document.getElementById("re");
+		var check=document.getElementById("check");
+		//生成验证码表
+		var selectChar = new Array(0,1,2,3,4,5,6,7,8,9,'A','B',
+		'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U',
+		'V','W','X','Y','Z','a','b','c','d','e','f','g','h','i',
+		'j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+//		console.log(selectChar);
+		function randomInt (m, n) {
+		return parseInt(Math.random() * (n - m + 1) + m);
+	};
+	//生成0-62的随机数
+	   var r1 = randomInt(0,61);
+	   var r2 = randomInt(0,61);
+	   var r3 = randomInt(0,61);
+	   var r4 = randomInt(0,61);
+	   var r5 = randomInt(0,61);
+	   var r6 = randomInt(0,61);
+//	   console.log(ran);
+//生成6位随机验证码
+	function checkCode(){
+	   var code = String("");
+	   var fullCode = code.concat(selectChar[r1],selectChar[r2],selectChar[r3],selectChar[r4],selectChar[r5],selectChar[r6]);
+//	   console.log(fullCode);
+       check.innerHTML= fullCode;}
+	checkCode();
+	//点击看不清重新生成验证码
+	aa.onclick = function(){
+	var reCode = [];
+	for(i=0;i<6;i++){
+		var temp = i;
+		i=randomInt(0,61);
+		reCode[reCode.length]=i;
+		i=temp;};
+	var code1 = String("");
+	   var newCode = code1.concat(selectChar[reCode[0]],selectChar[reCode[1]],selectChar[reCode[2]],selectChar[reCode[3]],selectChar[reCode[4]],selectChar[reCode[5]]);
+
+       check.innerHTML= newCode; 
+	}
+		
+	
+	
+
+
+	
+   
+	
+	
+       
+	   
+	  
+	   
+		
+	</script>
+</html>

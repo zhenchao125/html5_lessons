@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 110px;height: 30px;background: pink;
+				border: 1px solid #000000;position: relative;
+				font-size: 17px;line-height: 30px;
+			}
+			a{
+				position: absolute;left: 120px;top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--实现点击“看不清，换⼀张”随机⽣成六位验证码（可包含数字和⼤⼩写字⺟）-->
+		<div id="box"></div>
+		<a href="" id="btn">看不清换一张</a>
+		<script type="text/javascript"> 
+    			function Num() {
+        			var nums = [];
+        			var cs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+        			for(var i = 0; i < 6; i++){
+            		nums.push(cs[randomInt(0, cs.length - 1)]);
+        			}
+        		box.innerHTML = nums.join(" ")
+   		 }
+    		Num();
+    		//随机数
+    		function randomInt(from, to) {
+        		return parseInt(Math.random() * (to - from + 1) + from);
+    		}
+    		btn.onclick = function () {
+        		Num();
+    		}
+		</script>
+	</body>
+</html>

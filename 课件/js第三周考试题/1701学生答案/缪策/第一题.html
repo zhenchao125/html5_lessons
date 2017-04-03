@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;padding: 0;
+			}
+			#box{
+				width: 500px;
+				margin: 0 auto;
+				list-style: none;
+			}
+
+		</style>
+	</head>
+	<body>
+		<!--打印出 1500-2017 年中所有的闰年，并以每⾏5 个数的形式输出（20 分）-->
+		<div id="box"></div>
+		<script type="text/javascript">
+			var year;
+			for(year = 1500; year < 2017;year++){
+				if((year % 4 == 0 && year % 100 != 0 )||(year % 400 == 0 )){
+				document.write(year)
+				}
+			}
+			var Num = function(){
+        			var regExp = /\d{4}+/gi
+        			var year1 = year.split("regExp");
+        			return year1;
+   		 }
+    			console.log(Num());
+    			
+//					year.join(",")
+//					while (i >4) {
+//						push(year[i])
+//						i=+4;
+//					}
+//					document.write(year);
+//					var li = document.createElement("li")
+//					li.push(year);
+
+//				}
+//			}
+
+			
+		</script>
+	</body>
+</html>

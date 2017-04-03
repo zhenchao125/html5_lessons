@@ -1,0 +1,132 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+</head>
+
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div><p id="ts1" class="import_prompt"></p>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div><p id="ts2" class="import_prompt"></p>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div><p id="ts3" class="import_prompt"></p>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div><p id="ts4" class="import_prompt"></p>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div><p id="ts5" class="import_prompt"></p>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div><p id="ts6" class="import_prompt"></p>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript">
+	var userName =document.getElementById("userName");
+	var ts1 =document.getElementById("ts1");
+	var ts2 =document.getElementById("ts2");
+	var ts3 =document.getElementById("ts3");
+	var ts4 =document.getElementById("ts4");
+	var ts5 =document.getElementById("ts5");
+	var ts6 =document.getElementById("ts6");
+	var pwd =document.getElementById("pwd");
+	var repwd =document.getElementById("repwd");
+	var nickName =document.getElementById("nickName");
+	var tel =document.getElementById("tel");
+	var email =document.getElementById("email");
+	userName.onfocus = function(){
+		var text = "通行证用户名不能为空,请输入通行证用户名";
+		ts1.innerHTML = text;
+	};
+	pwd.onfocus = function(){
+		var text = "密码不能为空,请输入密码";
+		ts2.innerHTML = text;
+	};
+	repwd.onfocus = function(){
+		var text = "两次输入的密码不一致,请重新输入";
+		ts3.innerHTML = text;
+	}
+	nickName.onfocus = function(){
+		var text = "长度为4-20个字符";
+		ts4.innerHTML = text;
+	};
+	tel.onfocus = function(){
+		var text = "关联手机号码输入不正确,请重新输入";
+		ts5.innerHTML = text;
+	};
+	email.onfocus = function(){
+		var text = "保密邮箱格式不正确,请重新输入";
+		ts6.innerHTML = text;
+	};
+	function inputCheck(input, regExp, failMsg, ele){
+        //获取表单元素的value值
+        var userValue = input.value;
+        var index = userValue.search(regExp);
+        if (index <= -1){
+            ele.innerHTML = failMsg;
+            input.focus();
+        }
+    }
+
+	
+		
+	
+	
+	
+
+	
+	
+</script>
+</html>

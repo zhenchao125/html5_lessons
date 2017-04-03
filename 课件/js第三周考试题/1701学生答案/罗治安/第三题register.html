@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>新用户注册页面</title>
+    <link type="text/css" rel="stylesheet" href="css/register.css" />
+    <style type="text/css">
+    	dl div{
+    		background-color: pink;
+    		border: 1px solid red;
+    	}
+    </style>
+</head>
+<body>
+<div id="header"><img src="images/register_logo.gif" alt="logo"/></div>
+<div id="main">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg bg_top_left"></td>
+            <td class="bg_top"></td>
+            <td class="bg bg_top_right"></td>
+        </tr>
+        <tr>
+            <td class="bg_left"></td>
+            <td class="content">
+                <form id="registerForm" action="" method="post" name="myform">
+                    <dl>
+                        <dt>通行证用户名：</dt>
+                        <dd><input type="text" id="userName" class="inputs userWidth"/> @163.com</dd>
+                        <div id="userNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>登录密码：</dt>
+                        <dd><input type="password" id="pwd" class="inputs"/></dd>
+                        <div id="pwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>重复登录密码：</dt>
+                        <dd><input type="password" id="repwd" class="inputs"/></dd>
+                        <div id="repwdId"></div>
+                    </dl>
+                    <dl>
+                        <dt>性别：</dt>
+                        <dd><input name="sex" type="radio" value="" checked="checked"/>男 <input name="sex" type="radio" value="" />女 </dd>
+                    </dl>
+                    <dl>
+                        <dt>真实姓名：</dt>
+                        <dd><input type="text" id="realName" class="inputs" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>昵称：</dt>
+                        <dd><input type="text" id="nickName" class="inputs"/></dd>
+                        <div id="nickNameId"></div>
+                    </dl>
+                    <dl>
+                        <dt>关联手机号：</dt>
+                        <dd><input type="text" id="tel" class="inputs"/></dd>
+                        <div id="telId"></div>
+                    </dl>
+                    <dl>
+                        <dt>保密邮箱：</dt>
+                        <dd><input type="text" id="email" class="inputs"/></dd>
+                        <div id="emailId"></div>
+                    </dl>
+                    <dl>
+                        <dt></dt>
+                        <dd><input name=" " type="image" src="images/button.gif"/></dd>
+                    </dl>
+                </form>
+            </td>
+            <td class="bg_right"></td>
+        </tr>
+        <tr>
+            <td class="bg bg_end_left"></td>
+            <td class="bg_end"></td>
+            <td class="bg bg_end_right"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript">
+//获取所有的input和对应的div(除性别)
+	var userName = document.getElementById("userName");
+	var userNameId = document.getElementById("userNameId");
+	var pwd = document.getElementById("pwd");
+	var pwdId = document.getElementById("pwdId");
+	var repwd = document.getElementById("repwd");
+	var repwdId = document.getElementById("repwdId");
+	var realName = document.getElementById("realName");
+	//真实姓名后没有div
+	var nickName = document.getElementById("nickName");
+	var nickNameId = document.getElementById("nickNameId");
+	var tel = document.getElementById("tel");
+	var telId = document.getElementById("telId");
+	var email = document.getElementById("email");
+	var emailId = document.getElementById("emailId");
+	
+//在对应的input标签后添加输入提示
+	
+	userNameId.innerHTML = "通行证用户名不能为空，请输入用户名！";
+	pwdId.innerHTML = "密码不能为空，请输入密码";
+	repwdId.innerHTML = "重复密码不能为空，请重复输入密码";
+	nickNameId.innerHTML = "昵称不能为空，请输入昵称";
+	telId.innerHTML = "关联手机号码不能为空，请输入关联手机号码";
+	emailId.innerHTML = "保密邮箱不能为空，请输入保密邮箱";
+	
+//写出所有正则表达式
+	//1、用户名验证（userName）：@163.com
+	var regExp1 = /[\w-]@163.com$/gi;
+		//console.log(regExp1.test("5ewf_we.g-ewgwi"));
+	//2、登录密码验证（pwd):密码长度6-16,没说要求便直接当做字母数字下划线
+	var regExp2 = /\w{6,16}/gi;
+	//3、重复登录密码(repwd):同上（但是要求和上一个输入的一样....)
+	var regExp3 = /\w{6,16}/gi;
+	//4、昵称（nickName)：4-20个字符，同上算了
+	var regExp4 = /\w{6,20}/gi;
+	//5、手机号（tel)：第一位1，第二位3578，后面还有9位数字
+	var regExp5 = /^1[3578]\d{9}/gi;
+	//6、邮箱（email):邮箱长度先不管吧,前面是数字字母下划线减号，后面一般是以.cn或者.com结尾
+	var regExp6 = /[\w-][(.com)(.cn)]$/gi
+	//console.log(regExp6.test("23sdggggggggwgew5.cn"));
+	
+	
+	/**
+	 * 参数1：需要验证的input
+	 * 参数2：对应的正则表达式
+	 * 参数3：输入正确显示的信息
+	 * 参数4：输入信息错误显示的信息
+	 * 参数5：信息显示的位置
+	 */
+	function testInput(input,regExp,success,failure,ele){
+		var userValue = input.value;
+        var index = userValue.search(regExp);
+		//输入正确会输出 0 或者 1
+        if (index > -1){
+            ele.innerHTML = success;
+        }
+        else{
+            ele.innerHTML = failure;  
+        }
+	}
+//开始验证表单
+	//验证用户名
+	userName.onblur = function(){
+		testInput(userName,
+				regExp1,
+				"检测通过！",
+				"1、由字母、数字、下划线、点、减号组成\n2、只能以数字、字母开头和结尾，且长度为6-16",
+				this.parentElement.nextElementSibling)
+	}
+	//验证登录密码
+	pwd.onblur = function(){
+		testInput(pwd,regExp2,"检测通过",
+				"密码长度为6-16",
+				this.parentElement.nextElementSibling)
+	}
+	//验证重复登录密码
+	repwd.onblur = function(){
+		if(repwd.value == pwd.value){
+			repwd.parentElement.nextElementSibling.innerHTML="验证通过";
+		}
+		else{
+			repwd.parentElement.nextElementSibling.innerHTML="两次输入的密码不一致，请重新输入";
+		}
+	}
+	//验证昵称
+	nickName.onblur = function(){
+		testInput(nickName,regExp4,"验证通过",
+				"长度为4-20个字符",
+				this.parentElement.nextElementSibling	
+		)
+	}
+	//验证手机号
+	tel.onblur = function(){
+		testInput(tel,regExp5,"验证通过",
+		"关联手机号输入错误，请重新输入",
+		this.parentElement.nextElementSibling)
+	}
+	//验证保密邮箱
+//	email.onblur = function(){
+//		testInput(email,regExp6,"验证通过",
+//		"保密邮箱格式不正确，请重新输入",
+//		this.parentElement.nextElementSibling")
+//	}
+</script>
+</html>
