@@ -46,7 +46,7 @@
 	}
 	id = window.requestAnimationFrame(step);
 	//取消回调函数
-	window.cancelAnimationFrame();
+	window.cancelAnimationFrame(id);
 </script>
 ```
 
@@ -396,7 +396,7 @@ Easing = {
         linear: function (t) {
             return t;
         },
-		// 加速运动
+		// 匀加速运动
         easeIn: function (t) {
             return t * t;
         },

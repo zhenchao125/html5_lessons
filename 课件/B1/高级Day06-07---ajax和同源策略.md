@@ -1,4 +1,4 @@
-#  高级Day 06---ajax![](http://www.yztcedu.com/images/logo.png)
+#  高级Day 06-07---ajax![](http://www.yztcedu.com/images/logo.png)
 
 # 零、基础知识准备
 
@@ -28,7 +28,9 @@ C/s:  client /server
 
 请求体
 
-​	get请求没有请求提  post请求才有请求体
+​	get请求没有请求体
+
+ 	post请求才有请求体
 
 
 
@@ -58,13 +60,13 @@ post请求：
 
 ​	传统的网页（不使用 AJAX）如果需要更新内容，必须重载整个网页页面，在加载新的网页的过程中，用户会有一个等待。降低了用户体验。
 
+​	局部更新！
+
 ​	AJAX的出现就可以让网页进行部分更新。
 
 ​	异步和同步：
 
-
-
-​	Ajax的全称是Asynchronous JavaScript+XML ，Ajax不是一个技术，它实际上是几种技术，每种技术都有其独特这处，合在一起就成了一个功能强大的新技术。Ajax结合了Java技术、XML以及JavaScript等编程技术，可以让开发人员构建基于Java技术的Web应用，并打破了使用页面重载的惯例。 Ajax是使用客户端脚本与Web服务器交换数据的Web应用开发方法。这样，Web页面不用打断交互流程进行重新加载，就可以动态地更新。使用Ajax，用户可以创建接近本地桌面应用的直接、高可用、更丰富、更动态的Web用户界面。
+​	Ajax的全称是Asynchronous JavaScript+XML ，Ajax不是一个技术，它实际上是几种技术，每种技术都有其独特这处，合在一起就成了一个功能强大的新技术。Ajax结合了异步技术、XML以及JavaScript等编程技术，可以让开发人员构建基于Js技术的Web应用，并打破了使用页面重载的惯例。 Ajax是使用客户端脚本与Web服务器交换数据的Web应用开发方法。这样，Web页面不用打断交互流程进行重新加载，就可以动态地更新。使用Ajax，用户可以创建接近本地桌面应用的直接、高可用、更丰富、更动态的Web用户界面。
 
 ​	Ajax刚出生的时候，用的比较多的数据格式是XML，后来JSON数据格式更多的去替换了XML格式的数据。
 
@@ -153,7 +155,7 @@ xhr.send(null);
 
 ## **4.1**	GET请求
 
-​	get请求携带的参数直接追加到url后面即可。?后面跟的就是参数，多个参数之间用&连接。注意，参数中的中文必须要经过url编码。
+​	get请求携带的参数直接追加到url后面即可。`?`后面跟的就是参数，多个参数之间用`&`连接。注意，参数中的中文必须要经过`url`编码。
 
 ```javascript
 var url = 'http://wthrcdn.etouch.cn/weather_mini?city='+encodeURI('深圳')+'&pwd='+pwdValue;
@@ -167,7 +169,7 @@ xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
 
 ```javascript
 //post请求必须添加这个头部
-req.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
 xhr.send('user='+nameVal + '&pwd=' + pwdVal);
 ```
 
@@ -217,7 +219,7 @@ xhr.send('user='+nameVal + '&pwd=' + pwdVal);
 
 （2） DOM 无法获得。
 
-**（3） AJAX 请求不能发送。**   
+**（3） AJAX 请求接收不到数据。**   
 
 
 
@@ -337,3 +339,6 @@ if($user == "zs"){
 
 
 
+```php
+header("Content-Type:text/html;charset=utf-8");
+```
