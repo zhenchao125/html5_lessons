@@ -21,7 +21,7 @@
 目前最新的是3.1.1版本。有压缩版本和不压缩版本。不压缩版本一般用到开发阶段，压缩版本用到生产环境。从2.X开始不支持ie9之前的浏览器。如果想兼容IE678，则应该使用1.X
 
 ## 1.3	使用Jquery
-jquery其实就是一个js文件，使用它就像我们用一个外部js文件一样使用即可。一般放在html的head中引入。
+jquery其实就是一个js文件，使用它就像我们用一个外部js文件一样使用即可。一般放在html的head中引入即可。
 ```html
 <script src="./libs/jquery-3.1.1.js" type="text/javascript"></script>
 ```
@@ -272,7 +272,7 @@ $(function() {
 
 # 六、属性选择器
 
-​	与元素的属性相关的选择器。属性选择器必须用  **[ ]**  括起来。
+​	与元素的属性相关的选择器。属性选择器必须用  `[ ]`  括起来。
 
 ```javascript
 <script type="text/javascript">
@@ -329,7 +329,7 @@ $(function() {
 		// 所有的div元素中，索引大于0的div
 		console.log($("div:gt(0)"));  // great than
 		//所有的div元素中 索引小于3的div
-		console.log($("div:lt(3)"));
+		console.log($("div:lt(3)"));  // less than 
 		//获取所有的标题元素   h1 h2 ...
 		console.log($(":header"));
 		//获取当前取得焦点的元素

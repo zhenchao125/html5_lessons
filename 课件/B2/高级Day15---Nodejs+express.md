@@ -74,15 +74,21 @@ console.log(num1 + num2);
 
 ###3.3.1	 **global**
 
-​	表示Node所在的全局环境，类似于浏览器的window对象。需要注意的是，如果在浏览器中声明一个全局变量，实际上是声明了一个全局对象的属性，比如`var x = 1`等同于设置`window.x = 1`，但是Node不是这样，至少在模块中不是这样（REPL环境的行为与浏览器一致）。在模块文件中，声明`var x = 1`，该变量不是`global`对象的属性，`global.x`等于undefined。这是因为模块的全局变量都是该模块私有的，其他模块无法取到。
+​	表示Node所在的全局环境，类似于浏览器的window对象。需要注意的是，如果在浏览器中声明一个全局变量，实际上是声明了一个全局对象的属性，比如`var x = 1`等同于设置`window.x = 1`，但是Node不是这样，至少在模块中不是这样（REPL read-eval-print-loop  读取-求值-输出-循环   环境的行为与浏览器一致）。在模块文件中，声明`var x = 1`，该变量不是`global`对象的属性，`global.x`等于undefined。这是因为模块的全局变量都是该模块私有的，其他模块无法取到。
 
 ###3.3.2	**process**
 
 ​	该对象表示Node所处的当前进程，允许开发者与该进程互动。
 
-> process.stdout
+> process.stdout	标准输出
 >
-> 是标准输出流，通常我们使用的 console.log() 向标准输出打印字符，而 process.stdout.write() 函数提供了更底层的接口
+> std:standand
+>
+> 是标准输出流，通常我们使用的 console.log() 向标准输出打印字符，而 process.stdout.write() 函数提供了更底层的接口。
+
+```javascript
+process.stdout.write('输出代码');
+```
 
 > process.stdin
 >
@@ -125,16 +131,12 @@ JS的模块分三种：核心模块、第三方模块、自定义模块
 - **http**：提供HTTP服务器功能。
 - **url**：解析URL。
 - **fs**：与文件系统交互。
-- **querystring**：解析URL的查询字符串。
+- **querystring**：解析URL的查询字符串。   ?user=abc&pwd=aaa
 - **child_process**：新建子进程。   单线程没有办法充分发挥多核cpu的作用。
 - **util**：提供一系列实用小工具。
-
-
-```javascript
-
-```
-
 - **path**：处理文件路径。
+
+
 - **events：** 模块只提供了一个对象: events.EventEmitter。EventEmitter 的核心就是事件发射与事件监听器功能的封装。
 
 
@@ -147,7 +149,8 @@ emitter.on('someEvent', function(arg1, arg2) {
 emitter.on('someEvent', function(arg1, arg2) { 
   console.log('listener2', arg1, arg2);
 });
-emitter.emit('someEvent', 'byvoid', 1991); 运行的结果是:
+emitter.emit('someEvent', 'byvoid', 1991); 
+运行的结果是:
 listener1 byvoid 1991
 listener2 byvoid 1991
 ```
@@ -583,7 +586,7 @@ module.exports = router;
 
 > 模板引擎（Template Engine）是一个将页面模板和要显示的数据结合起来生成 HTML 页面的工具。如果说上面讲到的 express 中的路由控制方法相当于 MVC 中的控制器的话，那模板引擎就相当于 MVC 中的视图。
 >
-> 模板引擎的功能是将页面模板和要显示的数据结合起来生成 HTML 页面。它既可以运 行在服务器端又可以运行在客户端，大多数时候它都在服务器端直接被解析为 HTML，解析完成后再传输给客户端，因此客户端甚至无法判断页面是否是模板引擎生成的。有时候模板引擎也可以运行在客户端，即浏览器中，典型的代表就是 XSLT，它以 XML 为输入，在客户端生成 HTML 页面。但是由于浏览器兼容性问题，XSLT 并不是很流行。目前的主流还是由服务器运行模板引擎。
+> 模板引擎的功能是将页面模板和要显示的数据结合起来生成 HTML 页面。它既可以运行在服务器端又可以运行在客户端，大多数时候它都在服务器端直接被解析为 HTML，解析完成后再传输给客户端，因此客户端甚至无法判断页面是否是模板引擎生成的。有时候模板引擎也可以运行在客户端，即浏览器中，典型的代表就是 XSLT，它以 XML 为输入，在客户端生成 HTML 页面。但是由于浏览器兼容性问题，XSLT 并不是很流行。目前的主流还是由服务器运行模板引擎。
 >
 > 在 MVC 架构中，模板引擎包含在服务器端。控制器得到用户请求后，从模型获取数据，调用模板引擎。模板引擎以数据和页面模板为输入，生成 HTML 页面，然后返回给控制器，由控制器交回客户端。
 
@@ -616,7 +619,7 @@ ejs 的标签系统非常简单，它只有以下三种标签：
 
 - <% code %>：JavaScript 代码。
 - <%= code %>：显示替换过 HTML 特殊字符的内容。(也就是说如果code中有标签，则会原样输出，不会让浏览器解析)
-- <%- code %>：显示原始 HTML 内容。(如果有a标签，在浏览器端这则会看到一个超链接)
+- <%- code %>：显示原始 HTML 内容。(例如：如果有a标签，在浏览器端这则会看到一个超链接)
 
 路由代码：
 
