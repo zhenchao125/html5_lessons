@@ -1,9 +1,11 @@
-#  Day 09-10---DOM基础![](http://www.yztcedu.com/images/logo.png)—李振超
+#  Day 09-10---DOM基础
 
-# 一、DOM概述==(079)==
+作者:李振超
+
+# 一、DOM概述
 
 ## 1.1	DOM概念
-​	DOM（文档对象模型）是针对 HTML 和 XML 文档的一个 API（应用程序编程接口）。DOM 描
+​	DOM（文档对象模型 document object moudle）是针对 HTML 和 XML 文档的一个 API（应用程序编程接口）。DOM 描
 绘了一个层次化的节点树，允许开发人员添加、移除和修改页面的某一部分。
 
 W3C DOM标准分为3部分：	
@@ -38,14 +40,12 @@ DOM Level 0: 首先我们的确定的是在DOM标准中并没有DOM 0级的。�
   <head>
   	<title>DOM节点分类</title>
   </head>
-  <body>	
-    <p id="p">育知同创欢迎你!</p>
-  </body>
+  <body><p id="p">Hello world!</p></body>
   <!-- 注释 -->
 </html>
 ```
 
-- ![](http://o7cqr8cfk.bkt.clouddn.com/16-11-6/6815318.jpg-yztcText)
+![](http://o7cqr8cfk.bkt.clouddn.com/16-11-6/6815318.jpg)
 
 > 说明：
 
@@ -69,7 +69,7 @@ DOM Level 0: 首先我们的确定的是在DOM标准中并没有DOM 0级的。�
 2. Node.ATTRIBUTE_NODE (2)   //元素的属性<Pid=”hello” title=”招呼”>HELLO</P>
 3. Node.TEXT_NODE (3) //<![CDATA[文本]]>中括着的纯文本，它没有子节点
 4. Node.CDATA_SECTION_NODE (4) //子节点一定为TextNode
-5. Node.ENTITY_REFERENCE_NODE (5)   //文档中的实体引用
+5. Node.ENTITY_REFERENCE_NODE (5)   //文档中的实体引用 `&nbsp;`
 6. Node.ENTITY_NODE (6) //DTD中的实体定义<!ENTITY foo “foo”>，无子节点
 7. Node.PROCESSING_INSTRUCTION_NODE (7) //表示一个文档处理程序使用的特有指令。，无子节点
 8. Node.COMMENT_NODE (8)    //注释
@@ -119,7 +119,7 @@ DOM Level 0: 首先我们的确定的是在DOM标准中并没有DOM 0级的。�
 - 文档  document       9
 
 
-# 二、DOM核心对象---document对象==(080)==
+# 二、DOM核心对象---document对象
 
 ​	JavaScript 通过 Document 类型表示文档。在浏览器中， document 对象是 HTMLDocument （继承
 自 Document 类型）的一个实例，表示**整个 HTML 页面**。而且， document 对象是 window 对象的一个
@@ -304,7 +304,7 @@ document.querySelector("p.example");  //获取文档中 class="example" 的第�
 </body>
 ```
 
-## 3.3	firstChild属性：获取一个元素的第一个子节点==(087)==
+## 3.3	firstChild属性：获取一个元素的第一个子节点
 
 > 如果选定的节点没有子节点，则该属性返回 NULL。
 
