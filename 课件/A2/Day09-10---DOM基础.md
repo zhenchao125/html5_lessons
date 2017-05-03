@@ -642,7 +642,7 @@ document.querySelector("p.example");  //获取文档中 class="example" 的第�
 </body>
 ```
 
-## 5.2	removeAttribute() : 移除属性
+## 5.3	removeAttribute() : 移除属性
 
 > *element*.removeAttribute(*attributename*)
 >
@@ -666,6 +666,12 @@ document.querySelector("p.example");  //获取文档中 class="example" 的第�
     </script>   
 </body>
 ```
+
+## 5.3	hasAttribute():判断是否具有这样的属性
+
+> element.hasAttribute(attributename)
+>
+> 参数：必须。判断指定的属性名是否存在。
 
 # 六、元素节点的常用属性==(101)==
 
