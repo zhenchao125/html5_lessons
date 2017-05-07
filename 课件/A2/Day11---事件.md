@@ -1,6 +1,6 @@
-#  Day 11---事件![](http://www.yztcedu.com/images/logo.png)
+#  Day 11---事件
 
-# 一、事件和事件流(了解)==(102)==
+# 一、事件和事件流(了解)
 
 ​	JavaScript是一种基于对象(Object)和 **事件驱动(Event Driven)** 并具有安全性能的脚本语言。JavaScript和HTML之间的交互就是通过一系列的事件来实现的。
 
@@ -99,7 +99,7 @@
 >
 > 这正是许多开发人员摒弃 HTML 事件处理程序，转而使用 JavaScript 指定事件处理程序的原因所在。
 
-## 2.2	DOM0 级别事件处理程序==(104)==
+## 2.2	DOM0 级别事件处理程序
 
 ​	为了遵循HTML 与JavaScript代码层次分离的原则，我们可以在JavaScript 中处理事件。这种处理方式也称为 **脚本模型**。
 
@@ -250,7 +250,7 @@
 
 ### 3.1.4	onscroll事件
 
-> ​	onscroll事件，当滚动条滚动式触发。事件在window上面触发。由于滚动过程中，会重复多次调用，所以，处理逻辑和代码不能过于复杂，否则会影响用户滚动效果。
+> ​	onscroll事件，当滚动条滚动式触发。事件在window上面或任意元素上面都可以触发。由于滚动过程中，会重复多次调用，所以，处理逻辑和代码不能过于复杂，否则会影响用户滚动效果。
 
 ```html
 <script type="text/javascript">
@@ -261,6 +261,8 @@
 	 	//跨浏览器获得滚动的距离
 	 	console.log(document.documentElement.scrollTop || document.body.scrollTop);
 	}
+     
+    //如果事件绑定在普通的元素身上，可以直接通过这个元素的scrollTop属性来获取。
 </script>
 ```
 
@@ -355,11 +357,13 @@
 </body>
 ```
 
-## 3.3	鼠标事件==(107)==
+## 3.3	鼠标事件
 
 ### 3.3.1	onclick事件
 
 > 鼠标单击事件，一般是鼠标左键。单按下鼠标左键或按下回车后触发
+>
+> 任何的元素都支持点击事件
 
 ### 3.3.2	ondblclick事件	
 

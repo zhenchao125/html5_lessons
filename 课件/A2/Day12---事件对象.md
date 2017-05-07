@@ -1,53 +1,9 @@
-#  Day 12---事件对象![](http://www.yztcedu.com/images/logo.png)
-
-# 一、事件对象event==(109)==
-
-​	在触发 DOM 上的某个事件时，会产生一个事件对象 event ，这个对象中包含着所有与事件有关的
-信息。包括导致事件的元素、事件的类型以及其他与特定事件相关的信息。例如，鼠标操作导致的事件
-对象中，会包含鼠标位置的信息，而键盘操作导致的事件对象中，会包含与按下的键有关的信息。==所有==
-==浏览器都支持 event 对象，==但支持方式不同。
-
-1. 无论哪种事件处理程序，都会有一个event的参数，包含着事件的基本信息。
-
-```html
-<body>
-    <button id="btn">点我获取点击的click事件的事件类型</button>
-    <script type="text/javascript">
-	    var btn = document.getElementById("btn");
-      	//当点击事件发生的时候，浏览器会把发生的这次点击封装成一个事件对象，通过时间处理程序的参数传进来。
-      	//在处理程序内部就可以使用这个事件对象了。
-	    btn.onclick = function (event) {
-	    	alert(event.type);	// click
-	    }
-    </script>
-</body
-```
-
-![](http://o7cqr8cfk.bkt.clouddn.com/16-11-8/22647444.jpg)
-
-2. 事件类型不一样，event可用的属性与方法也不一样。不过不管哪种类型的事件，都具有下面的属性和方法。
-
-| 属性      /   方法             | 类                      型 | 读 / 写 | 说 明                                      |
-| :------------------------- | :----------------------- | ----- | :--------------------------------------- |
-| bubbles                    | Boolean                  | 只读    | 表明事件是否冒泡                                 |
-| cancelable                 | Boolean                  | 只读    | 表明是否可以取消事件的默认行为                          |
-| currentTarget              | Element                  | 只读    | 其事件处理程序当前正在处理事件的那个元素(注册事件处理程序的元素)        |
-| defaultPrevented           | Boolean                  | 只读    | 为 true 表 示 已 经 调 用 了 preventDefault(DOM3级事件中新增) |
-| detail                     | Integer                  | 只读    | 与事件相关的细节信息                               |
-| eventPhase                 | Integer                  | 只读    | 调用事件处理程序的阶段：1表示捕获阶段，2表示“处于目标”，3表示冒泡阶段    |
-| stopPropagation()          | Function                 | 只读    | 取消事件的进一步捕获或冒泡。如果 bubbles为 true ，则可以使用这个方法 |
-| **preventDefault()**       | Function                 | 只读    | 取消事件的默认行为。如果 cancelable 是true ，则可以使用这个方法 |
-| stopImmediatePropagation() | Function                 | 只读    | 取消事件的进一步捕获或冒泡，同时阻止任何事件处理程序被调用（DOM3级事件中新增） |
-| target                     | Element                  | 只读    | 事件的目标(事件发生的目标元素)                         |
-| trusted                    | Boolean                  | 只读    | 为 true 表示事件是浏览器生成的。为 false 表示 事 件 是 由 开 发 人 员 通 过 JavaScript 创 建 的（DOM3级事件中新增） |
-| type                       | String                   | 只读    | 被触发的事件的类型                                |
-| view                       | AbstractView             | 只读    | 与事件关联的抽象视图。等同于发生事件的window 对象             |
-
-# 二、DOM2 级事件处理==(110)==
+#  Day 12---事件对象
+# 一、DOM2 级事件处理
 
  	“DOM2级事件”定义了**两个方法，用于处理指定和删除事件处理程序的操作**：**addEventListener()和 removeEventListener() 。**
 
-## 2.1	addEventListener()和removeEventListener()
+## 1.1	addEventListener()和removeEventListener()
 
 > 所有 DOM 节点中都包含这两个方法，并且它们都接受 3 个参数：
 >
@@ -92,7 +48,7 @@
 </body>
 ```
 
-## 2.2	一些注意点
+## 1.2	一些注意点
 
 > 可以给一个元素多次添加同一个事件的多个处理程序，那么浏览器会按照添加的顺序顺序执行。
 
@@ -141,6 +97,51 @@
 
 1. **大多数情况下，都是将事件处理程序添加到事件流的冒泡阶段，这样可以最大限度地兼容各种浏览器。最好只在需要在事件到达目标之前截获它的时候将事件处理程序添加到捕获阶段。==如果不是特别需要，不建议在事件捕获阶段注册事件处理程序==。** 
 2. ***IE9、Firefox、Safari、Chrome和 Opera 支持 DOM2 级事件处理程序。***( **ie9以前不支持** )
+
+
+# 二、事件对象event
+
+​	在触发 DOM 上的某个事件时，会产生一个事件对象 event ，这个对象中包含着所有与事件有关的
+信息。包括导致事件的元素、事件的类型以及其他与特定事件相关的信息。例如，鼠标操作导致的事件
+对象中，会包含鼠标位置的信息，而键盘操作导致的事件对象中，会包含与按下的键有关的信息。==所有==
+==浏览器都支持 event 对象，==但支持方式不同。
+
+1. 无论哪种事件处理程序，都会有一个event的参数，包含着事件的基本信息。
+
+```html
+<body>
+    <button id="btn">点我获取点击的click事件的事件类型</button>
+    <script type="text/javascript">
+	    var btn = document.getElementById("btn");
+      	//当点击事件发生的时候，浏览器会把发生的这次点击封装成一个事件对象，通过时间处理程序的参数传进来。
+      	//在处理程序内部就可以使用这个事件对象了。
+	    btn.onclick = function (event) {
+	    	alert(event.type);	// click
+	    }
+    </script>
+</body
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/16-11-8/22647444.jpg)
+
+2. 事件类型不一样，event可用的属性与方法也不一样。不过不管哪种类型的事件，都具有下面的属性和方法。
+
+| 属性      /   方法             | 类                      型 | 读 / 写 | 说 明                                      |
+| :------------------------- | :----------------------- | ----- | :--------------------------------------- |
+| bubbles                    | Boolean                  | 只读    | 表明事件是否冒泡                                 |
+| cancelable                 | Boolean                  | 只读    | 表明是否可以取消事件的默认行为                          |
+| currentTarget              | Element                  | 只读    | 其事件处理程序当前正在处理事件的那个元素(注册事件处理程序的元素)        |
+| defaultPrevented           | Boolean                  | 只读    | 为 true 表 示 已 经 调 用 了 preventDefault(DOM3级事件中新增) |
+| detail                     | Integer                  | 只读    | 与事件相关的细节信息                               |
+| eventPhase                 | Integer                  | 只读    | 调用事件处理程序的阶段：1表示捕获阶段，2表示“处于目标”，3表示冒泡阶段    |
+| stopPropagation()          | Function                 | 只读    | 取消事件的进一步捕获或冒泡。如果 bubbles为 true ，则可以使用这个方法 |
+| **preventDefault()**       | Function                 | 只读    | 取消事件的默认行为。如果 cancelable 是true ，则可以使用这个方法 |
+| stopImmediatePropagation() | Function                 | 只读    | 取消事件的进一步捕获或冒泡，同时阻止任何事件处理程序被调用（DOM3级事件中新增） |
+| target                     | Element                  | 只读    | 事件的目标(事件发生的目标元素)                         |
+| trusted                    | Boolean                  | 只读    | 为 true 表示事件是浏览器生成的。为 false 表示 事 件 是 由 开 发 人 员 通 过 JavaScript 创 建 的（DOM3级事件中新增） |
+| type                       | String                   | 只读    | 被触发的事件的类型                                |
+| view                       | AbstractView             | 只读    | 与事件关联的抽象视图。等同于发生事件的window 对象             |
+
 
 # 三、event对象的高级属性
 
