@@ -1,0 +1,118 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.B
+04.B
+05.D
+06.C
+07.B
+08.C
+09.C
+10.C
+11.C
+12.C
+13.B
+14.B
+15.D
+16.B
+17.D
+18.D
+19.A
+20.D
+21.C
+22.B
+23.C
+24.A
+25.A
+26.B
+27.D
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+简单数据类型:number,undefined,string,boolean,null
+复杂数据类型：object,function,array
+判断类型操作符是:typeof
+
+2.
+document.getElementById("myDiv");
+document.getElementsByTagName("div");
+document.getElementByName("test")
+document.querySelector("myDiv")
+
+3.
+创建新元素:document.createElement("");
+创建文本节点:document.createTextNode("");
+如何将a标签追加到div当中;
+div.appendChild(a)
+
+
+4.
+prompt();提示框
+alert();警告框：
+confine();确认框：返回的为Boolean值
+
+
+5.
+innerHTML:当中可以书写标签元素并解析；
+innerText:当中只能当做纯文本解析
+
+三、编程题：要求只需要js代码
+
+1.
+var date=new Date();
+setFullYear(2017);
+setMonth(5);
+setDate(9);
+var nian = getFullYear()
+var yue = getMonth()
+var ri = getDate()
+console.log("今天是："+nian+"年"+yue+"月"+ri+"日"+","+"考试加油吧！")
+2.
+function da(a,b,c){
+  console.log(Math.max(a,b,c))
+}
+da(11,22,33)
+
+
+3.
+（1）：
+  function shu(){
+	var s="34,6,-23,43,34,342,0,3"
+	var arr=[];
+	var s1=s.split(",");
+	for(var i=0;i<s1.length;i++){
+		arr.push(Number(s1[i]))
+	}
+	return arr
+}
+console.log(shu())
+	
+	
+      
+	
+（2）：
+	function jx(num1, num2) {
+		if(num1 > num2){
+			return -1;
+		}else if(num1 == num2){
+			return 0;
+		}else {
+			return 1;
+		}
+	}
+	var arr=[34,6,-23,43,34,342,0,3]
+	arr.sort(jx);
+
+（3）：function(){
+var sum=0;
+	var arr=[34,6,-23,43,34,342,0,3];
+	for(var i of arr){
+	sum+=i;
+	}
+	console.log(sum)
+}()
+	
+

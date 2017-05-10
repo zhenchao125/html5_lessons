@@ -1,0 +1,93 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.D
+03.A
+04.A
+05.D
+06.A
+07.B
+08.D
+09.C
+10.A
+11.C
+12.C
+13.A
+14.B
+15.D
+16.A
+17.C
+18.D
+19.A
+20.A
+21.C
+22.D
+23.C
+24.B
+25.A
+26.B
+27.B
+28.D
+29.D
+30.C
+二、简答题
+
+1
+1：有简单数据类型：number、null、undefined、字符串、布尔值；和复杂数据类型：数组、函数、对象
+2：typeof()；
+
+
+2.
+1：document.getElementById('myDiv');
+2：document.getElementsByTagName('div');
+3：document.getElementClassName（'myDiv '）;
+4:document.querySelector("dvi")	
+
+3.
+创建元素：document.createElement("")
+创建文本；document.createTextNode("");
+添加：document.div.appendChild(a);
+
+4.
+prompt()是一个可以输入文本的弹出框，有确认，取消按钮。alert（）是一个警告框，没有有确认，取消按钮
+
+
+
+5.
+innerText里面的标签元素会被解析成文本，innerHTML则不会。
+
+三、编程题：要求只需要js代码
+
+1.
+<script>
+   var date=new Date(2017,4,9)；
+    document.write(“今天是”+“date”+加油考试吧)；
+</script>
+2.
+ <script>
+	function foo(){
+		var a=document.getElementById("a").value;
+		var b=document.getElementById("b").value;
+		var c=document.getElementById("c").value;
+		return a<b? b: a;
+		return a<c? c: a;
+		return b<c? b: c;
+		}
+</script>
+3.
+<script>
+ 	var str=‘34,6,-23,43,34,342,0,3’;
+	var num=[];
+	function (){
+		for(var i=0; i<str.length;i++ ){
+		return	num.push(i)；
+		}
+		for(var a=0; a<num.length-1；a++ ){
+			for（var b=0;b<num.length-a-1；b++）{
+				var temp=num[b];
+				num[b]=num[b-1];
+				num[b-1]=temp;
+			}
+		}
+	}
+	console.log(num)；
+</script>

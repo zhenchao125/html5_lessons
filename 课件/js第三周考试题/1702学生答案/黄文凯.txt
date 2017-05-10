@@ -1,0 +1,106 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.d
+02.d
+03.c
+04.d
+05.d
+06.d
+07.b
+08.a
+09.c
+10.a
+11.b
+12.b
+13.d
+14.a
+15.c
+16.b
+17.d
+18.d
+19.a
+20.d
+21.b
+22.d
+23.c
+24.b
+25.a
+26.b
+27.b
+28.c
+29.d
+30.c
+二、简答题
+1.
+分两种，一种简单数据类型，一种复杂数据类型
+可以用===判断数据类型是否相等
+
+2.
+document.getElementById("myDiv");
+document.getElementByClassName("myDiv");
+document.getElementByName("test");
+document.getElementsBytagName("div")[0];
+
+3.
+创建元素
+document.createElement("div");
+创建文本
+document.createElement("text");
+这样可以实现
+a.innerHTML += "<div></div>";
+
+4.
+alent();//这是警告框
+comfirm();//这是确认框，返回值为布尔值
+prompt();//这是提示框，可以输入文本，点确定后，输入的文本会成为返回值
+
+5.
+innerHTML 设置或获取位于对象起始和结束标签内的HTML
+innerText 设置或获取位于对象起始和结束标签内的文本
+
+三、编程题：要求只需要js代码
+
+1.
+
+var shijian = new Date();
+alert(getChinaDate(shijian));
+function getChinaDate(shijian){
+	var y = shijian.getYear();
+	var m = shijian.getMonth();
+	var d = shijian.getDate();
+	return "今天是"+y+"年"+m+"月"+d+"日，加油考试吧！";
+}
+
+2.
+
+function bijiao(a,b,c){
+	return a > b ? a > c ? a : c : b > c ? b : c ;
+}
+
+3.
+
+//进行切割字符串
+function string2Array(string1){
+	return string1.split(",");	
+}
+
+function paixu(array1){
+	for(var a = 0;a < array1.lenght; a++){
+		for(var i = 0;i < array1.lenght; i++){
+			if(array1[i] > array1[i+1]){
+				array1[i]=array1[i]^array1[i+1];
+				array1[i+1]=array1[i]^array1[i+1];
+				array1[i]=array1[i]^array1[i+1];
+			}
+		}
+	}
+	return array1;	
+}
+
+
+function add(array1){
+	var a = 0;
+	for(var i = 0;i < array1.lenght; i++){
+		a += array1[i];
+	}
+	return a;
+}

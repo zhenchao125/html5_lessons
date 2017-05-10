@@ -1,0 +1,148 @@
+一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.D
+09.C
+10.D
+11.C
+12.C
+13.B
+14.A
+15.C
+16.C
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.A
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+
+* 简单数据类型  **Number** **String** **Boolean** **Null** **Undefined**
+* 复杂数据类型  **Object** **Function** 
+
+操作符:  **typeof**
+
+
+2.
+
+```
+<body>
+  <div id="myDiv" class="myDiv" name="test"></div>
+</body>
+```
+
+```
+var div = document.getElementById("myDiv")
+var div = document.getElementsByTagName("div")[0]
+var div = document.getElementsByClassName("myDiv")[0]
+var div = document.querySelector("div")
+var div = document.querySelector("#myDiv")
+var div = document.querySelector(".myDiv")
+var div = document.querySelectorAll("div")[0]
+```
+
+
+3.
+
+```
+document.createElement("要创建的元素")
+document.createTextNode("要创建的文本")
+
+例:创建一个div  创建一个文本 创建一个a 把a追加到div中
+var div = document.createElement("div")            
+var a  = document.createElement("a")
+var text = document.creatTextNode("hello world")
+a.appendChild(text);
+div.appendChild(a)          
+console.log(div)           //output:  <div><a>hello world</a></div>
+```
+
+
+4.
+
+`prompt()`**输入框**  在页面内输入内容, 点击 **确定** 返回 **输入的字符串**  点击 **取消**  返回 **null**
+
+`alert()` **警告框**   页面弹出警告窗口, **必须** 点击 **确定**  才能执行后面的代码
+
+`confirm()` **提示框**  页面弹出提示窗口, 点击 **确定** 返回 **true**  点击 **取消**  返回 **false**
+
+5.
+
+**innerHTML** 中 添加标签会被解析   **innerText ** 中 添加标签不会解析
+
+```
+document.body.innerHTML = "<p>你好 世界</p>";         页面output:   你好 世界
+
+document.body.innerText = "<p>你好 世界</p>";         页面output:   <p>你好 世界</p>
+```
+
+
+三、编程题：要求只需要js代码
+
+1.
+
+今天是 2017 年5月9日，加油考试吧！
+
+```
+var date = new Date(2017,4,9)
+var year = date.getFullYear();
+var month = date.getMonth() + 1;
+var dayOfMonth = date.getDate();
+document.body.innerHTML = `今天是 ${year}年${month}月${dayOfMonth}日, 加油考试吧!`
+```
+
+
+2.
+
+请写出一个函数，功能为：传入三个值，则返回这三个值最大的那个值
+
+```
+<input type="text" value="">
+<button>传入值</button>
+<script>
+	var value = document.querySelector("input").value
+	var btn = document.querySelector("button")
+	var arr = [];
+	btn.onclick = function(){
+    	arr.push(+value);
+    	if(arr.length == 3){
+        	console.log(Math.max(...arr))
+        	arr.length = 0;
+    	}
+	}
+```
+
+
+3.
+
+````
+var s = "34,6,-23,43,34,342,0,3"
+var newS = s.split(",");
+console.log(newS)
+newS.sort(function(a,b){
+	return b - a;
+})
+console.log(newS)
+var sum = 0;
+for(var ele of newS){
+	sum+= ele; 
+}
+console.log(sum)
+````
+

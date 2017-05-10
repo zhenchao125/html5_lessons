@@ -1,0 +1,117 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.C
+04.A
+05.D
+06.C
+07.D
+08.A
+09.C
+10.A
+11.C
+12.D
+13.B
+14.A
+15.D
+16.A
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.B
+25.A
+26.A
+27.C
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+
+js的数据类型如下:
+基本数据类型: number\string\boolean\null\undefined;
+判断基本数据类型的操作符是 typeof;
+
+复杂数据类型: Array\Window\Date\Math\Function\Object等
+判断复杂数据类型的操作符是: instanceof, Array.isArray;
+
+
+2.
+获取 div 标签对象的方式：
+a).document.getElementById("myDiv);
+b).document.getElementsByClassName("myDiv");
+c).document.getElementsByTagName("div");
+d).document.getElementsByName("test");
+e).document.querySelector("div");
+f).document.querySelectorAll("div[0]");
+
+3.
+
+创建元素: document.createElement(node);
+创建文本节点: document.createTextNode(node);
+追加节点元素: 
+var parent=document.createElement(div);
+var a=document.createElement(a)
+a.parentNode.appendChild(a);
+
+
+4.
+prompt() 提示对话框  ,用户必须点击确认或者取消才能进行下一步操作
+alert()  弹出警告框  ,当警告框出现后,用户必须点击"确定"按钮才能继续操作
+confirm() 确认对话框 , 用户必须点击确认或者取消才能进行下一步操作,返回布尔值
+
+
+5.
+innerHTML 作用是: 往元素内部添加文本内容;
+innerText 作用是: 获取元素文本,不会获取标签
+
+三、编程题：要求只需要js代码
+
+1.
+
+var date=new Date();
+
+var year=date.getFullYear();
+var month=date.getMonth()+1;
+var whichDay=date.getDate();
+
+var msg = `今天是 ${year}年${month}月${whichDay}日,加油考试吧!`;
+document.write("msg");
+
+2.
+function foo(a,b,c){
+	
+	return Math.max(foo);
+}
+foo();
+
+3.
+函数1:
+var arr=[34,6,-23,43,34,342,0,3];
+function (){	
+	
+}
+console.log(arr);
+
+函数2:
+for( var j=0; j<arr.length-1; j++){ 
+for(var i=0;i<arr.length-1-j,i++){
+	if (arr[i]<arr[i+1]){
+	[arr[i],arr[i+1]]=[arr[i+1],arr[i]];
+		
+		}
+	}
+}
+console.log(arr);
+
+函数3:
+var sum=0;
+for(var i=0; i<arr.length;i++){
+	sum+=arr[i];
+}
+console.log(sum);
