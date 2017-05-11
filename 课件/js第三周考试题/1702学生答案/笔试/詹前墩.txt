@@ -1,0 +1,134 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.B
+02.D
+03.B
+04.B
+05.D
+06.C
+07.B
+08.D
+09.C
+10.C
+11.A
+12.C
+13.B
+14.B
+15.C
+16.D
+17.D
+18.D
+19.A
+20.D
+21.C
+22.A
+23.C
+24.A
+25.A
+26.B
+27.B
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+答：有分为 简单数据类型 和 复杂数据类型；
+	简单数据类型： number、string、Boolean、null、undefined；
+	复杂数据类型：Array、object、function；
+	判断数据类型的操作符： typeof 。
+2.
+答：	1、document.getElementById("myDiv");
+	2、document.getElementsByClassName("myDiv");
+	3、document.getElementsByName("test");
+	4、document.querySelector("div");
+3.
+答：	创建新元素：document.createElement();
+	创建文本节点：document.createTextNode();
+	将a标签追加到div 中：div.appendChild(a);
+
+4.
+答：	区别：	prompt();是输入框，用于给用户输入数据；
+		alert();是警告框，弹出时停止程序的执行；
+		confirm(); 是确认框，用于给向用户传递信息；
+	例子：  prompt("input","text");
+		alert("worn");
+		confirm("are you sure");
+5.
+答：	innerHTML 是用于返回元素的所有子节点，或者 更改里面的所有子节点；
+	innerText 是用于返回元素的文本节点，或者 更改子节点里的 文本。
+三、编程题：要求只需要js代码
+
+1.
+答：
+
+<!DOCTYPE html>
+<html>
+<head><mate charset="utf-8"><title>hello</title></head>
+<body>
+</body>
+<script type="text/javascript">
+	var now = new Date();
+	var y = now.getFullYear();	
+	var m = now.getMonth();
+	var d = now.getDate();
+	document.write("今天是"+ y +"年"+ m +"月"+ d +"日，加油考试吧！");
+</script>
+</html>
+
+2.
+答：
+<!DOCTYPE html>
+<html>
+<head><mate charset="utf-8"><title>hello</title></head>
+<body>
+	<button id="btn">calculate</button>
+</body>
+<script type="text/javascript">
+	var btn = document.getElementById("btn");
+	btn.onclick = function maxNum(){
+		var num1 = parseInt(prompt("第一个数").value);
+		var num2 = parseInt(prompt("第二个数").value);
+		var num3 = parseInt(prompt("第三个数").value);
+		var arr = [num1,num2,num2];
+		alert("您输入的最大值是："Math.max(...arr));
+	}
+</script>
+</html>
+
+3.
+答：
+
+<!DOCTYPE html>
+<html>
+<head><mate charset="utf-8"><title>hello</title></head>
+<body>
+</body>
+<script type="text/javascript">
+	var str = "36,6,-23,43,34,342,0,3";
+	// 将 字符串 str 中的数字存入数组中，并打印
+	var reg = /\d+/gi;
+	var arr = match(reg);
+	console.log(arr);
+
+	// 将数组 arr 进行降序排列
+	var arrDown = arr.sort(
+		function (a,b){
+			if(a>b){
+				return -1;
+			}else if(a<b){
+				return 1;
+			}else{
+				return 0;
+			}
+		}
+	);
+	console.log(arrDown);
+
+	// 将数组中所有数值进行求和
+	var sum = 0;
+	for(var i=0;i<arrDown.length;i++){
+		sum = sum + arrDown[i];
+	}
+	console.log(sum);
+</script>
+</html>

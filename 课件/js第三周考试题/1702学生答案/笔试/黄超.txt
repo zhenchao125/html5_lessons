@@ -1,0 +1,105 @@
+﻿一、单选题（写法格式：01.A（答案前的点不要去掉））
+01.A
+02.C
+03.C
+04.A
+05.D
+06.C
+07.D
+08.D
+09.C
+10.D
+11.C
+12.B
+13.B
+14.A
+15.B
+16.b
+17.D
+18.D
+19.D
+20.A
+21.C
+22.A
+23.C
+24.B
+25.A
+26.B
+27.A
+28.D
+29.A
+30.C
+二、简答题
+
+1.
+答：数据类型：数字 布尔值 字符串 数组 对象 null undefined
+    操作符：typeof
+
+2.
+答：1.document.getElementsByTagName("div") 
+    2.document.getElementById("myDiv")
+    3.document.getElementByClassName("myDiv") 
+	4.document.getElementByName("test")
+
+
+
+3.
+答：创建新元素：document.creatElement();
+	创建文本节点：document.createTextNode();
+
+
+
+4.
+答：prompt("文本","默认值")，提示输入框，提示用户输入一个值以进行某项操作，如果用户点击取消，那么返回值为 null
+
+	alert 消息提示框，当用户进行了某一操作后给出的一个提示，或操作前提示
+	
+	comfirm 对话选择框，返回true或false，常用一个var保存值，进行选择操作
+
+5.
+答：innerHTML 是属性设置或返回标签的开始和结束标签之间的 HTML。
+	innerText值获取标签中的文本内容，子标签本身不会获取到
+
+三、编程题：要求只需要js代码
+
+1.
+<script>
+	var date = new Date();
+	var year =date.getFullYear();
+	var month = date.getMonth()+1;
+	var day =date.getDate()-1;
+
+	document.write("今天是"+year+"年"+month+"月"+day+"日,"+"加油考试吧！");
+</script>
+
+
+2.
+<script>
+		function bigNumber(a,b,c){
+			if(a>b && a>c){
+			return alert(a);
+			}else if(b>a && b>c){
+				return alert(b);
+			}else if(c>a && c>b){
+				return alert(c);
+			}else if(a >=b && a>=c){
+				return alert(a);
+			}else if(b >=a && b>=c){
+				return alert(b);
+			}else{
+				return alert(c);
+			}
+		}
+		bigNumber(89,54,34);
+	</script>
+
+
+
+3.
+<script>
+	var str ="34,6,-23,43,34,342,0,3";
+	var newstr =[];
+	
+	
+</script>
+
