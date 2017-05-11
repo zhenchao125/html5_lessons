@@ -1,4 +1,4 @@
-#  高级Day 01---面向对象入门![](http://www.yztcedu.com/images/logo.png)
+#  高级Day 01---面向对象入门
 
 # 一、面向对象的概念
 
