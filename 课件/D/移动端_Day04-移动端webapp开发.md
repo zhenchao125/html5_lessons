@@ -181,9 +181,11 @@ div {
 > 1. 由于浏览器会对layout viewport的自动缩放，导致同样的尺寸和字体大小，在pc端和移动端看起来差别很大。
 > 2. 为了看清文字，用户会放大页面，则又会出现滚动条，需要左右滚动才可以看完整页面。
 
+![](http://o7cqr8cfk.bkt.clouddn.com/17-4-23/89495394-file_1492944992272_15203.png)
+
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-4-23/13492193-file_1492944976750_7ade.png)
 
-![](http://o7cqr8cfk.bkt.clouddn.com/17-4-23/89495394-file_1492944992272_15203.png)
+
 
 > ideal viewport(理想视口)的出现就是为了解决上面这些问题的！
 >
@@ -192,6 +194,8 @@ div {
 > ideal viewport的宽度应该等于移动设备的屏幕宽度，只要在css中把某一元素的宽度设为ideal viewport的宽度(单位用px)，那么这个元素的宽度就是设备屏幕的宽度了，也就是宽度为100%的效果。
 >
 > **ideal viewport 的意义在于，无论在何种分辨率的屏幕下，那些针对ideal viewport 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。**
+
+那么如何设置idea viewport呢？
 
 # 四、viewport语法详解
 
@@ -318,23 +322,77 @@ initial-scale=1,则layout viewport的值为375px
 > 公式是用目标元素的宽度除以他父元素的宽度，结果就是目标元素的相对宽度
 >
 > ```
-> target / parent = result	
+> target的宽度 / parent的宽度 = result	
 > ```
 >
-> 
+
+***需求：一个container的div，包裹着section和aside两个元素。Section在左aside在右，他们之间是相等的间距。***
+
+```css
+
+.container {
+  width: 1000px;
+  background-color: #CCCCCC;
+  height: 100px;
+}
+
+section {
+  float: left;
+  margin: 10px;
+  width: 640px;
+  height: 50px;
+  background-color: gray;
+}
+
+aside {
+  float: right;
+  margin: 10px;
+  width: 320px;
+  height: 50px;
+  background-color: pink;
+}
 
 
+<div class="container">
+  <section></section>
+  <aside></aside>
+</div>
 
+```
 
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-13/92620572-file_1494651502991_bb20.png)
 
+通过上面的公式，把固定宽度换算成相百分比长度。
 
+```css
+section {
+  float: left;
+  margin: 1%;   
+  width: 64%;
+  height: 50%;
+  background-color: gray;
+}
 
+aside {
+  float: right;
+  margin: 10%;
+  width: 32%;
+  height: 50%;
+  background-color: pink;
+}
+```
 
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-13/31196585-file_1494651622497_135b5.png)
 
+把.container的宽度改成800px
 
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-13/10092946-file_1494651695172_cd5.png)
 
+把.container的宽度改成50ox
 
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-13/42886508-file_1494651745319_dbbc.png)
 
+从上面可以的情况可以看到，不管我们把.container容器的宽度设置为多少个像素，section和float总能按照一定的比例进行分布。
 
 
 
