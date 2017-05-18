@@ -1,4 +1,4 @@
-#  高级Day 06-07---ajax![](http://www.yztcedu.com/images/logo.png)
+#  高级Day 06-07---ajax
 
 # 零、基础知识准备
 
