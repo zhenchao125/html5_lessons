@@ -446,9 +446,10 @@ aside {
 2. 当媒体查询为true时, 其对应的样式表或样式规则就会遵循正常的级联规则进行应用. 即使媒体查询返回false, `<link>` 标签指向的样式表也将会被下载(但是它们不会被应用)
 3. 媒体类型是可选的,默认是all。(所有媒体)
 
-### 5.3.3	常见媒体类型
 
-> 到目前css3中，一共支持10种媒体类型。
+### 5.3.3常见媒体类型
+
+> 到目前css3中，一共支持10多种媒体类型。
 >
 > 但只有前3种常用，其余的不应该使用
 
@@ -458,7 +459,81 @@ aside {
 
 其他不常用的参考：http://dev.w3.org/csswg/mediaqueries/#media-types
 
+### 5.3.4	常用媒体属性
 
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-19/1790583-file_1495186827898_69a5.png)
+
+> 大部分属性支持添加max-或min-前缀。
+>
+> 例如：下面媒体特性表示在宽度小于等于600px的时候匹配。
+>
+> ```css
+> max-width:600px
+> ```
+
+### 5.3.5	媒体查询逻辑操作符
+
+​	可以使用not，and和 only 等逻辑操作符构建复杂的媒体查询。
+
+​	and操作符用来把多个媒体属性组合成一条媒体查询。只有当每个属性都为真时，结果才为真。
+
+​	not操作符用来对一条媒体查询的结果进行取反。
+
+​	only操作符表示仅在媒体查询匹配成功的情况下应用指定样式。可以通过它让选中的样式在老式浏览器中不被应用。
+
+​	, (逗号分隔符)  等同于 `or `逻辑操作符。当使用逗号分隔的媒体查询时，如果任何一个媒体查询返回真，样式就是有效的。逗号分隔的列表中每个查询都是独立的，一个查询中的操作符并不影响其它的媒体查询。这意味着逗号媒体查询列表能够作用于不同的媒体属性、类型和状态。
+
+​	若使用了not或 only 操作符，必须明确指定一个媒体类型。
+
+### 5.3.5	媒体查询使用案例
+
+#### 案例1：
+
+```css
+@media screen and (max-width: 600px) {
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+    }
+}
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-19/4114543-file_1495187948554_107e8.gif)
+
+
+
+#### 案例2：
+
+```css
+@media screen and (min-width: 600px) {
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+    }
+}
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-19/20523366-file_1495188120755_14820.gif)
+
+#### 案例3:
+
+```css
+@media print , screen and (orientation: portrait){
+    div{
+        width : 200px;
+        height : 200px;
+        background-color : pink;
+    }
+}
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-19/69889182-file_1495189088925_150c5.gif)
+
+
+
+# 六、响应式页面效果(映纷视觉)
 
 
 
