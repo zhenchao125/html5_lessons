@@ -1,2 +1,86 @@
 # 高级Day13—jquery插件及核心原理
 
+> `jQuery`插件就是用来扩展jQuery的功能。
+>
+> 如果我们的部分代码需要在项目的多个地方使用，这个时候就可以把这个部分做为插件添加到jQuery中。
+
+# 一、插件原理
+
+​	jQuery插件本质上就是定义在jQuery对象上添加方法，然后就可以在多个地方使用了。
+
+> 一般有2种方法给jQuery添加插件：
+>
+> 1. jQuery.extend()
+>
+> 相当于给jQuery函数添加了静态属性和方法，将来可以通过jQuery.新增的方法() 来调用。
+>
+> 比如前面用到的 `$.ajax()`就是这样的方法。
+>
+> 这种方式并不是很常用。
+>
+> 2. jQuery.fn
+>
+> 把方法添加到jQuery的原型对象上，是添加jquery插件的常用方式。
+
+注意：
+
+​	**添加插件之前一定要先导入jQuery！**
+
+# 二、方式1：jQuery.extend()
+
+> 这种方式添加插件很少使用，了解即可。
+
+```javascript
+<script>
+    var obj = {}
+    $.extend({
+        test : "abc",  //test 会成为 $的一个属性
+        foo: function (){  // foo会成为$的一个方法
+            console.log("a")
+        }
+    });
+    $("div").click(function (){
+        console.log($.test);  //  "abc"
+        $.foo()   // "a"
+    })
+</script>
+```
+
+# 三、方式2：jQuery.fn
+
+> 这种方式是我们定义常见最常用的方式。
+>
+> 这种方式的本质是是把方法添加到`jQuery`的原型对象上。
+>
+>  因为在`jQuery`中，把`jQuery.prototype`简写成了 `jQuery.fn`,所以我们可以通过下面的方式向`jQuery`的原型对象添加方法，即添加了插件。
+
+```html
+<script>
+  	//给jQuery的原型对象添加插件。考虑到$符号有可能被占用，所以此处不建议使用$符号
+    jQuery.fn.foo = function (){
+        console.log("我是jQuery的一个插件");
+    }
+    
+    //因为插件是添加到的原型对象上，所以任何一个jQuery对象都可以调用。
+    $("div").click(function (){
+        $(this).foo();
+    })
+</script>
+```
+
+> 如果想在我们自定义的插件内部自由的使用 `$`符号,我们可以把添加插件的代码封装在一个自执行的匿名函数的内部。
+>
+> 看下面的代码：
+
+```javascript
+(function ($){ //形参 $ 接受传过来的jQuery。
+	$.fn.foo = function (){
+		console.log("这个函数内部可以自由的使用$符号:");
+    }
+})(jQuery);  //把jQuery作为实参传入
+```
+
+# 四、简单插件开发
+
+> jQuery没有提供
+

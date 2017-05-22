@@ -181,7 +181,7 @@ block.addEventListener("click", function(){
 
 ## 2.1	匀速水平运动
 
-​	用时间来控制进度
+​	用时间来控制进度:这里的p是归一化时间
 $$
 s = S*p
 $$
@@ -480,57 +480,58 @@ Easing = {
 > 动画生命周期：开始、进程中、结束
 
 ```javascript
-<script type="text/javascript">
-	/*
-	  参数1：动画的执行时间
-	  参数2：动画执行的时候的回调函数（动画执行的要干的事情）
-	  参数3：动画算子. 如果没有传入动画算子，则默认使用匀速算子
-	 */
-	function Animator(duration, progress, easing) {
-		this.duration = duration;
-		this.progress = progress;
-		this.easing = easing || function(p) {
-			return p
-		};
-	}
-	Animator.prototype = {
-		/*开始动画的方法， 
-		 参数：一个布尔值
-		 true表示动画不循环执行。	 
-		*/
-		start: function(finished) {
-			/*动画开始时间*/
-			var startTime = Date.now();
-			/*动画执行时间*/
-			var duration = this.duration,
-				self = this;
-			/*定义动画执行函数*/
-			requestAnimationFrame(function step() {
-				/*得到动画执行进度*/
-				var p = (Date.now() - startTime) / duration;
-				/*是否执行下一帧动画*/
-				var next = true;
-				/*判断动画进度是否完成*/
-				if(p < 1.0) {
-					self.progress(self.easing(p), p);   //执行动画回调函数，并传入动画算子的结果和动画进度。
-				} else {
-					if(finished){  //判断是否停止动画。如果是true代表停止动画。
-						next = false;
-					}else{
-						startTime = Date.now();
-					} 
-				}
-				// 如果next是true执行下一帧动画
-				if(next) requestAnimationFrame(step);
-			});
-		}
-	};
-	block.onclick = function  () {
-		var self = this;
-		new Animator(2000, function (p) {
-			self.style.top = 500 * p +"px";
-		},Easing.bounce).start(false);
-	}
+/*
+ 作者：李振超    2017年5月22日 14:44
+
+ 1、归一化的时间       需要：duration
+
+ 2. 把归一化的时间交给动画算子  需要：动画算子
+
+ 3、把需要做的动画封装到函数中传入。 需要：函数 doSomething( e )
+
+ 3. 动画的结束时机
+
+ */
+function Animator(option){
+    this._init(option);
+}
+Animator.prototype = {
+    _init: function (option){
+        this.duration = option.duration;
+        this.easing = option.easing;
+        this.doSomething = option.doSomething;
+    },
+    start: function (isLoop){
+
+        if (typeof this.duration != "number"
+            || typeof this.easing != "function"
+            || typeof this.doSomething != "function")   return;
+
+        var duration = this.duration,
+            easing = this.easing,
+            doSomething = this.doSomething,
+            startTime = new Date(),
+            p;
+        var that = this;
+        this.animationId = requestAnimationFrame(function step(){
+            p = Math.min(1, (new Date() - startTime) / duration);
+            doSomething(easing(p));
+            if (p == 1){
+                if (isLoop){
+                    startTime = new Date();
+                }else{
+                    return;
+                }
+            }
+            that.animationId = requestAnimationFrame(step);
+        });
+
+    },
+    stop: function (){
+        cancelAnimationFrame(this.animationId);
+    }
+}
+
 ```
 
 
