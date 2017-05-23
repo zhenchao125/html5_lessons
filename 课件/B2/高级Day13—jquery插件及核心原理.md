@@ -12,7 +12,7 @@
 >
 > 1. jQuery.extend()
 >
-> 相当于给jQuery函数添加了静态属性和方法，将来可以通过jQuery.新增的方法() 来调用。
+> 相当于给jQuery函数添加了静态属性和方法，将来可以通过  jQuery.新增的方法() 来调用。
 >
 > 比如前面用到的 `$.ajax()`就是这样的方法。
 >
@@ -80,7 +80,73 @@
 })(jQuery);  //把jQuery作为实参传入
 ```
 
+如果是一个比较复杂的插件，需要多个属性和方法，则可以把这多属性方法封装一个对象中，然后这些这个对象的属性和方法都会添加到jQuery对象的原型上。   `$.fn.extend({  //方法  })`
+
+看下面的代码：
+
+```javascript
+(function ($){
+    $.fn.extend({
+      	msg : "你好",
+      	foo : function (){
+        	console.log("插件中添加的函数");
+      	}
+})
+}(jQuery));
+$("div").click(function (){
+    $(this).foo()    //  "插件中添加的函数"
+    console.log($(this).a);   // "你好"
+})
+```
+
 # 四、简单插件开发
 
-> jQuery没有提供
+> jQuery没有提供直接修改直接修改 `backgroud-color和color` 的方法，只能通过 `css` 来修改,我们可以提供一个插件可以直接修改 `backgroud-color和color` 
 
+```javascript
+(function ($){
+    $.fn.extend({
+        backgroundColor(color){
+          	//插件内的this已经是jQuery对象了。
+            this.css("backgroundColor", color);
+        },
+        color(color){
+            this.css("color", color);
+        }
+    })
+})(jQuery)
+```
+
+使用插件:
+
+```javascript
+$("div").backgroundColor("gray");
+$("div").color("red");
+```
+
+# 五、实现链式调用
+
+> 大家观察到在jQuery的很多方法都可以使用链式调用，就是所谓的可以一路点下去。
+>
+> 原理其实 很简单：
+>
+> ​	**只要在方法内部返回 this，就可以轻松的实现链式调用**
+
+看下面的代码，把前面我们自定义的插件也实现链式调用。
+
+```javascript
+(function ($){
+    $.fn.extend({
+        backgroundColor(color){
+            this.css("backgroundColor", color);
+            return this;
+        },
+        color(color){
+            this.css("color", color);
+            return this;
+        }
+    })
+})(jQuery)
+
+$("div").backgroundColor("gray").color("green");
+```
