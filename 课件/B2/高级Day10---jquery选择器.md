@@ -1,6 +1,6 @@
-#  高级Day 11---Jquery选择器![](http://www.yztcedu.com/images/logo.png)
+#  高级Day 11---Jquery选择器
 
-# 一、Jquery入门
+# 一、jQuery入门
 
 ## 1.1	什么是Jquery
 
@@ -8,7 +8,7 @@
 
 ​	jQuery的核心特性可以总结为：具有独特的链式语法和短小清晰的多功能接口；具有高效灵活的css选择器，并且可对CSS选择器进行扩展；拥有便捷的插件 扩展机制和丰富的插件。jQuery兼容各种主流浏览器，如IE 6.0+、FF 1.5+、Safari 2.0+、Opera 9.0+等。
 
-## 1.2	下载Jquery
+## 1.2	下载jQuery
 
 去官网下载：
 
