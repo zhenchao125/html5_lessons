@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- 兼容处理ie的兼容模式 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+	.wrap{
+		border: 1px solid red;
+		/*height: 500px;*/
+	}
+	/*div[class^=col-]{
+		padding-top: 10px;
+		padding-bottom: 10px;
+		background-color:rgba(86,61,124,.15);
+		border: 1px solid rgba(86,61,124,.2);
+		box-sizing:border-box;
+	}*/
+    </style>
+</head>
+<body>
+	<div class="container wrap">
+		<div class="row">
+			<div class="col-md-6 col-sm-4 col-xs-12">我是div1</div>
+			<div class="col-md-6 col-md-offset-0 col-sm-4 col-sm-offset-4 col-xs-12">我是div2</div>
+		</div>
+		<h1>我是h1</h1>
+		<h2>我是h2<small>Secondary text</small></h2>
+		<h3>我是h3</h3>
+		<h4>我是h4</h4>
+		<h5>我是h5</h5>
+		<h6>我是h6</h6>
+		<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+		<p class='lead'>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+		<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+		<del>我是删除的文字</del>
+		<ins>This line of text is meant to be treated as an addition to the document.</ins>
+		<p class="text-left">Left aligned text.</p>
+		<p class="text-center">Center aligned text.</p>
+		<p class="text-right">Right aligned text.</p>
+		<p class="text-lowercase">Lowercased text.</p>
+		<p class="text-uppercase">Uppercased text.</p>
+		<p class="text-capitalize">Capitalized text.</p>
+		<blockquote>
+		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+		</blockquote>
+		<blockquote>
+		  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+		  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+		</blockquote>
+		For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+	
+		<table class="table table-striped table-hover">
+			<tr class="success">
+				<td>我是单元格1</td>
+				<td>我是单元格2</td>
+				<td>我是单元格3</td>
+				<td>我是单元格4</td>
+			</tr>
+			<tr>
+				<td>我是单元格1</td>
+				<td>我是单元格2</td>
+				<td>我是单元格3</td>
+				<td>我是单元格4</td>
+			</tr>
+			<tr class="warning">
+				<td>我是单元格1</td>
+				<td>我是单元格2</td>
+				<td>我是单元格3</td>
+				<td>我是单元格4</td>
+			</tr>
+			<tr>
+				<td>我是单元格1</td>
+				<td>我是单元格2</td>
+				<td>我是单元格3</td>
+				<td>我是单元格4</td>
+			</tr>
+			<tr>
+				<td>我是单元格1</td>
+				<td>我是单元格2</td>
+				<td>我是单元格3</td>
+				<td>我是单元格4</td>
+			</tr>
+		</table>
+		<form class="form-inline">
+			<div class="form-group">
+			    <label for="exampleInputEmail1">Email address</label>
+			    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputFile">File input</label>
+		    <input type="file" id="exampleInputFile">
+		    <p class="help-block">Example block-level help text here.</p>
+		  </div>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+		<!-- <form>
+			<div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+		    <div class="col-sm-10">
+		      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+		    </div>
+		</div>
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="submit" class="btn btn-default">Sign in</button>
+			    </div>
+			  </div>
+		</form> -->
+		<form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+		    <div class="col-sm-10">
+		      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+		    <div class="col-sm-10">
+		      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		  	<div class="col-sm-offset-2 col-sm-10">
+		  		<textarea class="form-control" rows="3"></textarea>
+		  	</div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <div class="checkbox">
+		        <label>
+		          <input type="checkbox"> Remember me
+		        </label>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default">Sign in</button>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <select class="form-control">
+				  <option>1</option>
+				  <option>2</option>
+				  <option>3</option>
+				  <option>4</option>
+				  <option>5</option>
+				</select>
+		    </div>
+		  </div>
+		  <div class="form-group has-success has-feedback">
+		    <label class="control-label col-sm-3" for="inputGroupSuccess2">Input group with success</label>
+		    <div class="col-sm-9">
+		      <div class="input-group">
+		        <span class="input-group-addon">@</span>
+		        <input type="text" class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
+		      </div>
+		      <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+		      <span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
+		    </div>
+		  </div>
+		</form>
+		<button class="btn btn-default btn-success btn-lg">按钮</button>
+		<button type="button" class="btn btn-primary btn-sm">（首选项）Primary</button>
+		<button type="button" class="btn btn-primary btn-sm active">（首选项）Primary</button>
+		<a href="###" class="btn btn-default">连接</a>
+		<div class="row">
+			<div class="col-md-8">
+				<p>Yarn 缓存了每个下载过的包，所以再次使用时无需重复下载。 同时利用并行下载以最大化资源利用率，因此安装速度更快。</p>
+			</div>
+			<div class="col-md-4">
+				<img class="img-responsive" src="https://yarn.bootcss.com/assets/feature-speed.png" alt="">
+			</div>
+		</div>
+		<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		
+	</div>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

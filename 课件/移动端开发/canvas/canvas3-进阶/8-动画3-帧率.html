@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#myCanvas{
+		box-shadow: 0px 0px 5px black;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="500" height="500">你的浏览器不支持canvas</canvas>
+	<div id="div1" style="font-size:70px;"></div>
+</body>
+<script type="text/javascript">
+	
+	var div1 = document.querySelector("#div1");
+	var canvas = document.querySelector("#myCanvas");
+	var ctx = canvas.getContext("2d");
+
+	var x = 0;
+	var oldDate = new Date();
+
+	var frame = 0;
+	function move(){
+		frame++;
+		var newDate = new Date();
+		
+		if (frame % 30 == 0){
+			div1.innerHTML = "fps:"+parseInt(1000/(newDate.getTime()-oldDate.getTime()))
+		}
+		if (frame>10000){
+			frame = 0;
+		}
+		oldDate = newDate;
+		window.requestAnimationFrame(move);
+	}
+	move();
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

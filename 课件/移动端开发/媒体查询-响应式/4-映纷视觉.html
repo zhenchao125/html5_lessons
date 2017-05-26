@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.center{
+		width: 75%;
+		margin: 0 auto;
+		border: 1px solid red;
+		max-width: 1200px;
+		min-width: 640px;
+		font-size: 14px;
+		overflow: hidden;
+	}
+	.center a{
+		width: 31%;
+		height: 3rem;
+		float: left;
+		background-color: #ccc;
+		margin: 10px 0;
+	}
+	.center a:nth-of-type(3n+2){
+		margin: 10px 3.5%;
+	}
+
+	@media screen and (max-width: 640px){
+		.center{
+			width: 98%;
+			min-width: 320px;
+		}
+	}
+	@media screen and (max-width: 480px){
+		.center a{
+			width: 48%;
+			height: 4rem;
+		}
+		.center a:nth-of-type(3n+2){
+			margin: 10px 0;
+		}
+		.center a:nth-of-type(2n+1){
+			margin-right: 4%;
+		}
+	}
+
+	</style>
+</head>
+<body>
+	<div class="center">
+		<a href="###">选项1</a>
+		<a href="###">选项2</a>
+		<a href="###">选项3</a>
+		<a href="###">选项4</a>
+		<a href="###">选项5</a>
+		<a href="###">选项6</a>
+		<a href="###">选项7</a>
+		<a href="###">选项8</a>
+		<a href="###">选项9</a>
+		<a href="###">选项10</a>
+		<a href="###">选项11</a>
+		<a href="###">选项12</a>
+		<a href="###">选项13</a>
+		<a href="###">选项14</a>
+		<a href="###">选项15</a>
+		<a href="###">选项16</a>
+		<a href="###">选项17</a>
+		<a href="###">选项18</a>
+		<a href="###">选项19</a>
+		<a href="###">选项20</a>
+	</div>
+</body>
+<script type="text/javascript" src='flexible.js'></script>
+</html>

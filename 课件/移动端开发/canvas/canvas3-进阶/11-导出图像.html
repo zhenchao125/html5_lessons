@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#myCanvas{
+		box-shadow: 0px 0px 5px black;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="500" height="500">你的浏览器不支持canvas</canvas>
+	<button id="btn1">导出图像</button>
+	<img id="img1" src="" alt="">
+</body>
+<script type="text/javascript">
+	var canvas = document.querySelector("#myCanvas");
+	var img1 = document.querySelector("#img1");
+	var ctx = canvas.getContext("2d");
+	var btn1 = document.querySelector("#btn1");
+
+	ctx.fillRect(50, 50, 100, 100);
+
+	btn1.onclick = function (){
+
+		//将canvas导出成图片->格式是base64的
+		var canvasUrl = canvas.toDataURL();
+		// console.log(canvasUrl);
+		// window.location.href=canvasUrl;
+		img1.src = canvasUrl;
+	}
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

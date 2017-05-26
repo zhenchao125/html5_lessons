@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Document</title>
+	<style type="text/css">
+	body,html{
+		height: 100%;
+		margin: 0;
+	}
+	#canvas{
+		/*box-shadow: inset 0px 0px 5px black;*/
+	}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>	
+</body>
+<script type="text/javascript" src="loading.js"></script>
+<script type="text/javascript">
+//公用变量
+//获取屏幕宽度
+var windowWidth = document.body.clientWidth;
+//获取屏幕的高度
+var windowHeight = document.body.clientHeight;
+var canvas = document.querySelector("#canvas");
+var ctx = canvas.getContext("2d");
+
+canvas.width = windowWidth;
+canvas.height = windowHeight;
+
+//获取不同屏幕下缩放的比例,375为iphone6
+var bgScale = windowWidth/375;
+
+var frame = 0;
+//存储所有子弹
+var bulltes = [];
+//存储所有的敌机
+var enemys = [];
+//随机函数
+function rand(min,max){
+	if (max>min){
+		return parseInt(Math.random()*(max-min))+min;
+	}
+}
+//碰撞函数
+function collide(obj1,obj2){
+			
+		var l1 = obj1.x;
+		var r1 = l1+obj1.w;
+		var t1 = obj1.y;
+		var b1 = t1+obj1.h;
+		
+		var l2 = obj2.x;
+		var r2 = l2+obj2.w;
+		var t2 = obj2.y;
+		var b2 = t2+obj2.h;
+		
+		if (r1>l2&&l1<r2&&b1>t2&&t1<b2){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+//loading图片
+loadingImg({
+	loadImg:{
+		bg:"img/background.png",
+		herofly:"img/herofly.png",
+		bullet1:"img/bullet1.png",
+		enemy1:"img/enemy1.png",
+		enemy2:"img/enemy2.png",
+		enemy3:"img/enemy3.png"
+	},
+	prog:function (num){
+		//num为加载的进度
+		console.log(num);
+	},
+	complete:init
+});
+
+
+
+function init(resultImgs){
+
+	//敌机的构造函数
+	function Enemy(){
+		//速度的基数
+		this.defaultSpeed = 0;
+		var r = rand(0,100);
+		if (r<70){
+			//小飞机
+			this.hp = 1;
+			this.img = resultImgs.enemy1;
+			//速度
+			this.speed = rand(3+this.defaultSpeed,7+this.defaultSpeed);
+			//原图的数量
+			this.imgNum = 5;
+		}else if(r>=70&&r<95){
+			//中号飞机
+			this.hp = 4;
+			this.img = resultImgs.enemy2;
+			this.speed = rand(2+this.defaultSpeed,5+this.defaultSpeed);
+			this.imgNum = 6;
+		}else{
+			//大号飞机
+			this.hp = 10;
+			this.img = resultImgs.enemy3;
+			this.speed = rand(1+this.defaultSpeed,3+this.defaultSpeed);
+			this.imgNum = 10;
+		}
+		//公用属性
+		this.w = this.img.width/this.imgNum;
+		this.h = this.img.height;
+		this.x = rand(0,windowWidth-this.w);
+		this.y = -this.h;
+		this.imgX = 0; 
+
+		this.bombBol = false;
+		//计数器
+		this.num = 0;
+	}
+
+	//敌机移动的方法
+	Enemy.prototype.move = function (){
+
+		if (!this.bombBol){
+			this.y += this.speed;
+			//撞到子弹并血量为0->死掉
+			//自毁程序->当敌机飞离画布的时候要移除掉
+			if (this.y >= windowHeight){
+
+				enemys.splice(enemys.indexOf(this),1);
+				return true;
+			}
+		}
+		
+	}
+
+	//绘制敌机的方法
+	Enemy.prototype.draw = function (){
+		this.num++;
+		if (this.num%8==0){
+			var bol = this.bomb();
+			if (bol){
+				return true;
+			}
+		}
+		ctx.drawImage(this.img,this.imgX,0,this.w,this.h,this.x,this.y,this.w*bgScale,this.h*bgScale);
+	}
+
+	//敌机血量扣光后爆炸的方法
+	Enemy.prototype.bomb = function (){
+		if (this.bombBol){
+			this.imgX += this.w;
+			if (this.imgX >= this.img.width){
+				//爆炸结束
+				enemys.splice(enemys.indexOf(this),1);
+				return true;
+			}
+		}
+	}
+
+	//敌机扣血的方法
+	Enemy.prototype.downHp = function (atk){
+		// console.log(atk)
+		this.hp -= atk;
+		if (this.hp <= 0){
+
+			this.bombBol = true;
+		}
+	}
+
+	//子弹的构造函数
+	function Bullte(){
+		this.w = resultImgs.bullet1.width;
+		this.h = resultImgs.bullet1.height;
+		//设置子弹的坐标为玩家飞机的中心点
+		this.x = herofly.x+herofly.w*bgScale/2-(resultImgs.bullet1.width/2);
+		this.y = herofly.y;
+		this.img = resultImgs.bullet1;
+		//攻击力
+		this.atk = 1;
+	}
+	//子弹移动的方法
+	Bullte.prototype.move = function() {
+		
+		this.y -= 8;
+		//自毁
+		//当在canvas中看不到它的时候就干掉自己
+		if (this.y < -this.h){
+			bulltes.splice(bulltes.indexOf(this),1);
+			return true;
+		}else{
+			return false;
+		}
+	};
+	//绘制子弹的方法
+	Bullte.prototype.draw = function (){
+
+		ctx.drawImage(this.img,this.x,this.y,this.w*bgScale,this.h*bgScale);
+	}
+
+	//当撞到敌机的方法
+	Bullte.prototype.destruct = function (){
+
+		bulltes.splice(bulltes.indexOf(this),1);
+	}
+
+	//玩家对象
+	var herofly = {
+		//因为herofly图片是5张所以除以5
+		w:resultImgs.herofly.width/5,
+		h:resultImgs.herofly.height,
+		x:windowWidth/2-(resultImgs.herofly.width/5)/2,
+		y:windowHeight-resultImgs.herofly.height-20,
+		img:resultImgs.herofly,
+		imgX:0,
+		imgXBol:true,
+		bombBol: false,
+		//计数器
+		num:1
+	}
+	//自爆的方法
+	herofly.bomb = function (){
+
+		if (this.bombBol){
+			this.imgX += this.w;
+			if (this.imgX >= this.img.width){
+
+				alert("游戏结束");
+				return true;
+			}
+		}
+	}
+	//绘制herofly方法
+	herofly.change = function (){
+		if (!this.bombBol){
+			if (this.imgXBol){
+				this.imgX = 0;
+				this.imgXBol = false;
+			}else{
+				this.imgX = this.w;
+				this.imgXBol = true;
+			}
+		}
+	}
+	herofly.draw = function (){
+		this.num++;
+		if (this.num % 10 == 0){
+			var bol = herofly.bomb();
+			if (bol){
+				return true;
+			}
+		}
+		ctx.drawImage(this.img,this.imgX,0,this.w,this.h,this.x,this.y,this.w*bgScale,this.h*bgScale);
+		
+	}
+
+	var bgImgY = 0;
+
+	function animate(){
+
+		ctx.clearRect(0, 0, windowWidth, windowHeight);
+
+		frame++;
+
+		//调用绘制背景的函数
+		drawBg();
+
+		//绘制子弹
+		//每隔10帧创建一个子弹
+		if (frame % 10 == 0){
+			var bullteObj = new Bullte();
+			bulltes.push(bullteObj);
+		}
+
+		//绘制子弹并移动
+		for (var i=0; i<bulltes.length; i++){
+
+			bulltes[i].draw();
+			var bol = bulltes[i].move();
+			if (bol){
+				i--;
+			}
+		}
+
+		//绘制敌机开始
+		//每隔20帧创建一架敌机
+		if (frame % 40 == 0){
+			var enemyObj = new Enemy();
+			enemys.push(enemyObj);
+		}
+		
+
+		//碰撞->子弹撞敌机
+		for (var i=0; i<bulltes.length; i++){
+			for (var j = 0; j<enemys.length; j++){
+				var collideBol = collide(bulltes[i],enemys[j]);
+				if (collideBol){
+					//敌机的处理
+					enemys[j].downHp(bulltes[i].atk);
+
+					//子弹的自毁处理
+					bulltes[i].destruct();
+					i--;
+	
+					break;
+				}
+			}
+		}
+
+		//绘制敌机
+		for (var i=0; i<enemys.length; i++){
+			//敌机跟自己的这个飞机碰撞
+			if (collide(enemys[i],herofly)){
+				herofly.bombBol = true;
+			}
+			var bol = enemys[i].draw();
+			if (bol){
+				i--;
+				continue;
+			}
+			var bol = enemys[i].move();
+			if (bol){
+				i--;
+			}
+		}
+
+		//绘制玩家对象
+		if (frame % 8 == 0){
+			herofly.change();
+		}
+		var bol = herofly.draw();
+		if (bol){
+			return;
+		}
+
+		if (frame > 10000){
+			frame = 0;
+		}
+		window.requestAnimationFrame(animate);
+	}
+	animate();
+
+	function drawBg(){
+
+		bgImgY ++;
+
+		if (bgImgY >= windowHeight){
+
+			bgImgY = 0;
+		}
+
+		ctx.drawImage(resultImgs.bg, 0, bgImgY,windowWidth,windowHeight);
+		ctx.drawImage(resultImgs.bg, 0, bgImgY-windowHeight,windowWidth,windowHeight);
+	}
+
+	document.addEventListener("touchstart", function (e){
+
+		var touches = event.touches[0];
+		var x = touches.clientX;
+		var y = touches.clientY;
+
+		var disX = x - herofly.x;
+		var disY = y - herofly.y;
+
+		if (x>herofly.x&&x<herofly.x+herofly.w&&y>herofly.y&&y<herofly.y+herofly.h){
+			document.addEventListener("touchmove", function (e){
+
+				var touches = event.touches[0];
+				var endX = touches.clientX-disX;
+				var endY = touches.clientY-disY;
+				herofly.x = endX;
+				herofly.y = endY;
+
+				// e.preventDefault();
+			}, false)
+		}
+		// e.preventDefault();
+	}, false)
+}
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</html>

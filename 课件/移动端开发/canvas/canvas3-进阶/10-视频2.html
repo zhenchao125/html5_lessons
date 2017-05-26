@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#myCanvas{
+		box-shadow: 0px 0px 5px black;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="500" height="500">你的浏览器不支持canvas</canvas>
+	<video id="video1" src="cn.mp4" width="500" autoplay></video>
+	<div id="div1" style="font-size:70px;"></div>
+</body>
+<script type="text/javascript">
+	var div1 = document.querySelector("#div1");
+	var canvas = document.querySelector("#myCanvas");
+	var video1 = document.querySelector("#video1");
+	var ctx = canvas.getContext("2d");
+
+	var oldDate = new Date();
+	var frame = 0;
+
+	function move(){
+		
+		ctx.drawImage(video1, 0,0,500,500);
+
+		//获取像素
+	  	var imageData = ctx.getImageData(0,0, canvas.width, canvas.height);
+	  	var pixels = imageData.data;
+
+	  	for (var i=0; i<pixels.length; i+=4){
+
+	  		var r = pixels[i];
+	  		var g = pixels[i+1];
+	  		var b = pixels[i+2];
+
+	  		var gray = parseInt((r+g+b)/3);
+
+	  		pixels[i] = gray;
+	  		pixels[i+1] = gray;
+	  		pixels[i+2] = gray;
+	  	}
+	  	ctx.putImageData(imageData, 0,0);
+
+	  	//查看帧率
+	  	frame++;
+		var newDate = new Date();
+		
+		if (frame % 10 == 0){
+			div1.innerHTML = "fps:"+parseInt(1000/(newDate.getTime()-oldDate.getTime()))
+		}
+		if (frame>10000){
+			frame = 0;
+		}
+		oldDate = newDate;
+
+		window.requestAnimationFrame(move);
+	}
+	move();
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

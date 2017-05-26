@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#myCanvas{
+		border:1px solid red;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<p>你的浏览器太out辣,请下载最新浏览器<a href="https://www.baidu.com/link?url=Hql_zHr0FRfjZlkwbchMWcwxSsmzLQ4IbcFTgi-I4RSYtriLYB_-zS5Z7b6jcVY-0fPX4k7ad85RsntE2EUJ61hQSGIIjOtPwwjtOxztVMK&wd=&eqid=a289b2700007b56500000006590fc9af"></a>谷歌</p>
+	</canvas>
+</body>
+<script type="text/javascript" src="tween.js"></script>
+<script type="text/javascript">
+	var canvas = document.querySelector("#myCanvas");
+	//获取画布的上下文
+	var ctx = canvas.getContext("2d");
+	var canvasWidth = canvas.width;
+	var canvasHeight = canvas.height;
+
+	var w = 40;
+	var h = 40;
+	//开始位置
+	var y = 0;
+	//总步数
+	var maxT = 50;
+	//当前步数
+	var t = 0;
+	//变化量
+	var changeNum = 360;
+
+	var timer = setInterval(function (){
+
+		ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+		t++;
+		ctx.fillRect(0, Tween.Elastic.easeIn(t,y,changeNum,maxT), w, h);
+		if (t >= maxT){
+			clearInterval(timer)
+		}
+	},30)
+
+
+
+</script>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#myCanvas{
+		box-shadow: 0px 0px 10px black;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="500" height="500">
+		您的浏览器不支持canvas
+	</canvas>
+</body>
+<script type="text/javascript">
+	var canvas = document.querySelector("#myCanvas");
+	var ctx = canvas.getContext("2d");
+	var canvasWidth = canvas.width;
+	var canvasHeight = canvas.height;
+
+	function rand(min,max){
+		if (max>min){
+			return parseInt(Math.random()*(max-min)+1)+min;
+		}
+	}
+
+	function Ball(){
+		//半径
+		var r = rand(1,30);
+		this.r = r;
+
+		//颜色
+		this.color = `rgba(${rand(0,255)},${rand(0,255)},${rand(0,255)},${Math.random()})`;
+		//速度
+		this.speedX = Math.sign(Math.random()-0.5)*rand(2,8);
+		var speedY = rand(2,8);
+		this.speedY = rand(-1,1)?speedY:-speedY;
+		//初始位置
+		this.x = rand(r,canvasWidth-r);
+		this.y = rand(r,canvasHeight-r);
+	}
+	Ball.prototype.draw = function (){
+
+		ctx.beginPath();
+		ctx.fillStyle = this.color;
+		ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI, false);
+		ctx.closePath();
+		ctx.fill();
+	}
+	Ball.prototype.move = function (){
+
+		this.x += this.speedX;
+		if (this.x >= canvasWidth-this.r || this.x < this.r){
+			this.speedX *= -1;
+		}
+		this.y += this.speedY;
+		if (this.y >= canvasHeight-this.r || this.y < this.r){
+			this.speedY *= -1;
+		}
+	}
+
+	//存储是所有的球
+	var balls = [];
+
+	for (var i=0; i<300; i++){
+
+		var ball = new Ball();
+		balls.push(ball);
+	}
+
+	setInterval(function (){
+
+		ctx.clearRect(0,0,canvasWidth,canvasHeight);
+		for (var i=0; i<balls.length; i++){
+			balls[i].draw();
+			balls[i].move();
+		}
+	},30);
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,35 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+ul,li{
+	list-style: none;
+}
+
+ul{
+	width: 500px;
+	height: 300px;
+	border: 2px solid black;
+	/* 支持弹性盒布局 */
+	display: flex;
+}
+
+li{
+	width: 80px;
+	height: 50px;
+	border: 2px solid black;
+	background-color: red;
+	color: white;
+	font-size: 30px;
+	line-height: 50px;
+	text-align: center;
+}
+
+
+
+
+
+
+
+

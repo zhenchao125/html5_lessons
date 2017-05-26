@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#myCanvas{
+		box-shadow: 0px 0px 5px black;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="500" height="500">你的浏览器不支持canvas</canvas>
+</body>
+<script type="text/javascript">
+	
+	var canvas = document.querySelector("#myCanvas");
+	var ctx = canvas.getContext("2d");
+
+	//创建了一个图片对象
+	var imgObj = new Image();
+	imgObj.src = "2.jpg";
+	//监听图片是否加载完成
+	imgObj.onload = function (){
+		
+		ctx.drawImage(this,0,0,500,500);
+		//获取图片眼睛部分的像素点
+		var imageData = ctx.getImageData(0, 0, 500, 500);
+		// console.log(imageData);
+		var pixels = imageData.data;
+
+		for (var i=0; i<pixels.length; i+=4){
+
+			var r = pixels[i];
+			var g = pixels[i+1];
+			var b = pixels[i+2];
+
+			//获取灰度
+			var gray = parseInt((r+g+b)/3);
+
+			pixels[i] = gray;
+			pixels[i+1] = gray;
+			pixels[i+2] = gray;
+		}
+
+		ctx.putImageData(imageData, 0, 100);
+
+	}
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

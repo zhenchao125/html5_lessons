@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#myCanvas{
+		border:1px solid red;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<p>你的浏览器太out辣,请下载最新浏览器<a href="https://www.baidu.com/link?url=Hql_zHr0FRfjZlkwbchMWcwxSsmzLQ4IbcFTgi-I4RSYtriLYB_-zS5Z7b6jcVY-0fPX4k7ad85RsntE2EUJ61hQSGIIjOtPwwjtOxztVMK&wd=&eqid=a289b2700007b56500000006590fc9af"></a>谷歌</p>
+	</canvas>
+</body>
+<script type="text/javascript">
+	var canvas = document.querySelector("#myCanvas");
+	//获取画布的上下文
+	var ctx = canvas.getContext("2d");
+
+	var colors = ["red","blue","yellow","#ccc"];
+
+	for (var i=0; i<4; i++){
+		//开始绘制
+		ctx.beginPath();
+
+		var n = i * 20;
+		
+		ctx.moveTo(50+n, 50+n);
+		ctx.lineTo(200+n, 50+n);
+		ctx.lineTo(200+n, 150+n);
+		ctx.lineTo(50+n, 150+n);
+
+		//设置描边的样式
+		ctx.strokeStyle = "#ff0000";
+		//设置描边的宽度
+		ctx.lineWidth = 5;
+
+		//闭合路径
+		ctx.closePath();
+
+		//描边
+		ctx.stroke();
+		//设置填充样式
+		ctx.fillStyle = colors[i];
+		//填充
+		ctx.fill()
+	}
+	
+
+
+
+
+</script>
+</html>

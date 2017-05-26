@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#myCanvas{
+		border:1px solid red;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<p>你的浏览器太out辣,请下载最新浏览器<a href="https://www.baidu.com/link?url=Hql_zHr0FRfjZlkwbchMWcwxSsmzLQ4IbcFTgi-I4RSYtriLYB_-zS5Z7b6jcVY-0fPX4k7ad85RsntE2EUJ61hQSGIIjOtPwwjtOxztVMK&wd=&eqid=a289b2700007b56500000006590fc9af"></a>谷歌</p>
+	</canvas>
+</body>
+<script type="text/javascript">
+	var canvas = document.querySelector("#myCanvas");
+	//获取画布的上下文
+	var ctx = canvas.getContext("2d");
+	var canvasWidth = canvas.width;
+	var canvasHeight = canvas.height;
+
+	var deg = Math.PI/180;
+	
+	ctx.translate(200, 200);
+	ctx.rotate(-90*deg);
+
+	ctx.lineWidth = 10;
+	ctx.lineCap = "round";
+	ctx.save();
+
+	function draw(){
+	//绘制时针的刻度
+	for (var i=0; i<12; i++){
+		// ctx.rotate(deg*30);
+		ctx.restore();
+		ctx.save();
+		var n = 30*i*deg;
+		ctx.rotate(n);
+		ctx.beginPath();
+		ctx.moveTo(150, 0);
+		ctx.lineTo(190, 0);
+		ctx.stroke();
+	}
+	//绘制分针(秒针)的刻度
+	
+	for (var i=0; i<60; i++){
+		if (i%5!=0){
+			ctx.restore();
+			ctx.save();
+			ctx.strokeStyle = "green";
+			ctx.lineWidth = 5;
+			var n = 6*i*deg;
+			ctx.rotate(n);
+			ctx.beginPath();
+			ctx.moveTo(170, 0);
+			ctx.lineTo(190, 0);
+			ctx.stroke();
+		}
+	}
+
+	var nowDate = new Date();
+
+	
+	//时针
+	//获取小时数
+	var h = nowDate.getHours()%12;
+	//获取分钟数
+	var m = nowDate.getMinutes();
+	//获取秒针
+	var s = nowDate.getSeconds();
+	// console.log(h)
+
+	function drawTime(w,r,start){
+		ctx.restore();
+		ctx.save();
+		ctx.lineWidth = w;
+		ctx.rotate(r);
+		ctx.beginPath();
+		ctx.moveTo(0, 0);
+		ctx.lineTo(start,0)
+		ctx.stroke();
+
+	}
+	//时针
+	drawTime(10,(h*30+m*0.5)*deg,130);
+	//分针
+	drawTime(6,(m*6+s*0.1)*deg,160);
+
+	//秒针
+	drawTime(4,s*6*deg,160);
+	
+	}
+	draw();
+	setInterval(function (){
+
+		ctx.clearRect(-200, -200, canvasWidth, canvasHeight);
+		draw();
+	},1000)
+
+
+
+
+
+	
+
+
+
+</script>
+</html>

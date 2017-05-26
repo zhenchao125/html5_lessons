@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#myCanvas{
+		border:1px solid red;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<p>你的浏览器太out辣,请下载最新浏览器<a href="https://www.baidu.com/link?url=Hql_zHr0FRfjZlkwbchMWcwxSsmzLQ4IbcFTgi-I4RSYtriLYB_-zS5Z7b6jcVY-0fPX4k7ad85RsntE2EUJ61hQSGIIjOtPwwjtOxztVMK&wd=&eqid=a289b2700007b56500000006590fc9af"></a>谷歌</p>
+	</canvas>
+</body>
+<script type="text/javascript">
+	var canvas = document.querySelector("#myCanvas");
+	//获取画布的上下文
+	var ctx = canvas.getContext("2d");
+
+	var deg = Math.PI/180;
+	
+	ctx.translate(200, 200);
+	ctx.rotate(-90*deg);
+
+	ctx.lineWidth = 10;
+	ctx.lineCap = "round";
+	ctx.save();
+	//绘制时针的刻度
+	for (var i=0; i<12; i++){
+		// ctx.rotate(deg*30);
+		ctx.restore();
+		ctx.save();
+		var n = 30*i*deg;
+		ctx.rotate(n);
+		ctx.beginPath();
+		ctx.moveTo(150, 0);
+		ctx.lineTo(190, 0);
+		ctx.stroke();
+	}
+	//绘制分针(秒针)的刻度
+	
+	for (var i=0; i<60; i++){
+		if (i%5!=0){
+			ctx.restore();
+			ctx.save();
+			ctx.strokeStyle = "green";
+			ctx.lineWidth = 5;
+			var n = 6*i*deg;
+			ctx.rotate(n);
+			ctx.beginPath();
+			ctx.moveTo(170, 0);
+			ctx.lineTo(190, 0);
+			ctx.stroke();
+		}
+	}
+
+	var nowDate = new Date();
+
+	ctx.restore();
+	ctx.save();
+	//时针
+	//获取小时数
+	var h = nowDate.getHours()%12;
+	//获取分钟数
+	var m = nowDate.getMinutes();
+	//获取秒针
+	var s = nowDate.getSeconds();
+	// console.log(h)
+	ctx.lineWidth = 10;
+	ctx.rotate((h*30+m*0.5)*deg);
+	ctx.beginPath();
+	ctx.moveTo(0, 0);
+	ctx.lineTo(130,0)
+	ctx.stroke();
+
+	//分针
+	ctx.restore();
+	ctx.save();
+	
+	ctx.lineWidth = 6;
+	ctx.rotate((m*6+s*0.1)*deg)
+	ctx.beginPath();
+	ctx.moveTo(0, 0);
+	ctx.lineTo(160,0)
+	ctx.stroke();
+
+	//秒针
+	ctx.restore();
+	ctx.save();
+
+	ctx.lineWidth = 4;
+	ctx.rotate(s*6*deg);
+	ctx.beginPath();
+	ctx.moveTo(0, 0);
+	ctx.lineTo(160,0)
+	ctx.stroke();
+
+
+
+
+
+	
+
+
+
+</script>
+</html>

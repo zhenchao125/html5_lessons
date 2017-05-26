@@ -219,3 +219,21 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-5-25/56214136.jpg)
 
+# 四、flex-items的属性
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-26/49578220.jpg)
+
+## 4.1	order
+
+​	默认情况下，`flex-items`安装源码的属性布局。然后，通过 `order`属性可以改变他们在弹性容器中的出现的顺序。
+
+```css
+.item {
+    order: <integer>;
+}
+```
+
+​	`order`的默认默认值是 0 。值越大，布局越靠后; 反之，越小，布局越靠前。
+
+
+

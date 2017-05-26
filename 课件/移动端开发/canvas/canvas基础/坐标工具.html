@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#myCanvas{
+				background: linear-gradient(-45deg, transparent 49%, rgba(0,0,0,.1) 49%, rgba(0,0,0,.1) 51%, transparent 51%) center no-repeat, repeating-linear-gradient(white, white 20px, transparent 20px, transparent 40px) no-repeat, linear-gradient(transparent, rgba(0,0,0,.06) 25%, rgba(0,0,0,.06) 75%, transparent);
+			}
+			.control-point{
+				position: absolute;
+				z-index: 1;
+				height: 20px; 
+				width: 20px; 
+				border: 1px solid rgba(0,0,0,.3);
+				margin: -10px 0 0 -10px;
+				outline: none;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				
+				-moz-border-radius: 10px; 
+				border-radius: 10px; 
+			}
+			#p1{
+				background-color: #f08;
+			}
+			#p2{
+				background-color: #0ab;
+			}
+			#p3,#p1{
+				left: 0%;
+				top: 75%;
+			}
+			#p4,#p2{
+				left: 100%;
+				top: 25%;
+			}
+			#p3,#p4{
+				background-color: white;
+			}
+			.wrap{
+				position: absolute;
+				top: 1em;
+				left: 1em;
+			}
+			#content{
+				position: absolute;
+				left: 320px;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap" id="wrap">
+			<canvas id="myCanvas" width="300" height="600">
+				你的浏览器不支持canvas
+			</canvas>
+			<span id="p3" class="control-point"></span>
+			<span id="p4" class="control-point"></span>
+			<button id="p1" class="control-point"></button>
+			<button id="p2" class="control-point"></button>
+		</div>
+		<div id="content">
+			cubic-bezier(0,0,1,1)
+		</div>
+	</body>
+	<script type="text/javascript">
+		var p1 = document.getElementById("p1");
+		var p2 = document.getElementById("p2");
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext("2d");
+		var wrap = document.getElementById("wrap");
+
+		var p1X = 0;
+		var p1Y = 600*0.75;
+		var p2X = 300;
+		var p2Y = 600*0.25;
+		
+		var p1EndX = p1X;
+		var p1EndY = p1Y;
+		var p2EndX = p2X;
+		var p2EndY = p2Y;
+		
+		p1.onmousedown=p2.onmousedown = function (ev){
+			var ev = ev||window.event;
+			//获取鼠标按下时跟按钮的偏移距离
+			var disX = ev.clientX-this.offsetLeft-wrap.offsetLeft;
+			var disY = ev.clientY-this.offsetTop-wrap.offsetTop;
+
+			var _this = this;
+			document.onmousemove = function (ev){
+				//获取
+				var ev = ev||window.event;
+				var x = ev.clientX-disX-10;
+				var y = ev.clientY-disY-10;
+				
+				if (_this.id == "p1"){
+					p1EndX = x;
+					p1EndY = y;
+				}else{
+					p2EndX = x;
+					p2EndY = y;
+				}
+				
+				_this.style.left = x+"px";
+				_this.style.top = y+"px";
+				
+				drawLine();
+			}
+			document.onmouseup = function (){
+				document.onmousemove = null;
+			}
+		}
+
+		function drawLine(){
+			
+			ctx.clearRect(0,0,canvas.width,canvas.height);
+			//下面的线
+			ctx.beginPath();
+			ctx.moveTo(p1X,p1Y);
+			ctx.lineTo(p1EndX,p1EndY);
+			ctx.strokeStyle = "#CCCCCC";
+			ctx.lineWidth = 5;
+			ctx.stroke();
+			//上面的线
+			ctx.beginPath();
+			ctx.moveTo(p2X,p2Y);
+			ctx.lineTo(p2EndX,p2EndY);
+			ctx.stroke();
+			
+			//贝塞尔曲线
+			ctx.beginPath();
+			ctx.moveTo(p1X,p1Y);
+			ctx.bezierCurveTo(p1EndX,p1EndY,p2EndX,p2EndY,p2X,p2Y);
+			ctx.strokeStyle = "black";
+			ctx.stroke();
+
+			content.innerHTML = "cubic-bezier("+(p1EndX/300).toFixed(2)+","+((1-((p1EndY-150)/300)).toFixed(2))+","+(p2EndX/300).toFixed(2)+","+((1-((p2EndY-150)/300)).toFixed(2))+")";
+		}
+
+	</script>
+</html>

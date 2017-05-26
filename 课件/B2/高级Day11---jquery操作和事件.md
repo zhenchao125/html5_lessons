@@ -363,6 +363,8 @@ $(function () {
 
 ## 3.3	position方法
 
+offsetLeft  offsetTop
+
 获取标签相对于参照定位标签(参照物父容器)的偏移量
 
 position（）方法的返回值和offset()一样，有top和left

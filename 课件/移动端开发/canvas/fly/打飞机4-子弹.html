@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Document</title>
+	<style type="text/css">
+	body,html{
+		height: 100%;
+		margin: 0;
+	}
+	#canvas{
+		/*box-shadow: inset 0px 0px 5px black;*/
+	}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>	
+</body>
+<script type="text/javascript" src="loading.js"></script>
+<script type="text/javascript">
+//公用变量
+//获取屏幕宽度
+var windowWidth = document.body.clientWidth;
+//获取屏幕的高度
+var windowHeight = document.body.clientHeight;
+var canvas = document.querySelector("#canvas");
+var ctx = canvas.getContext("2d");
+
+canvas.width = windowWidth;
+canvas.height = windowHeight;
+
+//获取不同屏幕下缩放的比例,375为iphone6
+var bgScale = windowWidth/375;
+
+var frame = 0;
+//存储所有子弹
+var bulltes = [];
+
+function rand(min,max){
+	if (max>min){
+		return parseInt(Math.random()*(max-min))+min;
+	}
+}
+
+//loading图片
+loadingImg({
+	loadImg:{
+		bg:"img/background.png",
+		herofly:"img/herofly.png",
+		bullet1:"img/bullet1.png",
+		enemy1:"img/enemy1.png",
+		enemy2:"img/enemy2.png",
+		enemy3:"img/enemy3.png"
+	},
+	prog:function (num){
+		//num为加载的进度
+		console.log(num);
+	},
+	complete:init
+});
+
+
+
+function init(resultImgs){
+
+	//敌机的构造函数
+	function Enemy(){
+
+		var r = rand(0,100);
+		if (r<70){
+			//小飞机
+			this.hp = 1;
+
+		}else if(r>=70&&r<95){
+			//中号飞机
+			this.hp = 4;
+		}else{
+			//大号飞机
+			this.hp = 10;
+		}
+		
+	}
+
+	//子弹的构造函数
+	function Bullte(){
+		this.w = resultImgs.bullet1.width;
+		this.h = resultImgs.bullet1.height;
+		//设置子弹的坐标为玩家飞机的中心点
+		this.x = herofly.x+herofly.w*bgScale/2-(resultImgs.bullet1.width/2);
+		this.y = herofly.y;
+		this.img = resultImgs.bullet1
+	}
+	//子弹移动的方法
+	Bullte.prototype.move = function() {
+		
+		this.y -= 8;
+		//自毁
+		//当在canvas中看不到它的时候就干掉自己
+		if (this.y < -this.h){
+			bulltes.splice(bulltes.indexOf(this),1);
+			return true;
+		}else{
+			return false;
+		}
+	};
+	//绘制子弹的方法
+	Bullte.prototype.draw = function (){
+
+		ctx.drawImage(this.img,this.x,this.y,this.w*bgScale,this.h*bgScale);
+	}
+
+	//玩家对象
+	var herofly = {
+		//因为herofly图片是5张所以除以5
+		w:resultImgs.herofly.width/5,
+		h:resultImgs.herofly.height,
+		x:windowWidth/2-(resultImgs.herofly.width/5)/2,
+		y:windowHeight-resultImgs.herofly.height-20,
+		img:resultImgs.herofly,
+		imgX:0,
+		imgXBol:true
+	}
+	//绘制herofly方法
+	herofly.change = function (){
+		if (this.imgXBol){
+			this.imgX = 0;
+			this.imgXBol = false;
+		}else{
+			this.imgX = this.w;
+			this.imgXBol = true;
+		}
+	}
+	herofly.draw = function (){
+		
+		ctx.drawImage(this.img,this.imgX,0,this.w,this.h,this.x,this.y,this.w*bgScale,this.h*bgScale);
+		
+	}
+
+	var bgImgY = 0;
+
+
+	function animate(){
+
+		ctx.clearRect(0, 0, windowWidth, windowHeight);
+
+		frame++;
+
+		//调用绘制背景的函数
+		drawBg();
+
+		//绘制子弹
+		//每隔10帧创建一个子弹
+		if (frame % 10 == 0){
+			var bullteObj = new Bullte();
+			bulltes.push(bullteObj);
+		}
+
+		//绘制子弹并移动
+		for (var i=0; i<bulltes.length; i++){
+
+			bulltes[i].draw();
+			var bol = bulltes[i].move();
+			if (bol){
+				i--;
+			}
+		}
+
+		//绘制玩家对象
+		if (frame % 8 == 0){
+			herofly.change();
+		}
+		herofly.draw();
+
+		if (frame > 10000){
+			frame = 0;
+		}
+		window.requestAnimationFrame(animate);
+	}
+	animate();
+
+	function drawBg(){
+
+		bgImgY ++;
+
+		if (bgImgY >= windowHeight){
+
+			bgImgY = 0;
+		}
+
+		ctx.drawImage(resultImgs.bg, 0, bgImgY,windowWidth,windowHeight);
+		ctx.drawImage(resultImgs.bg, 0, bgImgY-windowHeight,windowWidth,windowHeight);
+	}
+
+	document.addEventListener("touchstart", function (e){
+
+		var touches = event.touches[0];
+		var x = touches.clientX;
+		var y = touches.clientY;
+
+		var disX = x - herofly.x;
+		var disY = y - herofly.y;
+
+		if (x>herofly.x&&x<herofly.x+herofly.w&&y>herofly.y&&y<herofly.y+herofly.h){
+			document.addEventListener("touchmove", function (e){
+
+				var touches = event.touches[0];
+				var endX = touches.clientX-disX;
+				var endY = touches.clientY-disY;
+				herofly.x = endX;
+				herofly.y = endY;
+
+				e.stopPropagation();
+			}, false)
+		}
+		e.stopPropagation();
+	}, false)
+}
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</html>

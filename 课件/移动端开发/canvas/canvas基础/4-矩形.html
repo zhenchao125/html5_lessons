@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#myCanvas{
+		border:1px solid red;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="400">
+		<p>你的浏览器太out辣,请下载最新浏览器<a href="https://www.baidu.com/link?url=Hql_zHr0FRfjZlkwbchMWcwxSsmzLQ4IbcFTgi-I4RSYtriLYB_-zS5Z7b6jcVY-0fPX4k7ad85RsntE2EUJ61hQSGIIjOtPwwjtOxztVMK&wd=&eqid=a289b2700007b56500000006590fc9af"></a>谷歌</p>
+	</canvas>
+</body>
+<script type="text/javascript">
+	var canvas = document.querySelector("#myCanvas");
+	//获取画布的上下文
+	var ctx = canvas.getContext("2d");
+
+	var colors = ["red","blue","yellow","#ccc"];
+
+	// ctx.strokeRect(50, 50, 150, 100);
+	// ctx.fillRect(50, 50, 150, 100);
+	ctx.strokeStyle = "green";
+	ctx.lineWidth = 5;
+	
+	for (var i=0; i<colors.length; i++){
+		var n = i * 20;
+		ctx.fillStyle = colors[i];
+		ctx.fillRect(50+n,50+n,150,100);
+
+		ctx.strokeRect(50+n,50+n,150,100);
+	}
+
+
+
+
+</script>
+</html>
