@@ -77,7 +77,7 @@ JQuery的使用也是如此。一般使用下面的入口来完成。
 		 */
 		var domDiv1 = $div[0];
 		var domDiv2 = $div.get(0);		
-	});	
+	});
 </script>
 ```
 
@@ -293,6 +293,7 @@ $(function() {
 		// id属性以b开头的
 		var $ids5 = $("[id^=b]");
 		console.log($ids5)
+        console.log($("[id$=1]")); //以什什么结尾
 		
 		// id属性的值包含子字符串b的
 		var $ids6 = $("[id*=b]");
@@ -423,4 +424,6 @@ $(function() {
 	});
 </script>
 ```
+
+
 

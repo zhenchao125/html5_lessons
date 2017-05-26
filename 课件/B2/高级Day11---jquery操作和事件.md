@@ -1,4 +1,4 @@
-#  高级Day 12---Jquery操作和事件![](http://www.yztcedu.com/images/logo.png)
+#  高级Day 12---Jquery操作和事件
 
 # 一、DOM操作的分类
 
@@ -27,6 +27,8 @@
 > 三个方法：text()、html()和 val()
 >
 > innerText  innerHTML  value
+>
+> 
 
 ```javascript
 <!DOCTYPE html>
@@ -235,11 +237,11 @@ $(function () {
 })
 ```
 
-### 2.4.5	判断是否有指定的class
+### 2.3.5	判断是否有指定的class
 
 > hasClass(样式)
 
-## 2.5	each方法的使用
+## 2.4	each方法的使用
 
 ```javascript
 <script type="text/javascript">
@@ -248,7 +250,6 @@ $(function () {
 		$("div").each(function (index, ele) {
 			$(ele).html("呵呵呵")
 		})
-		
 	})	
 </script>
 ```
