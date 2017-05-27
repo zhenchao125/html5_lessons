@@ -235,5 +235,184 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 
 ​	`order`的默认默认值是 0 。值越大，布局越靠后; 反之，越小，布局越靠前。
 
+```css
+.child:nth-child(2){
+    order: 2;
+}
+.child:nth-child(3){
+    order: 1;
+}
+```
 
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-26/1447655.jpg)
+
+## 4.2	flex-grow
+
+​	该属性设置 `flex-item` 在主轴方向，有空余空间的时候可以占据空余空间。他的值是一个没有单位的值，表示占据空余空间的比例。
+
+​	**默认值是 0**。负值无效
+
+```css
+.item {
+	flex-grow: <number>; /* default 0 */
+}
+```
+
+比如：
+
+1. 如果有2个item都设置为 1， 则他们会把剩余的平分，  因为分别是： 1 / (1 + 1) * 剩余空间、1 / (1 + 1) * 剩余空间
+
+2. 如果3个item 分别设置为 2、1、3  。则他们分别分的剩余空间的 2 / (2 + 1 + 3) * 剩余空间、1 / (2 + 1 + 3)* 剩余空间、3 / (2 + 1 + 3)* 剩余空间
+
+**总结： flex-grow / 所有的flex-grow只和 * 剩余空间**
+
+```css
+.item:nth-child(1){
+    flex-grow: 1;
+}
+.item:nth-child(2){
+    flex-grow: 1;
+}
+```
+
+![](http://i4.buimg.com/588926/1f50704a78b4fb4b.png)
+
+```css
+.item:nth-child(1){
+    flex-grow: 1;
+}
+.item:nth-child(3){
+    flex-grow: 2;
+}
+```
+
+![](http://i4.buimg.com/588926/3c4f362cc50964b5.png)
+
+## 4.3	flex-shrink
+
+​	该属性让 `flex-item`具有收缩的功能。当一行放不下，并且不允许换行的时候，允许 flex-item收缩。
+
+​	值是一个整数，来表示收缩比率。默认值是1。 如果是0表示不允许收缩。
+
+​	**一行放不下的时候，其实表示的是剩余空间为负，计算方法同 `flex-grow`是一样的，只是现在是减去响应的值而已(加负)**
+
+```css
+.container{
+  height : 200px;
+  width: 600px;
+  background-color : gray;
+  display: flex;
+}
+```
+
+```css
+.item{
+    height:100px;
+    width: 300px;
+    background-color: pink;
+    margin: 50px 0 0 0px;
+    
+    font-size: 60px;
+    text-align: center;
+    line-height: 100px;
+}
+.item:nth-child(2n){
+    background-color: cornflowerblue;
+}
+.item:nth-child(1){
+    flex-shrink: 2;
+}
+.item:nth-child(3){
+    flex-shrink: 3;
+}
+```
+
+计算：
+
+剩余空间：  600 - 3 * 300 = -300
+
+剩余空间每份：  -300 / (2 + 1 + 3) = -50
+
+item1宽度：  300 - 50 * 2 = 200
+
+item1宽度：  300 - 50 * 1 = 250
+
+item1宽度：  300 - 50 * 3 = 150
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-26/80235033.jpg)
+
+##4.4	flex-basis
+
+​	这个属性指定在剩余空间分配之前，`flex-item`的尺寸。
+
+```css
+.item {
+	flex-basis: <length> | auto; /* default auto */
+}
+```
+
+- 可以指定具体的长度 `px、em、百分比`
+- auto：意思是参考这个item的宽或高。 默认值是auto
+
+```css
+.container{
+    width: 900px;
+    display: flex;
+}
+.item{
+  width: 200px;
+  background-color: pink;
+}
+.item:nth-child(1){
+  flex-grow: 1;
+  flex-basis: auto;  // 
+}
+.item:nth-child(3){
+  flex-grow: 1;
+  flex-basis: 60px;  // 
+}
+```
+
+剩余空间：  900 - 200 - 200 - 60 = 440
+
+item1 ： 200 + 220 = 420
+
+item2：200
+
+item3：60 + 220 = 280
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-26/80243796.jpg)
+
+## 4.5	flex
+
+​	是`flex-grow、flex-shrink、flex-basis`的简写。 `flex-shrink、flex-basis`这2个参数是可选的。  默认值是：`0 1 auto`
+
+```css
+.item {
+  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+}
+```
+
+***强烈建议使用这个简写的形式来代替3个独立的属性。 简写可以智能设置其他的值。***
+
+## 4.6	align-self
+
+​	单独的设置某个 item 的对齐方式，来覆盖align-items或align-content的设置。
+
+```css
+.container {
+    height: 200px;
+    width: 900px;
+    background-color: gray;
+    display: flex;
+    align-items: flex-start;
+}
+.item:nth-child(3) {
+  flex-grow: 1;
+  flex-basis: 0px;
+  align-self: flex-end;
+}
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-5-26/29407749.jpg)
 

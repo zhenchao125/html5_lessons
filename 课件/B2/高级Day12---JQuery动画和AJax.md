@@ -1,4 +1,4 @@
-#  高级Day 13---Jquery动画和AJAX![](http://www.yztcedu.com/images/logo.png)
+#  高级Day 13---Jquery动画和AJAX
 
 # 一、显示和隐藏
 
@@ -290,7 +290,7 @@ $box.slideDown(1000); //展开
 
 ​	最底层：`$.ajax()`
 
-​	第二层：`$.load()、$.get()、$.post()`
+​	第二层：`$(选择器).load()、$.get()、$.post()`
 
 ​	第三层：`$.getScript()、$.getJson()`
 
