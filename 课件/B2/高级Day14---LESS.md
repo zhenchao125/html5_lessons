@@ -70,7 +70,7 @@ less使用 **.less** 作为文件后缀。通过第三方工具，可以一键�
 npm install -g less
 ```
 
-> 2. 在webstorm中设置file watcher，则webstorm会自动把less编译成css
+> 2. 在`webstorm`中设置 `file watcher`，则`webstorm`会自动把`less`编译成`css`
 
 ### 2.2.2编译方法2：
 
