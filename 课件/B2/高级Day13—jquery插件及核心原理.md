@@ -21,8 +21,10 @@
 > 2. jQuery.fn
 >
 > 把方法添加到jQuery的原型对象上，是添加jquery插件的常用方式。
+>
+> jQuery.fn = jQuery.prototype
 
-注意：
+*注意：*
 
 ​	**添加插件之前一定要先导入jQuery！**
 
