@@ -158,7 +158,7 @@ listener2 byvoid 1991
 - **crypto**：提供加密和解密功能，基本上是对OpenSSL的包装。
 
 
-# 三、node基本模块使用
+#  三、node基本模块使用
 
 ## 3.1	一些全局变量
 
@@ -169,7 +169,6 @@ console.log(__dirname);
 // 输出: /Users/mjr
 console.log(path.dirname(__filename));
 // 输出: /Users/mjr
-
 ```
 2. __filename
 
@@ -277,6 +276,10 @@ server.on("request", function(req, res){
 server.listen(8888);   //端口号：0 - 65535   0-1024 一般操作系统或一些默认的应用给占用
 ```
 
+> 可以用你的浏览器测试我们的web服务器了
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-6-1/58006017.jpg)
+
 # 三、搭建web应用
 
 ​	使用Node.js搭建web服务器，一般使用一些框架来帮助完成。
@@ -297,7 +300,7 @@ server.listen(8888);   //端口号：0 - 65535   0-1024 一般操作系统或一
 
 第三步：建议更换淘宝镜像，国内速度相对比较快。
 
-nrm use taobao
+`nrm use taobao`
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-3-8/897940-file_1488980986492_81fe.png)
 
