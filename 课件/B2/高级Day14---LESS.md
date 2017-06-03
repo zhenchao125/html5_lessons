@@ -2,7 +2,7 @@
 
 # 一、Less介绍
 
-​	Less 是一门 CSS 预处理语言，它扩充了 CSS 语言，增加了诸如变量、混合（mixin）、函数等功能，让 CSS 更易维护、方便制作主题、扩充。
+​	Less 是一门 CSS 预处理语言，它扩充了 CSS 语言，增加了诸如变量、混合（mixin）、函数等功能，让 CSS 更易维护、方便制作主题、扩充。less可以看出css的超集，
 
 ​	**可以运行在 Node（服务器）、浏览器和 Rhino 平台上。**
 
@@ -72,7 +72,7 @@ npm install -g less
 
 > 2. 在`webstorm`中设置 `file watcher`，则`webstorm`会自动把`less`编译成`css`
 
-### 2.2.2编译方法2：
+### 2.2.2编译方法2(不推荐)：
 
 ​	传统做法一般是在服务器端下载less，然后使用命令行手动编译less文件为css文件。编译less文件需要node.js的支持。编译起来比较麻烦。
 

@@ -2187,6 +2187,8 @@ let person = PersonClass.create("Nicholas");
 >
 > 有了babel我们就可以放心的使用ES6的最新的语法，而不用担心浏览器不支持了！！！
 
+> 为了方便使用，我直接使用`webstorm`的filewatcher功能
+
 ## 13.1	安装Babel
 
 > 首先要保证电脑上已经安装了npm 
@@ -2196,68 +2198,24 @@ let person = PersonClass.create("Nicholas");
 ```
 npm install -g babel-cli
 ```
+## 13.2	给你当前项目配置`filewatcher`
 
-## 13.2	在当前的项目根目录下创建一个package.json文件
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-2/20993781.jpg)
 
-> 在当前当前项目的根目录下创建一个package.json文件
->
-> 文件内容如下：
+## 13.3	安·`babel-present-env`
 
-```json
-{
-  "name": "my-project",
-  "version": "1.0.0",
-  "scripts": {
-  	"build": "babel src -d lib"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.0.0"
-  }
-}
-```
-
-> 注意：
->
-> 1. src表示的是放js源码的文件夹
-> 2. lib表示的是将来放生成的es5的代码文件夹。
-
-## 13.3	在当前项目跟目录下创建一个  .babelrc文件
-
-> 注意：创建这个文件的时候不需要文件名，只需要扩展名即可。
->
-> 文件内容如下：
-
-```json
-{
-  "presets": ["env"]
-}
-```
-
-## 13.4	安装babel-preset-env
-
-> 用babel-preset-env可以把es6的代码转换成es5代码
->
-> 命令如下：
-
-```
+```shell
 npm install babel-preset-env --save-dev
 ```
 
-## 13.5	在当前项目根目录下创建一个目录 src  
+## 13.4	自动转换为es5代码
 
-> 这个目录的名字随意，但是一定要和前面的package.json中保持一致。
+js文件中的es6代码会自动转换为es5代码
 
-> 在该目录下写es6 js文件代码。
+![](http://o7cqr8cfk.bkt.clouddn.com/17-6-2/1279845.jpg)
 
-## 13.6	把es6代码转换成es5代码
 
-> 使用下面的命令即可完成：
 
-```
-npm run build
-```
-
-> 生成文件会自动放入lib目录下。
 
 # 十四、Moudle
 
