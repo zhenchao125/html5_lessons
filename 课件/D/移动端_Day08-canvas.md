@@ -52,7 +52,7 @@
 
 ​	`<canvas>`会创建一个固定大小的画布，会公开一个或多个 **渲染上下文**(画笔)，使用 **渲染上下文**来绘制和处理要展示的内容。
 
-​	我们重点研究 2D渲染上下文。  其他的上下文我们暂不研究，比如比如， WebGL使用了基于OpenGL ES的3D上下文 ("experimental-webgl") 。
+​	我们重点研究 2D渲染上下文。  其他的上下文我们暂不研究，比如， WebGL使用了基于OpenGL ES的3D上下文 ("experimental-webgl") 。
 
 ```javascript
 var canvas = document.getElementById('tutorial');
@@ -132,8 +132,6 @@ if (canvas.getContext){
 </script>
 </html>
 ```
-
-
 
 # 三、绘制形状
 
@@ -223,11 +221,11 @@ ctx.clearRect(15, 15, 50, 25);
 
    闭合路径之后，图形绘制命令又重新指向到上下文中
 
-3. `stroke()`
+4. `stroke()`
 
    通过线条来绘制图形轮廓
 
-4. `fill()`
+5. `fill()`
 
 
    通过填充路径的内容区域生成实心的图形
@@ -391,11 +389,111 @@ draw();
 
 ## 4.5 绘制贝塞尔曲线
 
+### 4.5.1 什么是贝塞尔曲线
+
+​	贝塞尔曲线(Bézier curve)，又称贝兹曲线或贝济埃曲线，是应用于二维图形应用程序的数学曲线。
+
+​	一般的矢量图形软件通过它来精确画出曲线，贝兹曲线由线段与节点组成，节点是可拖动的支点，线段像可伸缩的皮筋，我们在绘图工具上看到的钢笔工具就是来做这种矢量曲线的。
+
+​	贝塞尔曲线是计算机图形学中相当重要的参数曲线，在一些比较成熟的位图软件中也有贝塞尔曲线工具如PhotoShop等。在Flash4中还没有完整的曲线工具，而在Flash5里面已经提供出贝塞尔曲线工具。
+
+​	贝塞尔曲线于1962，由法国工程师皮埃尔·贝塞尔（Pierre Bézier）所广泛发表，他运用贝塞尔曲线来为汽车的主体进行设计。贝塞尔曲线最初由Paul de Casteljau于1959年运用de Casteljau演算法开发，以稳定数值的方法求出贝兹曲线。
+
+#### 一次贝塞尔曲线(线性贝塞尔曲线)
+
+​	一次贝塞尔曲线其实是一条直线。
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/40655077.jpg)
+
+#### 二次贝塞尔曲线
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/94917354.jpg)
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/35792129.jpg)
+
+#### 三次贝塞尔曲线
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/69159470.jpg)
 
 
 
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/55999388.jpg)
 
+### 4.5.2	绘制贝塞尔曲线
 
+#### 绘制二次贝塞尔曲线
+
+`quadraticCurveTo(cp1x, cp1y, x, y)`:
+
+**说明：**
+
+​	参数1和2：控制点坐标
+
+​	参数3和4：结束点坐标
+
+```javascript
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(10, 200); //起始点
+    var cp1x = 40, cp1y = 100;  //控制点
+    var x = 200, y = 200; // 结束点
+    //绘制二次贝塞尔曲线
+    ctx.quadraticCurveTo(cp1x, cp1y, x, y);
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.rect(10, 200, 10, 10);
+    ctx.rect(cp1x, cp1y, 10, 10);
+    ctx.rect(x, y, 10, 10);
+    ctx.fill();
+    
+}
+draw();
+```
+
+  ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/31012258.jpg)
+
+#### 绘制三次贝塞尔曲线
+
+`bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)`：
+
+说明：
+
+​	参数1和2：控制点1的坐标
+
+​	参数3和4：控制点2的坐标
+
+​	参数5和6：结束点的坐标
+
+```javascript
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(40, 200); //起始点
+    var cp1x = 20, cp1y = 100;  //控制点1
+    var cp2x = 100, cp2y = 120;  //控制点2
+    var x = 200, y = 200; // 结束点
+    //绘制二次贝塞尔曲线
+    ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.rect(40, 200, 10, 10);
+    ctx.rect(cp1x, cp1y, 10, 10);
+    ctx.rect(cp2x, cp2y, 10, 10);
+    ctx.rect(x, y, 10, 10);
+    ctx.fill();
+
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/18941618.jpg)
 
 # 五、添加样式和颜色
 
@@ -473,6 +571,66 @@ draw();
 ​	这个属性影响到 canvas 里所有图形的透明度，有效的值范围是 0.0 （完全透明）到 1.0（完全不透明），默认是 1.0。
 
 ​	`globalAlpha` 属性在需要绘制大量拥有相同透明度的图形时候相当高效。不过，我认为使用`rgba()`设置透明度更加好一些。
+
+## `line style`
+
+1. `lineWidth = value`
+
+   线宽。只能是正值。默认是`1.0`。
+
+   起始点和终点的连线为中心，**上下各占线宽的一半**
+
+   ```javascript
+   ctx.beginPath();
+   ctx.moveTo(10, 10);
+   ctx.lineTo(100, 10);
+   ctx.lineWidth = 10;
+   ctx.stroke();
+
+   ctx.beginPath();
+   ctx.moveTo(110, 10);
+   ctx.lineTo(160, 10)
+   ctx.lineWidth = 20;
+   ctx.stroke()
+   ```
+
+    ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/29873575.jpg)
+
+2. `lineCap = type`
+
+   线条末端样式。
+
+   共有3个值：
+
+   1. `butt`：线段末端以方形结束
+   2. `round`：线段末端以圆形结束
+   3. `square`：线段末端以方形结束，但是增加了一个宽度和线段相同，高度是线段厚度一半的矩形区域。
+
+   ```javascript
+   var lineCaps = ["butt", "round", "square"];
+
+   for (var i = 0; i < 3; i++){
+       ctx.beginPath();
+       ctx.moveTo(20 + 30 * i, 30);
+       ctx.lineTo(20 + 30 * i, 100);
+       ctx.lineWidth = 20;
+       ctx.lineCap = lineCaps[i];
+       ctx.stroke();
+   }
+
+   ctx.beginPath();
+   ctx.moveTo(0, 30);
+   ctx.lineTo(300, 30);
+
+   ctx.moveTo(0, 100);
+   ctx.lineTo(300, 100)
+
+   ctx.strokeStyle = "red";
+   ctx.lineWidth = 1;
+   ctx.stroke();
+   ```
+
+    ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/41486892.jpg)
 
 
 
