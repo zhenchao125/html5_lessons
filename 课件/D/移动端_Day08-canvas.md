@@ -232,6 +232,169 @@ ctx.clearRect(15, 15, 50, 25);
 
    通过填充路径的内容区域生成实心的图形
 
+## 4.1 绘制线段
+
+```javascript
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath(); //新建一条path
+    ctx.moveTo(50, 50); //把画笔移动到指定的坐标
+    ctx.lineTo(200, 50);  //绘制一条从当前位置到指定坐标(200, 50)的直线.
+    //闭合路径。会拉一条从当前点到path起始点的直线。如果当前点与起始点重合，则什么都不做
+    ctx.closePath();
+    ctx.stroke(); //绘制路径。
+}
+draw();
+```
+
+## 4.2 绘制三角形边框
+
+```javascript
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(50, 50);
+    ctx.lineTo(200, 50);
+    ctx.lineTo(200, 200);
+  	ctx.closePath(); //虽然我们只绘制了两条线段，但是closePath会closePath，仍然是一个3角形
+    ctx.stroke(); //描边。stroke不会自动closePath()
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/20099429.jpg)
+
+## 4.3 填充三角形
+
+```javascript
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(50, 50);
+    ctx.lineTo(200, 50);
+    ctx.lineTo(200, 200);
+   
+    ctx.fill(); //填充闭合区域。如果path没有闭合，则fill()会自动闭合路径。
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/83072674.jpg)
+
+## 4.4 绘制圆弧
+
+> 有两个方法可以绘制圆弧：
+
+1. `arc(x, y, r, startAngle, endAngle, anticlockwise)`:
+
+   以`(x, y)`为圆心，以`r`为半径，从 `startAngle`弧度开始到`endAngle`弧度结束。`anticlosewise`是布尔值，`true`表示逆时针，`false`表示顺时针。(默认是顺时针)
+
+   注意：
+
+   1. 这里的度数都是弧度。
+   2. 0弧度是指的`x`轴正方形
+
+   ```javascript
+   radians=(Math.PI/180)*degrees   //角度转换成弧度
+   ```
+
+2. `arcTo(x1, y1, x2, y2, radius)`:
+
+   根据给定的控制点和半径画一段圆弧，最后再以直线连接两个控制点。
+
+### 圆弧案例1：
+
+```javascript
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(50, 50, 40, 0, Math.PI / 2, false);
+    ctx.stroke();
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/97210404.jpg)
+
+### 圆弧案例2：
+
+```javascript
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(50, 50, 40, 0, Math.PI / 2, false);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(150, 50, 40, 0, -Math.PI / 2, true);
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(50, 150, 40, -Math.PI / 2, Math.PI / 2, false);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(150, 150, 40, 0, Math.PI, false);
+    ctx.fill();
+
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/62078705.jpg)
+
+### 圆弧案例3：
+
+```javascript
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(50, 50);
+  	//参数1、2：控制点1坐标   参数3、4：控制点2坐标  参数4：圆弧半径
+    ctx.arcTo(200, 50, 200, 200, 100);
+    ctx.lineTo(200, 200)
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.rect(50, 50, 10, 10);
+    ctx.rect(200, 50, 10, 10)
+    ctx.rect(200, 200, 10, 10)
+    ctx.fill()
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/95442248.jpg)
+
+`arcTo`方法的说明：
+
+​	这个方法可以这样理解。绘制的弧形是由两条切线所决定。
+
+​	第 1 条切线：起始点和控制点1决定的直线。
+
+​	第 2 条切线：控制点1 和控制点2决定的直线。
+
+​	**其实绘制的圆弧就是与这两条直线相切的圆弧。**
+
+## 4.5 绘制贝塞尔曲线
+
+
+
+
+
 
 
 # 五、添加样式和颜色
