@@ -564,7 +564,7 @@ draw();
 
  ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/39824191.jpg)
 
-## Transparency(透明度)
+## `Transparency(透明度)`
 
 `globalAlpha = transparencyValue`
 
@@ -574,7 +574,7 @@ draw();
 
 ## `line style`
 
-1. `lineWidth = value`
+### 1. `lineWidth = value`
 
    线宽。只能是正值。默认是`1.0`。
 
@@ -594,17 +594,18 @@ draw();
    ctx.stroke()
    ```
 
-    ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/29873575.jpg)
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/29873575.jpg)
 
-2. `lineCap = type`
+
+###2. `lineCap = type`
 
    线条末端样式。
 
    共有3个值：
 
-   1. `butt`：线段末端以方形结束
-   2. `round`：线段末端以圆形结束
-   3. `square`：线段末端以方形结束，但是增加了一个宽度和线段相同，高度是线段厚度一半的矩形区域。
+1.    `butt`：线段末端以方形结束
+2. `round`：线段末端以圆形结束
+3. `square`：线段末端以方形结束，但是增加了一个宽度和线段相同，高度是线段厚度一半的矩形区域。
 
    ```javascript
    var lineCaps = ["butt", "round", "square"];
@@ -633,8 +634,83 @@ draw();
     ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-4/41486892.jpg)
 
 
+### 3. `lineJoin = type` 
+
+同一个path内，设定线条与线条间接合处的样式。
+
+共有3个值`round`, `bevel` 和  `miter`：
+
+1. `round`
 
 
+   通过填充一个额外的，圆心在相连部分末端的扇形，绘制拐角的形状。 圆角的半径是线段的宽度。
 
+2. `bevel`
 
+   在相连部分的末端填充一个额外的以三角形为底的区域， 每个部分都有各自独立的矩形拐角。
+
+3. `miter`(默认)
+
+   通过延伸相连部分的外边缘，使其相交于一点，形成一个额外的菱形区域。
+
+```javascript
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    var lineJoin = ['round', 'bevel', 'miter'];
+    ctx.lineWidth = 20;
+
+    for (var i = 0; i < lineJoin.length; i++){
+        ctx.lineJoin = lineJoin[i];
+        ctx.beginPath();
+        ctx.moveTo(50, 50 + i * 50);
+        ctx.lineTo(100, 100 + i * 50);
+        ctx.lineTo(150, 50 + i * 50);
+        ctx.lineTo(200, 100 + i * 50);
+        ctx.lineTo(250, 50 + i * 50);
+        ctx.stroke();
+    }
+
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-5/5058353.jpg)
+
+### 4. 虚线
+
+用 `setLineDash` 方法和 `lineDashOffset` 属性来制定虚线样式. `setLineDash` 方法接受一个数组，来指定线段与间隙的交替；`lineDashOffset `属性设置起始偏移量.
+
+```javascript
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    
+    ctx.setLineDash([20, 5]);  // [实线长度, 间隙长度]
+    ctx.lineDashOffset = -0;
+    ctx.strokeRect(50, 50, 210, 210);
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-5/92471191.jpg)
+
+备注：
+
+​	`getLineDash()`:返回一个包含当前虚线样式，长度为非负偶数的数组。
+
+# 六、绘制文本
+
+canvas 提供了两种方法来渲染文本:
+
+1. `fillText(text, x, y [, maxWidth])`
+
+   在指定的(x,y)位置填充指定的文本，绘制的最大宽度是可选的.
+
+2. `strokeText(text, x, y [, maxWidth])`
+
+   在指定的(x,y)位置绘制文本边框，绘制的最大宽度是可选的.
 

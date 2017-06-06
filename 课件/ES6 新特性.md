@@ -505,7 +505,7 @@ function add(first = second, second)) {  // 这种写法是错误的
 
 
 
-## 4.4	无arguments绑定
+## 4.4	无arguments
 
 > 虽然箭头函数没有自己的arguments对象，但是在箭头函数内部还是可以使用它外部函数的arguments对象的。
 
