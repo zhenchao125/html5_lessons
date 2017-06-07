@@ -704,6 +704,8 @@ draw();
 
 # 六、绘制文本
 
+## 绘制文本的两个方法
+
 canvas 提供了两种方法来渲染文本:
 
 1. `fillText(text, x, y [, maxWidth])`
@@ -713,4 +715,103 @@ canvas 提供了两种方法来渲染文本:
 2. `strokeText(text, x, y [, maxWidth])`
 
    在指定的(x,y)位置绘制文本边框，绘制的最大宽度是可选的.
+
+
+```javascript
+var ctx;
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    ctx = canvas.getContext("2d");
+    ctx.font = "100px sans-serif"
+    ctx.fillText("天若有情", 10, 100);
+    ctx.strokeText("天若有情", 10, 200)
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-6/87968030.jpg)
+
+## 给文本添加样式
+
+1. `font = value`
+
+   当前我们用来绘制文本的样式。这个字符串使用和 `CSS font`属性相同的语法. 默认的字体是 `10px sans-serif`。
+
+2. `textAlign = value`
+
+   文本对齐选项. 可选的值包括：`start`, `end`, `left`, `right` or `center`. 默认值是 `start`。
+
+3. `textBaseline = value`
+
+   基线对齐选项，可选的值包括：`top`, `hanging`, `middle`, `alphabetic`, `ideographic`, `bottom`。默认值是 `alphabetic。`
+
+4. `direction = value`
+
+   文本方向。可能的值包括：`ltr`, `rtl`, `inherit`。默认值是 `inherit。`
+
+
+# 七、绘制图片
+
+​	我们也可以在`canvas`上直接绘制图片。
+
+## 7.1	由零开始创建图片
+
+### 创建`<img>`元素
+
+```javascript
+var img = new Image();   // 创建一个<img>元素
+img.src = 'myImage.png'; // 设置图片源地址
+```
+
+脚本执行后图片开始装载
+
+### 绘制`img`
+
+```javascript
+//参数1：要绘制的img  参数2、3：绘制的img在canvas中的坐标
+ctx.drawImage(img,0,0); 
+```
+
+注意：
+
+​	考虑到图片是从网络加载，如果 `drawImage` 的时候图片还没有完全加载完成，则什么都不做，个别浏览器会抛异常。所以我们应该保证在 `img` 绘制完成之后再 `drawImage`。
+
+```javascript
+var img = new Image();   // 创建img元素
+img.onload = function(){
+  ctx.drawImage(img, 0, 0)
+}
+img.src = 'myImage.png'; // 设置图片源地址
+```
+
+## 7.2	绘制 `img` 标签元素中的图片
+
+​	`img` 可以 `new` 也可以来源于我们也没中的 `<img>`标签
+
+```javascript
+<img src="./美女.jpg" alt="" width="300"><br>
+<canvas id="tutorial" width="600" height="400"></canvas>
+<script type="text/javascript">
+    function draw(){
+        var canvas = document.getElementById('tutorial');
+        if (!canvas.getContext) return;
+        var ctx = canvas.getContext("2d");
+        var img = document.querySelector("img");
+        ctx.drawImage(img, 0, 0);
+    }
+    document.querySelector("img").onclick = function (){
+        draw();
+    }
+
+</script>
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-6/84133001.jpg)
+
+## 7.3	缩放图片
+
+
+
+
 

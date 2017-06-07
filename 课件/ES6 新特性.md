@@ -1138,7 +1138,7 @@ console.log(secondColor);       // "green"
 
 ## 8.2	识别Symbol
 
-> 既然 symbol 是基础类型，你可以使用 typeof 操作符来判断变量是否为 symbol 。ECMAScript 6 拓展了 typeof 使其操作 symbol 时返回 "symbol"。例如：
+> 既然 symbol 是基本类型，你可以使用 typeof 操作符来判断变量是否为 symbol 。ECMAScript 6 拓展了 typeof 使其操作 symbol 时返回 "symbol"。例如：
 
 ```javascript
 let symbol = Symbol();
@@ -1264,13 +1264,13 @@ Reflect.ownKeys(obj);//  ["enum", "nonEnum", Symbol(my_key)]
 </script>
 ```
 
-> 二、Symbol.keyFor(symbol):返回一个已经注册的symbol的"key"。
+> 二、Symbol.keyFor(symbol):返回一个已经全局注册的symbol的"key"。
 
 ```javascript
 <script type="text/javascript">
     var a = Symbol("foo");
     var b = Symbol.for("foo");
-    console.log(Symbol.keyFor(a)); // undefined.   因为a没有想全局环境中登记，所以是undefinded
+    console.log(Symbol.keyFor(a)); // undefined.   因为a没有向全局环境中注册，所以是undefinded
     console.log(Symbol.keyFor(b)); // foo
 </script>
 ```
@@ -1506,7 +1506,7 @@ for(var v of set){
 
 ## 10.3	初始化Map
 
-> 创建Map的时候也可以像Set一样传入数组。但是传入的数组中必须有两个元素，这个两个元素分别是一个数组。
+> 创建Map的时候也可以像Set一样传入数组。但是传入的数组中必须存储的也是数组，而且每个数组中有两个元素，分别是键和值
 >
 > 也就是传入的实际是一个二维数组！
 
