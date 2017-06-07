@@ -31,10 +31,10 @@
 1. 简洁的文档声明。
 
 ```html
-//HTML5的文档声明
+<!--HTML5的文档声明-->
 <!DOCTYPE html>
 
-//下面是以前的4.01过渡版本的文档声明
+<!--下面是以前的4.01过渡版本的文档声明-->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
 ```
@@ -88,7 +88,7 @@
 <meta charset="UTF-8">
 
 <!--以前的版本指定页面字符编码的方式-->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> 
 ```
 
 7. html、head、body可以完全省略。
@@ -206,9 +206,9 @@
 
 `<article>`元素与`<section>`元素很容易混淆。
 
-在考虑何时使用 section 的时候， 记住定义中“具有相似主题的一组内容”这一条是 很有帮助的。 这也是 section 区别于 div 的另一个原因。 
+在考虑何时使用 `section` 的时候， 记住定义中“具有相似主题的一组内容”这一条是 很有帮助的。 这也是 `section` 区别于 `div` 的另一个原因。 
 
-section 和 article 的区别在于， section 在本质上组织性和结构性更强，而 article 代表的是自包含的容器。
+`section` 和 `article` 的区别在于， `section` 在本质上组织性和结构性更强，而 `article` 代表的是自包含的容器。
 
 **对内容进行标记时，并非总能分出对和错，只是大多数时候有正确的选择。而其他时候，就只能依靠个人对最适合描述内容的 HTML 元素的感觉了。**
 
@@ -222,19 +222,19 @@ section 和 article 的区别在于， section 在本质上组织性和结构性
 
 ### 3.1.5	标签:`<header>`
 
-> 如果页面中有一块包含一组介绍性或导 航性内容的区域， 应该用 header 元素对其进 行标记。
+> 如果页面中有一块包含一组介绍性或导 航性内容的区域， 应该用 `header` 元素对其进 行标记。
 >
-> 一个页面可以有任意数量的 header 元 素， 它们的含义可以根据其上下文而有所不 同。 例如， 处于页面顶端或接近这个位置的 header 可能代表整个页面的页眉（有时称为 页头）
+> 一个页面可以有任意数量的 `header` 元 素， 它们的含义可以根据其上下文而有所不 同。 例如， 处于页面顶端或接近这个位置的 `header` 可能代表整个页面的页眉（有时称为 页头）
 >
-> 通常，页眉包括网 站标志、主导航和其他全站链接， 甚至搜索框。这无疑是 header 元 素最常见的使用形式。
+> 通常，页眉包括网 站标志、主导航和其他全站链接， 甚至搜索框。这无疑是 `header` 元 素最常见的使用形式。
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-8/48221838-file_1486563772606_172b8.png)
 
 ### 3.1.6	标签:`<footer>`
 
-> 当你想到页脚的时候， 你大概想的是页 面底部的页脚（通常包括版权声明， 可能还 包括指向隐私政策页面的链接以及其他类似 的内容）。HTML5 的 footer 元素可以用在 这样的地方， 但它同 header 一样， 还可以用 在其他的地方。
+> 当你想到页脚的时候， 你大概想的是页 面底部的页脚（通常包括版权声明， 可能还 包括指向隐私政策页面的链接以及其他类似 的内容）。`HTML5` 的 `footer` 元素可以用在 这样的地方， 但它同 `header` 一样， 还可以用 在其他的地方。
 
-> footer 元素代表嵌套它的最近的 article 、aside 、 blockquote 、 body 、 details 、 fieldset 、 figure 、 nav 、 section 或 td 元 素 的页脚。 只有当它最近的祖先是 body 时， 它才是 整个 页面的页脚。
+> `footer `元素代表嵌套它的最近的 `article 、aside 、 blockquote 、 body 、 details 、 fieldset 、 figure 、 nav 、 section 或 td 元 素 的页脚`。 只有当它最近的祖先是` body` 时， 它才是 整个 页面的页脚。
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-8/24777218-file_1486564157878_b223.png)
 
@@ -260,11 +260,12 @@ section 和 article 的区别在于， section 在本质上组织性和结构性
 
 ```html
 <li>
-   <p>这个是个美女图片</P><img src="" />
+   <p>这个是个美女图片</P>
+   <img src="" />
 </li>
 ```
 
-上面这种写法明显没有语义。使用figure可以增加语义。使用`<figure>`**替换掉**`<li>`
+上面这种写法明显没有语义。使用`figure`可以增加语义。使用`<figure>`**替换掉**`<li>`
 
 ```html
 <figure>
@@ -297,7 +298,7 @@ section 和 article 的区别在于， section 在本质上组织性和结构性
 
 效果：
 
-![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/79583762-file_1486610329611_7512.png)
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/79583762-file_1486610329611_7512.png)
 
 ### 3.2.3	标签:`<progress>`
 
@@ -309,13 +310,13 @@ section 和 article 的区别在于， section 在本质上组织性和结构性
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-9/38677347-file_1486610760981_16447.png)
 
-> progress主要支持三个可选的属性：max，value和form
+> `progress`主要支持三个可选的属性：`max，value和form`
 
-- max属性指定任务的总工作量。其值必须大于0.其默认值是1
-- value是任务已经完成量。
-- form的含义，下章讲表单的时候再讲。
+- `max`属性指定任务的总工作量。其值必须大于`0`.其默认值是`1`
+- `value`是任务已经完成量。
+- `form`的含义，下章讲表单的时候再讲。
 
-> 可以通过js来动态的更改value的值，从而达到显示任务动态的完成情况。
+> 可以通过js来动态的更改`value`的值，从而达到显示任务动态的完成情况。
 
 ```html
 <progress max="100"></progress>
@@ -389,7 +390,6 @@ firfox:
 
 > 在移动终端设备，会根据输入类型改变键盘模式。
 >
-> 
 
 Android手机:键盘是全键盘形式，比较方便输入。
 
@@ -642,7 +642,7 @@ Android手机:键盘是全键盘形式，比较方便输入。
 >    `readonly`属性只是将元素设置为只读，其他操作正常。
 > 3. 表单提交：`disabled`属性可以让表单元素的值无法被提交。`readonly`属性则不影响提交问题。
 
-# 六、文件API
+# 六、文件API(后面讲)
 
 > 在HTML5之前的，从网页上传文件一次只能上传一个文件，而且也无法对要上传的文件做更深一步的操作。
 >
@@ -818,7 +818,7 @@ for(var i = 0; i < files.length; i++){ //files.length:返回类别中File对象�
 </script>
 ```
 
-# 七、拖放API
+# 七、拖放API(放在后面讲)
 
 
 

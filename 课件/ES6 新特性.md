@@ -2187,7 +2187,7 @@ let person = PersonClass.create("Nicholas");
 >
 > 有了babel我们就可以放心的使用ES6的最新的语法，而不用担心浏览器不支持了！！！
 
-> 为了方便使用，我直接使用`webstorm`的filewatcher功能
+> 为了方便使用，我直接使用`webstorm`的 `filewatcher`功能
 
 ## 13.1	安装Babel
 
@@ -2202,7 +2202,7 @@ npm install -g babel-cli
 
  ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-2/20993781.jpg)
 
-## 13.3	安·`babel-present-env`
+## 13.3	安装`babel-present-env`
 
 ```shell
 npm install babel-preset-env --save-dev
