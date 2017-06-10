@@ -124,7 +124,7 @@ transform: scale(.5);
 
 ```css
 transform-origin: 0 0;
-transform: skew(40deg,10deg);
+transform: skew(40deg,20deg);
 ```
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-28/41140946-file_1488294903973_1b54.png-yztcText)
@@ -132,7 +132,7 @@ transform: skew(40deg,10deg);
 
 ## 1.2	3D转换
 
-> 想对2D转换来说，3D转换浏览器支持的不太好。不过在移动端可以放心的使用。
+> 相对2D转换来说，3D转换浏览器支持的不太好。不过在移动端可以放心的使用。
 
 > 3D坐标系：
 >
@@ -213,6 +213,8 @@ transform: skew(40deg,10deg);
 > flat：变形仍然在2d空间
 >
 > preserve-3d：3d空间内变形
+>
+> **也是应用在父元素上。**
 
 ```html
 <!DOCTYPE html>
@@ -352,7 +354,7 @@ transform: skew(40deg,10deg);
             width: 100px;
             height: 100px;
             background-color: #0000FF;
-            /*过渡的属性  过渡时间  过渡函数  延迟时间*/
+            			/*过渡的属性  过渡时间  过渡函数  延迟时间*/
             transition: width 2s linear 1s;
         }
         .box:hover {
@@ -496,4 +498,16 @@ transition-timing-function: step-end;
 > ![](http://o7cqr8cfk.bkt.clouddn.com/17-3-5/79878285-file_1488720393755_fd93.png)
 >
 > - steps(4, end):  表示每两个关键帧中间共需要再填充3个关键帧。
+
+```css
+/* @keyframes duration | timing-function | delay | 
+iteration-count | direction | fill-mode | play-state | name */
+animation: 3s ease-in 1s 2 reverse both paused slidein;
+
+/* @keyframes duration | timing-function | delay | name */
+animation: 3s linear 1s slidein;
+
+/* @keyframes duration | name */
+animation: 3s slidein;
+```
 

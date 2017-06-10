@@ -787,7 +787,7 @@ img.src = 'myImage.png'; // 设置图片源地址
 
 ## 7.2	绘制 `img` 标签元素中的图片
 
-​	`img` 可以 `new` 也可以来源于我们也没中的 `<img>`标签
+​	`img` 可以 `new` 也可以来源于我们页面的 `<img>`标签
 
 ```javascript
 <img src="./美女.jpg" alt="" width="300"><br>
@@ -807,11 +807,342 @@ img.src = 'myImage.png'; // 设置图片源地址
 </script>
 ```
 
+ 第一张图片就是页面中的`<img>`标签
+
  ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-6/84133001.jpg)
 
 ## 7.3	缩放图片
 
+`drawImage()` 也可以再添加两个参数：
 
+​	`drawImage(image, x, y, width, height)`
+
+​	这个方法多了2个参数：`width` 和 `height，`这两个参数用来控制 当像canvas画入时应该缩放的大小。
+
+```javascript
+ctx.drawImage(img, 0, 0, 400, 200)
+```
+
+  ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-9/14522939.jpg)
+
+## 7.4	切片(`slice`)
+
+`drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)`
+
+​	第一个参数和其它的是相同的，都是一个图像或者另一个 canvas 的引用。
+
+其他8个参数：
+
+​	前4个是定义图像源的切片位置和大小，
+
+​	后4个则是定义切片的目标显示位置和大小。
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-9/86448348.jpg)
+
+# 八、状态的保存和恢复
+
+`Saving and restoring state`是绘制复杂图形时必不可少的操作。
+
+`save()和restore()`
+
+​	`save` 和 `restore` 方法是用来保存和恢复 `canvas` 状态的，都没有参数。
+
+​	`Canvas` 的状态就是当前画面应用的所有样式和变形的一个快照。
+
+
+
+1. 关于 `save()`
+
+   Canvas状态存储在栈中，每当`save()`方法被调用后，当前的状态就被推送到栈中保存。一个绘画状态包括：
+
+- 当前应用的变形（即移动，旋转和缩放）
+
+- `strokeStyle`, `fillStyle`, `globalAlpha`, `lineWidth`, `lineCap`, `lineJoin`, `miterLimit`, `shadowOffsetX`, `shadowOffsetY`, `shadowBlur`, `shadowColor`, `globalCompositeOperation 的值`
+
+- 当前的裁切路径（`clipping path`）
+
+  ​
+
+  **可以调用任意多次 `save `方法。**(类似数组的`push()`)
+
+2. 关于`restore()`
+
+   每一次调用 `restore` 方法，上一个保存的状态就从栈中弹出，所有设定都恢复。(类似数组的`pop()`)
+
+```javascript
+var ctx;
+function draw(){
+    var canvas = document.getElementById('tutorial');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    ctx.fillRect(0, 0, 150, 150);   // 使用默认设置绘制一个矩形
+    ctx.save();                  // 保存默认状态
+
+    ctx.fillStyle = 'red'       // 在原有配置基础上对颜色做改变
+    ctx.fillRect(15, 15, 120, 120); // 使用新的设置绘制一个矩形
+
+    ctx.save();                  // 保存当前状态
+    ctx.fillStyle = '#FFF'       // 再次改变颜色配置
+    ctx.fillRect(30, 30, 90, 90);   // 使用新的配置绘制一个矩形
+
+    ctx.restore();               // 重新加载之前的颜色状态
+    ctx.fillRect(45, 45, 60, 60);   // 使用上一次的配置绘制一个矩形
+
+    ctx.restore();               // 加载默认颜色配置
+    ctx.fillRect(60, 60, 30, 30);   // 使用加载的配置绘制一个矩形
+}
+draw();
+```
+
+# 九、变形
+
+## 9.1	translate
+
+`translate(x, y)`
+
+​	用来移动 `canvas` 的**原点**到指定的位置
+
+​	`translate `方法接受两个参数。`x` 是左右偏移量，`y` 是上下偏移量，如右图所示。
+
+在做变形之前先保存状态是一个良好的习惯。大多数情况下，调用 `restore` 方法比手动恢复原先的状态要简单得多。又如果你是在一个循环中做位移但没有保存和恢复` canvas` 的状态，很可能到最后会发现怎么有些东西不见了，那是因为它很可能已经超出 `canvas` 范围以外了。
+
+​	注意：`translate`移动的是`canvas`的坐标原点。(坐标变换)
+
+​	![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/83770925.jpg)
+
+```javascript
+var ctx;
+function draw(){
+    var canvas = document.getElementById('tutorial1');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.save(); //保存坐原点平移之前的状态
+    ctx.translate(100, 100);
+    ctx.strokeRect(0, 0, 100, 100)
+    ctx.restore(); //恢复到最初状态
+    ctx.translate(220, 220);
+    ctx.fillRect(0, 0, 100, 100)
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/36692804.jpg)
+
+## 9.2	rotate
+
+`rotate(angle)`
+
+​	旋转坐标轴。
+
+​	这个方法只接受一个参数：旋转的角度(angle)，它是顺时针方向的，以弧度为单位的值。
+
+​	旋转的中心是坐标原点。
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/37980271.jpg)
+
+```javascript
+var ctx;
+function draw(){
+  var canvas = document.getElementById('tutorial1');
+  if (!canvas.getContext) return;
+  var ctx = canvas.getContext("2d");
+
+  ctx.fillStyle = "red";
+  ctx.save();
+
+  ctx.translate(100, 100);
+  ctx.rotate(Math.PI / 180 * 45);
+  ctx.fillStyle = "blue";
+  ctx.fillRect(0, 0, 100, 100);
+  ctx.restore();
+
+  ctx.save();
+  ctx.translate(0, 0);
+  ctx.fillRect(0, 0, 50, 50)
+  ctx.restore();
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/40328613.jpg)
+
+## 9.3	scale
+
+`scale(x, y)`
+
+​	我们用它来增减图形在 `canvas` 中的像素数目，对形状，位图进行缩小或者放大。
+
+​	`scale `方法接受两个参数。`x,y `分别是横轴和纵轴的缩放因子，它们都必须是正值。值比 1.0 小表示缩	小，比 1.0 大则表示放大，值为 1.0 时什么效果都没有。
+
+​	默认情况下，`canvas` 的 1 单位就是 1 个像素。举例说，如果我们设置缩放因子是 0.5，1 个单位就变成对应 0.5 个像素，这样绘制出来的形状就会是原先的一半。同理，设置为 2.0 时，1 个单位就对应变成了 2 像素，绘制的结果就是图形放大了 2 倍。
+
+## 9.4	transform(变形矩阵)
+
+`transform(a, b, c, d, e, f)`
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/89391901.jpg)
+
+`a (m11)`
+
+​	Horizontal scaling.
+
+`b (m12)`
+
+​	Horizontal skewing.
+
+`c (m21)`
+
+​	Vertical skewing.
+
+`d (m22)`
+
+​	Vertical scaling.
+
+`e (dx)`
+
+​	Horizontal moving.
+
+`f (dy)`
+
+​	Vertical moving.
+
+```javascript
+var ctx;
+function draw(){
+    var canvas = document.getElementById('tutorial1');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    ctx.transform(1, 1, 0, 1, 0, 0);
+    ctx.fillRect(0, 0, 100, 100);
+}
+draw();
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/15535750.jpg)
+
+# 十、合成
+
+​	在前面的所有例子中、，我们总是将一个图形画在另一个之上，对于其他更多的情况，仅仅这样是远远不够的。比如，对合成的图形来说，绘制顺序会有限制。不过，我们可以利用 `globalCompositeOperation` 属性来改变这种状况。
+
+`globalCompositeOperation = type`
+
+```javascript
+    var ctx;
+    function draw(){
+        var canvas = document.getElementById('tutorial1');
+        if (!canvas.getContext) return;
+        var ctx = canvas.getContext("2d");
+        
+        ctx.fillStyle = "blue";
+        ctx.fillRect(0, 0, 200, 200);
+
+        ctx.globalCompositeOperation = "source-over"; //全局合成操作
+        ctx.fillStyle = "red";
+        ctx.fillRect(100, 100, 200, 200);
+    }
+    draw();
+
+</script>
+```
+
+注：下面的展示中，蓝色是原有的，红色是新的。
+
+type `是下面 13 种字符串值之一：
+
+##1. `source-over(default)`
+
+   这是默认设置，新图像会覆盖在原有图像。
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/15850624.jpg)
+
+
+##2. `source-in`
+
+   仅仅会出现新图像与原来图像重叠的部分，其他区域都变成透明的。(包括其他的老图像区域也会透明)
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/37411043.jpg)
+
+##3. `source-out`
+
+   仅仅显示新图像与老图像没有重叠的部分，其余部分全部透明。(老图像也不显示)
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/41781103.jpg)
+
+##4. `source-atop`
+
+   新图像仅仅显示与老图像重叠区域。老图像仍然可以显示。
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/29772191.jpg)
+
+##5. `destination-over`
+
+   新图像会在老图像的下面。
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/23645788.jpg)
+
+##6. `destination-in`
+
+   仅仅新老图像重叠部分的老图像被显示，其他区域全部透明。
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/78166139.jpg)
+
+##7. `destination-out`
+
+   仅仅老图像与新图像没有重叠的部分。 注意显示的是老图像的部分区域。
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/27996302.jpg)
+
+##8. `destination-atop`
+
+老图像仅仅仅仅显示重叠部分，新图像会显示在老图像的下面。
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/73933570.jpg)
+
+##9. `lighter`
+
+   新老图像都显示，但是重叠区域的颜色做加处理
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/65148759.jpg)
+
+
+##10. `darken`
+
+ 保留重叠部分最黑的像素。(每个颜色位进行比较，得到最小的)
+
+ `blue: #0000ff`
+
+ `red: #ff0000` 
+
+ 所以重叠部分的颜色：`#000000`
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/88895274.jpg)
+
+##11. `lighten`
+
+保证重叠部分最量的像素。(每个颜色位进行比较，得到最大的)
+
+`blue: #0000ff`
+
+`red: #ff0000` 
+
+所以重叠部分的颜色：`#ff00ff`
+
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/21148678.jpg)
+
+##12. `xor`
+
+重叠部分会变成透明
+
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/44617053.jpg)
+
+##13. `copy`
+
+只有新图像会被保留，其余的全部被清除(边透明)![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/11205920.jpg)
+
+#十一、裁剪路径
 
 
 

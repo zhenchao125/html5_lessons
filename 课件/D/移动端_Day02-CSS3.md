@@ -27,23 +27,23 @@
 
 > css2已经引入了一些属性选择器，css3扩展了属性选择器，基于模式匹配来定位元素
 
-- [attr]
+- `[attr]`
 
-Represents an element with an attribute name of attr. 
+  Represents an element with an attribute name of attr. 
 
-***匹配具有属性名为 attr 的元素***
+  ***匹配具有属性名为 attr 的元素***
 
-- [attr=value]
+- `[attr=value]`
 
-Represents an element with an attribute name of attr and whose value is exactly "value".
+  Represents an element with an attribute name of attr and whose value is exactly "value".
 
-***匹配具有属性名为 attr 的属性，并且这个属性值为 value 的元素***
+  ***匹配具有属性名为 attr 的属性，并且这个属性值为 value 的元素***
 
-- [attr~=value]
+- `[attr~=value]`
 
-Represents an element with an attribute name of attr whose value is a whitespace-separated list of words, one of which is exactly "value".
+  Represents an element with an attribute name of attr whose value is a whitespace-separated list of words, one of which is exactly "value".
 
-***匹配具有属性名为attr的属性，并且attr的属性值是用空白字符分隔的单词列表的元素。这些单词中必须有一个是value***
+  ***匹配具有属性名为attr的属性，并且attr的属性值是用空白字符分隔的单词列表的元素。这些单词中必须有一个是value***
 
 ```css
 div[class~=a]{
@@ -55,39 +55,39 @@ div[class~=a]{
 <div id="div2" class="b c"></div>
 ```
 
-- [attr|=value]
+- `[attr|=value]`
 
-Represents an element with an attribute name of attr. Its value can be exactly “value” or can begin with “value” immediately followed by “-” (U+002D). It can be used for language subcode matches.
+  Represents an element with an attribute name of attr. Its value can be exactly “value” or can begin with “value” immediately followed by “-” (U+002D). It can be used for language subcode matches.
 
-***匹配具有属性名attr的属性，并且attr的属性值是value或者是以value-开头的元素。  最常用语lang属性。***    ==注意：是value-开头。  value后面是一个连接符。==
+  ***匹配具有属性名attr的属性，并且attr的属性值是value或者是以`value-`开头的元素。  最常用语lang属性。***    ==注意：是value-开头。  value后面是一个连接符。==
 
-- [attr^=value]
+- `[attr^=value]`
 
-Represents an element with an attribute name of attr and whose first value is prefixed by "value".
+  Represents an element with an attribute name of attr and whose first value is prefixed by "value".
 
-***属性值以value开头（value是前缀）***
+  ***属性值以value开头（value是前缀）***
 
-- [attr$=value]
+- `[attr$=value]`
 
-Represents an element with an attribute name of attr and whose last value is suffixed by "value".
+  Represents an element with an attribute name of attr and whose last value is suffixed by "value".
 
-***属性值以value结尾(value是后缀)***
+  ***属性值以value结尾(value是后缀)***
 
-- [attr*=value]
+- `[attr*=value]`
 
-Represents an element with an attribute name of attr and whose value contains at least one occurrence of string "value" as substring.
+  Represents an element with an attribute name of attr and whose value contains at least one occurrence of string "value" as substring.
 
-***属性值中包含至少一个value(value是属性值的一个字符串)***
+  ***属性值中包含至少一个value(value是属性值的一个字符串)***
 
-- [attr operator value i]
+- `[attr operator value i]`
 
-Adding an i (or I) before the closing bracket causes the value to be compared case-insensitively (for characters within the ASCII range).
+  Adding an i (or I) before the closing bracket causes the value to be compared case-insensitively (for characters within the ASCII range).
 
-***在方括号的结束的时候添加一个字母 i 或者 I ，则匹配属性值的时候会忽略大小写***
+  ***在方括号的结束的时候添加一个字母 i 或者 I ，则匹配属性值的时候会忽略大小写***
 
-## 1.2	UI元素状态伪类选择器
+  ## 1.2UI元素状态伪类选择器
 
-- :active	用户按下鼠标，但是没有松开的时候的状态   主要用a和button标签，当然其他标签也可以用
+  - :active用户按下鼠标，但是没有松开的时候的状态   主要用a和button标签，当然其他标签也可以用
 - :hover   鼠标移动到元素上方的时候的状态。   可以用作任何的元素上
 - :focus   获取焦点的时候状态。  一般用在input、textarea上
 - :enable  enable状态
@@ -255,13 +255,13 @@ text-shadow: 4px 4px 2px gray, -4px -4px 2px red;
 >
 > 使用word-break属性，可以控制到底该怎么换行
 >
-> work-brak:normal [|](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/CSS/CSS.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/CSS/Value_definition_syntax.html#Single_bar) break-all [|](file:///Users/lzc/Library/Application%20Support/Dash/DocSets/CSS/CSS.docset/Contents/Resources/Documents/developer.mozilla.org/en-US/docs/Web/CSS/Value_definition_syntax.html#Single_bar) keep-all
+> `work-break:normal | break-all | keep-all`
 >
-> normal:正常换行
+> `normal:`正常换行
 >
-> break-all：对非Chinese/Japanese/Korean语言，运行单词内换行
+> `break-all：`对非Chinese/Japanese/Korean语言，运行单词内换行
 >
-> keep-all：对Chinese/Japanese/Korean不允许换行，别的语言与nomal相同。
+> `keep-all：`对Chinese/Japanese/Korean不允许换行，别的语言与`nomal`相同。
 
 ```css
 p {
@@ -285,7 +285,7 @@ p {
 
 ## 3.3	文本溢出处理属性：text-overflow
 
-> 主要支持两个值：clip和ellipsis
+> 主要支持两个值：`clip(默认值)`和`ellipsis`
 
 ```html
 <!DOCTYPE html>
@@ -299,7 +299,7 @@ p {
             width: 105px;
             border: 1px solid #000;
             overflow: hidden;
-            white-space: nowrap;
+
         }
 
         p:nth-child(2) {
@@ -371,9 +371,7 @@ p {
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-19/58589822-file_1487468582252_1ea0.png)
 
-
-
-![](http://o7cqr8cfk.bkt.clouddn.com/17-2-19/13000080-file_1487468663912_a260.png)
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-19/13000080-file_1487468663912_a260.png)
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-19/75466539-file_1487468734741_78db.png)
 
@@ -435,9 +433,9 @@ p {
 
 > border-radius:	给边界设置圆形或椭圆形。
 >
-> /* top-left | top-right | bottom-right | bottom-left */
+> `top-left | top-right | bottom-right | bottom-left `
 >
-> border-radius: 1px 0 3px 4px;
+> `border-radius: 1px 0 3px 4px;`
 
 ## 5.2	边框图片:border-image
 
@@ -525,11 +523,11 @@ border-image: url("/images/border.png") 30 30 stretch;
 
 几个特殊值：
 
-​	contain：完全按照背景图片的原始宽高比来适应元素，会尽可能的扩大或缩小图片，如果元素的尺寸比较大，元素的其他部分会用背景色填充。注意背景图片不会被裁减，总是能够完整的显示。
+​	`contain：`完全按照背景图片的原始宽高比来适应元素，会尽可能的扩大或缩小图片，如果元素的尺寸比较大，元素的其他部分会用背景色填充。注意背景图片不会被裁减，总是能够完整的显示。
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-21/15232670-file_1487688493137_185f4.png)
 
-​	cover：尽可能的让背景图片覆盖整个元素，即使图片被裁减也在所不惜。放大图片的时候，也会保持图片的宽高比。
+​	`cover：`尽可能的让背景图片覆盖整个元素，即使图片被裁减也在所不惜。放大图片的时候，也会保持图片的宽高比。
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-2-21/85513020-file_1487688674185_d9d5.png)
 
@@ -555,12 +553,14 @@ border-image: url("/images/border.png") 30 30 stretch;
 > 属性规定背景的绘制区域.
 >
 > 他的值和backgound-origin的值是一样的
+>
+> `border-box, padding-box, content-box`
 
 # 七、渐变属性
 
 > CSS3提供了创建颜色渐变的方式，在两个或更多的颜色之间进行平滑的过渡。
 >
-> 浏览器共支持两种颜色的渐变：线性渐变和径向渐变。
+> 浏览器共支持两种形式的渐变：线性渐变和径向渐变。
 
 ## 7.1	线性渐变
 
