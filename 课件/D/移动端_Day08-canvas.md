@@ -24,7 +24,7 @@
 
 ###替换内容
 
-​	由于某些较老的浏览器（尤其是IE9之前的IE浏览器）或者浏览器不支持HTML元素"canvas"，在这些浏览器上你应该总是能展示替代内容。
+​	由于某些较老的浏览器（尤其是IE9之前的IE浏览器）或者浏览器不支持HTML元素`<canvas>`，在这些浏览器上你应该总是能展示替代内容。
 
 ​	支持`<canvas>`的浏览器会只渲染`<canvas>`标签，而忽略其中的替代内容。不支持 `<canvas>` 的浏览器则 会直接渲染替代内容。
 
@@ -296,7 +296,7 @@ draw();
    注意：
 
    1. 这里的度数都是弧度。
-   2. 0弧度是指的`x`轴正方形
+   2. `0`弧度是指的`x`轴正方形
 
    ```javascript
    radians=(Math.PI/180)*degrees   //角度转换成弧度
@@ -1144,5 +1144,51 @@ type `是下面 13 种字符串值之一：
 
 #十一、裁剪路径
 
+`clip()`
 
+​	把已经创建的路径转换成裁剪路径。
 
+​	裁剪路径的作用是遮罩。只显示裁剪路径内的区域，裁剪路径外的区域会被隐藏。
+
+​	注意：`clip()`只能遮罩在这个方法调用之后绘制的图像，如果是`clip()`方法调用之前绘制的图像，则无法实现遮罩。
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/53022912.jpg)
+
+```javascript
+var ctx;
+function draw(){
+    var canvas = document.getElementById('tutorial1');
+    if (!canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+
+    ctx.beginPath();
+    ctx.arc(20,20, 100, 0, Math.PI * 2);
+    ctx.clip();
+    
+    ctx.fillStyle = "pink";
+    ctx.fillRect(20, 20, 100,100);
+}
+draw();
+```
+
+# 十二、基本动画
+
+## 动画的基本步骤
+
+1. **清空`canvas`**
+
+   再绘制每一帧动画之前，需要清空所有。清空所有最简单的做法就是`clearRect()`方法
+
+2. **保存`canvas`状态**
+
+   如果在绘制的过程中会更改`canvas`的状态(颜色、移动了坐标原点等),又在绘制每一帧时都是原始状态的话，则最好保存下`canvas`的状态
+
+3. **绘制动画图形**
+
+   这一步才是真正的绘制动画帧
+
+4. **恢复`canvas`状态**
+
+   如果你前面保存了`canvas`状态，则应该在绘制完成一帧之后恢复`canvas`状态。
+
+   ​
