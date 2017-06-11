@@ -392,7 +392,7 @@ transition-timing-function: step-start;
 transition-timing-function: step-end;
 ```
 
-> 延迟时间如果不设置默认是 0s
+> 延迟时间如果不设置默认是 `0s`
 
 # 四、CSS3动画(animation)
 
@@ -404,12 +404,12 @@ transition-timing-function: step-end;
 
 | 属性                        | 描述                                      | CSS  |
 | :------------------------ | :-------------------------------------- | ---- |
-| @keyframes                | 规定动画。                                   | 3    |
+| @keyframes                | 定义动画。                                   | 3    |
 | animation                 | 所有动画属性的简写属性，除了 animation-play-state 属性。 | 3    |
 | animation-name            | 规定 @keyframes 动画的名称。                    | 3    |
 | animation-duration        | 规定动画完成一个周期所花费的秒或毫秒。默认是 0。               | 3    |
 | animation-timing-function | 规定动画的速度曲线。默认是 "ease"。                   | 3    |
-| animation-delay           | 规定动画何时开始。默认是 0。                         | 3    |
+| animation-delay           | 规定动画何时开始。默认是` 0`。简写的时候，定义在`duration`的后面 | 3    |
 | animation-iteration-count | 规定动画被播放的次数。默认是 1。                       | 3    |
 | animation-direction       | 规定动画是否在下一周期逆向地播放。默认是 "normal"。          | 3    |
 | animation-play-state      | 规定动画是否正在运行或暂停。默认是 "running"。            | 3    |
@@ -466,6 +466,157 @@ transition-timing-function: step-end;
 > 3. 可以定义很多关键帧。20%、30%、...
 > 4. 百分比其实是指的时间完成的百分比。(考虑以前学习过的归一化的时间)
 
+## 相关属性详解
+
+### 1. `animation-duration`
+
+表示动画完成一个周期的时间。必须带单位。可以是`s(秒)`、`ms(毫秒)`。
+
+默认值是`0`,表示没有任何动画效果。
+
+### 2. `animation-timing-function`
+
+其实就是我们以前学习的动画算子。
+
+有一点需要注意：`animation-timing-function`是作用于两个关键帧之间，而不是整个动画周期
+
+可以是下面的值：
+
+1. keyword value
+
+   ```css
+   animation-timing-function: ease;
+   animation-timing-function: ease-in;
+   animation-timing-function: ease-out;
+   animation-timing-function: ease-in-out;
+   animation-timing-function: linear;
+   animation-timing-function: step-start;
+   animation-timing-function: step-end;
+   ```
+
+2. function value
+
+   #### 贝塞尔曲线函数： 
+
+   `cubic-bezier(x0, y0, x1, y1)`。生成贝塞尔函数参考下面的网站：
+
+   https://isux.tencent.com/css3/tools.html
+
+   #### 阶跃函数：
+
+   `steps(number, start/end)` 极少使用， 了解即可。 
+
+   参数1：一个正整数，表示把两个关键帧之间分成几个阶段。`0和负值`无效
+
+   参数2：阶跃点。可以是 `start 或 end ` 这两个值中的一个。 
+
+   ​	`start`从阶段的开始处的跳跃，`end`阶段的结束处跳跃
+
+    ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-11/64549513.jpg)
+
+      ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-11/23755397.jpg)
+
+### 3. `animation-delay`
+
+动画延迟一段时间后再执行。单位是 `s 或 ms`。 
+
+注意：在简写的时候，必须在`animation-duration`后面定义。
+
+### 4. `animation-iteration-count`
+
+表示动画停止前执行的周期的个数。  1表示执行一次。 也可以是浮点数， 比如0.5执行半个周期。
+
+如果需要一直执行下去，使用 `infinite`
+
+### 5. `animation-direction`
+
+表示动画执行方向。
+
+有四个值：
+
+- `normal`
+
+  默认值，每个周期执行都是从前向后执行。
+
+- `reverse`
+
+  每个动画周期都是从后向前执行。
+
+- `alternate`
+
+  第1个周期从前向后，第2个周期从后向前......
+
+- `alternate-reverse`
+
+  第1个周期从后向前，第2个周期从前向后......
+
+### 6. `animation-fill-mode`
+
+表示动画执行前或执行后元素的状态。
+
+有4个值：
+
+- `none(默认值)`
+
+  不添加任何与动画相关的样式在元素上。
+
+- `forwards`
+
+  动画执行完成后，最后一帧的属性一直保持在元素上
+
+- `backwards`
+
+  在 `duration-delay`期间显示第1帧。(经测试：chrome浏览器无效)
+
+- `all`
+
+  同时使用 `forwards` 和 `backwards`
+
+### 7. `animation-play-state`
+
+决定动画是暂停还是执行。
+
+2个值：
+
+- `running`
+
+  动画正则执行
+
+- `paused`
+
+  动画正在暂停
+
+可以在JavaScript中，通过这个属性来暂停或继续执行动画。
+
+注意：`running` 会让动画从暂停的地方执行，而不是从第一帧开始执行。
+
+## 属性简写
+
+```css
+/* @keyframes duration | timing-function | delay | 
+iteration-count | direction | fill-mode | play-state | name */
+animation: 3s ease-in 1s 2 reverse both paused slidein;
+
+/* @keyframes duration | timing-function | delay | name */
+animation: 3s linear 1s slidein;
+
+/* @keyframes duration | name */
+animation: 3s slidein;
+```
+
+## 动画事件
+
+我们也可以在Javascript代码中监听动画相关的一些事件。
+
+```javascript
+var e = document.getElementById("watchme");
+e.addEventListener("animationstart", listener, false); //监听动画事件：动画开始
+e.addEventListener("animationend", listener, false);  //动画结束
+e.addEventListener("animationiteration", listener, false); //动画切换周期
+
+e.className = "slidein"; //添加类之后启动动画
+```
+
 > animation-timing-function可以是以下的关键值：
 >
 > ```css
@@ -500,14 +651,6 @@ transition-timing-function: step-end;
 > - steps(4, end):  表示每两个关键帧中间共需要再填充3个关键帧。
 
 ```css
-/* @keyframes duration | timing-function | delay | 
-iteration-count | direction | fill-mode | play-state | name */
-animation: 3s ease-in 1s 2 reverse both paused slidein;
 
-/* @keyframes duration | timing-function | delay | name */
-animation: 3s linear 1s slidein;
-
-/* @keyframes duration | name */
-animation: 3s slidein;
 ```
 

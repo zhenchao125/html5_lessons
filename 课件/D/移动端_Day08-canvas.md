@@ -1171,7 +1171,7 @@ function draw(){
 draw();
 ```
 
-# 十二、基本动画
+# 十二、动画
 
 ## 动画的基本步骤
 
@@ -1191,4 +1191,191 @@ draw();
 
    如果你前面保存了`canvas`状态，则应该在绘制完成一帧之后恢复`canvas`状态。
 
-   ​
+## 控制动画
+
+我们可用通过`canvas`的方法或者自定义的方法把图像会知道到`canvas`上。正常情况，我们能看到绘制的结果是在脚本执行结束之后。例如，我们不可能在一个 `for` 循环内部完成动画。
+
+也就是，为了执行动画，我们需要一些可以定时执行重绘的方法。
+
+一般用到下面三个方法：
+
+1. `setInterval()`
+2. `setTimeout()`
+3. `requestAnimationFrame()`
+
+##案例1：太阳系
+
+```javascript
+let sun;
+let earth;
+let moon;
+let ctx;
+function init(){
+    sun = new Image();
+    earth = new Image();
+    moon = new Image();
+    sun.src = "sun.png";
+    earth.src = "earth.png";
+    moon.src = "moon.png";
+
+    let canvas = document.querySelector("#solar");
+    ctx = canvas.getContext("2d");
+
+    sun.onload = function (){
+        draw()
+    }
+
+}
+init();
+function draw(){
+    ctx.clearRect(0, 0, 300, 300); //清空所有的内容
+    /*绘制 太阳*/
+    ctx.drawImage(sun, 0, 0, 300, 300);
+
+    ctx.save();
+    ctx.translate(150, 150);
+
+    //绘制earth轨道
+    ctx.beginPath();
+    ctx.strokeStyle = "rgba(255,255,0,0.5)";
+    ctx.arc(0, 0, 100, 0, 2 * Math.PI)
+    ctx.stroke()
+
+    let time = new Date();
+    //绘制地球
+    ctx.rotate(2 * Math.PI / 60 * time.getSeconds() + 2 * Math.PI / 60000 * time.getMilliseconds())
+    ctx.translate(100, 0);
+    ctx.drawImage(earth, -12, -12)
+
+    //绘制月球轨道
+    ctx.beginPath();
+    ctx.strokeStyle = "rgba(255,255,255,.3)";
+    ctx.arc(0, 0, 40, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    //绘制月球
+    ctx.rotate(2 * Math.PI / 6 * time.getSeconds() + 2 * Math.PI / 6000 * time.getMilliseconds());
+    ctx.translate(40, 0);
+    ctx.drawImage(moon, -3.5, -3.5);
+    ctx.restore();
+
+    requestAnimationFrame(draw);
+}
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/65211642.jpg)
+
+##案例2：模拟时钟
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: rgba(0, 0, 0, 0.1)
+        }
+        
+        canvas {
+            display: block;
+            margin: 200px auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="solar" width="300" height="300"></canvas>
+<script>
+    init();
+
+    function init(){
+        let canvas = document.querySelector("#solar");
+        let ctx = canvas.getContext("2d");
+        draw(ctx);
+    }
+
+    function draw(ctx){
+        requestAnimationFrame(function step(){
+            drawDial(ctx); //绘制表盘
+            drawAllHands(ctx); //绘制时分秒针
+            requestAnimationFrame(step);
+        });
+    }
+    /*绘制时分秒针*/
+    function drawAllHands(ctx){
+        let time = new Date();
+
+        let s = time.getSeconds();
+        let m = time.getMinutes();
+        let h = time.getHours();
+        
+        let pi = Math.PI;
+        let secondAngle = pi / 180 * 6 * s;  //计算出来s针的弧度
+        let minuteAngle = pi / 180 * 6 * m + secondAngle / 60;  //计算出来分针的弧度
+        let hourAngle = pi / 180 * 30 * h + minuteAngle / 12;  //计算出来时针的弧度
+
+        drawHand(hourAngle, 60, 6, "red", ctx);  //绘制时针
+        drawHand(minuteAngle, 106, 4, "green", ctx);  //绘制分针
+        drawHand(secondAngle, 129, 2, "blue", ctx);  //绘制秒针
+    }
+    /*绘制时针、或分针、或秒针
+     * 参数1：要绘制的针的角度
+     * 参数2：要绘制的针的长度
+     * 参数3：要绘制的针的宽度
+     * 参数4：要绘制的针的颜色
+     * 参数4：ctx
+     * */
+    function drawHand(angle, len, width, color, ctx){
+        ctx.save();
+        ctx.translate(150, 150); //把坐标轴的远点平移到原来的中心
+        ctx.rotate(-Math.PI / 2 + angle);  //旋转坐标轴。 x轴就是针的角度
+        ctx.beginPath();
+        ctx.moveTo(-4, 0);
+        ctx.lineTo(len, 0);  // 沿着x轴绘制针
+        ctx.lineWidth = width;
+        ctx.strokeStyle = color;
+        ctx.lineCap = "round";
+        ctx.stroke();
+        ctx.closePath();
+        ctx.restore();
+    }
+    
+    /*绘制表盘*/
+    function drawDial(ctx){
+        let pi = Math.PI;
+        
+        ctx.clearRect(0, 0, 300, 300); //清除所有内容
+        ctx.save();
+
+        ctx.translate(150, 150); //一定坐标原点到原来的中心
+        ctx.beginPath();
+        ctx.arc(0, 0, 148, 0, 2 * pi); //绘制圆周
+        ctx.stroke();
+        ctx.closePath();
+
+        for (let i = 0; i < 60; i++){//绘制刻度。
+            ctx.save();
+            ctx.rotate(-pi / 2 + i * pi / 30);  //旋转坐标轴。坐标轴x的正方形从 向上开始算起
+            ctx.beginPath();
+            ctx.moveTo(110, 0);
+            ctx.lineTo(140, 0);
+            ctx.lineWidth = i % 5 ? 2 : 4;
+            ctx.strokeStyle = i % 5 ? "blue" : "red";
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore();
+        }
+        ctx.restore();
+    }
+</script>
+</body>
+</html>
+```
+
+ ![](http://o7cqr8cfk.bkt.clouddn.com/17-6-10/61345876.jpg)
+
+
+
