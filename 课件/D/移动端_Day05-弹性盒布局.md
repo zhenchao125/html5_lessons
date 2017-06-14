@@ -184,7 +184,7 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 
 ​	该属性定义了`flex-items`在侧轴上的对齐方式。可以看成是`justify-content`在侧轴上的版本。
 
-**如果是单行`flex-items`的情况使用比较好**
+**如果是单行`flex-items`的情况使用比较好  **
 
 ```css
 .container {
@@ -203,6 +203,8 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 ## 3.7	align-content
 
 ​	该属性定义了当有多行`flex items`时，`free-space`如何分布，类似于主轴的`justify-content`
+
+**单行无效**
 
 ```css
 .container {
@@ -223,7 +225,7 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 
 ![](http://o7cqr8cfk.bkt.clouddn.com/17-5-26/49578220.jpg)
 
-## 4.1	order
+## 4.1order
 
 ​	默认情况下，`flex-items`安装源码的属性布局。然后，通过 `order`属性可以改变他们在弹性容器中的出现的顺序。
 
@@ -248,7 +250,9 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 
 ## 4.2	flex-grow
 
-​	该属性设置 `flex-item` 在主轴方向，有空余空间的时候可以占据空余空间。他的值是一个没有单位的值，表示占据空余空间的比例。
+​	该属性设置 `flex-item` 在主轴方向，有空余空间的时候可以占据空余空间。他的值是一个没有单位的值，表示占据空余空间的比例。	
+
+​	剩余空间是正的时候起作用。
 
 ​	**默认值是 0**。负值无效
 
@@ -264,7 +268,7 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 
 2. 如果3个item 分别设置为 2、1、3  。则他们分别分的剩余空间的 2 / (2 + 1 + 3) * 剩余空间、1 / (2 + 1 + 3)* 剩余空间、3 / (2 + 1 + 3)* 剩余空间
 
-**总结： flex-grow / 所有的flex-grow只和 * 剩余空间**
+**总结： flex-grow / 所有的flex-grow之和 * 剩余空间**
 
 ```css
 .item:nth-child(1){
@@ -292,9 +296,9 @@ flex-flow: <‘flex-direction’> || <‘flex-wrap’>
 
 ​	该属性让 `flex-item`具有收缩的功能。当一行放不下，并且不允许换行的时候，允许 flex-item收缩。
 
-​	值是一个整数，来表示收缩比率。默认值是1。 如果是0表示不允许收缩。
+​	值是一个数字，来表示收缩比率。默认值是1。 如果是0表示不允许收缩。
 
-​	**一行放不下的时候，其实表示的是剩余空间为负，计算方法同 `flex-grow`是一样的，只是现在是减去响应的值而已(加负)**
+​	**一行放不下的时候，其实表示的是剩余空间为负，计算方法同 `flex-grow`是一样的，只是现在是减去相应的值而已(加负)**
 
 ```css
 .container{

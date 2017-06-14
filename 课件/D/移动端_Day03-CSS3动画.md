@@ -500,7 +500,7 @@ transition-timing-function: step-end;
 
    `cubic-bezier(x0, y0, x1, y1)`。生成贝塞尔函数参考下面的网站：
 
-   https://isux.tencent.com/css3/tools.html
+   http://cubic-bezier.com/
 
    #### 阶跃函数：
 
@@ -617,40 +617,128 @@ e.addEventListener("animationiteration", listener, false); //动画切换周期
 e.className = "slidein"; //添加类之后启动动画
 ```
 
-> animation-timing-function可以是以下的关键值：
->
-> ```css
-> animation-timing-function: ease;
-> animation-timing-function: ease-in;
-> animation-timing-function: ease-out;
-> animation-timing-function: ease-in-out;
-> animation-timing-function: linear;
-> animation-timing-function: step-start;
-> animation-timing-function: step-end;
-> ```
->
-> 也可以是下面的函数：
->
-> ```css
-> animation-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
-> animation-timing-function: steps(4, end);
-> ```
->
-> - cubic-bezier：贝塞尔曲线。如果提供的关键值不是我们想要的，则可以使用贝塞尔曲线定制自己需要的任何速度曲线。可以使用在线工具生成贝塞尔函数。
->
-> https://isux.tencent.com/css3/tools.html
->
-> 例如：
->
-> cubic-bezier(0.315, -0.575, 0.680, 1.650)
->
-> 对应的曲线：
->
-> ![](http://o7cqr8cfk.bkt.clouddn.com/17-3-5/79878285-file_1488720393755_fd93.png)
->
-> - steps(4, end):  表示每两个关键帧中间共需要再填充3个关键帧。
+# 五、animate.css
 
-```css
+`animate.css`是一个有趣，酷炫的，跨浏览器的动画库，你可以将它用于你的项目中。不管是主页，滑动切换，又或者是其它方面，你都可以通过它来制作出惊人的效果。
 
-```
+## 使用步骤
+
+1. 下载`animate.css`
+
+   推荐浏览器直接下载
+
+   [animate.css](https://daneden.github.io/animate.css/)
+
+2. 在 `html` 页面中引入
+
+   ```html
+   <link rel="stylesheet" href="animate.min.css">
+   ```
+
+3. 给元素添加相应的`class`
+
+   给你需要动画的元素添加class `animater`。如果需要无限循环动画执行，添加class `infinite`
+
+   ```html
+   <div class="animated infinite"></div>
+   ```
+
+4. 添加下面的class,来完得到你想要的动画效果
+
+   - `bounce`
+   - `flash`
+   - `pulse`
+   - `rubberBand`
+   - `shake`
+   - `headShake`
+   - `swing`
+   - `tada`
+   - `wobble`
+   - `jello`
+   - `bounceIn`
+   - `bounceInDown`
+   - `bounceInLeft`
+   - `bounceInRight`
+   - `bounceInUp`
+   - `bounceOut`
+   - `bounceOutDown`
+   - `bounceOutLeft`
+   - `bounceOutRight`
+   - `bounceOutUp`
+   - `fadeIn`
+   - `fadeInDown`
+   - `fadeInDownBig`
+   - `fadeInLeft`
+   - `fadeInLeftBig`
+   - `fadeInRight`
+   - `fadeInRightBig`
+   - `fadeInUp`
+   - `fadeInUpBig`
+   - `fadeOut`
+   - `fadeOutDown`
+   - `fadeOutDownBig`
+   - `fadeOutLeft`
+   - `fadeOutLeftBig`
+   - `fadeOutRight`
+   - `fadeOutRightBig`
+   - `fadeOutUp`
+   - `fadeOutUpBig`
+   - `flipInX`
+   - `flipInY`
+   - `flipOutX`
+   - `flipOutY`
+   - `lightSpeedIn`
+   - `lightSpeedOut`
+   - `rotateIn`
+   - `rotateInDownLeft`
+   - `rotateInDownRight`
+   - `rotateInUpLeft`
+   - `rotateInUpRight`
+   - `rotateOut`
+   - `rotateOutDownLeft`
+   - `rotateOutDownRight`
+   - `rotateOutUpLeft`
+   - `rotateOutUpRight`
+   - `hinge`
+   - `jackInTheBox`
+   - `rollIn`
+   - `rollOut`
+   - `zoomIn`
+   - `zoomInDown`
+   - `zoomInLeft`
+   - `zoomInRight`
+   - `zoomInUp`
+   - `zoomOut`
+   - `zoomOutDown`
+   - `zoomOutLeft`
+   - `zoomOutRight`
+   - `zoomOutUp`
+   - `slideInDown`
+   - `slideInLeft`
+   - `slideInRight`
+   - `slideInUp`
+   - `slideOutDown`
+   - `slideOutLeft`
+   - `slideOutRight`
+   - `slideOutUp`
+
+   ​
+
+   ```html
+   <div class="animated infinite bounce"></div>
+   ```
+
+5. 如果默认的参数不满足需求也可以自己添加相应的参数
+
+   ```css
+   #yourElement {
+     animation-duration: 3s;
+     animation-delay: 2s;
+     animation-iteration-count: infinite;
+   }
+   ```
+
+## 也可以使用代码动态的添加class
+
+结合`jquery`动态的添加class，完成动画功能。
 
