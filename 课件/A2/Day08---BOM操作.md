@@ -542,7 +542,7 @@ win.close();
 HTTP/1.1 200 OK
 Content-type: text/html
 Set-Cookie: name=value; expires=Mon, 22-Jan-07 07:10:24 GMT; domain=.wrox.com
-Other-header: other-header-value
+//Other-header: other-header-value
 ```
 
 2. 客户端(浏览器端)通过JavaScript去存储cookie(重点研究)。Javascript操作cookie需要通过document的cookie属性来完成。
@@ -560,8 +560,7 @@ Other-header: other-header-value
 	*/
 	function saveCookie(name, value, expiredays){
 
-		var date = new Date();
-		alert(date.getDate())
+		var date = new Date()
 		date.setDate(date.getDate() + expiredays);
 		alert(date.toGMTString())
 		//cookie的内容其实就是一串纯文本。 对字符最好进行url编码，否则如果有中文就会出现问题。
