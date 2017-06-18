@@ -348,15 +348,17 @@ document.querySelector("button").onclick = function (){
                 break
         }
         document.querySelector("div p:nth-child(2)").innerHTML = errorMsg;
+    },{
+        enableHighAccuracy : true,
+        timeout : 3000,
+        maximumAge : 10000
     });
 };
 </script>
 </body>
 ```
 
-
-
-1. navigator.geolocation.watchPosition(success[, error[, options]])`
+2. navigator.geolocation.watchPosition(success[, error[, options]])`
 
    用于注册监听器，在设备的地理位置发生改变的时候自动被调用。也可以选择特定的错误处理函数。
 
@@ -364,9 +366,263 @@ document.querySelector("button").onclick = function (){
 
    返回值是监听器的 `id`
 
-2. `navigator.geolocation.clearWatch(id);`
+3. `navigator.geolocation.clearWatch(id);`
 
    取消由 `watchPosition()注册的位置监听器。`
+
+
+# 四、`File Api`
+
+​	在HTML5之前的，从网页上传文件一次只能上传一个文件，而且也无法对要上传的文件做更深一步的操作。
+
+​	HTML5提供了一个系列关于文件操在的API，通过使用这些API，对于从Web页面访问本地文件系统的相关处理将会变的非常简单。
+
+## 4.1	File和FileList对象
+
+​	`<input>`的type属性为 file 的时候，那么它就可以访问本地文件系统了。在HTML5之前，一次只能选择一个文件。HTML5中，给`<input>`添加属性 multiple 则可以一次选择多个文件。
+
+**注意：multiple或multiple='multiple' 两种写法都可以。**
+
+```html
+<form action="#" enctype="multipart/form-data">
+    <input type="file" multiple>
+</form>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-10/91556762-file_1486692574714_10fab.gif)
+
+
+
+​	用户选择的每一个文件都是一个File对象，而如果选择了多个File，则FileList表示这些多个File对象的列表集合。
+
+​	**File对象提供了关于文件的一些信息并且允许Javascript去访问这些信息。**
+
+
+
+> File主要提供了4个属性(包括从Blob中的继承的)
+
+1. `file.lastModified`：表示的文件的最后修改时间。以毫秒为单位。
+2. `file.name`：获取的是文件的文件名。由于安全考虑，这个地方的文件名不包含路径。
+3. `file.size`：获取到文件大小。以字节为单位。
+4. `file.type`: 获取文件的 `mime` 类型
+
+> FileList是多个File的列表集合.
+>
+> 可以通过 `input.files`来得到`FileList`
+>
+> `FileList`的属性和方法：
+
+属性：
+
+`list.length`:文件的数量
+
+方法：
+
+`list.item(index)`:获取 `file`。注意：`index`从0开始计算。
+
+> `File`和`FileList`使用参考下面的`demo`
+
+```html
+<form action="#" enctype="multipart/form-data">
+    <input type="file" multiple>
+</form>
+<button>获取文件相关信息</button>
+<p id="content"></p>
+<script type="text/javascript">
+    var btn = document.getElementsByTagName("button")[0];
+    //1. 获取文件元素
+    var inputFile = document.getElementsByTagName("input")[0];
+    btn.onclick = function () {
+        //2. 得到FileList
+        var files = inputFile.files;
+        for(var i = 0; i < files.length; i++){ //files.length:返回类别中File对象的数量
+            //3. files.itemt(i) 获取到每个文件。  
+            var msg = `第${i + 1}个文件的文件名:${files.item(i).name}, 最后修改时间:${files.item(i).lastModified},文件长度：${files.item(i).size}`;
+            content.innerHTML += msg + "<br>";
+        }
+    }
+</script>
+```
+
+![](http://o7cqr8cfk.bkt.clouddn.com/17-2-10/74322032-file_1486695032477_18f5.gif)
+
+## 4.2	`Blob`对象
+
+表示二进制原始文件。前面见到的File对象也继承了Blob对象。
+
+注意包括两个属性：size和type。
+
+`size`：表示Blob对象的字节长度。  File文件的size就是继承这里的size
+
+`type`：表示Blob的MIME类型。如果未知则返回一个长度为 0 的字符串。FIle对象也继承了这个属性。
+
+> 仍然以File对象来演示Blob对象:
+
+```javascript
+for(var i = 0; i < files.length; i++){ //files.length:返回类别中File对象的数量
+            
+       var file = files.item(i);
+       var msg = `第${i + 1}个文件的MIME类型：${file.type}<br>`;
+	   content.innerHTML += msg
+}
+```
+
+## 4.3	`FileReader`
+
+​	`FileReader`对象允许`Web` 应用程序以==异步的方式读取文件的内容==，使用`File`对象或`Blob`对象指定要读取的文件。
+
+​	`FileReader`对象主要包括3个属性和5个方法、6个事件。
+
+### 3个属性
+
+1. `FileReader.error`: 读取文件的时候发生的错误信息
+2. `FileReader.readyState`:0-2数字，表示`FileReader`的状态
+
+| EMPTY   | 0    | No data has been loaded yet.还没有加载到数据     |
+| ------- | ---- | ---------------------------------------- |
+| LOADING | 1    | Data is currently being loaded.正在加载数据    |
+| DONE    | 2    | The entire read request has been completed.数据加载完成 |
+
+3. `FileReader.result`:这个是最重要的属性。读取到的内容都存储在了这个属性中。只能在`readyState DONE`之后才能读取这个属性值。读取到的数据类型取决于用什么的方法去读取的文件。
+
+### 5个方法
+
+1. `FileReader.abort()`：终止读取文件的操作。这个方法一点结束，则readyState就成为了DONE
+2. `FileReader.readAsArrayBuffer()`：开始读取文件的内容，一旦完成，则把文件的数据存储在`ArrayBuffer`中。当然`ArrayBuffer`自然也会存储在`FileReader`的`result`属性中
+3. ~~FileReader.readAsBinaryString()：以二进制的形式读取文件的内容。***这个方法是非标准方法，不要使用。***~~
+4. `FileReader.readAsDataURL()`：将文件读取为`DateUrl`
+5. `FileReader.readAsText()`：将文件的内容读取文本。读取纯文本内容的时候使用。
+
+### 6个事件
+1. `FileReader.onloadstart`：**数据开始读取时触发。**
+
+   A handler for the loadstart event. This event is triggered each time the reading is starting.*
+
+2. `FileReader.onprogress`：**数据读取过程中触发。**
+
+   A handler for the progress event. This event is triggered while reading a Blob content.
+
+3. `FileReader.onloadend`：**数据读取完成后触发。不管数据读取成功还是失败都会触发。**
+
+   A handler for the loadend event. This event is triggered each time the reading operation is completed (either in success or failure).
+
+4. `FileReader.onload`：**数据读取成功后触发。**
+
+   A handler for the load event. This event is triggered each time the reading operation is successfully completed.
+
+
+5. `FileReader.onabort`：**数据读取被中断时触发。**
+
+   A handler for the abort event. This event is triggered each time the reading operation is aborted.
+
+
+6. `FileReader.onerror`：**数据读取发生错误时触发。**
+
+   A handler for the error event. This event is triggered each time the reading operation encounter an error.
+
+
+```html
+<input type="file" multiple id="file">
+<br>
+<button id="readBtn">读取文件内容</button>
+<img src="" alt="">
+<p id="content">此处显示读取到的文件内容</p>
+
+<script type="text/javascript">
+var fileInput = document.getElementById("file");
+var readBtn = document.getElementById("readBtn");
+var content = document.getElementById("content");
+var img = document.querySelector("img");
+
+readBtn.onclick = function (){
+    //1. 检测当前浏览器是否支持FileReader
+    if (!FileReader){
+        content.innerHTML = "你的文件不支持FileApi";
+        return;
+    }
+    //2. 获取到用户选择的所有文件
+    var files = fileInput.files;
+    for (var i = 0; i < files.length; i++){
+        //3. 获取用户选择的每一个文件
+        var file = files.item(i);
+        //4. 判断文件的类型，如果是文本文件就显示在p标签中，如果是图片，就显示在 img中
+        if (file.type.startsWith("text")){
+            //5. 创建FileReader对象
+            var reader = new FileReader();
+            //6. 定义数据读取成功的回调函数
+            reader.onload = function (event){
+                content.innerHTML += "<hr>" + reader.result;
+            }
+            //7. 开始读取文件数据
+            reader.readAsText(file, "utf-8");
+            
+        }else if(file.type.startsWith("image")){
+            //如果是图片文件，就以dataURL的形式读取。把读取到结果是一个url，给img标签的src
+            var reader = new FileReader();
+            reader.onload = function (event){
+                img.src = event.currentTarget.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+}
+</script>
+```
+
+ # 五、`Drag和Drop API`
+
+​	在HTML5中，提供了直接支持拖放操作的API。新的拖放API已经支持浏览器与其他应用程序之间的互相拖动。相比以前的使用`mousedown`、`mouseover`、`mouseup`实现的拖放，新的`API`大大简化了拖放的代码。
+
+## 实现拖放的步骤
+
+### 步骤1
+
+​	把要拖放的对象的元素的`draggable`属性设为`true(draggable="true")`。另外对`<img>`和`<a>`元素默认允许拖放。
+
+```html
+<ul>
+    <li>志玲</li>
+    <li>凤姐</li>
+    <li>张三</li>
+    <li>李四</li>
+    <li>王五</li>
+    <li>马六</li>
+</ul>
+<script>
+var lis = document.querySelectorAll("ul li");
+//每个li元素都设置 draggable=true 允许li拖拽
+for (let i = 0; i < lis.length; i++){
+    lis[i].setAttribute("draggable", "true");
+}
+</script>
+```
+
+也可以直接在元素上添加
+
+```html
+<div draggable="true"></div>
+```
+
+### 步骤2
+
+编写与拖放事件有关的事件处理代码
+
+共有 8 个与拖放有关的事件
+
+| 事件        | 产生事件的元素   | 描述                                       |
+| :-------- | :-------- | ---------------------------------------- |
+| dragstart | 被拖动的元素或文本 | This event is fired when the user starts dragging an element or text selection。***当开始拖动选择的元素或文本的时候出发*** |
+| drag      | 被拖动的元素或文本 | This event is fired when an element or text selection is being dragged。***在元素在拖动的过程中触发。(会重复触发)*** |
+| dragenter | 拖放的目标元素   | This event is fired when a dragged element or text selection enters a valid drop target。***元素进入目标元素区域的时候触发。*** |
+| dragover  | 拖放的目标元素   | This event is fired when an element or text selection is being dragged over a valid drop target (every few hundred milliseconds).***在目标元素领域经过的时候触发*** |
+| dragleave | 拖放的目标元素   | This event is fired when a dragged element or text selection leaves a valid drop target.***当离开目标元素的时候触发。*** |
+| dragend   | 拖放的目标元素   | This event is fired when a drag operation is being ended (by releasing a mouse button or hitting the escape key).***当拖放操作完成后触发(松开了鼠标键或者按下了esc键)*** |
+| dragexit  | 被拖动的元素    | This event is fired when an element is no longer the drag operation's immediate selection target.***当元素不再是拖动操作的直接目标时触发*** |
+| drop      | 被拖动的元素    | This event is fired when an element or text selection is dropped on a valid drop target。***当在有效的目标上放下拖动的元素后触发*** |
+|           |           |                                          |
+
+
+
 
 
 
