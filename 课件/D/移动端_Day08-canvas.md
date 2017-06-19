@@ -861,8 +861,6 @@ ctx.drawImage(img, 0, 0, 400, 200)
 
 - 当前的裁切路径（`clipping path`）
 
-  ​
-
   **可以调用任意多次 `save `方法。**(类似数组的`push()`)
 
 2. 关于`restore()`
