@@ -81,11 +81,11 @@
 
 ##10. `loop`：
 
-返回或设置音视频是否循环播放。true/false(默认值)
+返回或设置音视频是否循环播放。`true/false`(默认值)
 
 ##11. `paused`(只读)：
 
-查看音视频是否已经停止。 true/false
+查看音视频是否已经暂停。 true/false
 
 ##12. `preload`：
 
@@ -167,6 +167,15 @@
 ​	webkitRequestFullScreen();
 
 ​	mozRequestFullScreen();
+
+# 四、事件
+
+1. play
+2. pause
+3. progress
+4. error
+
+
 
 
 

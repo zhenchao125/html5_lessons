@@ -609,21 +609,190 @@ for (let i = 0; i < lis.length; i++){
 
 共有 8 个与拖放有关的事件
 
-| 事件        | 产生事件的元素   | 描述                                       |
-| :-------- | :-------- | ---------------------------------------- |
-| dragstart | 被拖动的元素或文本 | This event is fired when the user starts dragging an element or text selection。***当开始拖动选择的元素或文本的时候出发*** |
-| drag      | 被拖动的元素或文本 | This event is fired when an element or text selection is being dragged。***在元素在拖动的过程中触发。(会重复触发)*** |
-| dragenter | 拖放的目标元素   | This event is fired when a dragged element or text selection enters a valid drop target。***元素进入目标元素区域的时候触发。*** |
-| dragover  | 拖放的目标元素   | This event is fired when an element or text selection is being dragged over a valid drop target (every few hundred milliseconds).***在目标元素领域经过的时候触发*** |
-| dragleave | 拖放的目标元素   | This event is fired when a dragged element or text selection leaves a valid drop target.***当离开目标元素的时候触发。*** |
-| dragend   | 拖放的目标元素   | This event is fired when a drag operation is being ended (by releasing a mouse button or hitting the escape key).***当拖放操作完成后触发(松开了鼠标键或者按下了esc键)*** |
-| dragexit  | 被拖动的元素    | This event is fired when an element is no longer the drag operation's immediate selection target.***当元素不再是拖动操作的直接目标时触发*** |
-| drop      | 被拖动的元素    | This event is fired when an element or text selection is dropped on a valid drop target。***当在有效的目标上放下拖动的元素后触发*** |
-|           |           |                                          |
+| 事件        | 产生事件的元素       | 描述                                       |
+| :-------- | :------------ | ---------------------------------------- |
+| dragstart | 被拖动的元素或文本     | This event is fired when the user starts dragging an element or text selection。***当开始拖动选择的元素或文本的时候出发*** |
+| drag      | 被拖动的元素或文本     | This event is fired when an element or text selection is being dragged。***在元素在拖动的过程中触发。(会重复触发)*** |
+| dragenter | ==拖放的目标元素==   | This event is fired when a dragged element or text selection enters a valid drop target。***元素进入目标元素区域的时候触发。*** |
+| dragover  | ==拖放的目标元素==   | This event is fired when an element or text selection is being dragged over a valid drop target (every few hundred milliseconds).***在目标元素领域经过的时候触发*** (会一直重复触发) |
+| dragleave | ==拖放的目标元素==   | This event is fired when a dragged element or text selection leaves a valid drop target.***当离开目标元素的时候触发。*** |
+| dragend   | 被拖动的元素        | This event is fired when a drag operation is being ended (by releasing a mouse button or hitting the escape key).***当拖放操作完成后触发(松开了鼠标键或者按下了esc键)*** |
+| dragexit  | 被拖动的元素        | This event is fired when an element is no longer the drag operation's immediate selection target.***当元素不再是拖动操作的直接目标时触发*** |
+| drop      | ==drop的目标元素== | This event is fired when an element or text selection is dropped on a valid drop target。***当在有效的目标上放下拖动的元素后触发*** |
+|           |               |                                          |
 
+### 案例1
 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title</title>
+<meta charset="utf-8">
+<style>
+.dropzone {
+    box-sizing: border-box;
+    width: 400px;
+    height: 100px;
+    background: gray;
+    display: flex;
+    border: 1px solid #000;
+}
 
+#draggable {
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    margin: auto;
+    background-color: white;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+</style>
+</head>
+<body>
+<!--dropzone:表示可释放的区域-->
+<div class="dropzone" id="div1">
+    <!--可拖动的元素 draggable="true"-->
+    <div id="draggable" draggable="true">
+        来拖动我啊
+    </div>
+</div>
+<div class="dropzone" id="div2"></div>
+<div class="dropzone" id="div3"></div>
+<div class="dropzone" id="div4"></div>
 
+<script>
+var dragged;
 
+/*开始拖动的时触发。 只触发一次  在被拖动的元素上触发*/
+document.addEventListener("dragstart", function (event){
+    console.log("dragstart", event.target.id);
+    // 保存被拖动的元素对象
+    dragged = event.target;
+    // 把拖动元素的设置成半透明。
+    event.target.style.opacity = .4;
+}, false);
+
+/* 拖动的过程中触发。 只要元素在拖动，会一直重复触发   在被拖动的元素上触发*/
+document.addEventListener("drag", function (event){
+//    console.log("drag", event.target.id);
+}, false);
+
+/*进入另外一个元素的区域时触发.  是在目标元素上触发*/
+document.addEventListener("dragenter", function (event){
+    console.log("dragenter", event.target.id);
+    // 判断当前的目标是否进入了潜在的 dropzone区域，如果是则高量这个潜在的目标区域
+    if (event.target.className == "dropzone"){
+        event.target.style.background = "red";
+    }
+
+}, false);
+
+/* 在潜在目标区域的上方的时候会重复触发 */
+document.addEventListener("dragover", function (event){
+    console.log("dragover", event.target.id);
+    // 因为默认情况下，拖放目标是不允许接受元素的。阻值默认行为，可以随时释放元素。
+    event.preventDefault();  //必须阻止默认行为，否则的后面的drop事件不会触发
+}, false);
+
+/*松开鼠标拖放结束。*/
+document.addEventListener("dragend", function (event){
+    console.log("dragend", event.target.id);
+    // 把元素的透明重新设置为1
+    event.target.style.opacity = "1";
+}, false);
+
+/*从潜在目标元素上方离开的时候触发*/
+document.addEventListener("dragleave", function (event){
+    console.log("dragleave", event.target.id);
+    // 因为进入一个元素的时候更改了目标元素的北京，所以离开的时候要重置背景
+    if (event.target.className == "dropzone"){
+        event.target.style.background = "";
+    }
+
+}, false);
+document.addEventListener("dragexit", function (event){
+    console.log("dragexit", event.target.id);
+}, false);
+/*释放拖动元素的时候触发。  这个事件是在dropend事件触发前触发。*/
+document.addEventListener("drop", function (event){
+    console.log("drop", event.target.id);
+    // prevent default action (open as link for some elements)
+    event.preventDefault();
+    // 把拖动的元素移动目标区域中
+    if (event.target.className == "dropzone"){
+        event.target.style.background = "";
+        //把拖动元素从他原来的父节点中移除。
+        dragged.parentNode.removeChild(dragged);
+        //插入到目标元素中。
+        event.target.appendChild(dragged);
+    }
+
+}, false);
+</script>
+</body>
+</html>
+```
+
+### 案例2：拖拽文件
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<style>
+
+html, body {
+    height: 100%;
+    margin: 0;
+    height: 0;
+}
+
+div {
+    height: 400px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+}
+</style>
+</head>
+<body>
+<div id="dropArea">请拖拽文件到此区域</div>
+<img src="" alt="">
+<script>
+var dropArea = document.getElementById("dropArea");
+dropArea.addEventListener("dragenter", function (e){
+    e.preventDefault();
+    this.style.backgroundColor = "pink";
+});
+dropArea.addEventListener("dragover", function (e){
+    e.preventDefault();
+});
+dropArea.addEventListener("dragleave", function (e){
+    e.preventDefault();
+    this.style.backgroundColor = "lightgray";
+});
+dropArea.addEventListener("drop", function (e){
+    e.preventDefault();  //阻止默认向外
+    var file = e.dataTransfer.files[0];
+    var fileReader = new FileReader();
+    fileReader.onload = function (e){
+        document.querySelector("img").src = fileReader.result;
+    }
+    fileReader.readAsDataURL(file);
+
+})
+
+</script>
+</body>
+</html>
+```
 
