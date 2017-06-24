@@ -162,7 +162,7 @@ removeCookie("name", 0);
 
 
 
-## 2.2	HTML5的`localStorage`和`sessionStorage`
+## 2.2	HTML5的 `localStorage` 和 `sessionStorage`
 
 `Web Storage` 包含如下两种机制：
 
@@ -358,7 +358,7 @@ document.querySelector("button").onclick = function (){
 </body>
 ```
 
-2. navigator.geolocation.watchPosition(success[, error[, options]])`
+2. `navigator.geolocation.watchPosition(success[, error[, options]])`
 
    用于注册监听器，在设备的地理位置发生改变的时候自动被调用。也可以选择特定的错误处理函数。
 
@@ -435,7 +435,8 @@ document.querySelector("button").onclick = function (){
     btn.onclick = function () {
         //2. 得到FileList
         var files = inputFile.files;
-        for(var i = 0; i < files.length; i++){ //files.length:返回类别中File对象的数量
+        for(var i = 0; i <
+files.length; i++){ //files.length:返回类别中File对象的数量
             //3. files.itemt(i) 获取到每个文件。  
             var msg = `第${i + 1}个文件的文件名:${files.item(i).name}, 最后修改时间:${files.item(i).lastModified},文件长度：${files.item(i).size}`;
             content.innerHTML += msg + "<br>";
@@ -548,7 +549,7 @@ readBtn.onclick = function (){
         //4. 判断文件的类型，如果是文本文件就显示在p标签中，如果是图片，就显示在 img中
         if (file.type.startsWith("text")){
             //5. 创建FileReader对象
-            var reader = new FileReader();
+             
             //6. 定义数据读取成功的回调函数
             reader.onload = function (event){
                 content.innerHTML += "<hr>" + reader.result;
@@ -781,7 +782,7 @@ dropArea.addEventListener("dragleave", function (e){
     this.style.backgroundColor = "lightgray";
 });
 dropArea.addEventListener("drop", function (e){
-    e.preventDefault();  //阻止默认向外
+    e.preventDefault();  //阻止默认行为。(浏览器的默认行为是打开文件)
     var file = e.dataTransfer.files[0];
     var fileReader = new FileReader();
     fileReader.onload = function (e){
